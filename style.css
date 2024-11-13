@@ -1,4 +1,75 @@
+@font-face {
+  font-family: 'poppins';
+  src: url(./assets/font/Poppins-Regular.woff2);
+}
+
 /* General reset for margins and padding */
+body{
+  font-family: 'poppins';
+}
+
+/* Header Styling */
+
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+nav{
+  display: flex;
+}
+
+nav > .logo{
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+}
+
+nav > ul{
+  margin-left: 20px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+nav > ul > li{
+  display: inline;
+  margin-left: 15px;
+  margin-right: 15px;
+  align-items: center;
+}
+
+nav > ul > li > a{
+  text-decoration: none;
+  color: #000;
+}
+
+.access-menu{
+  margin-top: 20px;
+}
+
+.access-menu > a{
+  text-decoration: none;
+}
+
+.access-menu > .post-property{
+  background: #0861AF;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.access-menu > .signup-login{
+  background: #fff;
+  border: 1px solid #0861AF;
+  padding: 20px;
+  color: #0861AF;
+  border-radius: 10px;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
