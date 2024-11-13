@@ -268,9 +268,9 @@
   
   /* Footer Bottom Section */
   .footer-bottom {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 0.8em;
-    color: #666;
+    color: blue;
   }
   
   .footer-bottom-links {
@@ -278,6 +278,7 @@
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top:20px;
   }
   
   .footer-bottom-links li {
@@ -285,7 +286,7 @@
   }
   
   .footer-bottom-links a {
-    color: #666;
+    color: blue;
     text-decoration: none;
   }
   
