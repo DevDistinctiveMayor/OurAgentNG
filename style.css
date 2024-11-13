@@ -1,4 +1,141 @@
+@font-face {
+  font-family: 'poppins';
+  src: url(./assets/font/Poppins-Regular.woff2);
+}
+
 /* General reset for margins and padding */
+body{
+  font-family: 'poppins';
+}
+
+/* Header Styling */
+
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+nav{
+  display: flex;
+}
+
+nav > .logo{
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+}
+
+nav > ul{
+  margin-left: 20px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+nav > ul > li{
+  display: inline;
+  margin-left: 15px;
+  margin-right: 15px;
+  align-items: center;
+}
+
+nav > ul > li > a{
+  text-decoration: none;
+  color: #000;
+}
+
+.access-menu{
+  margin-top: 20px;
+}
+
+.access-menu > a{
+  text-decoration: none;
+}
+
+.access-menu > .post-property{
+  background: #0861AF;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.access-menu > .signup-login{
+  background: #fff;
+  border: 1px solid #0861AF;
+  padding: 20px;
+  color: #0861AF;
+  border-radius: 10px;
+}
+
+/* Featured section styling */
+.featured{
+  padding: 0px 50px;
+}
+
+.featured-heading{
+  display:  flex;
+  justify-content: space-between;
+}
+
+.featured-heading > h3{
+  font-size: 35px;
+}
+
+.featured-heading > a{
+  color: #000;
+  text-decoration-color: gray;
+}
+
+.featured-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px 0px;
+}
+
+.featured-content > .content-box{
+  width: 20%;
+  padding: 15px;
+}
+
+.featured-content > .content-box > img{
+  margin-left: 20px;
+  width: 90%;
+}
+
+.featured-content > .content-box > .description{
+  color: #0861AF9C;
+  font-size: 14px;
+  width: 200px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.featured-content > .content-box > .price{
+  font-weight: 600;
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.bottom-side{
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.bottom-side > p{
+  color: #0861AF9C;
+}
+
+.bottom-side > a{
+  color: #000;
+}
+
+
 * {
     margin: 0;
     padding: 0;
