@@ -68,6 +68,72 @@ nav > ul > li > a{
   border-radius: 10px;
 }
 
+/* Featured section styling */
+.featured{
+  padding: 0px 50px;
+}
+
+.featured-heading{
+  display:  flex;
+  justify-content: space-between;
+}
+
+.featured-heading > h3{
+  font-size: 35px;
+}
+
+.featured-heading > a{
+  color: #000;
+  text-decoration-color: gray;
+}
+
+.featured-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px 0px;
+}
+
+.featured-content > .content-box{
+  width: 20%;
+  padding: 15px;
+}
+
+.featured-content > .content-box > img{
+  margin-left: 20px;
+  width: 90%;
+}
+
+.featured-content > .content-box > .description{
+  color: #0861AF9C;
+  font-size: 14px;
+  width: 200px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.featured-content > .content-box > .price{
+  font-weight: 600;
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.bottom-side{
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.bottom-side > p{
+  color: #0861AF9C;
+}
+
+.bottom-side > a{
+  color: #000;
+}
 
 
 * {
