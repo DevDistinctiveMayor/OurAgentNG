@@ -622,7 +622,7 @@ header{
       flex-direction: row;
       justify-content: space-between;
      
-      margin: 50 auto;
+      margin: 50px auto;
     }
   
     .footer-links {
@@ -796,6 +796,7 @@ header{
       padding: 40px;
       margin-left:30%;
       margin-bottom:30px;
+      margin-top:50px;
     }
   
     .login-container h1 {
@@ -877,6 +878,131 @@ header{
   
     .hamburger {
       display: block;
+    }
+  }
+
+  
+  .register-container {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 500px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .register-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .register-container p {
+    margin-bottom: 20px;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .auth-buttons button {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  .google-button img,
+  .facebook-button img {
+    width: 20px;
+    margin-right: 8px;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .divider span {
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  .divider p {
+    font-size: 0.9rem;
+  }
+  
+  form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  form .form-group input,
+  form .form-group select {
+    
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  form .form-group label {
+   
+    margin-bottom: 5px;
+    margin-top:20px;
+    font-weight: bold;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .terms {
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .terms a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .btn.primary {
+    width: 100%;
+    background-color: #002855;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .register-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .auth-buttons button {
+      font-size: 0.85rem;
     }
   }
   
