@@ -73,9 +73,6 @@ body{
 }
 
 
-/* Hero Section Styling */
-
-
 
 /* Featured section styling */
 .featured-section > .top{
@@ -139,6 +136,38 @@ body{
   color: #0861AF9C;
 }
 
+/* Download section styling */
+.download-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #02182B;
+  padding: 6rem 4rem;
+}
+
+.download-section > div{
+  width: 40%;
+}
+
+.download-section > .first-section > p{
+  font-size: 30px;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.download-section > .second-section > p{
+  font-size: 20px;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.download-section > .second-section > a{
+  background-color: #0861AF;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 15px;
+}
+
 
 
 * {
@@ -147,7 +176,6 @@ body{
     box-sizing: border-box;
   }
   
-  /* Main section styling */
   .property-categories {
     text-align: center;
     padding: 40px 20px;
@@ -273,8 +301,14 @@ body{
       grid-template-columns: 1fr; /* 1 box per row */
   }
 
+  .download-section{
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-
+  .download-section > div{
+    width: 100%;
+  }
 
     .carousel-item {
       min-width: 200px;
