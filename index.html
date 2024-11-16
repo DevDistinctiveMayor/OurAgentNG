@@ -4,30 +4,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Our AgentNG | Website</title>
 </head>
 <body>
 <!-- Header Section -->
-
-<header>
-    <nav>
-      <img src="./assets/logo.svg" alt="" class="logo">
-
-      <ul class="nav-links">
-        <li><a href="#">Buy</a></li>
-        <li><a href="#">Rent</a></li>
-        <li><a href="#">Saved properties</a></li>
-        <li><a href="#">About us</a></li>
-      </ul>
-    </nav>
-
-    <div class="access-menu">
-      <a href="" class="post-property">Post A Property</a>
-      <a href="" class="signup-login">Sign Up or Login</a>
+ <header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="./assets/logo.svg" alt="">
     </div>
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <i class="bx bx-menu"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#home">Buy</a></li>
+      <li><a href="#about">Rent</a></li>
+      <li><a href="#services">Saved properties</a></li>
+      <li><a href="#contact">About us</a></li>
+
+      <div class="access-box">
+        <a href="" class="post">Post A Property</a>
+        <a href="" class="login">Sign up or Log in</a>
+      </div>
+    </ul>
+  </nav>
 </header>
 
+
+
+
+<main>
+  
+<!-- Hero Section -->
+ <div class="hero-sectiion">
+    
+ </div>
 
 
 
@@ -70,60 +83,51 @@
 
 
 <!-- Featured Section -->
-<section class="featured">
-    <div class="featured-heading">
-      <h3>Featured</h3>
-      <a href="#">See all <i class="fa fa-arrow-right"></i></a>
+<section class="featured-section">
+<div class="top">
+  <p class="heading">Featured</p>
+  <a href="" class="view">See all &#10142;</a>
+</div>
+
+<div class="grid-container">
+  <div class="box">
+    <img src="./assets/featured-card.svg" alt="">
+    <p class="desc">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
+    <p class="price">₦1,000,000</p>
+    <div class="bottom-side">
+      <p>Lekki Phase 1</p>
+      <p>View &#10142;</p>
     </div>
-
-    <div class="featured-content">
-      <div class="content-box">
-        <img src="./assets/featured-card.svg" alt="">
-        <p class="description">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
-        <p class="price">&#8358; 1,000,000</p>
-
-        <!-- bottom side -->
-         <div class="bottom-side">
-          <p>Lekki Phase 1</p>
-          <a href="">View <i class="fa fa-arrow-right"></i></a>
-         </div>
-      </div>
-      <div class="content-box">
-        <img src="./assets/featured-card.svg" alt="">
-        <p class="description">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
-        <p class="price">&#8358; 100,000/day</p>
-
-        <!-- bottom side -->
-         <div class="bottom-side">
-          <p>Lekki Phase 1</p>
-          <a href="">View <i class="fa fa-arrow-right"></i></a>
-         </div>
-      </div>
-      <div class="content-box">
-        <img src="./assets/featured-card.svg" alt="">
-        <p class="description">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
-        <p class="price">&#8358; 21,000,000</p>
-
-        <!-- bottom side -->
-         <div class="bottom-side">
-          <p>Lekki Phase 1</p>
-          <a href="">View <i class="fa fa-arrow-right"></i></a>
-         </div>
-      </div>
-      <div class="content-box">
-        <img src="./assets/featured-card.svg" alt="">
-        <p class="description">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
-        <p class="price">&#8358; 100,000/day</p>
-
-        <!-- bottom side -->
-         <div class="bottom-side">
-          <p>Lekki Phase 1</p>
-          <a href="">View <i class="fa fa-arrow-right"></i></a>
-         </div>
-      </div>
+  </div>
+  <div class="box">
+    <img src="./assets/featured-card.svg" alt="">
+    <p class="desc">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
+    <p class="price">₦100,000/day</p>
+    <div class="bottom-side">
+      <p>Lekki Phase 1</p>
+      <p>View &#10142;</p>
     </div>
+  </div>
+  <div class="box">
+    <img src="./assets/featured-card.svg" alt="">
+    <p class="desc">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
+    <p class="price">₦21,000,000</p>
+    <div class="bottom-side">
+      <p>Lekki Phase 1</p>
+      <p>View &#10142;</p>
+    </div>
+  </div>
+  <div class="box">
+    <img src="./assets/featured-card.svg" alt="">
+    <p class="desc">Smart Luxury 2 Bedroom Apartment with *Swimming* .</p>
+    <p class="price">₦100,000/day</p>
+    <div class="bottom-side">
+      <p>Lekki Phase 1</p>
+      <p>View &#10142;</p>
+    </div>
+  </div>
+</div>
 </section>
-
 
       <section class="neighborhood-highlights">
         <h2>Neighborhood Highlights</h2>
@@ -182,6 +186,23 @@
           </div>
         </div>
       </section>
+
+
+      <section class="download-section">
+        <div class="first-section">
+          <p>Download our app today to access more features</p>
+        </div>
+        <div class="second-section">
+          <p>Unlock the potential of your property journey with us. Download the app today to connect with agents and find your dream home!</p>
+          <br>
+          <br>
+          <a href="">Click here to download</a>
+        </div>
+      </section>
+    </main>
+
+
+
       <footer class="footer">
         <div class="footer-top">
           <!-- Logo and Links -->
