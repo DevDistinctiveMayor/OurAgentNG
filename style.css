@@ -72,73 +72,73 @@ body{
   cursor: pointer;
 }
 
+
+/* Hero Section Styling */
+
+
+
 /* Featured section styling */
-.featured{
-  overflow-x: hidden;
-  padding: 0px 50px;
-}
-
-.featured-heading{
-  display:  flex;
+.featured-section > .top{
+  display: flex;
   justify-content: space-between;
+  padding: 1rem 3rem;
 }
 
-.featured-heading > h3{
-  font-size: 35px;
+.featured-section > .top > .heading{
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.featured-heading > a{
+.featured-section > .top > .view{
   color: #000;
-  text-decoration-color: gray;
-}
-
-.featured-content{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 30px 0px;
-}
-
-.featured-content > .content-box{
-  width: 20%;
-  padding: 15px;
-}
-
-.featured-content > .content-box > img{
-  margin-left: 20px;
-  width: 90%;
-}
-
-.featured-content > .content-box > .description{
-  color: #0861AF9C;
+  font-weight: bold;
   font-size: 14px;
-  width: 200px;
-  margin-top: 15px;
-  margin-left: 20px;
 }
 
-.featured-content > .content-box > .price{
-  font-weight: 600;
-  font-size: 22px;
-  margin-left: 20px;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 1rem;
+  padding: 1rem; 
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem 6rem;
 }
 
-.bottom-side{
+.box {
+  background-color: #fff; 
+  padding: 2rem;
+  font-size: 1.2rem;
+  border: 1px solid #0861AF9C;
+  border-radius: 8px;
+}
+
+.grid-container > .box > img{
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.grid-container > .box > .desc{
+  margin-top: 20px;
   font-size: 14px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 20px;
-  margin-top: 15px;
-}
-
-.bottom-side > p{
   color: #0861AF9C;
 }
 
-.bottom-side > a{
-  color: #000;
+.grid-container > .box > .price{
+  font-size: 18px;
+  margin-top: 5px;
+  font-weight: bold;
+  text-decoration: underline;
 }
+
+.grid-container > .box > .bottom-side{
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 25px;
+  color: #0861AF9C;
+}
+
 
 
 * {
@@ -268,6 +268,13 @@ body{
     .menu-toggle {
       display: block;
     }
+
+    .grid-container {
+      grid-template-columns: 1fr; /* 1 box per row */
+  }
+
+
+
 
     .carousel-item {
       min-width: 200px;
