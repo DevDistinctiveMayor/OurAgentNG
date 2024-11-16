@@ -304,6 +304,7 @@ body{
   .download-section{
     flex-direction: column;
     gap: 2rem;
+    padding: 2rem 1rem;
   }
 
   .download-section > div{
@@ -334,6 +335,19 @@ body{
 
 .access-box > .login{
   margin-top: 20px;
+}
+
+.featured-section > .top{
+  padding: 0.5rem 1rem;
+}
+
+.featured-section > .top > .view{
+  padding-top: 15px;
+}
+
+.box{
+  width: 90%;
+  margin: auto;
 }
 
     .carousel-item {
@@ -376,8 +390,10 @@ body{
   /* Grid layout for neighborhood items */
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    margin: auto;
+    padding: 0;
   }
   
   /* Individual grid item styling */
