@@ -10,66 +10,71 @@ body{
 
 /* Header Styling */
 
-header{
+.navbar {
   display: flex;
   justify-content: space-between;
-  padding: 25px;
+  align-items: center;
+  background-color: #fff;
+  color: #333;
+  padding: 25px 3%;
 }
 
-nav{
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
   display: flex;
-}
-
-nav > .logo{
-  width: 90px;
-  height: 90px;
-  cursor: pointer;
-}
-
-nav > ul{
-  margin-left: 20px;
+  list-style: none;
   align-items: center;
-  margin-top: 30px;
+  gap: 15px;
 }
 
-nav > ul > li{
-  display: inline;
-  margin-left: 15px;
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition:  0.3s ease;
+}
+
+.access-box{
+  display: flex;
+  margin: 0 auto; 
+}
+
+.access-box > a{
+  text-decoration: none;
   margin-right: 15px;
-  align-items: center;
 }
 
-nav > ul > li > a{
-  text-decoration: none;
-  color: #000;
-}
-
-.access-menu{
-  margin-top: 20px;
-}
-
-.access-menu > a{
-  text-decoration: none;
-}
-
-.access-menu > .post-property{
-  background: #0861AF;
-  border-radius: 10px;
-  padding: 20px;
+.access-box > .post{
+  padding: 15px;
+  background-color: #0073e6;
   color: #fff;
-  margin-right: 15px;
+  border-radius: 7px;
 }
 
-.access-menu > .signup-login{
-  background: #fff;
-  border: 1px solid #0861AF;
-  padding: 20px;
-  color: #0861AF;
-  border-radius: 10px;
+.access-box > .login{
+  color: #0073e6;
+  border: 1px solid #0073e6;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  color: #000;
+  border: none;
+  cursor: pointer;
 }
 
 /* Featured section styling */
 .featured{
+  overflow-x: hidden;
   padding: 0px 50px;
 }
 
@@ -230,9 +235,44 @@ nav > ul > li > a{
   
   /* Responsive Design */
   @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      position: absolute;
+      color: #000;
+      top: 90px;
+      right: 10%;
+      width: 80%;
+      padding: 20px 0px;
+      transform: translateX(100%);
+      border-radius: 5px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+  
+    .nav-links > li{
+      text-align: center;
+    }
+
+    .nav-links > li:hover{
+      transform: translate(15px);
+    }
+
+    .nav-links.active {
+      display: flex;
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+
     .carousel-item {
       min-width: 200px;
     }
+
     .neighborhood-highlights h2 {
       font-size: 1.5em;
     }
@@ -247,6 +287,14 @@ nav > ul > li > a{
   }
   
   @media (max-width: 480px) {
+.access-box{
+  flex-direction: column;
+}
+
+.access-box > .login{
+  margin-top: 20px;
+}
+
     .carousel-item {
       min-width: 150px;
     }
