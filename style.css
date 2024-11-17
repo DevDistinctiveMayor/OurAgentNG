@@ -11,9 +11,16 @@ body{
 /* Header Styling */
 header{
   box-shadow: 5px 5px 5px #808080;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index:999 ;
 }
 
-
+main{
+  margin-top: 100px;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
