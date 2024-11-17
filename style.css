@@ -866,9 +866,9 @@ header{
       flex-direction: column;
       background: #f8f8f8;
       position: absolute;
-      top: 50px;
-      right: 0;
-      width: 200px;
+      top: 90px;
+      right: 10%;
+      width: 80%;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
   
