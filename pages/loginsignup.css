@@ -321,11 +321,25 @@
     text-decoration: underline;
   }
   
+  /* Responsive styling */
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+     
+      margin: 50px auto;
+    }
+  
+    .footer-links {
+      gap: 30px;
+    }
+  }
   .line{
     width:100%;
     color:black;
     height:2px;
   }
+  
 
   
   @media (min-width: 1024px) {

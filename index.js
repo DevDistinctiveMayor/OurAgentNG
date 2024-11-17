@@ -1,31 +1,58 @@
-const toggleButton = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+const carouselTrack = document.querySelector(".carousel-track");
+const carouselItems = document.querySelectorAll(".carousel-item");
+let currentIndex = 0;
+let autoSlideInterval;
 
-toggleButton.addEventListener('click', () => {
-  navLinks.classList.toggle('active'); // Toggle the sliding effect
-});
-
-
-
-// JavaScript to handle the carousel navigation
-
-const carouselTrack = document.querySelector('.carousel-track');
-let scrollAmount = 0;
-
-// Function to scroll the carousel left or right
+// Scroll the carousel left or right
 function scrollCarousel(direction) {
-  const itemWidth = document.querySelector('.carousel-item').offsetWidth + 20; // Including gap
-  if (direction === 'right') {
-    scrollAmount += itemWidth;
-    carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
-  } else {
-    scrollAmount -= itemWidth;
-    carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
+  const visibleItems = getVisibleItems();
+  const totalItems = carouselItems.length;
+
+  if (direction === "right") {
+    currentIndex = (currentIndex + 1) % totalItems; // Circular navigation
+  } else if (direction === "left") {
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
   }
 
-  // Prevent over-scrolling
-  if (scrollAmount < 0) scrollAmount = 0;
-  const maxScroll = carouselTrack.scrollWidth - carouselTrack.offsetWidth;
-  if (scrollAmount > maxScroll) scrollAmount = maxScroll;
-  carouselTrack.style.transform = `translateX(-${scrollAmount}px)`;
+  const itemWidth = carouselItems[0].offsetWidth + 20; // Include gap
+  const newScrollPosition = currentIndex * itemWidth;
+
+  carouselTrack.style.transform = `translateX(-${newScrollPosition}px)`;
+  resetAutoSlide(); // Restart auto-slide after manual navigation
 }
+
+// Get the number of visible items based on screen size
+function getVisibleItems() {
+  const screenWidth = window.innerWidth;
+  if (screenWidth <= 768) return 1; // Mobile
+  if (screenWidth <= 1024) return 2; // Tablet
+  return 4; // Desktop
+}
+
+// Start auto-slide
+function startAutoSlide() {
+  autoSlideInterval = setInterval(() => {
+    scrollCarousel("right");
+  }, 3000); // 3 seconds
+}
+
+// Stop auto-slide
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+// Restart auto-slide after manual navigation
+function resetAutoSlide() {
+  stopAutoSlide();
+  startAutoSlide();
+}
+
+// Recalculate position on window resize
+window.addEventListener("resize", () => {
+  const itemWidth = carouselItems[0].offsetWidth + 20; // Include gap
+  const newScrollPosition = currentIndex * itemWidth;
+  carouselTrack.style.transform = `translateX(-${newScrollPosition}px)`;
+});
+
+// Start auto-slide on page load
+startAutoSlide();
