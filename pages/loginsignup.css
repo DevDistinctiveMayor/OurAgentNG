@@ -443,12 +443,7 @@
       gap: 8px;
     }
 
-    .footer-top {
-        flex-direction: row;
-        justify-content: space-between;
-       
-        margin: 50px auto;
-      }
+    
     
       .footer-links {
         gap: 30px;
