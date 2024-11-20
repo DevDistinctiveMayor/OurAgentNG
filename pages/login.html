@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,52 @@
   <title>Our AgentNG | Login Page</title>
   <link rel="stylesheet" href="./loginsignup.css">
 </head>
+
+
 <body>
   <!-- Navbar -->
   <header>
     <nav class="navbar">
       <div class="logo">
+
         <a href="../index.html"><img src="../assets/logo.svg" alt=""></a>
-      </div>
-      <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="bx bx-menu"></i>
-      </button>
+    
       <ul class="nav-links">
         <li><a href="#home">Buy</a></li>
         <li><a href="#about">Rent</a></li>
         <li><a href="#services">Saved properties</a></li>
         <li><a href="#contact">About us</a></li>
-  
-        <div class="access-box">
-          <a href="" class="post">Post A Property</a>
-          <a href="login.html" class="login">Sign up or Log in</a>
+        <div class="nav-links3 ">
+          <div class="access-box">
+            <a href="" class="post">Post A Property</a>
+            <a href="./pages/login.html" class="login">Sign up or Log in</a>
+          </div>
         </div>
       </ul>
+    </div>
+
+      </div>
+
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+      <i class="bx bx-menu"></i>
+    </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="" class="post">Post A Property</a>
+          <a href="./pages/login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
     </nav>
   </header>
-  
+
 
   <!-- Login Section -->
   <div class="login-container">
@@ -62,19 +85,19 @@
         <input type="password" id="password" placeholder="Enter your Password">
         <a href="#" class="forgot-password">Forgot Password?</a>
       </div>
-      
+
       <button type="submit" class="btn primary">Log In</button>
     </form>
   </div>
 
- 
+
 
   <footer class="footer">
     <div class="footer-top">
       <!-- Logo and Links -->
       <div class="footer-logo">
         <img style="width:200px;" src="../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
-        
+
       </div>
       <ul class="footer-links">
         <li><a href="#">Property Listings</a></li>
@@ -92,7 +115,7 @@
         <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
       </div>
     </div>
-<hr class="line">
+    <hr class="line">
     <!-- Footer Bottom Text -->
     <div class="footer-bottom">
       <p>&copy; 2024 Relume. All rights reserved.</p>
@@ -106,4 +129,5 @@
 
   <script src="./loginsignup.js"></script>
 </body>
+
 </html>

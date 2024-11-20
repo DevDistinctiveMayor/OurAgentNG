@@ -1,87 +1,138 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+  font-family: 'poppins';
+  src: url(./assets/font/Poppins-Regular.woff2);
 }
 
-@font-face {
-    font-family: 'poppins';
-    src: url(../assets/font/Poppins-Regular.woff2);
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* General reset for margins and padding */
+body{
+  font-family: 'poppins';
+}
   
-  /* General reset for margins and padding */
-  body{
-    font-family: 'poppins';
-  }
-  
-  /* Header Styling */
-  header{
-    box-shadow: 5px 5px 5px #808080;
-  }
-  
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    color: #333;
-    padding: 25px 3%;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition:  0.3s ease;
-  }
-  
-  .access-box{
-    display: flex;
-    margin: 0 auto; 
-  }
-  
-  .access-box > a{
-    text-decoration: none;
-    margin-right: 15px;
-  }
-  
-  .access-box > .post{
-    padding: 15px;
-    background-color: #0073e6;
-    color: #fff;
-    border-radius: 7px;
-  }
-  
-  .access-box > .login{
-    color: #0073e6;
-    border: 1px solid #0073e6;
-    padding: 15px;
-    border-radius: 7px;
-  }
-  
-  .menu-toggle {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    color: #000;
-    border: none;
-    cursor: pointer;
-  }
-  
+ /* Header Styling */
+ header{
+  border-bottom: 1pt solid #808080;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index:999;
+}
+
+main{
+  margin-top: 100px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  color: #333;
+  padding: 15px 3%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  font-size: 13px;
+}
+
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition:  0.3s ease;
+}
+
+.access-box{
+  display: flex;
+  margin: 0 auto;
+  font-size:13px; 
+}
+
+.access-box > a{
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.access-box > .post{
+  padding: 9px;
+  background-color: #0073e6;
+  color: #fff;
+  border-radius: 7px;
+}
+
+.access-box > .login{
+  color: #0073e6;
+  border: 1px solid #0073e6;
+  padding: 9px;
+  border-radius: 7px;
+}
+
+.menu-toggle {
+  position: relative;
+  cursor: pointer;
+  width: 30px;
+  height: 14px;
+  display: none;
+  margin-top: 0.8rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 60%;
+  height: 2px;
+  background-color: #0e0e0e;
+  position: absolute;
+  left: 0;
+  transition: all 0.2s ease;
+  z-index: 30;
+}
+
+.menu-toggle span:nth-child(1) {
+  top: 0;
+}
+
+.menu-toggle span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-toggle span:nth-child(3) {
+  bottom: 0;
+}
+
+/* Animation for the hamburger icon */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.nav-links3{
+  display: none;
+}
+.nav-links2{
+  display: block;
+}
 
 .login-container {
     text-align: center;
@@ -89,7 +140,6 @@
     padding: 50px auto;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   
   
   }
   
