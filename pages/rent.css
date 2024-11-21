@@ -1,0 +1,236 @@
+@font-face {
+    font-family: "poppins";
+    src: url(../assets/font/Poppins-Regular.woff2);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* General reset for margins and padding */
+  body {
+    font-family: "poppins";
+  }
+  
+  /* Optional: Disable scrolling when menu is open */
+  .disable-scroll {
+    overflow: hidden;
+  }
+  
+  /* Header Styling */
+  header {
+    border-bottom: 1pt solid #808080;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  main {
+    margin-top: 100px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #333;
+    padding: 15px 3%;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: 0.3s ease;
+  }
+  
+  .access-box {
+    display: flex;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  
+  .access-box > a {
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  .access-box > .post {
+    padding: 9px;
+    background-color: rgba(8, 97, 175, 1);
+    color: #fff;
+    border-radius: 7px;
+  }
+  
+  .access-box > .login {
+    color: #0073e6;
+    border: 1px solid rgba(8, 97, 175, 1);
+    padding: 9px;
+    border-radius: 7px;
+  }
+  
+  .menu-toggle {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 14px;
+    display: none;
+    margin-top: 0.8rem;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 60%;
+    height: 2px;
+    background-color: #0e0e0e;
+    position: absolute;
+    left: 0;
+    transition: all 0.2s ease;
+    z-index: 30;
+  }
+  
+  .menu-toggle span:nth-child(1) {
+    top: 0;
+  }
+  
+  .menu-toggle span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .menu-toggle span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  /* Animation for the hamburger icon */
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-links3 {
+    display: none;
+  }
+  .nav-links2 {
+    display: block;
+  }
+  
+  .sale-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .sale-container-flex{
+    display: flex;
+    gap: 3rem;
+  }
+  .sale{
+    border: 1pt solid rgba(8, 97, 175, 1);
+    padding: 10px;
+    width: 10rem;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .search-box {
+  
+  }
+  
+  .search-box > input {
+    font-family: inherit;
+    width: 20em;
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(8, 97, 175, 1);
+    transition: border 0.2s ease; /* Smooth border transition */
+    border-radius: 5px;
+    padding-left: 4rem;
+  }
+  
+  .search-box > input:focus {
+    border: 1px solid rgba(8, 97, 175, 1);
+  }
+  
+  .search-box > input::placeholder {
+    font-size: 13px;
+    color: rgba(2, 24, 43, 0.46);
+  }
+  
+  .searchicon {
+    position: absolute;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    width: 16px;
+  }
+
+
+
+  /* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-links3 {
+      display: block;
+      margin-top: 0.4rem;
+    }
+    .nav-links2 {
+      display: none;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #ffffff;
+      position: absolute;
+      color: #000;
+      top: 90px;
+      right: 10%;
+      width: 80%;
+      padding: 30px 0px;
+      transform: translateX(100%);
+      border-radius: 5px;
+      z-index: 10;
+    }
+  
+    .nav-links > li {
+      text-align: center;
+      margin-top: 0.4rem;
+    }
+  
+    .nav-links > li:hover {
+      /* transform: translate(15px); */
+      text-decoration: underline;
+    }
+  
+    .nav-links.active {
+      display: flex;
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .menu-toggle {
+        display: block;
+      }
+}

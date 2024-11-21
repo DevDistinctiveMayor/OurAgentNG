@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="./rent.css">
+  <title>Our AgentNG | Website</title>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar ">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/logo.svg" alt=""></a>
+        <ul class="nav-links">
+          <li><a href="#home">Buy</a></li>
+          <li><a href="./rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="" class="post">Post A Property</a>
+              <a href="./pages/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <label
+          class="menu-toggle"
+          onClick={onToggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>  
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="" class="post">Post A Property</a>
+          <a href="./pages/login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="sale-container">
+        <div class="sale-container-flex">
+            <div class="sale">
+                <p>Sale</p>
+            </div>
+            <div class="search-box">
+                <img src="../assets/icon/Vector.png" class="searchicon" />
+                <input type="text" placeholder="Search location...">
+            </div>
+            <div class="advance_filter">
+                <input type="text" placeholder="Advanced Filters">
+                <img src="../assets/icon/advanced_filter.png" class="searchicon" />
+            </div>
+    
+            <div>
+                <button class="post">Post A Property</button>
+            </div>
+        </div>
+    </div>
+      
+  </main>
+
+  <script src="./rent.js"></script>
+</body>
