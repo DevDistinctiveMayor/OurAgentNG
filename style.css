@@ -14,15 +14,15 @@ body {
 }
 /* Blur and disable background when menu is open */
 .content-blur {
-  filter: blur(3px); /* Adjust the blur intensity */
-  pointer-events: none; /* Disable all interactions */
-  user-select: none; /* Prevent text selection */
+  filter: blur(3px); 
+  pointer-events: none; 
+  user-select: none; 
   transition: filter 0.3s ease;
 }
 
 /* Optional: Disable scrolling when menu is open */
 .disable-scroll {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 /* Header Styling */
@@ -43,7 +43,7 @@ main {
   justify-content: space-between;
   background-color: #fff;
   color: #333;
-  padding: 15px 3%;
+  padding: 10px 3%;
 }
 
 .logo {
@@ -200,7 +200,7 @@ main {
   font-size: 1rem;
   padding: 0.8rem 2.3rem;
   outline: none;
-  border: 3px solid rgba(8, 97, 175, 1);
+  border: 2px solid rgba(8, 97, 175, 1);
   transition: border 0.2s ease; /* Smooth border transition */
   border-radius: 5px;
   padding-left: 4rem;
