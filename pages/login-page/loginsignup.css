@@ -191,6 +191,7 @@ header {
   font-size: 13px;
   cursor: pointer;
   transition: all 0.9s ease;
+  color: rgba(8, 97, 175, 1);;
 }
 
 .google-button {
