@@ -1,96 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  <title>Join OurAgent 
-| Register 
-  </title>
+  <title>Our AgentNG | Login Page</title>
   <link rel="stylesheet" href="./register.css">
 </head>
+
+
 <body>
-  <!-- Registration Form -->
+  <!-- Navbar -->
   <header>
     <nav class="navbar">
       <div class="logo">
+
         <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+
+        <ul class="nav-links">
+          <li><a href="#home">Buy</a></li>
+          <li><a href="../rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="" class="post">Post A Property</a>
+              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="bx bx-menu"></i>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#home">Buy</a></li>
-        <li><a href="#about">Rent</a></li>
-        <li><a href="#services">Saved properties</a></li>
-        <li><a href="#contact">About us</a></li>
-  
+
+      </div>
+
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+      <i class="bx bx-menu"></i>
+    </button> -->
+      <div class="nav-links2">
+
+
         <div class="access-box">
           <a href="" class="post">Post A Property</a>
-          <a href="login.html" class="login">Sign up or Log in</a>
+          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
         </div>
-      </ul>
+      </div>
     </nav>
   </header>
-  <div class="register-container">
-    <h1>Join OurAgent Today</h1>
-    <p>
-      Already a member? <a href="login.html">Log In</a>
-    </p>
-    <div class="auth-buttons">
-      <button class="google-button">
-        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Sign in with google
-      </button>
-      <button class="facebook-button">
-        <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with google
-      </button>
-    </div>
-    <div class="divider">
-      <span></span>
-      <p>or sign in with email</p>
-      <span></span>
-    </div>
-    <form>
-      <div class="form-group">
-        <label for="full-name">Full Name</label>
-        <input type="text" id="full-name" placeholder="Please enter your full name">
-      </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="Enter your email">
-      </div>
-      <div class="form-group">
-        <label for="phone-number">Phone Number</label>
-        
-        <input type="tel" id="phone-number" placeholder="Enter your phone number">
-      </div>
-      <div class="form-group">
-        <label>Select the account type that best describes you:</label>
-        <div class="radio-group">
-          <label><input type="radio" name="account-type" value="buyer"> Buyer</label>
-          <label><input type="radio" name="account-type" value="seller"> Seller</label>
-          <label><input type="radio" name="account-type" value="agent"> Agent</label>
-          <label><input type="radio" name="account-type" value="investor"> Investor</label>
-          <label><input type="radio" name="account-type" value="others"> Others</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Choose a secure password with at least 8 characters">
-      </div>
-      <button type="submit" class="btn primary">Register</button>
-      <p class="terms">
-        I agree to OurAgent's <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>.
+
+
+  <div class="register-container content">
+    <div>
+      <h1>Join OurAgent Today</h1>
+      <p>
+        Already a member? <a href="#" class="register-container_a"> Log In</a>
       </p>
-    </form>
+      <div class="auth-buttons">
+        <button class="google-button">
+          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Sign in with google
+        </button>
+        <button class="facebook-button">
+          <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with google
+        </button>
+      </div>
+      <div class="divider">
+        <span></span>
+        <p>or sign in with email</p>
+        <span></span>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Please enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="phone-number">Phone Number</label>
+
+          <input type="tel" id="phone-number" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label>Select the account type that best describes you:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="account-type" value="buyer"> Buyer</label>
+            <label><input type="radio" name="account-type" value="seller"> Seller</label>
+            <label><input type="radio" name="account-type" value="agent"> Agent</label>
+            <label><input type="radio" name="account-type" value="investor"> Investor</label>
+            <label><input type="radio" name="account-type" value="others"> Others</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-container form-group">
+            <input type="password" id="password" placeholder="Choose a secure password with at least 8 characters">
+            <span id="toggle-password" class="toggle-password">
+              <i id="eye-icon" class="fas fa-eye"></i>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="btn-button"><button type="submit" class="btn primary">Log In</button></div> 
+        <div class="terms-flex">
+          <p class="terms">
+            I agree to OurAgent's <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>.
+          </p>
+        </div>
+        
+      </form>
+    </div>
   </div>
   <footer class="footer">
     <div class="footer-top">
       <!-- Logo and Links -->
       <div class="footer-logo">
         <img style="width:200px;" src="/images/OURAGENT LOGO HORIZONTAL BLUE 1.png " alt="Our Agent NG Logo">
-        
+
       </div>
       <ul class="footer-links">
         <li><a href="#">Property Listings</a></li>
@@ -108,7 +145,7 @@
         <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
       </div>
     </div>
-<hr class="line">
+    <hr class="line">
     <!-- Footer Bottom Text -->
     <div class="footer-bottom">
       <p>&copy; 2024 Relume. All rights reserved.</p>
@@ -120,6 +157,7 @@
     </div>
   </footer>
 
-  <script src="./loginsignup.js"></script>
+  <script src="./register.js"></script>
 </body>
+
 </html>

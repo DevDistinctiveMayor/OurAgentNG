@@ -233,7 +233,7 @@ header {
   font-size: 0.8rem;
   color: #000000;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 }
 
 form {
@@ -349,7 +349,6 @@ form {
   padding: 20px;
   text-align: center;
   /* border-top: 1px solid #ddd; */
-  margin-top: 4rem;
 }
 
 /* Footer Top Section */
@@ -375,6 +374,7 @@ form {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .footer-links li {
@@ -435,16 +435,6 @@ form {
   text-decoration: underline;
 }
 
-.terms {
-  margin-top: 20px;
-  font-size: 0.9rem;
-}
-
-.terms a {
-  color: #a6bfdb;
-  text-decoration: none;
-}
-
 @media (min-width: 1024px) {
   .login-container h1 {
     font-size: 1.5rem;
@@ -500,5 +490,17 @@ form {
   }
   .footer-bottom-links a {
     font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px auto;
+  }
+
+  .footer-links {
+    gap: 30px;
   }
 }
