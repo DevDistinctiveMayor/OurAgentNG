@@ -196,11 +196,19 @@
   .google-button {
     background-color: #fff;
   }
+  .google-button:hover{
+    background-color:  rgba(8, 97, 175, 1);
+    color: white;
+  }
   
   .facebook-button {
     background-color: #fff;
   }
   
+  .facebook-button:hover {
+    background-color:  rgba(8, 97, 175, 1);
+    color: white;
+  }
   .google-button img,
   .facebook-button img {
     width: 20px;
