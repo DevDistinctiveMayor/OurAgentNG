@@ -11,6 +11,8 @@
   /* General reset for margins and padding */
   body {
     font-family: "poppins";
+    width: 100%;
+    overflow-x: hidden;
   }
   
   /* Optional: Disable scrolling when menu is open */
@@ -214,6 +216,7 @@
 
   .advance_filter > input{
     border: none;
+    height: 50px;
     margin: 0 0 0 1.2rem;
     font-family: inherit;
     outline: none;
@@ -290,6 +293,7 @@
     width: 25%;
     border: 1px solid #0861AF;
     border-radius: 7px;
+    height: fit-content;
   }
 
   .container > .available-container > h3{
@@ -334,6 +338,130 @@
     padding: 10px;
   }
 
+  .featuredbox-container{
+    margin-top: 70px;
+  }
+
+  .featuredbox-container > .card{
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 5px 5px hsla(0, 2%, 82%, 0.76);
+  }
+
+  .featuredbox-container > .card > .image-box > img{
+    height: 180px;
+  }
+
+  .featuredbox-container > .card > .text-box{
+    display: flex;
+    margin-left: 20px;
+    flex-direction: row;
+    gap: 60px;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box{
+    width: 400px;
+  }
+  
+  .featuredbox-container > .card > .text-box > .first-box > .heading{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .location{
+    font-size: 15px;
+    color: #02182B99;
+    font-weight: 500;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .description{
+    color: #0861AF9C;
+    font-weight: 400;
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .details-link{
+    margin-top: 20px;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .details-link > a{
+    color: #02182B;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .agent-profile{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .featuredbox-container > .card > .text-box > .first-box > .agent-profile > .agent-name{
+    margin-left: 10px;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box{
+    display: flex;
+    width: 200px;
+    float: right;
+    border-left: 1px solid #D9D9D9;
+    flex-direction: column;
+    padding-left: 50px;
+    justify-content: space-between;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box > .top-box  > .price{
+    color: #02182B;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box > .top-box  > .price > i{
+    color:#0861AF;
+    padding: 5px;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box > .top-box  > .availablity{
+    margin-top: 10px;
+    color: #0861AF9C;
+    margin-left: 15px;
+    font-size: 14px;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box > .bottom-box{
+    text-align: right;
+  }
+
+  .featuredbox-container >.card > .text-box > .second-box > .bottom-box > a{
+    text-decoration: none;
+  }
+
+   .featuredbox-container >.card > .text-box > .second-box > .bottom-box > .call-link{
+    background-color: #02182B;
+    padding: 2px 10px;
+    color: #fff;
+    border-radius: 5px;
+   }
+
+   .featuredbox-container >.card > .text-box > .second-box > .bottom-box > .whatsapp-link{
+    background-color: #2CD411;
+    color: #fff;
+    padding: 0 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 20px;
+   }
 
   /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -384,4 +512,44 @@
       gap: 2rem;
       padding: 0 2em;
     }
+
+    .container {
+      flex-direction: column-reverse;
+    }
+
+    .container > .details-container{
+      width: 100%;
+    }
+
+    .container > .details-container > h1{
+      width: 100%;
+    }
+
+    .container > .details-container > .intro{
+      width: 100%;
+    }
+
+    .container > .details-container > .down-p{
+      width: 100%;
+    }
+
+    .container > .available-container{
+      width: 95%;
+      margin: 0 auto;
+      padding-bottom: 1rem;
+    }
+
+    .container{
+      padding: 3rem 1rem ;
+    }
+
+    .container > .details-container{
+      width: 100%;
+    }
+
+    .container > .details-container > h1{
+      font-size: 25px;
+      margin-top: 50px;
+    }
+
 }
