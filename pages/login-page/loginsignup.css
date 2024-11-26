@@ -197,8 +197,8 @@ header {
 .google-button {
   background-color: #fff;
 }
-.google-button:hover{
-  background-color:  rgba(8, 97, 175, 1);
+.google-button:hover {
+  background-color: rgba(8, 97, 175, 1);
   color: white;
 }
 
@@ -206,7 +206,7 @@ header {
   background-color: #fff;
 }
 .facebook-button:hover {
-  background-color:  rgba(8, 97, 175, 1);
+  background-color: rgba(8, 97, 175, 1);
   color: white;
 }
 
@@ -215,8 +215,6 @@ header {
   width: 20px;
   height: 20px;
 }
-
-
 
 .divider {
   display: flex;
@@ -302,8 +300,8 @@ form {
 /* Style for the checkbox */
 .keep-me input[type="checkbox"] {
   appearance: none; /* Removes default checkbox styling */
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border: 2px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
@@ -319,14 +317,22 @@ form {
 .keep-me input[type="checkbox"]:checked::after {
   content: "";
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   background-color: white;
   position: absolute;
   top: 4px;
   left: 4px;
   border-radius: 2px; /* Optional: adjust for aesthetics */
 }
+
+.error-text {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: block;
+}
+
 .btn-button {
   display: flex;
   justify-content: center;

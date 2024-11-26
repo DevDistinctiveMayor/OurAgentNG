@@ -62,7 +62,8 @@
     <div>
       <h1>Log into your account</h1>
       <p>
-        New to OurAgent? <a href="../registered-page/register.html" class=login-container_a>Create an account</a> to get started
+        New to OurAgent? <a href="../registered-page/register.html" class=login-container_a>Create an account</a> to get
+        started
       </p>
       <div class="auth-buttons">
         <button class="google-button">
@@ -78,32 +79,37 @@
         <span></span>
       </div>
 
-      
+
       <form>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="Enter your email">
+          <input type="email" id="email" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <div class="password-container form-group">
-            <input type="password" id="password" placeholder="Enter your Password">
+            <input type="password" id="password" placeholder="Enter your Password" required>
             <span id="toggle-password" class="toggle-password">
               <i id="eye-icon" class="fas fa-eye"></i>
             </span>
           </div>
+          <small id="email-error" class="error-text"></small> <!-- Error message for email -->
           <a href="#" class="forgot-password">Forgot Password?</a>
         </div>
-      
+
         <div class="keep-me">
           <input type="checkbox" id="keep-me" />
           <label for="keep-me">Keep me logged in to this device</label>
         </div>
-      
-        <div class="btn-button"><button type="submit" class="btn primary">Log In</button></div> 
+
+        <div class="btn-button">
+          <button type="submit" class="btn primary">Log In</button>
+        </div>
       </form>
-      
-      
+
+
+
+
     </div>
   </div>
 

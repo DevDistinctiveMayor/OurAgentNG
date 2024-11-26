@@ -77,48 +77,64 @@
         <span></span>
       </div>
       <form>
+        <!-- Full Name -->
         <div class="form-group">
           <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" placeholder="Please enter your full name">
+          <input type="text" id="full-name" name="fullName" placeholder="Enter your full name" required>
+          <span id="full-name-error" class="error-message"></span>
         </div>
+
+        <!-- Email -->
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="Enter your email">
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          <span id="email-error" class="error-message"></span>
         </div>
+
+        <!-- Phone Number -->
         <div class="form-group">
           <label for="phone-number">Phone Number</label>
-
-          <input type="tel" id="phone-number" placeholder="Enter your phone number">
+          <input type="tel" id="phone-number" name="phone" placeholder="Enter your phone number" required>
+          <span id="phone-number-error" class="error-message"></span>
         </div>
+
+        <!-- Account Type -->
         <div class="form-group">
           <label>Select the account type that best describes you:</label>
           <div class="radio-group">
-            <label><input type="radio" name="account-type" value="buyer"> Buyer</label>
-            <label><input type="radio" name="account-type" value="seller"> Seller</label>
-            <label><input type="radio" name="account-type" value="agent"> Agent</label>
-            <label><input type="radio" name="account-type" value="investor"> Investor</label>
-            <label><input type="radio" name="account-type" value="others"> Others</label>
+            <label><input type="radio" name="category" value="buyer"> Buyer</label>
+            <label><input type="radio" name="category" value="seller"> Seller</label>
+            <label><input type="radio" name="category" value="agent"> Agent</label>
+            <label><input type="radio" name="category" value="investor"> Investor</label>
+            <label><input type="radio" name="category" value="others"> Others</label>
           </div>
+          <span id="category-error" class="error-message"></span>
         </div>
 
+        <!-- Password -->
         <div class="form-group">
           <label for="password">Password</label>
           <div class="password-container form-group">
-            <input type="password" id="password" placeholder="Choose a secure password with at least 8 characters">
+            <input type="password" id="password" name="pass" placeholder="Create a secure password" required
+              minlength="8">
             <span id="toggle-password" class="toggle-password">
               <i id="eye-icon" class="fas fa-eye"></i>
             </span>
           </div>
+          <span id="password-error" class="error-message"></span>
         </div>
 
-
-        <div class="btn-button"><button type="submit" class="btn primary">Register</button></div> 
+        <div class="btn-button"><button type="submit" class="btn primary">Register</button></div>
         <div class="terms-flex">
-          <p class="terms">
+          <p class="terms keep-me">
+            <input type="checkbox" id="keep-me" />
             I agree to OurAgent's <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>.
           </p>
+          <!-- Error message for terms -->
         </div>
-        
+        <span id="terms-error" class="error-message"></span>
+
+
       </form>
     </div>
   </div>
