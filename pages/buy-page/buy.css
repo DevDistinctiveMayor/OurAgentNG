@@ -14,11 +14,16 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
-.content-blur {
+.main-blur {
   filter: blur(3px); 
   pointer-events: none; 
   user-select: none; 
   transition: filter 0.3s ease;
+}
+
+.footer-div{
+  /* margin: 1rem; */
+  /* width: 120%; */
 }
 
 /* Optional: Disable scrolling when menu is open */
@@ -513,14 +518,9 @@ main {
   font-size: 20px;
 }
 
-.section {
-  clear: both;
-
-  background-color: red;
-}
 /* Download section styling */
 .download-section {
-  clear: both;
+  clear:both;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -553,7 +553,7 @@ main {
   border-radius: 5px;
 }
 
-/* Footer Top Section */
+
 .footer-top {
   display: flex;
   flex-direction: column;
@@ -848,10 +848,11 @@ main {
     font-size: 18px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 433px) {
   .featuredbox-container {
     margin-left: 0rem;
     margin-right: 0rem;
+    gap: 1px;
   }
   .container {
     padding: 4rem 0rem;
@@ -903,7 +904,7 @@ main {
   .footer-top {
     flex-direction: row;
     justify-content: space-between;
-
+    margin-top: 3rem;
     margin: 50px auto;
   }
 

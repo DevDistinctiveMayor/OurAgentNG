@@ -1,10 +1,10 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".nav-links");
-const content = document.querySelector(".content-b"); // Target content-wrapper
+const main = document.querySelector(".main"); // Target main-wrapper
 
 menuToggle.addEventListener("click", () => {
   menuToggle.classList.toggle("open");
   menu.classList.toggle("active");
-  content.classList.toggle("content-blur"); // Add blur effect to the content
+  main.classList.toggle("main-blur"); // Add blur effect to the main
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
