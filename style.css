@@ -821,11 +821,6 @@ main {
   .bottom-side-view:hover {
     color: #0861af9c;
   }
-  /* .box{
-  width: 90%;
-  margin: auto;
-} */
-
   .carousel-item {
     min-width: 150px;
   }

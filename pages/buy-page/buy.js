@@ -1,6 +1,6 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".nav-links");
-const content = document.querySelector(".content"); // Target content-wrapper
+const content = document.querySelector(".content-b"); // Target content-wrapper
 
 menuToggle.addEventListener("click", () => {
   menuToggle.classList.toggle("open");
