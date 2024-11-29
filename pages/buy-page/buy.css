@@ -409,7 +409,7 @@ main {
   font-weight: 400;
   margin-top: 15px;
   font-size: 13px;
-  width: 30vw;
+  width: 32vw;
 }
 
 .featuredbox-container > .card > .text-box > .first-box > .details-link {
@@ -785,6 +785,7 @@ main {
   .featuredbox-container > .card {
     margin-top: 2rem;
     flex-direction: column;
+    /* padding: 11px; */
   }
   .featuredbox-container > .card > .text-box {
     margin-left: 0px;
@@ -797,6 +798,14 @@ main {
     /* width: 11rem; */
   }
 
+  .featuredbox-container > .card > .text-box > .first-box > .description {
+    /* color: #0861af9c;
+    font-weight: 400;
+    margin-top: 15px;
+    font-size: 13px; */
+    width: 40vw;
+  }
+  
   .featuredbox-container > .card > .text-box > .second-box > .bottom-box {
     justify-content: start;
     padding: 10px;
@@ -896,6 +905,14 @@ main {
   }
 }
 
+@media (max-width: 378px) { 
+  .download-section {
+      width: 24em;
+  }
+  .footer {
+    width: 24em;
+}
+}
 @media (min-width: 768px) {
   .for_sale {
     gap: 3rem;
