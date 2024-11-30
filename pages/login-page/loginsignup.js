@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Redirect to the dashboard or home page
-        window.location.href = "https://ouragent.com.ng";
+        window.location.href = "../agent-profile/agent-profile.html";
       } else {
         // Display validation errors
         if (data.errors) {

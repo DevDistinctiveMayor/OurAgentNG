@@ -367,6 +367,7 @@ main {
   /* justify-content: center; */
   gap: 20px; /* Adjust the gap between the cards */
   margin-top: -9rem;
+  margin-bottom: 4rem;
 }
 
 .featuredbox-container > .card {
@@ -516,6 +517,7 @@ main {
   font-weight: bold;
   border-radius: 5px;
   font-size: 20px;
+
 }
 
 /* Download section styling */
@@ -928,4 +930,5 @@ main {
   .footer-links {
     gap: 30px;
   }
+  
 }
