@@ -1,0 +1,143 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="./otp.css">
+    <title>Our AgentNG | Website</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar ">
+            <div class="logo">
+                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="../buy-page/buy.html">Buy</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="#services">Saved properties</a></li>
+                    <li><a href="#contact">About us</a></li>
+                    <div class="nav-links3 ">
+                        <div class="access-box">
+                            <a href="" class="post">Post A Property</a>
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+
+            <label class="menu-toggle" onClick={onToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+            <div class="nav-links2">
+
+
+                <div class="access-box">
+                    <a href="" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="otp_body">
+        <div class="login-container">
+            <div class="mail1">
+                <div class="mail">
+                    <div class="mail-icon">📧
+                    </div>
+                </div>
+            </div>
+
+            <h1>OTP Verification</h1>
+            <p>Enter the six (6) digits sent to your email</p>
+
+            <form id="otpForm">
+                <div class="otp-input-container">
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <span class="dash">-</span>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <span class="dash">-</span>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <span class="dash">-</span>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <span class="dash">-</span>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <span class="dash">-</span>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                </div>
+                <button type="submit">Verify OTP</button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">✔️</div>
+                <div class="success-text">OTP Verified Successfully!</div>
+            </div>
+
+            <!-- OTP Sent -->
+            <div class="otp-sent" id="otpSentMessage">
+                <p>OTP has been sent to your email. Please check your inbox.</p>
+            </div>
+
+            <!-- Resend OTP -->
+            <div class="resend-container" id="resendContainer">
+                <button id="resendBtn">Resend OTP</button>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-top">
+            <!-- Logo and Links -->
+            <div class="footer-logo">
+                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
+                    alt="Our Agent NG Logo">
+
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Property Listings</a></li>
+                <li><a href="#">Agent Resources</a></li>
+                <li><a href="#">Home Buyers</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                        width="20"></a>
+            </div>
+        </div>
+        <hr class="line">
+        <!-- Footer Bottom Text -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies Settings</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="./otp.js"></script>
+</body>

@@ -55,7 +55,7 @@ header {
   display: flex;
   list-style: none;
   align-items: center;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .nav-links li a {
@@ -69,7 +69,7 @@ header {
 .access-box {
   display: flex;
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .access-box > a {
@@ -157,7 +157,7 @@ header {
 }
 
 .login-container p {
-  font-size: 13px;
+  font-size: 14px;
   color: #555;
   font-weight: 500;
   margin-bottom: 20px;
@@ -188,7 +188,7 @@ header {
   width: 100%;
   border: 1.2px solid #000000;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.5s ease;
   color: rgba(8, 97, 175, 1);
@@ -242,12 +242,13 @@ form {
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   margin-top: 0.7rem;
 }
 
 .form-group > input {
+  font-size: 14px;
   width: 100%;
   padding: 10px;
   border: 1px solid rgb(185, 185, 185);
@@ -281,7 +282,7 @@ form {
   margin-top: 1rem;
   text-decoration: none;
   color: black;
-  font-size: 13px;
+  font-size: 14px;
   margin-left: 2rem;
 }
 
@@ -294,7 +295,7 @@ form {
   align-items: center;
   gap: 0.7rem;
   margin-top: 0.5rem;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* Style for the checkbox */
@@ -495,10 +496,10 @@ form {
     display: block;
   }
   .footer-links a {
-    font-size: 10px;
+    font-size: 11px;
   }
   .footer-bottom-links a {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
