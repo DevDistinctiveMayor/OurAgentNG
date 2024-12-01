@@ -449,3 +449,9 @@ nav > ul > li > a{
     height:5px;
   }
   
+
+  @media (max-width:430px) {
+    .featured-content .featured-heading{
+      padding: 5px 10px;
+    }
+  }
