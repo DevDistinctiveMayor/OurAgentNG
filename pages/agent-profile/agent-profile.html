@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Our Agent - Profile</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar ">
+            <div class="logo">
+                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="../buy-page/buy.html">Sale</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="#services">Saved properties</a></li>
+                    <li><a href="#contact">About us</a></li>
+                    <div class="nav-links3 ">
+                        <div class="access-box">
+                            <a href="#" class="post">Post A Property</a>
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+    
+            <label
+                class="menu-toggle"
+                onClick={onToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>  
+            </label>
+    
+            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="bx bx-menu"></i>
+            </button> -->
+            <div class="nav-links2">
+                <div class="access-box">
+                <a href="#" class="post">Post A Property</a>
+                <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="profile-card">
+                <div class="img"> <img src="../../images/agent-profile-img.png" alt="agent-image"> </div>
+                <div class="agent-name"> Chinedu's Realty </div>
+                <div class="contact">
+                    <div class="address">Realty, No.5 Golden Estate, Amawa Ogbunike, Anambra state, Nigeria</div>
+                    <div class="contact-icons">
+                        <span> <i class="bx bx-phone"></i> </span>
+                        <span> <i class="bx bx-heart"></i> </span>
+                        <span> <i class="bx bx-message"></i> </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recently-sold">
+                <div class="heading">Recently Sold</div>
+                <div class="house-card-container">
+                    <div class="container">
+                        <div class="house-card">
+                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                            <div class="details">
+                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                <div class="price">N1,000,000</div>
+                                <div class="location">
+                                    <div class="location-name">Lekki Phase 1</div>
+                                    <div class="view-icon">
+                                        <span class="view">View</span>
+                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="img-overlap"> 
+                                <span class="status">Sold</span>
+                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="house-card">
+                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                            <div class="details">
+                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                <div class="price">N1,000,000</div>
+                                <div class="location">
+                                    <div class="location-name">Lekki Phase 1</div>
+                                    <div class="view-icon">
+                                        <span class="view">View</span>
+                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="img-overlap"> 
+                                <span class="status">Sold</span>
+                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="house-card">
+                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                            <div class="details">
+                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                <div class="price">N1,000,000</div>
+                                <div class="location">
+                                    <div class="location-name">Lekki Phase 1</div>
+                                    <div class="view-icon">
+                                        <span class="view">View</span>
+                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="img-overlap"> 
+                                <span class="status">Sold</span>
+                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="left-right-icons">
+                    <span> <i class="fa fa-angle-left"></i> </span>
+                    <span> <i class="fa fa-angle-right"></i> </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-agent">
+            <div class="heading">About Me</div>
+            <div class="description">
+                Lorem ipsum dolor sit amet consectetur. 
+                Sapien laoreet odio mattis nibh nisl lorem elementum sit sodales. 
+                Sit sed mattis tempor convallis sem velit tortor in. 
+                At in blandit pulvinar purus vitae aliquam semper. Faucibus est pellentesque 
+                risus turpis dolor adipiscing aenean amet.
+                <br/><br/>
+                Lorem ipsum dolor sit amet consectetur. Sapien laoreet odio mattis nibh nisl 
+                lorem elementum sit sodales. Sit sed mattis tempor convallis 
+            </div>
+            <div class="exp"> 2 years of Experience </div>
+            <div class="website-link">
+                <span><i class="fa-solid fa-link"></i></span>
+                <span>Visit our website</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <!-- Logo and Links -->
+            <div class="footer-logo">
+                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Property Listings</a></li>
+                <li><a href="#">Agent Resources</a></li>
+                <li><a href="#">Home Buyers</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
+            </div>
+        </div>
+        <hr class="line">
+        <!-- Footer Bottom Text -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies Settings</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
