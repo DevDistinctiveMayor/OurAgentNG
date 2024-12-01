@@ -148,6 +148,7 @@ header {
   justify-content: center;
   border-radius: 8px;
   margin-top: 7rem;
+  /* height: 100vh; */
 }
 
 .register-container h1 {
@@ -237,7 +238,7 @@ header {
 }
 
 .divider p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #000000;
   font-weight: bold;
   letter-spacing: 1px;
@@ -368,7 +369,7 @@ form {
 
 .terms {
   margin-top: 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   width: 20rem;
   text-align: center;
 }
@@ -441,7 +442,7 @@ form {
 /* Footer Bottom Section */
 .footer-bottom {
   margin-top: 30px;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .footer-bottom {
@@ -523,11 +524,16 @@ form {
     display: block;
   }
   .footer-links a {
-    font-size: 10px;
+    font-size: 12px;
   }
   .footer-bottom-links a {
     font-size: 14px;
   }
+  .footer {
+
+    margin-top: 3rem;
+  }
+
 }
 
 @media (min-width: 768px) {
