@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
   /* General reset for margins and padding */
   body {
@@ -513,6 +514,14 @@
       padding: 0 2em;
     }
 
+    .search-box > input{
+      width: 98%;
+    }
+
+    .advance_filter > input{
+      width: 98%;
+    }
+
     .container {
       flex-direction: column-reverse;
     }
@@ -550,6 +559,60 @@
     .container > .details-container > h1{
       font-size: 25px;
       margin-top: 50px;
+    }
+
+    .featuredbox-container  .card{
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      margin: 30px auto;
+    }
+
+    .featuredbox-container .card .image-box{
+      margin-left: 15px;
+      width: 100%;
+    }
+
+    .featuredbox-container .card .image-box img{
+      width: 200px;
+    }
+
+    .featuredbox-container .card .text-box{
+      flex-direction: column;
+      margin: 10px 15px;
+      gap: 20px;
+    }
+
+    .featuredbox-container .card .text-box .first-box{
+      width: 100%;
+    }
+
+    .featuredbox-container .card .text-box .second-box{
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      float: left;
+      border: none;
+      padding: 0;
+    }
+
+    .featuredbox-container .card .text-box .second-box .top-box{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .featuredbox-container .card .text-box .second-box .top-box .price i{
+      margin-left: 10px;
+    }
+
+
+    .featuredbox-container .card .text-box .second-box .top-box .availablity{
+      margin: 0;
+    }
+
+    .featuredbox-container .card .text-box .second-box .bottom-box{
+      text-align: left;
     }
 
 }
