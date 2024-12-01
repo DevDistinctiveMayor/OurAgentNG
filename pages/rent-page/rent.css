@@ -154,7 +154,7 @@
   .sale{
     border: 1pt solid rgba(8, 97, 175, 1);
     width: 10rem;
-    font-size: 13px;
+    font-size: 14px;
     display:  flex;
     padding: 1rem;
     justify-content: center;
@@ -188,7 +188,7 @@
   }
   
   .search-box > input::placeholder {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(2, 24, 43, 0.46);
   }
   

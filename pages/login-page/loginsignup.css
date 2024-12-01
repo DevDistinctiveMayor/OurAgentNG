@@ -230,7 +230,7 @@ header {
 }
 
 .divider p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #000000;
   font-weight: bold;
   letter-spacing: 0.8px;
@@ -415,7 +415,7 @@ form {
 /* Footer Bottom Section */
 .footer-bottom {
   margin-top: 30px;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .footer-bottom {
