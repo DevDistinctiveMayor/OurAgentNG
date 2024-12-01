@@ -495,8 +495,11 @@ form {
   .menu-toggle {
     display: block;
   }
+  .footer{
+    margin-top: 3rem;
+  }
   .footer-links a {
-    font-size: 11px;
+    font-size: 12px;
   }
   .footer-bottom-links a {
     font-size: 14px;
