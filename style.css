@@ -886,10 +886,3 @@ main {
   .footer-links {
     gap: 30px;
   }
-}
-
-@media screen and (min-width: 1024px) {
-  .carousel-item {
-    min-width: calc(25% - 20px); /* Four items for desktops */
-  }
-}
