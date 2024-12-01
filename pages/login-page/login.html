@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <title>Our AgentNG | Login Page</title>
+  <link rel="stylesheet" href="./loginsignup.css">
+</head>
+
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+
+        <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+
+        <ul class="nav-links">
+          <li><a href="../buy-page/buy.html">Sale</a></li>
+          <li><a href="../rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="../otp-page/otp.html">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="" class="post">Post A Property</a>
+              <a href="./login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+      </div>
+
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+      <i class="bx bx-menu"></i>
+    </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="" class="post">Post A Property</a>
+          <a href="./login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Login Section -->
+  <div class="login-container content">
+    <div>
+      <h1>Log into your account</h1>
+      <p>
+        New to OurAgent? <a href="../registered-page/register.html" class=login-container_a>Create an account</a> to get
+        started
+      </p>
+      <div class="auth-buttons">
+        <button class="google-button">
+          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Sign in with google
+        </button>
+        <button class="facebook-button">
+          <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with facebook
+        </button>
+      </div>
+      <div class="divider">
+        <span></span>
+        <p>or sign in with email</p>
+        <span></span>
+      </div>
+
+
+      <form>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-container form-group">
+            <input type="password" id="password" placeholder="Enter your Password" required>
+            <span id="toggle-password" class="toggle-password">
+              <i id="eye-icon" class="fas fa-eye"></i>
+            </span>
+          </div>
+          <small id="email-error" class="error-text"></small> <!-- Error message for email -->
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <div class="keep-me">
+          <input type="checkbox" id="keep-me" />
+          <label for="keep-me">Keep me logged in to this device</label>
+        </div>
+
+        <div class="btn-button">
+          <button type="submit" class="btn primary">Log In</button>
+        </div>
+      </form>
+
+
+
+
+    </div>
+  </div>
+
+
+
+  <footer class="footer">
+    <div class="footer-top">
+      <!-- Logo and Links -->
+      <div class="footer-logo">
+        <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
+
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Property Listings</a></li>
+        <li><a href="#">Agent Resources</a></li>
+        <li><a href="#">Home Buyers</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
+      </div>
+    </div>
+    <hr class="line">
+    <!-- Footer Bottom Text -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookies Settings</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="./loginsignup.js"></script>
+</body>
+
+</html>
