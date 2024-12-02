@@ -39,7 +39,7 @@
     justify-content: space-between;
     background-color: #fff;
     color: #333;
-    padding: 15px 3%;
+    padding: 10px 3%;
   }
   
   .logo {
@@ -53,11 +53,7 @@
     display: flex;
     list-style: none;
     align-items: center;
-    font-size: 14px;
-  }
-
-  .nav-links li{
-    overflow-y: hidden;
+    font-size: 13px;
   }
   
   .nav-links li a {
@@ -71,7 +67,7 @@
   .access-box {
     display: flex;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .access-box > a {
@@ -81,13 +77,13 @@
   
   .access-box > .post {
     padding: 9px;
-    background-color: rgba(8, 97, 175, 1);
+    background-color:rgba(8, 97, 175, 1);
     color: #fff;
     border-radius: 7px;
   }
   
   .access-box > .login {
-    color: #0073e6;
+    color: rgba(8, 97, 175, 1);
     border: 1px solid rgba(8, 97, 175, 1);
     padding: 9px;
     border-radius: 7px;
@@ -166,6 +162,7 @@
     justify-self: center;
     border-radius: 5px;
   }
+  
   .sale > i{
     font-size: 1.3rem;
     padding-top: px;
@@ -469,55 +466,56 @@
    }
 
    /* Download Section */
-   .download-section{
-    width: 100%;
+   .download-container{
     display: flex;
-    justify-content:space-between ;
-    padding: 30px 5rem;
-    height: 300px;
-    background: #02182B;
+    justify-content: center;
+    gap: 25%;
+    width: 100%;
+    background-color: #02182B;
+    padding: 30px 50px 50px 50px;
+    height: fit-content;
    }
 
-   .download-section .first-section, .second-section{
-    width: 40%;
-    height: 100%;
+   .download-container div{
+    width: 45%;
    }
 
-   .download-section .first-section p{
-    font-weight: 700;
+   .download-container .first-box  p{
     font-size: 30px;
+    text-decoration: underline;
     color: #ffffff;
    }
 
-   .download-section .second-section{
+   .download-container .second-box{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
    }
 
-   .download-section .second-section p{
-    font-weight: 500;
-    font-size: 16px;
+   .download-container .second-box  p{
     color: #ffffff;
+    text-decoration: underline;
+    font-size: 20px;
    }
 
-   .download-section .second-section a{
-    color: #ffffff;
-    font-family: inherit;
-    background-color: #0861AF;
+   .download-container .second-box button{
     width: fit-content;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 5px;
+    border: none;
+    font-family: inherit;
     padding: 15px 30px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #0861AF;
+    font-weight: 500;
    }
   
   .footer-top {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 5rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 5em;
+    margin-bottom: 3em;
   }
   
   .footer-logo {
@@ -607,44 +605,45 @@
 
   /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .nav-links3 {
-      display: block;
-      margin-top: 0.4rem;
-    }
-    .nav-links2 {
-      display: none;
-    }
-  
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #ffffff;
-      position: absolute;
-      color: #000;
-      top: 90px;
-      right: 10%;
-      width: 80%;
-      padding: 30px 0px;
-      transform: translateX(100%);
-      border-radius: 5px;
-      z-index: 10;
-    }
-  
-    .nav-links > li {
-      text-align: center;
-      margin-top: 0.4rem;
-    }
-  
-    .nav-links > li:hover {
-      /* transform: translate(15px); */
-      text-decoration: underline;
-    }
-  
-    .nav-links.active {
-      display: flex;
-      transform: translateX(0);
-      opacity: 1;
-    }
+  .nav-links3 {
+    display: block;
+    margin-top: 0.4rem;
+  }
+  .nav-links2 {
+    display: none;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: absolute;
+    color: #000;
+    top: 90px;
+    right: 10%;
+    width: 80%;
+    padding: 30px 0px;
+    transform: translateX(100%);
+    border-radius: 5px;
+    z-index: 10;
+  }
+
+  .nav-links > li {
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+
+  .nav-links > li:hover {
+    /* transform: translate(15px); */
+    text-decoration: underline;
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
     .menu-toggle {
         display: block;
       }
@@ -756,6 +755,15 @@
       text-align: left;
     }
 
+    .footer-top{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+      margin-top: 4em;
+      gap: 15px;
+    }
+
     .footer-links a {
       font-size: 10px;
     }
@@ -763,27 +771,24 @@
       font-size: 13px;
     }
 
-    .download-section{
+    .download-container{
+      display: flex;
       flex-direction: column;
-      padding: 20px;
-      height: 350px;
+      gap: 40px;
+      padding: 30px 20px;
     }
 
-    .download-section .first-section, .second-section{
+    .download-container div{
       width: 100%;
-    }
-
-    .download-section .second-section{
-      gap: 20px;
-    }
-
-    .download-section .first-section p{
-      font-size: 23px;
       height: fit-content;
     }
 
-    .download-section .second-section p{
-      font-size: 15px;
+    .download-container .first-box p{
+      font-size: 25px;
     }
 
+    .download-container .second-box p{
+      font-size: 18px;
+    }
+    
 }
