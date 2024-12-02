@@ -166,9 +166,9 @@ main {
         align-items: flex-start;
         justify-content: center;
         gap: 100px;
-        border: 1px solid #EEEEEE;
         padding: 3rem 2rem;
         margin-bottom: 3rem;
+        box-shadow: 0 0 4px #EEEEEE;
 
         .profile-card{
             text-align: center;
