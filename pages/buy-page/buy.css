@@ -305,9 +305,10 @@ main {
 }
 
 .sort-container > div > select {
-  border: none;
+  border: 1pt solid white;
   font-family: inherit;
   background-color: #ffffff;
+  
 }
 .sort-container > div > select:focus {
   border: none;
