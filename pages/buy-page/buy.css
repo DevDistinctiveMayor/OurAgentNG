@@ -301,13 +301,13 @@ main {
   border: 1px solid #0861af;
   padding: 0.8rem 2rem;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .sort-container > div > select {
   border: none;
   font-family: inherit;
-  color: #02182b;
+  background-color: #ffffff;
 }
 
 .available-container {
