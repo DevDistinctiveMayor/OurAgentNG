@@ -308,6 +308,7 @@ main {
   border: 1pt solid white;
   font-family: inherit;
   background-color: #ffffff;
+  font-size: 15px;
   
 }
 .sort-container > div > select:focus {
