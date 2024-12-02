@@ -309,6 +309,9 @@ main {
   font-family: inherit;
   background-color: #ffffff;
 }
+.sort-container > div > select:focus {
+  border: none;
+}
 
 .available-container {
   border: 1px solid #0861af;
@@ -695,7 +698,7 @@ main {
     border: 1px solid #0861af;
     padding: 0.8rem 1rem;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
