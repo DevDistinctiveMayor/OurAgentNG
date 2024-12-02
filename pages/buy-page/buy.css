@@ -681,7 +681,8 @@ main {
 @media screen and (max-width: 800px) {
   .container {
     padding: 5rem 2rem;
-  }
+    margin-left: 0.5rem;
+}
   .featuredbox-container {
     margin-left: 1rem;
     margin-right: 5rem;
@@ -865,11 +866,13 @@ main {
     margin-right: 0rem;
     gap: 1px;
   }
+
   .container {
-    padding: 4rem 0rem;
-    margin-left: 1.4rem;
-    width: 22rem;
-  }
+    padding: 6rem 1rem;
+    margin-left: 0.3rem;
+    width: 24rem;
+    margin-right: 0rem;
+}
   .sale-container-flex {
     padding: 0rem 1.4rem;
   }
