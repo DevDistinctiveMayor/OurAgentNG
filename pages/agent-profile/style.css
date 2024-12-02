@@ -440,6 +440,7 @@ main {
                 padding: 20px 10px;
                 border: 1px solid #0861AF;
                 border-radius: 7px;
+                cursor: pointer;
 
                 .house-card{
                     width: 230px;
