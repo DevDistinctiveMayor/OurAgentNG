@@ -281,6 +281,12 @@ header {
     color: #02182B99;
   }
 
+  .blog-link{
+    color: #0861AF;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
   .container > .details-container > .sort-container > div{
     border: 1px solid #0861AF;
     padding: 1rem 2rem;
@@ -522,12 +528,7 @@ header {
     margin-top: 5rem;
   }
   
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
+
   .footer-logo h2 {
     font-size: 1.2em;
     color: #0073e6;
@@ -876,3 +877,16 @@ header {
 
 }
 
+@media (min-width: 768px) {
+
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 50px auto;
+  }
+
+  .footer-links {
+    gap: 30px;
+  }
+}
