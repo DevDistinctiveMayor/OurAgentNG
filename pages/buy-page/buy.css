@@ -697,10 +697,14 @@ main {
   }
 
   .sort-container > div {
-    border: 1px solid #0861af;
     padding: 0.8rem 1rem;
-    border-radius: 5px;
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  
+  .sort-container > div > select {
+    font-size: 14px;
+    
   }
 }
 
