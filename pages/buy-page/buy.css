@@ -217,6 +217,7 @@ main {
   border: 1px solid #0861af;
   border-radius: 5px;
   height: 43px;
+  width: 10rem;
 }
 
 .advance_filter > .filtericon {
@@ -286,12 +287,11 @@ main {
   display: flex;
   justify-content: space-between;
   padding-right: 50px;
-
   margin-top: 5rem;
 }
 
 .sort-container > p {
-  font-size: 15px;
+  font-size: 16px;
   color: #41414199;
 
   font-weight: 500;
@@ -692,9 +692,9 @@ main {
 
   .sort-container > div {
     border: 1px solid #0861af;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
