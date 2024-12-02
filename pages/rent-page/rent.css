@@ -143,19 +143,19 @@ header {
   display: block;
 }
 
-  .sale-container{
+  .rent-container{
     display: flex;
     justify-content: center;
   }
 
-  .sale-container-flex {
+  .rent-container-flex {
     display: flex
 ;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 6rem;
 }
-  .sale{
+  .rent{
     border: 1pt solid rgba(8, 97, 175, 1);
     width: 10rem;
     font-size: 14px;
@@ -166,7 +166,7 @@ header {
     justify-self: center;
     border-radius: 5px;
   }
-  .sale > i{
+  .rent > i{
     font-size: 1.3rem;
     padding-top: px;
   }
@@ -245,11 +245,6 @@ header {
     padding: 5rem 5rem;
   }
 
-  .blog-link{
-    color: #0861AF;
-    font-size: 14px;
-    font-weight: 600;
-  }
   .container > .details-container{
     width: 70%;
   }
@@ -284,6 +279,12 @@ header {
   .container > .details-container > .sort-container > p{
     font-size: 20px;
     color: #02182B99;
+  }
+
+  .blog-link{
+    color: #0861AF;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .container > .details-container > .sort-container > div{
@@ -738,7 +739,7 @@ header {
       }
 
     
-  .sale-container-flex {
+  .rent-container-flex {
     gap: 1rem;
     padding: 0px 2em;
     margin-top: 67px;
