@@ -57,7 +57,7 @@ main {
   display: flex;
   list-style: none;
   align-items: center;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .nav-links li a {
@@ -71,7 +71,7 @@ main {
 .access-box {
   display: flex;
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .access-box > a {
@@ -185,7 +185,7 @@ main {
 
 .filter > a {
   text-decoration: none;
-  color: #000000cb;
+  color: #ffffffcb;
   font: 12px;
   text-decoration: underline;
 }
@@ -212,7 +212,7 @@ main {
 
 .search-box > input::placeholder {
   /* padding-left: 2rem; */
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: underline;
   color: rgba(2, 24, 43, 0.46);
 }
@@ -350,7 +350,7 @@ main {
   gap: 6rem;
 }
 .for_sale p {
-  font-size: 10px;
+  font-size: 13px;
   background-color: rgba(254, 133, 21, 1);
   padding: 5px;
   border-radius: 3px;
@@ -382,7 +382,7 @@ main {
 
 .grid-container > .box > .desc {
   margin-top: 20px;
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(8, 97, 175, 0.61);
 }
 
@@ -396,7 +396,7 @@ main {
 .grid-container > .box > .bottom-side {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 25px;
   color: #0861af9c;
   text-decoration: underline;
@@ -406,7 +406,7 @@ main {
   text-decoration: none;
   cursor: pointer;
   text-decoration: underline;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
 }
 .bottom-side-view:hover {
@@ -667,7 +667,7 @@ main {
     padding: 5%;
   }
   .carousel_p {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .view-btn1 {
@@ -690,7 +690,7 @@ main {
 
   .search-box > input {
     width: 80%;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .carousel-item {
@@ -733,13 +733,13 @@ main {
   }
 
   .footer-links a {
-    font-size: 10px;
+    font-size: 13px;
   }
 .footer-bottom-links a {
-  font-size: 13px;
+  font-size: 14px;
 }
 .download-section > .first-section > p {
-  font-size: 18px;
+  font-size: 13px;
 }
 }
 
@@ -765,14 +765,14 @@ main {
   }
 
   .featured-section > .top > .view {
-    font-size: 12px;
+    font-size: 13px;
   }
   .for_sale {
     height: 1.3rem;
   }
 
   .for_sale p {
-    font-size: 8px;
+    font-size: 11px;
     padding: 4px;
   }
 
@@ -799,21 +799,21 @@ main {
   }
 
   .grid-container > .box > .desc {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .grid-container > .box > .price {
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 0.7rem;
   }
 
   .grid-container > .box > .bottom-side {
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 15px;
     margin-top: 0.7rem;
   }
   .bottom-side-view {
-    font-size: 9px;
+    font-size: 12px;
   }
   .bottom-side-view:hover {
     color: #0861af9c;
