@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="style.css">
   <title>Our AgentNG | Website</title>
@@ -31,12 +31,10 @@
 
       </div>
 
-      <label
-          class="menu-toggle"
-          onClick={onToggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>  
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
       </label>
 
       <!-- <button class="menu-toggle" aria-label="Toggle navigation">
@@ -83,59 +81,59 @@
       <h2>Explore Our Various Categories</h2>
 
 
- <!-- Carousel Wrapper -->
-<div class="carousel-track_flex">
-  <div class="carousel">
-    <!-- Left Arrow for Navigation -->
-    <img src="./assets/icon/arrow_left.png" class="nav-arrow left-arrow" onclick="scrollCarousel('left')" />
+      <!-- Carousel Wrapper -->
+      <div class="carousel-track_flex">
+        <div class="carousel">
+          <!-- Left Arrow for Navigation -->
+          <img src="./assets/icon/arrow_left.png" class="nav-arrow left-arrow" onclick="scrollCarousel('left')" />
 
-    <!-- Carousel Items -->
-    <div class="carousel-track">
-      <div class="carousel-item">
-        <img src="./images/duplex 1.png" alt="Duplex Homes">
-        <div class="carousel_p">
-          <p>Duplex Homes</p>
-          <button class="view-btn1">View &#10142;</button>
+          <!-- Carousel Items -->
+          <div class="carousel-track">
+            <div class="carousel-item">
+              <img src="./images/duplex 1.png" alt="Duplex Homes">
+              <div class="carousel_p">
+                <p>Duplex Homes</p>
+                <button class="view-btn1">View &#10142;</button>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/duplex 1.png" alt="Terrace">
+              <div class="carousel_p">
+                <p>Terrace</p>
+                <button class="view-btn1">View &#10142;</button>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/duplex 1.png" alt="Apartments">
+              <div class="carousel_p">
+                <p>Apartments</p>
+                <button class="view-btn1">View &#10142;</button>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/duplex 1.png" alt="Shortlets">
+              <div class="carousel_p">
+                <p>Land</p>
+                <button class="view-btn1">View &#10142;</button>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="./images/duplex 1.png" alt="Retail Properties">
+              <div class="carousel_p">
+                <p>Retail Properties</p>
+                <button class="view-btn1">View &#10142;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Arrow for Navigation -->
+          <img src="./assets/icon/arrow_right.png" class="nav-arrow right-arrow" onclick="scrollCarousel('right')" />
         </div>
       </div>
-
-      <div class="carousel-item">
-        <img src="./images/duplex 1.png" alt="Terrace">
-        <div class="carousel_p">
-          <p>Terrace</p>
-          <button class="view-btn1">View &#10142;</button>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="./images/duplex 1.png" alt="Apartments">
-        <div class="carousel_p">
-          <p>Apartments</p>
-          <button class="view-btn1">View &#10142;</button>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="./images/duplex 1.png" alt="Shortlets">
-        <div class="carousel_p">
-          <p>Land</p>
-          <button class="view-btn1">View &#10142;</button>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="./images/duplex 1.png" alt="Retail Properties">
-        <div class="carousel_p">
-          <p>Retail Properties</p>
-          <button class="view-btn1">View &#10142;</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Arrow for Navigation -->
-    <img src="./assets/icon/arrow_right.png" class="nav-arrow right-arrow" onclick="scrollCarousel('right')" />
-  </div>
-</div>
 
     </section>
 
@@ -146,58 +144,86 @@
         <p class="heading">Featured</p>
         <a href="./pages/rent-page/rent.html" class="view">See all &#10142;</a>
       </div>
-      <div class="feature-container">
-        <div class="grid-container">
-          <div class="box">
-            <div class="for_sale">
-              <p>For Sale</p>
-              <img src="./assets/icon/bookmark icon.png"/>
+
+
+      <div class="house-card-container">
+        <div class="container">
+          <div class="house-card">
+            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+            <div class="details">
+              <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+              <div class="price">N1,000,000</div>
+              <div class="location">
+                <div class="location-name">Lekki Phase 1</div>
+                <div class="view-icon">
+                  <span class="view">View</span>
+                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                </div>
+              </div>
             </div>
-            <img src="./assets/featured-card.svg" alt="">
-            <p class="desc">Smart Luxury 2 Bedroom Apartment with Swimming .</p>
-            <p class="price">₦1,000,000</p>
-            <div class="bottom-side">
-              <p>Lekki Phase 1</p>
-              <a link="" class="bottom-side-view">View &#10142;</a>
-            </div>
-          </div>
-          <div class="box">
-            <div class="for_sale">
-              <p>For Sale</p>
-              <img src="./assets/icon/bookmark icon.png"/>
-            </div>
-            <img src="./assets/featured-card.svg" alt="">
-            <p class="desc">Smart Luxury 2 Bedroom Apartment with Swimming .</p>
-            <p class="price">₦100,000/day</p>
-            <div class="bottom-side">
-              <p>Lekki Phase 1</p>
-              <a link="" class="bottom-side-view">View &#10142;</a>
+            <div class="img-overlap">
+              <span class="status">For Rent</span>
+              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
             </div>
           </div>
-          <div class="box">
-            <div class="for_sale">
-              <p>For Sale</p>
-              <img src="./assets/icon/bookmark icon.png"/>
+        </div>
+        <div class="container">
+          <div class="house-card">
+            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+            <div class="details">
+              <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+              <div class="price">N1,000,000</div>
+              <div class="location">
+                <div class="location-name">Lekki Phase 1</div>
+                <div class="view-icon">
+                  <span class="view">View</span>
+                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                </div>
+              </div>
             </div>
-            <img src="./assets/featured-card.svg" alt="">
-            <p class="desc">Smart Luxury 2 Bedroom Apartment with Swimming .</p>
-            <p class="price">₦21,000,000</p>
-            <div class="bottom-side">
-              <p>Lekki Phase 1</p>
-              <a link="" class="bottom-side-view">View &#10142;</a>
+            <div class="img-overlap">
+              <span class="status">For Rent</span>
+              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
             </div>
           </div>
-          <div class="box">
-            <div class="for_sale">
-              <p>For Rent</p>
-              <img src="./assets/icon/bookmark icon.png"/>
+        </div>
+        <div class="container">
+          <div class="house-card">
+            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+            <div class="details">
+              <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+              <div class="price">N1,000,000</div>
+              <div class="location">
+                <div class="location-name">Lekki Phase 1</div>
+                <div class="view-icon">
+                  <span class="view">View</span>
+                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                </div>
+              </div>
             </div>
-            <img src="./assets/featured-card.svg" alt="">
-            <p class="desc">Smart Luxury 2 Bedroom Apartment with Swimming .</p>
-            <p class="price">₦100,000/day</p>
-            <div class="bottom-side">
-              <p>Lekki Phase 1</p>
-              <a link="" class="bottom-side-view">View &#10142;</a>
+            <div class="img-overlap">
+              <span class="status">For Rent</span>
+              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="house-card">
+            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+            <div class="details">
+              <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+              <div class="price">N1,000,000</div>
+              <div class="location">
+                <div class="location-name">Lekki Phase 1</div>
+                <div class="view-icon">
+                  <span class="view">View</span>
+                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                </div>
+              </div>
+            </div>
+            <div class="img-overlap">
+              <span class="status">For Rent</span>
+              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
             </div>
           </div>
         </div>
