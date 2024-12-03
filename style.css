@@ -241,30 +241,23 @@ main {
   display: flex;
   justify-content: center;
 }
-/* General Carousel Styling */
+
 .carousel {
   position: relative;
   overflow: hidden;
   width: 90%;
 }
 
-.carousel-track-wrapper {
-  overflow: hidden;
-}
-
 .carousel-track {
   display: flex;
-  gap: 20px; /* Space between images */
-  transition: transform 0.5s ease;
+  gap: 20px; /* Space between items */
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
-  min-width: 80%; 
+  min-width: calc(25% - 20px); /* Default: Four items on large screens */
   border-radius: 8px;
-  padding: 10px;
-}
-.carousel-item {
-  min-width: calc(50% - 20px); /* Two items for tablets */
+  overflow: hidden;
 }
 
 .carousel-item img {
@@ -277,6 +270,7 @@ main {
   text-align: left;
   font-weight: 600;
   padding-top: 1rem;
+  margin-left: 2px;
 }
 
 .view-btn1 {
@@ -288,15 +282,17 @@ main {
   border: 1pt solid black;
   margin-top: 1rem;
 }
+
 .view-btn1:hover {
   background-color: #000000;
-  color: #ffff;
+  color: #fff;
 }
+
 
 /* Arrows */
 .nav-arrow {
   position: absolute;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   /* background-color: rgba(255, 255, 255, 0.8); */
   border: none;
@@ -309,14 +305,14 @@ main {
 
 .left-arrow {
   left: 10px;
-  width: 2rem;
+  width: 2.3rem;
   background-color: #ffff;
   padding: 10px;
 }
 
 .right-arrow {
   right: 10px;
-  width: 1.9rem;
+  width: 2.2rem;
   background-color: #ffff;
   padding: 9px;
 }
@@ -615,6 +611,15 @@ main {
   text-decoration: none;
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .carousel-item {
+    min-width: calc(50% - 20px); /* Two items on medium screens */
+  }
+}
+
+
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .nav-links3 {
@@ -666,12 +671,15 @@ main {
   .hero-section > .container {
     padding: 5%;
   }
+
+
   .carousel_p {
-    font-size: 14px;
+    font-size: 17px;
   }
 
   .view-btn1 {
-    padding: 5px 10px;
+    padding: 11px 13px;
+    font-size: 15px;
   }
 
   .hero-section > .container > h1 {
@@ -691,10 +699,6 @@ main {
   .search-box > input {
     width: 80%;
     font-size: 1rem;
-  }
-
-  .carousel-item {
-    min-width: calc(50% - 20px); /* Two items for tablets */
   }
   .property-categories h2 {
     font-size: 1.3em;
@@ -745,13 +749,11 @@ main {
 
 /* Responsive Styles */
 @media screen and (max-width: 480px) {
-  .carousel-track {
-    gap: 20px;
-  }
   .carousel-item {
-    min-width: 100%; /* 1 item on mobile */
+    min-width: 100%; /* One item on small screens */
   }
 
+  
   .access-box {
     flex-direction: column;
   }
@@ -765,7 +767,7 @@ main {
   }
 
   .featured-section > .top > .view {
-    font-size: 13px;
+    font-size: 17px;
   }
   .for_sale {
     height: 1.3rem;
@@ -817,9 +819,6 @@ main {
   }
   .bottom-side-view:hover {
     color: #0861af9c;
-  }
-  .carousel-item {
-    min-width: 150px;
   }
 
   .property-categories h2 {
@@ -886,7 +885,5 @@ main {
   }
 }
 @media screen and (min-width: 1024px) {
-  .carousel-item {
-    min-width: calc(25% - 20px); /* Four items for desktops */
-  }
+
 }

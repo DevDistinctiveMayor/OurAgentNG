@@ -125,3 +125,40 @@ document.getElementById("toggle-password")
     });
   });
   
+  function handleCredentialResponse(response) {
+    const googleToken = response.credential; // Get JWT token
+    console.log("Google Token Received:", googleToken);
+
+    // Send the token to your backend
+    fetch('https://ouragent.com.ng/google-client-signup.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token: googleToken }),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert('Signup successful!');
+        window.location.href = '/dashboard.php';
+      } else {
+        alert('Signup failed: ' + data.message);
+      }
+    })
+    .catch(error => console.error('Error during signup:', error));
+  }
+
+  // Initialize Google Sign-In
+  window.onload = () => {
+    google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID",
+      callback: handleCredentialResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.querySelector(".g_id_signin"),
+      { theme: "outline", size: "large" }
+    );
+  };
+  

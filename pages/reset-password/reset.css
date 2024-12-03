@@ -173,6 +173,7 @@
     width: 60px;
     height: 60px;
     border-radius: 60px;
+    margin-bottom: 1rem;
  
 
 }
@@ -181,17 +182,21 @@
     margin-top:-10px;
     font-size: 2.1rem;
 
+
 }
 
 h1 {
+    text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
+ 
 }
 
 p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .otp-input-container {
