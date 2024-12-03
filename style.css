@@ -259,12 +259,9 @@ main {
 }
 
 .carousel-item {
-  min-width: 80%; /* Default for mobile */
-  /* background-color: #fff; */
+  min-width: 80%; 
   border-radius: 8px;
-
   padding: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 .carousel-item {
   min-width: calc(50% - 20px); /* Two items for tablets */
@@ -870,6 +867,7 @@ main {
     border-top: 1px solid #ddd;
   }
 }
+
 /* Responsive styling */
 @media (min-width: 768px) {
   .for_sale {
@@ -885,5 +883,10 @@ main {
 
   .footer-links {
     gap: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .carousel-item {
+    min-width: calc(25% - 20px); /* Four items for desktops */
   }
 }

@@ -9,10 +9,9 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-document
-  .getElementById("toggle-password")
+document.getElementById("toggle-password")
   .addEventListener("click", function () {
-    const passwordField = document.getElementById("password");
+    const passwordField = document.getElementById("new_password confirm_password");
     const eyeIcon = document.getElementById("eye-icon");
 
     if (passwordField.type === "password") {
