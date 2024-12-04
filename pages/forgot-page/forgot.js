@@ -17,7 +17,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
 
   // Disable the button and show loading state
   submitButton.disabled = true;
-  submitButton.classList.add("loading");
+  submitButton.textContent = "Processing...";
 
   try {
       const response = await fetch("https://ouragent.com.ng/forgot_password.php", {
@@ -44,6 +44,8 @@ document.getElementById("resetForm").addEventListener("submit", async function (
   } finally {
       // Re-enable the button and remove loading state
       submitButton.disabled = false;
-      submitButton.classList.remove("loading");
+      submitButton.textContent = "Send Code";
   }
 });
+
+

@@ -75,6 +75,10 @@ document.getElementById("toggle-password")
       }
   
       if (hasError) return;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Processing...";
+  
   
       try {
         const response = await fetch("https://ouragent.com.ng/signup.php", {
@@ -119,16 +123,21 @@ document.getElementById("toggle-password")
           }
         }
       } catch (error) {
-        console.error("Fetch Error:", error.message);
-        alert("An error occurred. Please try again.");
+        //console.error("Fetch Error:", error.message);
+       // alert("An error occurred. Please try again.");
+      }finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = "Register";
       }
     });
   });
   
   function handleCredentialResponse(response) {
     const googleToken = response.credential; // Get JWT token
-    console.log("Google Token Received:", googleToken);
+    //console.log("Google Token Received:", googleToken);
 
+ 
     // Send the token to your backend
     fetch('https://ouragent.com.ng/google-client-signup.php', {
       method: 'POST',

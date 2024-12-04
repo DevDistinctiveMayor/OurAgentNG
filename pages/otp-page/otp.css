@@ -232,20 +232,29 @@ p {
 }
 
 button {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    background-color:  rgba(8, 97, 175, 1);
-    color: white;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color:  rgba(8, 97, 175, 1);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 1rem;
+  width: 100%;
+  
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover effect */
 button:hover {
-    text-decoration: underline;
+  background-color: #000000;
+  color: #fff;
+}
 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+/* Active (pressed) effect */
+button:active {
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }
 
 .success-message {
@@ -266,7 +275,7 @@ button:hover {
 }
 
 .resend-container {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
     font-size: 0.9rem;
 }
 
@@ -274,12 +283,13 @@ button:hover {
     /* background-color: #6c757d; */
     background-color: transparent;
     color:  rgba(8, 97, 175, 1);
-    font-size: 0.8rem;
+
     
 }
 
 .resend-container button:hover {
-    /* background-color: #5a6268; */
+  background-color: #000000;
+  color: #fff;
 }
 
 .otp-sent {

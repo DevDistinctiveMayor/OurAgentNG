@@ -428,6 +428,9 @@ button.loading::after {
       opacity: 1;
     }
 
+    .menu-toggle {
+      display: block;
+    }
 
     /* Footer */
     .footer-links a {

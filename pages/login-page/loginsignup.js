@@ -53,7 +53,8 @@ document
       
       // Disable the button and show loading state
       submitButton.disabled = true;
-      submitButton.classList.add("loading");  // Add loading class
+      submitButton.textContent = "Processing...";
+      //submitButton.classList.add("loading");  // Add loading class
   
       try {
         const response = await fetch("https://ouragent.com.ng/signin.php", {
@@ -105,7 +106,7 @@ document
       } finally {
         // Re-enable the button and remove loading state
         submitButton.disabled = false;
-        submitButton.classList.remove("loading"); // Remove loading class
+        submitButton.textContent = "Login";// Remove loading class
       }
     });
   });
