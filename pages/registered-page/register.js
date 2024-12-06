@@ -133,41 +133,22 @@ document.getElementById("toggle-password")
     });
   });
   
-  function handleCredentialResponse(response) {
-    const googleToken = response.credential; // Get JWT token
-    //console.log("Google Token Received:", googleToken);
+//   document.getElementById('google-signup-btn').addEventListener('click', () => {
+//     const signupClientUrl = "https://accounts.google.com/o/oauth2/auth" +
+//         "?client_id=652930243069-c36k0cjarmm9bmhs3vgrtjqncnnkersn.apps.googleusercontent.com" +
+//         "&redirect_uri=https://ouragent.com.ng/auth/google-client-signup.php" +
+//         "&scope=email profile https://www.googleapis.com/auth/user.phonenumbers.read" +
+//         "&response_type=code";
+//     window.location.href = signupClientUrl; // Redirect to Google Sign-In
+// });
+// const urlParams = new URLSearchParams(window.location.search);
+// document.getElementById('email').value = urlParams.get('email') || '';
+// document.getElementById('full-name').value = urlParams.get('fullName') || '';
+// document.getElementById('phone').value = urlParams.get('phone') || '';
 
- 
-    // Send the token to your backend
-    fetch('https://ouragent.com.ng/google-client-signup.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ token: googleToken }),
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === 'success') {
-        alert('Signup successful!');
-        window.location.href = '/dashboard.php';
-      } else {
-        alert('Signup failed: ' + data.message);
-      }
-    })
-    .catch(error => console.error('Error during signup:', error));
-  }
 
-  // Initialize Google Sign-In
-  window.onload = () => {
-    google.accounts.id.initialize({
-      client_id: "YOUR_GOOGLE_CLIENT_ID",
-      callback: handleCredentialResponse,
-    });
+// document.getElementById('google-signin-btn').addEventListener('click', () => {
+//     const signinClientUrl = "https://ouragent.com.ng/google-client-signin.php"; // Backend URL
+//     window.location.href = signinClientUrl; // Redirect to Google Sign-In
+// });
 
-    google.accounts.id.renderButton(
-      document.querySelector(".g_id_signin"),
-      { theme: "outline", size: "large" }
-    );
-  };
-  
