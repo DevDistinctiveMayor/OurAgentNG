@@ -176,6 +176,7 @@ main {
             flex-direction: column;
             align-items: center;
             margin-top: 2rem;
+            width: 30%;
             .img{
                 width: 200px;
                 height: 200px;
@@ -227,6 +228,7 @@ main {
 
         .recently-sold{
             position: relative;
+            width: 70%;
             .heading {
                 font-size: 26px;
                 color: #02182B;
@@ -238,11 +240,19 @@ main {
                 align-items: center;
                 gap: 25px;
                 position: relative;
+                overflow-x: auto;
+                padding: 10px;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    width: 0;
+                }
+
                 .container{
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 270px;
+                    min-width: 270px;
                     min-height: 372px;
                     padding: 20px 10px;
                     border: 1px solid #0861AF;
@@ -400,12 +410,13 @@ main {
             font-weight: 600;
         }
 
-        .btn{
+        .btn-container{
             display: flex;
             align-items: center;
             border-radius: 20px;
             overflow: hidden;
-            max-width: 350px;
+            min-width: 300px;
+            width: 40%;
             margin: 2rem 0;
             button{
                 padding: 15px 20px;
@@ -417,7 +428,7 @@ main {
                 font-size: 18px;
                 font-weight: 600;
             }
-            .sale-btn{
+            .active{
                 background-color: #0861AF;
                 color: #FFFFFF;
             }
@@ -425,17 +436,15 @@ main {
 
         .house-card-container{
             margin-top: 4rem;
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
             gap: 25px;
             position: relative;
             .container{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 270px;
                 min-height: 372px;
                 padding: 20px 10px;
                 border: 1px solid #0861AF;
@@ -531,6 +540,33 @@ main {
                     }
                 }
             }
+        }
+
+        .next-prev-page{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 3rem 0;
+
+            .num-container{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                span{
+                    height: 35px;
+                    width: 35px;
+                    display: inline-block;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .num-active{
+                    border: 1px solid #0861AF;
+                    border-radius: 50%;
+                }
+            }
+            span{ cursor: pointer; }
         }
     }
 }
