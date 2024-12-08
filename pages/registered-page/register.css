@@ -149,6 +149,7 @@ header {
   border-radius: 8px;
   margin-top: 7rem;
   /* height: 100vh; */
+
 }
 
 .register-container h1 {
@@ -162,6 +163,10 @@ header {
   color: #555;
   font-weight: 500;
   margin-bottom: 20px;
+
+}
+.register-container div{
+  width: 350px;
 }
 
 .register-container_a {
