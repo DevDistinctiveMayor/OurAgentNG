@@ -70,15 +70,32 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
         const result = await response.json();
 
         if (result.status === "success") {
-          responseMessage.textContent = result.message || "Password reset successfully.";
-          responseMessage.className = "success";
+       
+          Swal.fire({
+            title: "Reset Successful",
+            text: result.message || "Password reset successfully.",
+            icon: "success",
+            confirmButtonText: "Login",
+          }).then(() => {
+            // Redirect to OTP verification page, passing email and userId
+            window.location.href = "../login-page/login.html";
+          });
         } else {
-          throw new Error(result.message || "An error occurred. Please try again.");
+          Swal.fire({
+            title: "Registration Failed",
+            text: result.message  || "Something went wrong. Please try again.",
+            icon: "error",
+            confirmButtonText: "Retry",
+          });
+        
         }
       } catch (error) {
-        console.error("Error:", error.message);
-        responseMessage.textContent = error.message;
-        responseMessage.className = "error";
+        Swal.fire({
+          title: "Error",
+          text: error.message || "An error occurred. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
       } finally {
         // Re-enable button
         submitButton.disabled = false;

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <title>Our AgentNG | Login Page</title>
-  <link rel="stylesheet" href="./register.css">
+  <link rel="stylesheet" href="./loginsignup.css">
 </head>
 
 
@@ -24,11 +24,11 @@
           <li><a href="../buy-page/buy.html">Sale</a></li>
           <li><a href="../rent-page/rent.html">Rent</a></li>
           <li><a href="#services">Saved properties</a></li>
-          <li><a href="#contact">About us</a></li>
+          <li><a href="../otp-page/otp.html">About us</a></li>
           <div class="nav-links3 ">
             <div class="access-box">
               <a href="" class="post">Post A Property</a>
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+              <a href="./login.html" class="login">Sign up or Log in</a>
             </div>
           </div>
         </ul>
@@ -50,30 +50,30 @@
 
         <div class="access-box">
           <a href="" class="post">Post A Property</a>
-          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+          <a href="./login.html" class="login">Sign up or Log in</a>
         </div>
       </div>
     </nav>
   </header>
 
 
-  <div class="register-container content">
+  <!-- Login Section -->
+  <div class="login-container content">
     <div>
-      <h1>Join OurAgent Today</h1>
-      <p>
-        Already a member? <a href="../login-page/login.html" class="register-container_a"> Log In</a>
+      <h1>Log into your account</h1>
+      <p class="new_user">
+        New to OurAgent? <br><br> <a href="../registered-page/register.html" class="login-container_a">Create an
+          account</a> to get
+        started
       </p>
-
-      <!-- Social Auth Buttons -->
-      <div class="auth-buttons">
-        <!-- Remove duplicate "Sign in with Google" button -->
-        <!-- <button class="facebook-button">
-    <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with Facebook
-  </button>
-  <button id="google-signup-btn">Signup with Google</button> -->
-      </div>
-
-      <!-- Divider -->
+      <!-- <div class="auth-buttons">
+        <button class="google-button">
+          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Sign in with google
+        </button>
+        <button class="facebook-button">
+          <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with facebook
+        </button>
+      </div> -->
       <div class="divider">
         <span></span>
         <p>or sign in with email</p>
@@ -81,78 +81,47 @@
       </div>
 
 
-
-      <!-- Form -->
-      <form id="signup-form">
-        <!-- Full Name -->
-        <div class="form-group">
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" name="fullName" placeholder="Enter your full name" required>
-          <span id="full-name-error" class="error-message"></span>
-        </div>
-
-        <!-- Email -->
+      <form>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-          <span id="email-error" class="error-message"></span>
+          <input type="email" id="email" placeholder="Enter your email" required>
         </div>
-
-        <!-- Phone Number -->
-        <div class="form-group">
-          <label for="phone-number">Phone Number</label>
-          <input type="tel" id="phone-number" name="phone" placeholder="Enter your phone number" required>
-          <span id="phone-number-error" class="error-message"></span>
-        </div>
-
-        <!-- Account Type -->
-        <div class="form-group">
-          <label>Select the account type that best describes you:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="category" value="buyer"> Buyer</label>
-            <label><input type="radio" name="category" value="Client"> Client </label>
-            <label><input type="radio" name="category" value="Occupant"> Occupant</label>
-            <label><input type="radio" name="category" value="investor"> Investor</label>
-            <label><input type="radio" name="category" value="others"> Others</label>
-          </div>
-          <span id="category-error" class="error-message"></span>
-        </div>
-
-        <!-- Password -->
         <div class="form-group">
           <label for="password">Password</label>
           <div class="password-container form-group">
-            <input type="password" id="password" name="pass" placeholder="Create a secure password" required
-              minlength="8">
+            <input type="password" id="password" placeholder="Enter your Password" required>
             <span id="toggle-password" class="toggle-password">
               <i id="eye-icon" class="fas fa-eye"></i>
             </span>
           </div>
-          <span id="password-error" class="error-message"></span>
+          <small id="email-error" class="error-text"></small> <!-- Error message for email -->
+          <a href="../forgot-page/forgot.html" class="forgot-password">Forgot Password?</a>
         </div>
 
-        <!-- Submit Button -->
+        <div class="keep-me">
+          <input type="checkbox" id="keep-me" />
+          <label for="keep-me">Keep me logged in to this device</label>
+        </div>
+
         <div class="btn-button">
           <button type="submit" class="btn primary" id="submitButton">Register</button>
         </div>
 
-
-        <!-- Terms and Conditions -->
-        <div class="terms-flex">
-          <p class="terms keep-me">
-            <input type="checkbox" id="keep-me" required>
-            I agree to OurAgent's <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>.
-          </p>
-          <span id="terms-error" class="error-message"></span>
-        </div>
       </form>
+
+
+
+
     </div>
   </div>
+
+
+
   <footer class="footer">
     <div class="footer-top">
       <!-- Logo and Links -->
       <div class="footer-logo">
-        <img style="width:200px;" src="/images/OURAGENT LOGO HORIZONTAL BLUE 1.png " alt="Our Agent NG Logo">
+        <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
 
       </div>
       <ul class="footer-links">
@@ -174,7 +143,7 @@
     <hr class="line">
     <!-- Footer Bottom Text -->
     <div class="footer-bottom">
-      <p>&copy; 2024 Relume. All rights reserved.</p>
+      <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
       <ul class="footer-bottom-links">
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Service</a></li>
@@ -182,9 +151,8 @@
       </ul>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="./register.js"></script>
-  <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
+
+  <script src="./loginsignup.js"></script>
 </body>
 
 </html>

@@ -38,32 +38,43 @@ inputs.forEach((input, index) => {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
-  const email = sessionStorage.getItem("email"); // Retrieve email from sessionStorage
+  const email = sessionStorage.getItem("email");
 
   if (!email) {
-    // Redirect to registration page if no email is found in sessionStorage
-    window.location.href = "../registered-page/register.html";
+    Swal.fire({
+      title: "Session Expired",
+      text: "Your session has expired. Redirecting to the registration page...",
+      icon: "warning",
+      confirmButtonText: "OK",
+    }).then(() => {
+      window.location.href = "../registered-page/register.html";
+    });
     return;
   }
 
-  const otpForm = document.getElementById("otpForm");
-  const resendBtn = document.getElementById("resendBtn");
-  const successMessage = document.getElementById("successMessage");
-  const otpSentMessage = document.getElementById("otpSentMessage");
 
+  const otpForm = document.getElementById("otpForm");
   otpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Collect OTP input
     const otp = Array.from(document.querySelectorAll(".otp-input"))
-      .map((input) => input.value.trim())
-      .join("");
+    .map((input) => input.value.trim())
+    .join("");
+
 
     if (otp.length !== 6) {
-      alert("Please enter a valid 6-digit OTP.");
+      Swal.fire({
+        title: "Invalid OTP",
+        text: "Please enter a valid 6-digit OTP.",
+        icon: "warning",
+        confirmButtonText: "Retry",
+      });
       return;
     }
+
 
     const submitButton = otpForm.querySelector("button[type='submit']");
     submitButton.disabled = true;
@@ -80,19 +91,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const result = await response.json();
 
+     
       if (result.status === "success") {
-        successMessage.style.display = "block";
-        alert(result.message || "OTP verified successfully.");
-        window.location.href = "../login-page/login.html"; // Redirect to login page
+        Swal.fire({
+          title: "OTP Verified",
+          text: "Your OTP has been verified successfully!",
+          icon: "success",
+          confirmButtonText: "Proceed",
+        }).then(() => {
+          window.location.href = "../login-page/login.html";
+        });
       } else {
-        alert(result.message || "Failed to verify OTP.");
+        Swal.fire({
+          title: "Verification Failed",
+          text: result.message || "The OTP entered is incorrect. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      alert("An error occurred while verifying the OTP.");
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while verifying the OTP. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = "Verify OTP";
+      submitButton.textContent = "Verify";
     }
   });
 
@@ -112,17 +139,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (result.status === "success") {
-        otpSentMessage.style.display = "block";
-        alert(result.message || "OTP has been resent.");
+        Swal.fire({
+          title: "OTP Verified",
+          text: "OTP has been resent.",
+          icon: "success",
+          confirmButtonText: "Proceed",
+    
+        });
       } else {
-        alert(result.message || "Failed to resend OTP.");
+        Swal.fire({
+          title: "Verification Failed",
+          text: result.message || "Failed to resend OTP.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
       }
     } catch (error) {
-      console.error("Error resending OTP:", error);
-      alert("An error occurred while resending the OTP.");
+      console.error("Error verifying OTP:", error);
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while verifying the OTP. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
     } finally {
-      resendBtn.disabled = false;
-      resendBtn.textContent = "Resend OTP";
+      submitButton.disabled = false;
+      submitButton.textContent = "Resend OTP";
     }
   });
 });

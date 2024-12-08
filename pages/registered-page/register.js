@@ -11,7 +11,7 @@ menuToggle.addEventListener("click", () => {
 
 document.getElementById("toggle-password")
   .addEventListener("click", function () {
-    const passwordField = document.getElementById("new_password confirm_password");
+    const passwordField = document.getElementById("password");
     const eyeIcon = document.getElementById("eye-icon");
 
     if (passwordField.type === "password") {
@@ -26,6 +26,8 @@ document.getElementById("toggle-password")
   });
 
   document.addEventListener("DOMContentLoaded", function () {
+    const submitButton = document.querySelector("form button[type='submit']");
+  
     document.querySelector("form").addEventListener("submit", async (event) => {
       event.preventDefault();
   
@@ -75,10 +77,9 @@ document.getElementById("toggle-password")
       }
   
       if (hasError) return;
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Processing...";
   
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
   
       try {
         const response = await fetch("https://ouragent.com.ng/signup.php", {
@@ -96,19 +97,24 @@ document.getElementById("toggle-password")
         });
   
         if (!response.ok) {
-          console.error("HTTP Error:", response.status, response.statusText);
           throw new Error("Failed to connect to server.");
         }
   
         const data = await response.json();
   
         if (data.status === "success") {
-          // Redirect to OTP verification page, passing email and userId
-          sessionStorage.setItem("userId", data.userId);
-          sessionStorage.setItem("email", email);
-          window.location.href = "../otp-page/otp.html";
+          Swal.fire({
+            title: "Registration Successful",
+            text: "Please check your email for OTP verification.",
+            icon: "success",
+            confirmButtonText: "Proceed",
+          }).then(() => {
+            // Redirect to OTP verification page, passing email and userId
+            sessionStorage.setItem("userId", data.userId);
+            sessionStorage.setItem("email", email);
+            window.location.href = "../otp-page/otp.html";
+          });
         } else {
-          // Display validation errors
           if (data.errors) {
             if (data.errors.fullName)
               setError("full-name-error", data.errors.fullName);
@@ -119,13 +125,22 @@ document.getElementById("toggle-password")
               setError("category-error", data.errors.category);
             if (data.errors.pass) setError("password-error", data.errors.pass);
           } else {
-            alert(data.message || "Registration failed.");
+            Swal.fire({
+              title: "Registration Failed",
+              text: data.message || "Something went wrong. Please try again.",
+              icon: "error",
+              confirmButtonText: "Retry",
+            });
           }
         }
       } catch (error) {
-        //console.error("Fetch Error:", error.message);
-       // alert("An error occurred. Please try again.");
-      }finally {
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
+      } finally {
         // Re-enable button
         submitButton.disabled = false;
         submitButton.textContent = "Register";
@@ -151,4 +166,6 @@ document.getElementById("toggle-password")
 //     const signinClientUrl = "https://ouragent.com.ng/google-client-signin.php"; // Backend URL
 //     window.location.href = signinClientUrl; // Redirect to Google Sign-In
 // });
+
+
 

@@ -63,12 +63,11 @@
             </div>
 
             <h1>Password Reset</h1>
-            <p>You will receive instruction for reseting your password</p>
+            <p>We will send a <span class="span">one-time password(OTP)</span> to your email</p>
 
             <form id="resetForm">
-                <label for="email">Enter your email:</label>
-                <input type="email" id="email" class="otp-input" name="email" placeholder="your@example.com" required>
-                <button type="submit" id="submitButton">Send Code</button>
+                <input type="email" id="email" class="otp-input" name="email" placeholder="your@gmail.com" required>
+                <button type="submit" id="submitButton">Get OTP</button>
                 <p id="responseMessage"></p>
             </form>
             
@@ -119,6 +118,6 @@
             </ul>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./forgot.js"></script>
 </body>
