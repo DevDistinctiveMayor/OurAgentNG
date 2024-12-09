@@ -27,15 +27,16 @@ document
       eyeIcon.classList.add("fa-eye-slash");
     }
   });
+
+
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("form").addEventListener("submit", async (event) => {
       event.preventDefault();
   
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const keepMeLoggedIn = document.getElementById("keep-me").checked;
-      const submitButton = document.getElementById("submitButton"); // Get the button with ID 'submitButton'
-      const responseMessage = document.getElementById("responseMessage"); // Where you display error messages
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const keepMeLoggedIn = document.getElementById("keep-me").checked;
+    const submitButton = document.getElementById("submitButton"); // Get the button with ID 'submitButton'
   
       // Utility function to set error messages
       const setError = (elementId, message) => {
@@ -57,7 +58,7 @@ document
       //submitButton.classList.add("loading");  // Add loading class
   
       try {
-        const response = await fetch("https://ouragent.com.ng/signin.php", {
+        const response = await fetch("https://ouragent.com.ng/agentsignin.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

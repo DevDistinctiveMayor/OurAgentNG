@@ -354,7 +354,7 @@ form {
 }
 
 
-button {
+.button {
   background-color:  rgba(8, 97, 175, 1);
   color: white;
   border: none;
@@ -364,18 +364,17 @@ button {
   border-radius: 5px;
   margin-top: 1rem;
   width: 50%;
-  
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Hover effect */
-button:hover {
+.button:hover {
   background-color: #000000;
   color: #fff;
 }
 
 /* Active (pressed) effect */
-button:active {
+.button:active {
   background-color: #3e8e41;
   transform: scale(0.95);
 }

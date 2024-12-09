@@ -257,7 +257,7 @@ form {
     font-size: 0.9em;
   }
 
-  button {
+  .button {
     background-color:  rgba(8, 97, 175, 1);
     color: white;
     border: none;
@@ -267,42 +267,21 @@ form {
     border-radius: 5px;
     margin-top: 1rem;
     width: 100%;
-    
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   /* Hover effect */
-  button:hover {
+  .button:hover {
     background-color: #000000;
     color: #fff;
   }
   
   /* Active (pressed) effect */
-  button:active {
+  .button:active {
     background-color: #3e8e41;
     transform: scale(0.95);
   }
   
-  /* Loading state */
-  button.loading {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-  
-  /* Spinner for loading */
-  button.loading::after {
-    content: "";
-    margin-left: 10px;
-    border: 2px solid #666666;
-    border-top: 2px solid transparent;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    display: inline-block;
-    animation: spin 1s linear infinite;
-  }
   
   @keyframes spin {
     from {
