@@ -66,9 +66,10 @@
                 <div class="search-box">
                     <img src="../../assets/icon/Vector.png" class="searchicon" />
                     <input type="text" placeholder="Search location...">
+                    
                 </div>
-                <div class="advance_filter">
-                    <input type="text" placeholder="Advanced Filters">
+                <div class="advance_filter" id="toggleFilter">
+                    <input type="text" placeholder="Filters"  class="toggle-filter-btn"">
                     <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
                 </div>
         
@@ -942,6 +943,70 @@
           </div>
         </div>
       </main>
+
+
+      <main>
+        <div class="main_container">
+          <section class="advance-filter-container">
+            <button class="cancel-btn" id="cancelFilter">Cancel</button>
+            <h2>choose category</h2>
+    
+            <div class="select-box">
+              <select name="" id="">
+                <option value=""><a href="">Sale</a></option>
+                <option value=""><a href="">Rent</a></option>
+              </select>
+            </div>
+    
+            <div class="search_box">
+              <i class='bx bx-search' style='color:#0873d2'></i>
+              <input type="search" name="" id="" placeholder="Search location...">
+            </div>
+    
+            <div class="bedrooms-selection">
+              <h3>Bedrooms</h3>
+    
+              <div class="row-select-box">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+              </div>
+            </div>
+    
+            <div class="property-type-container">
+              <h3>property types</h3>
+    
+              <div class="row-display-container">
+                <a href="#">All</a>
+                <a href="#">Warehouse</a>
+                <a href="#">Detached Bungalow</a>
+                <a href="#">Office Spaces</a>
+                <a href="#">Lands</a>
+                <a href="#">Apartments</a>
+                <a href="#">Commercial properties</a>
+                <a href="#">Shops</a>
+                <a href="#">Mini Flat</a>
+                <a href="#">Detached Duplex</a>
+                <a href="#">Co-working Spaces</a>
+                <a href="#">Self-contained</a>
+              </div>
+            </div>
+    
+            <div class="selectedControl-box">
+              <a href="#" class="reset-btn">Reset</a>
+              <a href="#" class="apply-btn">Apply Filters</a>
+            </div>
+          </section>
+        </div>
+    
+      </main>
     
       <div class="footer-div"> 
         <section class="download-section">
@@ -955,10 +1020,6 @@
               <a href="">Click here to download</a>
             </div>
           </section>
-      
-          
-      
-      
       
         <footer class="footer">
           <div class="footer-top">
