@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Our Agent | Filter[Advance]</title>
+</head>
+<body>
+     <!-- Header Section -->
+  <header>
+    <nav class="navbar ">
+      <div class="logo">
+        <a href="./index.html"><img src="../../assets/logo.svg" alt=""></a>
+        <ul class="nav-links">
+          <li><a href="./pages/buy-page/buy.html">Sale</a></li>
+          <li><a href="./pages/rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="./pages/agent-register-page/agent.html" class="post">Post A Property</a>
+              <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="./pages/agent-register-page/agent.html" class="post">Post A Property</a>
+          <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Section Of the Advance Filter Page -->
+  <main>
+    <section class="advance-filter-container">
+        <h2>choose category</h2>
+
+    <div class="select-box">
+        <select name="" id="">
+            <option value=""><a href="">Sale</a></option>
+            <option value=""><a href="">Rent</a></option>
+        </select>
+    </div>
+ 
+    <div class="search-box">
+        <i class='bx bx-search' style='color:#0873d2'  ></i>
+        <input type="search" name="" id="" placeholder="Search location...">
+    </div>
+
+    <div class="bedrooms-selection">
+        <h3>Bedrooms</h3>
+
+        <div class="row-select-box">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+        </div>
+    </div>
+
+    <div class="property-type-container">
+        <h3>property types</h3>
+
+        <div  class="row-display-container">
+        <a href="#">All</a>
+        <a href="#">Semi detached Bungalow</a>
+        <a href="#">Shop in a mall</a>
+        <a href="#">Warehouse</a>
+        <a href="#">Detached Bungalow</a>
+        <a href="#">Office Spaces</a>
+        <a href="#">Lands</a>
+        <a href="#">Apartments</a>
+        <a href="#">Commercial properties</a>
+        <a href="#">Terraced Duplex</a>
+        <a href="#">Houses</a>
+        <a href="#">Shops</a>
+        <a href="#">Terraced Bungalow</a>
+        <a href="#">Semi-detached Bungalow</a>
+        <a href="#">Mini Flat</a>
+        <a href="#">Detached Duplex</a>
+        <a href="#">Co-working Spaces</a>
+        <a href="#">Self-contained</a>
+        </div>
+    </div>
+
+    <div class="selectedControl-box">
+        <a href="#" class="reset-btn">Reset</a>
+        <a href="#" class="apply-btn">Apply Filters</a>
+    </div>
+    </section>
+    
+  </main>
+</body>
+</html>
