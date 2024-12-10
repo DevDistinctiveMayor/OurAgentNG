@@ -1,0 +1,191 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="./reset.css">
+    <title>Our AgentNG | Website</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar ">
+            <div class="logo">
+                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="../buy-page/buy.html">Buy</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="#services">Saved properties</a></li>
+                    <li><a href="#contact">About us</a></li>
+                    <div class="nav-links3 ">
+                        <div class="access-box">
+                            <a href="" class="post">Post A Property</a>
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+
+            <label class="menu-toggle" onClick={onToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+            <div class="nav-links2">
+
+
+                <div class="access-box">
+                    <a href="" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <main class="otp_body content">
+        <div class="login-container">
+            <div class="mail1">
+                <div class="mail">
+                    <div class="mail-icon">📧
+                    </div>
+                </div>
+            </div>
+
+            <h1>Reset Password</h1>
+            <p>Create a new password</p>
+
+            <form id="emailForm">
+
+                
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <small id="email-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="otp">Enter OTP:</label>
+                    <div class="form-group">
+                        <input type="text" class="otp-input" id="otp" name="otp" required>
+                    </div>
+                    <small id="otp-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <div class="password-container form-group">
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password"
+                        required>
+                        <span class="toggle-password" data-target="newPassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <small id="password-error" class="error"></small>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <div class="password-container form-group">
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm new password" required>
+                        <span class="toggle-password" data-target="confirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+
+
+
+
+                <button type="submit" id="submitButton" class="button">Reset Password</button>
+<!-- 
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <small id="email-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="otp">OTP:</label>
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+                    <small id="otp-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password"
+                        required>
+                    <small id="password-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm new password" required>
+                </div>
+
+                <button type="submit" id="submitButton">Reset Password</button> -->
+                <p id="responseMessage"></p>
+
+            </form>
+
+        </div>
+    </main>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-top">
+            <!-- Logo and Links -->
+            <div class="footer-logo">
+                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
+                    alt="Our Agent NG Logo">
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Property Listings</a></li>
+                <li><a href="#">Agent Resources</a></li>
+                <li><a href="#">Home Buyers</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                        width="20"></a>
+            </div>
+        </div>
+        <hr class="line">
+        <!-- Footer Bottom Text -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies Settings</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./reset.js"></script>
+</body>
