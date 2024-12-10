@@ -259,7 +259,7 @@ h1 {
   transform: scale(0.95);
 }
 
-.success-message {
+/* .success-message {
   display: none;
   text-align: center;
   margin-top: 20px;
@@ -274,7 +274,7 @@ h1 {
   font-size: 1rem;
   color: #28a745;
   margin-top: 0.5rem;
-}
+} */
 
 .resend-container {
   margin-top: 1rem;
