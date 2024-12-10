@@ -1,0 +1,559 @@
+@font-face {
+    font-family: "poppins";
+    src: url(../../assets/font/Poppins-Regular.woff2);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* General reset for margins and padding */
+  body {
+    font-family: "poppins";
+  }
+  
+  /* Blur and disable background when menu is open */
+  .content-blur {
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+    transition: filter 0.1s ease;
+  }
+  
+  /* Optional: Disable scrolling when menu is open */
+  .disable-scroll {
+    overflow: scroll;
+  }
+  
+  /* Header Styling */
+  header {
+    border-bottom: 1pt solid #808080;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #333;
+    padding: 10px 3%;
+  }
+  
+  .logo {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: 0.3s ease;
+  }
+  
+  .access-box {
+    display: flex;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  
+  .access-box > a {
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  .access-box > .post {
+    padding: 9px;
+    background-color: rgba(8, 97, 175, 1);
+    color: #fff;
+    border-radius: 7px;
+  }
+  
+  .access-box > .login {
+    color: rgba(8, 97, 175, 1);
+    border: 1px solid rgba(8, 97, 175, 1);
+    padding: 9px;
+    border-radius: 7px;
+  }
+  
+  .menu-toggle {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 14px;
+    display: none;
+    margin-top: 0.8rem;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 60%;
+    height: 2px;
+    background-color: #0e0e0e;
+    position: absolute;
+    left: 0;
+    transition: all 0.2s ease;
+    z-index: 30;
+  }
+  
+  .menu-toggle span:nth-child(1) {
+    top: 0;
+  }
+  
+  .menu-toggle span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .menu-toggle span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  /* Animation for the hamburger icon */
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-links3 {
+    display: none;
+  }
+  .nav-links2 {
+    display: block;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    margin-top: 7rem;
+  }
+  
+  .login-container h1 {
+    font-size: 1.2rem;
+    color: #0d1b2a;
+    margin-bottom: 10px;
+  }
+  
+  .login-container p {
+    font-size: 16px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .login-container_a {
+    color: rgba(8, 97, 175, 1);
+    text-decoration: none;
+    font-weight: 900;
+  }
+  .login-container_a:hover {
+    text-decoration: underline;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .auth-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1.2px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    color: rgba(8, 97, 175, 1);
+  }
+  
+  .google-button {
+    background-color: #fff;
+  }
+  .google-button:hover {
+    background-color: rgba(8, 97, 175, 1);
+    color: white;
+  }
+  
+  .facebook-button {
+    background-color: #fff;
+  }
+  .facebook-button:hover {
+    background-color: rgba(8, 97, 175, 1);
+    color: white;
+  }
+  
+  .google-button img,
+  .facebook-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .divider span {
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  .divider p {
+    font-size: 0.9rem;
+    color: #000000;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+  }
+  
+  form {
+    text-align: left;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 0.7rem;
+  }
+  
+  .form-group > input {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 5px;
+    outline: none; /* Removes default blue outline */
+  }
+  
+  .form-group input:focus {
+    border: 1px solid rgba(8, 97, 175, 1); /* Change the border color on focus */
+    box-shadow: 0 0 2px rgba(8, 97, 175, 1); /* Optional: add a subtle shadow */
+  }
+  
+  .password-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .toggle-password {
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(8, 97, 175, 1);
+  }
+  
+  .toggle-password i {
+    pointer-events: none;
+  }
+  
+  .forgot-password {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    margin-left: 2rem;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .keep-me {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+    font-size: 14px;
+  }
+  
+  /* Style for the checkbox */
+  .keep-me input[type="checkbox"] {
+    appearance: none; /* Removes default checkbox styling */
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Style for the checked state */
+  .keep-me input[type="checkbox"]:checked {
+    background-color: rgba(8, 97, 175, 1); /* Change to the desired color */
+    border-color: rgba(8, 97, 175, 1); /* Optional: match border color */
+  }
+  
+  .keep-me input[type="checkbox"]:checked::after {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 2px; /* Optional: adjust for aesthetics */
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .btn-button {
+    display: flex;
+    justify-content: center;
+  }
+  button {
+    background-color:  rgba(8, 97, 175, 1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+    width: 50%;
+    
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover effect */
+  button:hover {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  /* Active (pressed) effect */
+  button:active {
+    background-color: #3e8e41;
+    transform: scale(0.95);
+  }
+  
+  /* Loading state */
+  /* button.loading {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    pointer-events: none;
+  } */
+  
+  /* Spinner for loading */
+  /* button.loading::after {
+    content: "";
+    margin-left: 10px;
+    border: 2px solid #666666;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+  } */
+  
+  @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  .footer {
+    /* background-color: #f9f9f9; */
+    padding: 20px;
+    text-align: center;
+    /* border-top: 1px solid #ddd; */
+  }
+  
+  /* Footer Top Section */
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-logo h2 {
+    font-size: 1.2em;
+    color: #0073e6;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-links li {
+    list-style: none;
+  }
+  
+  .footer-links a {
+    color: rgba(8, 97, 175, 1);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Icons */
+  .social-icons a {
+    margin: 0 8px;
+  }
+  
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Footer Bottom Section */
+  .footer-bottom {
+    margin-top: 30px;
+    font-size: 0.9em;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+  }
+  
+  .footer-bottom-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .footer-bottom-links li {
+    list-style: none;
+  }
+  
+  .footer-bottom-links a {
+    color: rgba(8, 97, 175, 1);
+    font-family: Roboto;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  
+  .footer-bottom-links a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (min-width: 1024px) {
+    .login-container h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* For mobile screens (up to 767px) */
+  @media (max-width: 768px) {
+    .nav-links3 {
+      display: block;
+      margin-top: 0.4rem;
+    }
+    .nav-links2 {
+      display: none;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #ffffff;
+      position: absolute;
+      color: #000;
+      box-shadow: 0px 0px 2px rgba(8, 97, 175, 1);
+      top: 90px;
+      right: 10%;
+      width: 80%;
+      padding: 30px 0px;
+      transform: translateX(100%);
+      border-radius: 5px;
+      z-index: 10;
+    }
+  
+    .nav-links > li {
+      text-align: center;
+      margin-top: 0.4rem;
+    }
+  
+    .nav-links > li:hover {
+      /* transform: translate(15px); */
+      text-decoration: underline;
+    }
+  
+    .nav-links.active {
+      display: flex;
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .footer{
+      margin-top: 3rem;
+    }
+    .footer-links a {
+      font-size: 12px;
+    }
+    .footer-bottom-links a {
+      font-size: 14px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 50px auto;
+    }
+  
+    .footer-links {
+      gap: 30px;
+    }
+  }
+  

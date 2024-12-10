@@ -38,73 +38,134 @@ inputs.forEach((input, index) => {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
-    const email = sessionStorage.getItem("email"); // Retrieve email from sessionStorage
-    if (!email) {
-      alert("No email found. Please register first.");
+  const email = sessionStorage.getItem("email");
+
+  if (!email) {
+    Swal.fire({
+      title: "Session Expired",
+      text: "Your session has expired. Redirecting to the registration page...",
+      icon: "warning",
+      confirmButtonText: "OK",
+    }).then(() => {
       window.location.href = "../registered-page/register.html";
+    });
+    return;
+  }
+
+
+  const otpForm = document.getElementById("otpForm");
+  otpForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Collect OTP input
+    const otp = Array.from(document.querySelectorAll(".otp-input"))
+    .map((input) => input.value.trim())
+    .join("");
+
+
+    if (otp.length !== 6) {
+      Swal.fire({
+        title: "Invalid OTP",
+        text: "Please enter a valid 6-digit OTP.",
+        icon: "warning",
+        confirmButtonText: "Retry",
+      });
       return;
     }
-  
-    document.getElementById("otpForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-  
-      // Collect all digits into a single string
-      const otp = Array.from(document.querySelectorAll(".otp-input"))
-        .map((input) => input.value)
-        .join("");
-  
-      if (otp.length === 6) {
-        try {
-          const response = await fetch("https://ouragent.com.ng/otp.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, otp }),
-          });
-  
-          const result = await response.json();
-  
-          if (result.status === "success") {
-            document.getElementById("successMessage").style.display = "block";
-            window.location.href = "../login-page/login.html";
-            alert(result.message);
-            // Redirect or notify the user
-          } else {
-            alert(result.message || "Failed to verify OTP.");
-          }
-        } catch (error) {
-          console.error("Error verifying OTP:", error);
-          alert("An error occurred while verifying the OTP.");
-        }
-      } else {
-        alert("Please complete the OTP input.");
-      }
-    });
-  
-    document.getElementById("resendBtn").addEventListener("click", async () => {
-      try {
-        const response = await fetch("https://ouragent.com.ng/resendotp.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
+
+
+    const submitButton = otpForm.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.textContent = "Verifying...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/otp.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, otp }),
+      });
+
+      const result = await response.json();
+
+     
+      if (result.status === "success") {
+        Swal.fire({
+          title: "OTP Verified",
+          text: "Your OTP has been verified successfully!",
+          icon: "success",
+          confirmButtonText: "Proceed",
+        }).then(() => {
+          window.location.href = "../login-page/login.html";
         });
-  
-        const result = await response.json();
-  
-        if (result.success) {
-          document.getElementById("otpSentMessage").style.display = "block";
-          alert(result.message || "OTP has been resent.");
-        } else {
-          alert(result.message || "Failed to resend OTP.");
-        }
-      } catch (error) {
-        console.error("Error resending OTP:", error);
-        alert("An error occurred while resending the OTP.");
+      } else {
+        Swal.fire({
+          title: "Verification Failed",
+          text: result.message || "The OTP entered is incorrect. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
       }
-    });
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while verifying the OTP. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Verify";
+    }
   });
-  
+
+  resendBtn.addEventListener("click", async () => {
+    resendBtn.disabled = true;
+    resendBtn.textContent = "Resending...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/resendotp.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        Swal.fire({
+          title: "OTP Verified",
+          text: "OTP has been resent.",
+          icon: "success",
+          confirmButtonText: "Proceed",
+    
+        });
+      } else {
+        Swal.fire({
+          title: "Verification Failed",
+          text: result.message || "Failed to resend OTP.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while verifying the OTP. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Resend OTP";
+    }
+  });
+});
+

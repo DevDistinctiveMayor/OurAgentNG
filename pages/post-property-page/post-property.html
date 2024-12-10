@@ -1,0 +1,230 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="post-property.css">
+    <title>Our AgentNG | Website</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+          <div class="logo">
+    
+            <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+    
+            <ul class="nav-links">
+              <li><a href="../buy-page/buy.html">Sale</a></li>
+              <li><a href="../rent-page/rent.html">Rent</a></li>
+              <li><a href="#services">Saved properties</a></li>
+              <li><a href="#contact">About us</a></li>
+              <div class="nav-links3 ">
+                <div class="access-box">
+                  <a href="" class="post">Post A Property</a>
+                  <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
+              </div>
+            </ul>
+          </div>
+    
+          </div>
+    
+          <label class="menu-toggle" onClick={onToggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+    
+          <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+          <i class="bx bx-menu"></i>
+        </button> -->
+          <div class="nav-links2">
+    
+    
+            <div class="access-box">
+              <a href="" class="post">Post A Property</a>
+              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+
+
+
+    <main class="content">
+        <div class="property-container">
+            <div class="container">
+                <div class="form-header">
+                    <h1>Post Your Property for Rent</h1>
+                    <p>Let potential renters discover your property. Fill out the form with accurate details to maximize exposure.</p>
+                </div>
+                
+                <form id="post-property-form" method="POST" action="your-backend-endpoint.php" enctype="multipart/form-data">
+                    <!-- Agent Details -->
+                    <section class="form-section">
+                        <h2>Agent Information</h2>
+                        <p>Provide your details so renters can reach out to you directly.</p>
+                        
+                        <div class="form-group">
+                            <label for="agent-name">Full Name</label>
+                            <input type="text" id="agent-name" name="agentName" placeholder="Enter your full name" required>
+                            <span id="agentName-error" class="error-message"></span>
+                        </div>
+                    </section>
+            
+                    <!-- Property Details -->
+                    <section class="form-section">
+                        <h2>Property Information</h2>
+                        <p>Describe the property in detail to attract the right tenants.</p>
+                        
+                        <div class="form-group">
+                            <label for="property-name">Property Name</label>
+                            <input type="text" id="property-name" name="propertyName" placeholder="Enter the property name" required>
+                            <span id="propertyName-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4" required></textarea>
+                            <span id="description-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="price">Price (₦)</label>
+                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price" required>
+                            <span id="price-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="Enter the exact address or area" required>
+                            <span id="location-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="size">Property Size</label>
+                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)" required>
+                            <span id="size-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="property-type">Property Type</label>
+                            <select id="property-type" name="propertyType" required>
+                                <option value="" disabled selected>Select a property type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="house">House</option>
+                                <option value="office">Office</option>
+                                <option value="land">Land</option>
+                            </select>
+                            <span id="propertyType-error" class="error-message"></span>
+                        </div>
+                    </section>
+            
+                    <!-- Room Details -->
+                    <section class="form-section">
+                        <h2>Room & Bathroom Details</h2>
+                        <p>Specify the number of rooms and bathrooms available in the property.</p>
+                        
+                        <div class="form-group">
+                            <label for="roomNo">Number of Rooms</label>
+                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms" required>
+                            <span id="roomNo-error" class="error-message"></span>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="bathNo">Number of Bathrooms</label>
+                            <input type="number" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
+                            <span id="bathNo-error" class="error-message"></span>
+                        </div>
+                    </section>
+            
+                    <!-- Images Upload -->
+                    <section class="form-section">
+                        <h2>Upload Property Images</h2>
+                        <p>Images significantly increase engagement. Upload clear pictures of the property.</p>
+                        
+                        <div class="form-group">
+                            <label for="images">Select Images</label>
+                            <input 
+                                type="file" 
+                                id="images" 
+                                name="images[]" 
+                                multiple 
+                                accept="image/png, image/jpeg, image/jpg, image/webp" 
+                                required
+                            >
+                            <span id="images-error" class="error-message"></span>
+                            <p class="info-message">You can upload up to 3 images only.</p>
+                        </div>
+                        
+                    </section>
+            
+                    <!-- Submit -->
+                    <div class="form-submit">
+                        <button type="submit">Post Your Property</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+
+
+
+    </main>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-top">
+            <!-- Logo and Links -->
+            <div class="footer-logo">
+                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
+                    alt="Our Agent NG Logo">
+
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Property Listings</a></li>
+                <li><a href="#">Agent Resources</a></li>
+                <li><a href="#">Home Buyers</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                        width="20"></a>
+            </div>
+        </div>
+        <hr class="line">
+        <!-- Footer Bottom Text -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies Settings</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+
+    <script src="post-property.js"></script>
+</body>
