@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             confirmButtonText: "Proceed",
           }).then(() => {
             // Redirect to login page
-            window.location.href = "../login-page/login.html";
+            window.location.href = "../agent-login-page/agent-login.html";
           });
         } else {
           Swal.fire({
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       resendBtn.textContent = "Resending...";
   
       try {
-        const response = await fetch("https://ouragent.com.ng/resendotp.php", {
+        const response = await fetch("https://ouragent.com.ng/agent_resendotp.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
