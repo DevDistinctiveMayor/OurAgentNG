@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./otp.css">
+    <link rel="stylesheet" href="./agentforgot.css">
     <title>Our AgentNG | Website</title>
 </head>
 
@@ -23,8 +23,8 @@
                     <li><a href="#contact">About us</a></li>
                     <div class="nav-links3 ">
                         <div class="access-box">
-                            <a href="" class="post">Post A Property</a>
-                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                            <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+                            <a href="./../login-page/" class="login">Sign up or Log in</a>
                         </div>
                     </div>
                 </ul>
@@ -44,61 +44,39 @@
 
 
                 <div class="access-box">
-                    <a href="" class="post">Post A Property</a>
-                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                    <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+                    <a href="./../login-page/" class="login">Sign up or Log in</a>
                 </div>
             </div>
         </nav>
     </header>
+
+
+
     <main class="otp_body content">
         <div class="login-container">
             <div class="mail1">
                 <div class="mail">
-                    <div class="mail-icon">📧
+                    <div class="mail-icon">📧.
                     </div>
                 </div>
             </div>
 
-            <h1>OTP Verification</h1>
-            <p class="enter_digit">Enter the six (6) digits sent to your email</p>
+            <h1>Password Reset</h1>
+            <p>We will send a <span class="span">one-time password(OTP)</span> to your email</p>
 
-            <form id="otpForm">
-                <div class="otp-input-container">
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                    <span class="dash">-</span>
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                    <span class="dash">-</span>
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                    <span class="dash">-</span>
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                    <span class="dash">-</span>
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                    <span class="dash">-</span>
-                    <input type="text" class="otp-input" id="otp" maxlength="1" required>
-                </div>
-
-                <button type="submit" class="button">Verify</button>
+            <form id="resetForm">
+                <input type="email" id="email" class="otp-input" name="email" placeholder="your@gmail.com" required>
+                <button type="submit" id="submitButton" class="button">Get OTP</button>
+                <p id="responseMessage"></p>
             </form>
-            <!-- Resend OTP -->
-            <div class="resend-container" id="resendContainer">
-                <P>Didn't receive the code?</P>
-                <span id="resendBtn">Resend OTP</span>
-            </div>
-
-            <!-- Success Message -->
-            <div class="success-message" id="successMessage">
-                <div class="success-icon">✔️</div>
-                <div class="success-text">OTP Verified Successfully!</div>
-            </div>
-
-            <!-- OTP Sent -->
-            <div class="otp-sent" id="otpSentMessage">
-                <p>OTP has been sent to your email. Please check your inbox.</p>
-            </div>
-
+            
+        
 
         </div>
     </main>
+
+
 
 
     <footer class="footer">
@@ -107,7 +85,6 @@
             <div class="footer-logo">
                 <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
                     alt="Our Agent NG Logo">
-
             </div>
             <ul class="footer-links">
                 <li><a href="#">Property Listings</a></li>
@@ -142,5 +119,5 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./otp.js"></script>
+    <script src="./agentforgot.js"></script>
 </body>

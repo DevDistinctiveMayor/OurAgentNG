@@ -27,8 +27,8 @@
           <li><a href="#contact">About us</a></li>
           <div class="nav-links3 ">
             <div class="access-box">
-              <a href="" class="post">Post A Property</a>
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+              <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+              <a href="./../login-page/" class="login">Sign up or Log in</a>
             </div>
           </div>
         </ul>
@@ -49,8 +49,8 @@
 
 
         <div class="access-box">
-          <a href="" class="post">Post A Property</a>
-          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+          <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+          <a href="./../login-page/" class="login">Sign up or Log in</a>
         </div>
       </div>
     </nav>
@@ -63,20 +63,27 @@
       <p>
         Already a member? <a href="../login-page/login.html" class="register-container_a"> Log In</a>
       </p>
+
+      <!-- Social Auth Buttons -->
       <div class="auth-buttons">
-        <button class="google-button">
-          <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Sign in with google
-        </button>
-        <button class="facebook-button">
-          <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with google
-        </button>
+        <!-- Remove duplicate "Sign in with Google" button -->
+        <!-- <button class="facebook-button">
+    <img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"> Sign in with Facebook
+  </button>
+  <button id="google-signup-btn">Signup with Google</button> -->
       </div>
+
+      <!-- Divider -->
       <div class="divider">
         <span></span>
         <p>or sign in with email</p>
         <span></span>
       </div>
-      <form>
+
+
+
+      <!-- Form -->
+      <form id="signup-form">
         <!-- Full Name -->
         <div class="form-group">
           <label for="full-name">Full Name</label>
@@ -103,8 +110,8 @@
           <label>Select the account type that best describes you:</label>
           <div class="radio-group">
             <label><input type="radio" name="category" value="buyer"> Buyer</label>
-            <label><input type="radio" name="category" value="seller"> Seller</label>
-            <label><input type="radio" name="category" value="agent"> Agent</label>
+            <label><input type="radio" name="category" value="Client"> Client </label>
+            <label><input type="radio" name="category" value="Occupant"> Occupant</label>
             <label><input type="radio" name="category" value="investor"> Investor</label>
             <label><input type="radio" name="category" value="others"> Others</label>
           </div>
@@ -124,17 +131,20 @@
           <span id="password-error" class="error-message"></span>
         </div>
 
-        <div class="btn-button"><button type="submit" class="btn primary">Register</button></div>
+        <!-- Submit Button -->
+        <div class="btn-button">
+          <button type="submit" class="btn primary button" id="submitButton">Register</button>
+        </div>
+
+
+        <!-- Terms and Conditions -->
         <div class="terms-flex">
           <p class="terms keep-me">
-            <input type="checkbox" id="keep-me" />
+            <input type="checkbox" id="keep-me" required>
             I agree to OurAgent's <a href="#">Terms of service</a> and <a href="#">Privacy Policy</a>.
           </p>
-          <!-- Error message for terms -->
+          <span id="terms-error" class="error-message"></span>
         </div>
-        <span id="terms-error" class="error-message"></span>
-
-
       </form>
     </div>
   </div>
@@ -172,8 +182,9 @@
       </ul>
     </div>
   </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./register.js"></script>
+  <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
 </body>
 
 </html>

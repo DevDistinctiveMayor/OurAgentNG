@@ -2,8 +2,9 @@ const carouselTrack = document.querySelector(".carousel-track");
 const carouselItems = Array.from(document.querySelectorAll(".carousel-item"));
 let currentIndex = 0;
 let autoSlideInterval;
+let itemWidth;
 
-// Clone the first and last few items for infinite scroll
+// Clone the first and last few items for seamless infinite scrolling
 const clonesAtStart = carouselItems.slice(-4).map((item) => item.cloneNode(true));
 const clonesAtEnd = carouselItems.slice(0, 4).map((item) => item.cloneNode(true));
 
@@ -14,12 +15,16 @@ clonesAtEnd.forEach((clone) => carouselTrack.append(clone));
 const allItems = Array.from(carouselTrack.children);
 const totalItems = allItems.length;
 
-// Set up initial position
-const itemWidth = carouselItems[0].offsetWidth + 20; // Include gap
-carouselTrack.style.transform = `translateX(-${4 * itemWidth}px)`;
+// Function to update item width dynamically
+function updateItemWidth() {
+  itemWidth = carouselItems[0].offsetWidth + 20; // Include gap
+  carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+}
 
-// Scroll the carousel left or right
-function scrollCarousel(direction) {
+updateItemWidth();
+
+// Scroll carousel function
+function scrollCarousel(direction = "right") {
   if (direction === "right") {
     currentIndex++;
   } else if (direction === "left") {
@@ -27,12 +32,9 @@ function scrollCarousel(direction) {
   }
 
   carouselTrack.style.transition = "transform 0.5s ease-in-out";
-  const newScrollPosition = currentIndex * itemWidth;
-  carouselTrack.style.transform = `translateX(-${newScrollPosition}px)`;
+  carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
 
-  resetAutoSlide(); // Restart auto-slide after manual navigation
-
-  // Handle infinite scroll (reset without transition)
+  // Handle infinite scroll
   setTimeout(() => {
     if (currentIndex >= totalItems - 4) {
       currentIndex = 4;
@@ -43,33 +45,24 @@ function scrollCarousel(direction) {
       carouselTrack.style.transition = "none";
       carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
     }
-  }, 500); // Match the transition duration
+  }, 500);
 }
 
-// Start auto-slide
+// Auto-slide function
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     scrollCarousel("right");
-  }, 3000); // 3 seconds
+  }, 3000); // Every 3 seconds
 }
 
-// Stop auto-slide
+// Stop auto-slide function
 function stopAutoSlide() {
   clearInterval(autoSlideInterval);
 }
 
-// Restart auto-slide after manual navigation
-function resetAutoSlide() {
-  stopAutoSlide();
-  startAutoSlide();
-}
-
-// Recalculate position on window resize
+// Recalculate item width on window resize
 window.addEventListener("resize", () => {
-  const itemWidth = carouselItems[0].offsetWidth + 20; // Include gap
-  const newScrollPosition = currentIndex * itemWidth;
-  carouselTrack.style.transition = "none"; // Prevent animation during resize
-  carouselTrack.style.transform = `translateX(-${newScrollPosition}px)`;
+  updateItemWidth();
 });
 
 // Start auto-slide on page load

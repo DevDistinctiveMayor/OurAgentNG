@@ -9,8 +9,7 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-document
-  .getElementById("toggle-password")
+document.getElementById("toggle-password")
   .addEventListener("click", function () {
     const passwordField = document.getElementById("password");
     const eyeIcon = document.getElementById("eye-icon");
@@ -27,6 +26,8 @@ document
   });
 
   document.addEventListener("DOMContentLoaded", function () {
+    const submitButton = document.querySelector("form button[type='submit']");
+  
     document.querySelector("form").addEventListener("submit", async (event) => {
       event.preventDefault();
   
@@ -77,6 +78,9 @@ document
   
       if (hasError) return;
   
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+  
       try {
         const response = await fetch("https://ouragent.com.ng/signup.php", {
           method: "POST",
@@ -93,19 +97,24 @@ document
         });
   
         if (!response.ok) {
-          console.error("HTTP Error:", response.status, response.statusText);
           throw new Error("Failed to connect to server.");
         }
   
         const data = await response.json();
   
         if (data.status === "success") {
-          // Redirect to OTP verification page, passing email and userId
-          sessionStorage.setItem("userId", data.userId);
-          sessionStorage.setItem("email", email);
-          window.location.href = "../otp-page/otp.html";
+          Swal.fire({
+            title: "Registration Successful",
+            text: "Please check your email for OTP verification.",
+            icon: "success",
+            confirmButtonText: "Proceed",
+          }).then(() => {
+            // Redirect to OTP verification page, passing email and userId
+            sessionStorage.setItem("userId", data.userId);
+            sessionStorage.setItem("email", email);
+            window.location.href = "../otp-page/otp.html";
+          });
         } else {
-          // Display validation errors
           if (data.errors) {
             if (data.errors.fullName)
               setError("full-name-error", data.errors.fullName);
@@ -116,13 +125,47 @@ document
               setError("category-error", data.errors.category);
             if (data.errors.pass) setError("password-error", data.errors.pass);
           } else {
-            alert(data.message || "Registration failed.");
+            Swal.fire({
+              title: "Registration Failed",
+              text: data.message || "Something went wrong. Please try again.",
+              icon: "error",
+              confirmButtonText: "Retry",
+            });
           }
         }
       } catch (error) {
-        console.error("Fetch Error:", error.message);
-        alert("An error occurred. Please try again.");
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = "Register";
       }
     });
   });
   
+//   document.getElementById('google-signup-btn').addEventListener('click', () => {
+//     const signupClientUrl = "https://accounts.google.com/o/oauth2/auth" +
+//         "?client_id=652930243069-c36k0cjarmm9bmhs3vgrtjqncnnkersn.apps.googleusercontent.com" +
+//         "&redirect_uri=https://ouragent.com.ng/auth/google-client-signup.php" +
+//         "&scope=email profile https://www.googleapis.com/auth/user.phonenumbers.read" +
+//         "&response_type=code";
+//     window.location.href = signupClientUrl; // Redirect to Google Sign-In
+// });
+// const urlParams = new URLSearchParams(window.location.search);
+// document.getElementById('email').value = urlParams.get('email') || '';
+// document.getElementById('full-name').value = urlParams.get('fullName') || '';
+// document.getElementById('phone').value = urlParams.get('phone') || '';
+
+
+// document.getElementById('google-signin-btn').addEventListener('click', () => {
+//     const signinClientUrl = "https://ouragent.com.ng/google-client-signin.php"; // Backend URL
+//     window.location.href = signinClientUrl; // Redirect to Google Sign-In
+// });
+
+
+
