@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Agent | Property Details</title>
+</head>
+<body>
+     <!-- Header Section -->
+  <header>
+    <nav class="navbar ">
+      <div class="logo">
+        <a href="./index.html"><img src="../../assets/logo.svg" alt=""></a>
+        <ul class="nav-links">
+          <li><a href="./pages/buy-page/buy.html">Sale</a></li>
+          <li><a href="./pages/rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="./pages/registered-page/register.html" class="post">Post A Property</a>
+              <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <label
+          class="menu-toggle"
+          onClick={onToggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>  
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="./pages/registered-page/register.html" class="post">Post A Property</a>
+          <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
+    </nav>
+  </header> 
+
+  <main>
+    <div class="sale-container">
+        <div class="sale-container-flex">
+            <div class="sale">
+                <p>Sale</p>
+                <i class='bx bx-chevron-down'></i>
+            </div>
+            <div class="search-box">
+                <img src="../../assets/icon/Vector.png" class="searchicon" />
+                <input type="text" placeholder="Search location...">
+            </div>
+            <div class="advance_filter">
+                <input type="text" placeholder="Advanced Filters">
+                <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
+            </div>
+    
+            <div class="btnn">
+                <button class="search">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div></div>
+        <div  class="left-container">
+            <div class="agent-details">
+                <h2>Marketed By</h2>
+                <div class="profile-pics">
+                    <img src="../../images/agent-profile-img.png" alt="Agent Profile Image" class="profile-pics">
+                    <p class="agent-name">Adebayo's Realty</p>
+                </div>
+                <div class="text-box">
+                    <p class="description">Realty, 23 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+                    <a href="#" class="telephone"><i class='bx bxs-phone' style='color:#222222'  ></i>  +234 803 123 4567</p>
+                    <a href="#" class="website"><i class='bx bx-globe' style='color:#222222' ></i>  Website</p>
+                    <a href="#" class="year-usec"><i class='bx bx-user' style='color:#222222' ></i>  Registered 1 year ago</p>
+                    <a href="#" class="others-link"><i class='bx bx-briefcase-alt' style='color:#222222'  ></i>  View all properties from agent</p>
+                </div>    
+            </div>
+        </div>
+    </div>
+  </main>
+</body>
+</html>
