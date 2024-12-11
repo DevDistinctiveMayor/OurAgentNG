@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Agent | Property Details</title>
+</head>
+<body>
+     <!-- Header Section -->
+  <header>
+    <nav class="navbar ">
+      <div class="logo">
+        <a href="./index.html"><img src="../../assets/logo.svg" alt=""></a>
+        <ul class="nav-links">
+          <li><a href="./pages/buy-page/buy.html">Sale</a></li>
+          <li><a href="./pages/rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="./pages/registered-page/register.html" class="post">Post A Property</a>
+              <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <label
+          class="menu-toggle"
+          onClick={onToggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>  
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="bx bx-menu"></i>
+      </button> -->
+      <div class="nav-links2">
+
+
+        <div class="access-box">
+          <a href="./pages/registered-page/register.html" class="post">Post A Property</a>
+          <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+        </div>
+      </div>
+    </nav>
+  </header> 
+
+  <main>
+    <div class="sale-container">
+        <div class="sale-container-flex">
+            <div class="sale">
+                <p>Sale</p>
+                <i class='bx bx-chevron-down'></i>
+            </div>
+            <div class="search-box">
+                <img src="../../assets/icon/Vector.png" class="searchicon" />
+                <input type="text" placeholder="Search location...">
+            </div>
+            <div class="advance_filter">
+                <input type="text" placeholder="Advanced Filters">
+                <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
+            </div>
+    
+            <div class="btnn">
+                <button class="search">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-container">
+          <h1>Newly Built 1 Bedroom Apartment</h1>
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../../assets/hero-section-image.png" alt="First Property Image">
+              </div>
+              <div class="carousel-item">
+                <img src="../../images/duplex 1.png" alt="second Property Image">
+              </div>
+              <div class="carousel-item">
+                <img src="../../images/ph.png" alt="third Property Image">
+              </div>
+            </div>
+
+            <button class="prev"><i class='bx bx-left-arrow-alt'></i></button>
+            <button class="next"><i class='bx bx-right-arrow-alt'></i></button>
+          </div>
+
+          <div class="property-images-box">
+            <div>
+              <img src="../../images/agent-profile-img.png" alt="Property image">
+            </div>
+            <div>
+              <img src="../../images/agent-profile-img.png" alt="Property image">
+            </div>
+            <div>
+              <img src="../../images/agent-profile-img.png" alt="Property image">
+            </div>
+          </div>
+
+          <div class="property-text-details">
+            <h3>₦70,000,000</h3>
+
+            <div class="address-details">
+              <h4>Property Address</h4>
+              <p class="location"><img src="../../assets/icon/location-icon.png" alt="location icon"> Ipaja Lagos</p>
+              <p class="last-updated">Last updated 2024-11-12 11:38:00</p>
+              <a href="#" class="similar-properties">View similar properties nearby</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div  class="right-container">
+            <div class="agent-details">
+                <h2>Marketed By</h2>
+                <div class="profile-pics">
+                    <img src="../../images/agent-profile-img.png" alt="Agent Profile Image" class="profile-pics">
+                    <p class="agent-name">Adebayo's Realty</p>
+                </div>
+                <div class="text-box">
+                    <p class="description">Realty, 23 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+                    <a href="#" class="telephone"><i class='bx bxs-phone' style='color:#222222'  ></i>  +234 803 123 4567</p>
+                    <a href="#" class="website"><i class='bx bx-globe' style='color:#222222' ></i>  Website</p>
+                    <a href="#" class="year-usec"><i class='bx bx-user' style='color:#222222' ></i>  Registered 1 year ago</p>
+                    <a href="#" class="others-link"><i class='bx bx-briefcase-alt' style='color:#222222'  ></i>  View all properties from agent</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <script src="./property-desc.js"></script>
+</body>
+</html>
