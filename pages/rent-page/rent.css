@@ -369,7 +369,7 @@ width: 3rem;
 
 .featuredbox-container>.card>.image-box>img {
   height: 180px;
-  width: 180px;
+  width: 200px;
 }
 
 .featuredbox-container>.card>.text-box {
@@ -453,8 +453,11 @@ font-size: 14px;
   border-radius: 50px;
   cursor: pointer;
 }
+i:active {
+font-size: 17px;
+}
 
-.featuredbox-container>.card>.text-box>.second-box>.top-box>.availablity {
+.availability{
   margin-top: 10px;
   color: #0861AF9C;
   margin-left: 0px;
