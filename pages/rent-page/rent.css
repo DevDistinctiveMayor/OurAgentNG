@@ -433,28 +433,40 @@ font-size: 14px;
   float: right;
   border-left: 1px solid #D9D9D9;
   flex-direction: column;
-  padding-left: 50px;
+  padding-left: 40px;
   justify-content: space-between;
 }
 
-.featuredbox-container>.card>.text-box>.second-box>.top-box>.price {
+.price {
   color: #02182B;
   font-weight: 600;
   font-size: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+ gap: 3rem;
 }
 
-.featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
+/* .featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
   color: #0861AF;
   padding: 5px;
   background-color: #D9D9D9;
   border-radius: 50px;
   cursor: pointer;
+  font-size: 10px;
+
+} */
+.i {
+  color: #0861AF;
+  padding: 5px;
+  background-color: #D9D9D9;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  margin-left: 6rem;
 }
-i:active {
-font-size: 17px;
+.i:active {
+font-size: 21px;
 }
 
 .availability{
@@ -1080,11 +1092,6 @@ font-size: 17px;
     flex-direction: column;
     justify-content: space-between;
   }
-
-  .featuredbox-container .card .text-box .second-box .top-box .price i {
-    margin-left: 10px;
-  }
-
 
   .featuredbox-container .card .text-box .second-box .top-box .availablity {
     margin: 0;

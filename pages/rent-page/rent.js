@@ -56,7 +56,11 @@ fetch('https://ouragent.com.ng/get_property.php')
 
             <div class="second-box">
               <div class="top-box">
-                <p class="price">&#8358;${property.price} <i class="bx bx-bookmark"></i></p>
+                  <div class="price">
+                                    <p >&#8358;${property.price}</p>
+                    <i class="bx bx-bookmark i"></i>
+                  </div>
+
                 <p class="availability">${property.roomNo} Bed ${property.bathNo} Baths</p>
               </div>
               <div class="bottom-box">
