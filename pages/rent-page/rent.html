@@ -1,13 +1,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./rent.css">
-    <title>Our AgentNG | Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="./rent.css">
+  <title>Our AgentNG | Website</title>
 </head>
 
 
@@ -16,1052 +16,1075 @@
 
 
 <body>
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar ">
-            <div class="logo">
-                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-                <ul class="nav-links">
-                    <li><a href="../buy-page/buy.html">Buy</a></li>
-                    <li><a href="../rent-page/rent.html">Rent</a></li>
-                    <li><a href="#services">Saved properties</a></li>
-                    <li><a href="#contact">About us</a></li>
-                    <div class="nav-links3 ">
-                        <div class="access-box">
-                          <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                          <a href="./../login-page/" class="login">Sign up or Log in</a>
-                        </div>
-                    </div>
-                </ul>
-
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar ">
+      <div class="logo">
+        <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+        <ul class="nav-links">
+          <li><a href="../buy-page/buy.html">Buy</a></li>
+          <li><a href="../rent-page/rent.html">Rent</a></li>
+          <li><a href="#services">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3 ">
+            <div class="access-box">
+              <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+              <a href="./../login-page/" class="login">Sign up or Log in</a>
             </div>
+          </div>
+        </ul>
 
-            <label class="menu-toggle" onClick={onToggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+      </div>
 
-            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+      <label class="menu-toggle" onClick={onToggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
         <i class="bx bx-menu"></i>
       </button> -->
-            <div class="nav-links2">
+      <div class="nav-links2">
 
 
-                <div class="access-box">
-                  <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                  <a href="./../login-page/" class="login">Sign up or Log in</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="content">
-        <div class="sale-container">
-            <div class="sale-container-flex">
-                <div class="sale">
-                    <p>Rent</p>
-                    <i class='bx bx-chevron-down'></i>
-                </div>
-                <div class="search-box">
-                    <img src="../../assets/icon/Vector.png" class="searchicon" />
-                    <input type="text" placeholder="Search location...">
-                    
-                </div>
-                <div class="advance_filter" id="toggleFilter">
-                    <input type="text" placeholder="Filters"  class="toggle-filter-btn"">
-                    <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
-                </div>
-        
-                <div class="btnn">
-                    <button class="search">Search</button>
-                </div>
-            </div>
+        <div class="access-box">
+          <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
+          <a href="./../login-page/" class="login">Sign up or Log in</a>
         </div>
-          
-        <div class="container">
-          <div class="details-container">
-            <h1>property for rent in Nigeria</h1>
-            <p class="intro">There are 75,446 available flats, houses, land and commercial property for rent in Nigeria. The property have been listed by estate agents who can be contacted using the contact information provided for each property listing.
-               The list can be filtered by price, furnishing and recency.</p>
-            <p class="down-p">Content from Our Agent</p>
-            <p >Read more at: <a href="#" class="blog-link">Blog Link</a></p>
-    
-            <div class="sort-container">
-              <p>Result 1-20 of 75,000</p>
-    
-              <div>
-              <select name="" id="">
-                <option value="">Default</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-                <option value="">Option 3</option>
-                <option value="">Option 4</option>
-              </select>
-            </div>
-            </div>
-    
-            <div class="featuredbox-container">
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="card">
-                <div class="image-box">
-                  <img src="../../images/featured_image.png" alt="card image">
-                </div>
-    
-                <div class="text-box">
-                  <div class="first-box">
-                    <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                    <p class="location">Ipaja Lagos</p>
-                    <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road networks....</p>
-                    <p href="" class="details-link">
-                      <a href="">Propery Details &#10142;</a>
-                    </p>
-                    <p class="agent-profile">
-                      <img src="../../images/profile-image.png" alt="" class="agent-profile">
-                      <b class="agent-name">Adebayo's Realty</b>
-                    </p>
-                  </div>
-    
-    
-                  <div class="second-box">
-                    <div class="top-box">
-                    <p class="price">
-                      70,000,000
-                      <i class="bx bx-bookmark"></i>
-                    </p>
-    
-                    <p class="availablity">
-                      1 Bed 1 Baths
-                    </p>
-                  </div>
-    
-                  <div class="bottom-box">
-                    <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
-                    <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp' ></i></a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-    
-    
-    
-    
-    
-          <div class="available-container">
-            <h3>available property</h3>
-    
-            <div class="content">
-              <p class="heading">currently available for rent in nigeria</p>
-    
-              <div class="heading">
-                <p>Property Type</p>
-                <p>Property Count</p>
-              </div>
-              <div>
-                <p>Co-working place</p>
-                <p>100</p>
-              </div>
-              <div>
-                <p>Flat/Apartment</p>
-                <p>7542</p>
-              </div>
-              <div>
-                <p>Commercial Properties</p>
-                <p>8000</p>
-              </div>
-              <div>
-                <p>Land</p>
-                <p>1000</p>
-              </div>
-              <div>
-                <p>House</p>
-                <p>9999</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-
-      <main>
-        <div class="main_container">
-          <section class="advance-filter-container">
-            <button class="cancel-btn" id="cancelFilter">Cancel</button>
-            <h2>choose category</h2>
-    
-            <div class="select-box">
-              <select name="" id="">
-                <option value=""><a href="">Rent</a></option>
-                <option value=""><a href="">Sale</a></option>
-              </select>
-            </div>
-    
-            <div class="search_box">
-              <i class='bx bx-search' style='color:#0873d2'></i>
-              <input type="search" name="" id="" placeholder="Search location...">
-            </div>
-    
-            <div class="bedrooms-selection">
-              <h3>Bedrooms</h3>
-    
-              <div class="row-select-box">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-              </div>
-            </div>
-    
-            <div class="property-type-container">
-              <h3>property types</h3>
-    
-              <div class="row-display-container">
-                <a href="#">All</a>
-                <a href="#">Warehouse</a>
-                <a href="#">Detached Bungalow</a>
-                <a href="#">Office Spaces</a>
-                <a href="#">Lands</a>
-                <a href="#">Apartments</a>
-                <a href="#">Commercial properties</a>
-                <a href="#">Shops</a>
-                <a href="#">Mini Flat</a>
-                <a href="#">Detached Duplex</a>
-                <a href="#">Co-working Spaces</a>
-                <a href="#">Self-contained</a>
-              </div>
-            </div>
-    
-            <div class="selectedControl-box">
-              <a href="#" class="reset-btn">Reset</a>
-              <a href="#" class="apply-btn">Apply Filters</a>
-            </div>
-          </section>
-        </div>
-    
-      </main>
-    
-      <div class="footer-div"> 
-        <section class="download-section">
-            <div class="first-section">
-              <p>Download our app today to access more features</p>
-            </div>
-            <div class="second-section">
-              <p>Unlock the potential of your property journey with us. Download the app today to connect with agents and find
-                your dream home!</p>
-    
-              <a href="">Click here to download</a>
-            </div>
-          </section>
-      
-        <footer class="footer">
-          <div class="footer-top">
-            <!-- Logo and Links -->
-            <div class="footer-logo">
-              <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
-      
-            </div>
-            <ul class="footer-links">
-              <li><a href="#">Property Listings</a></li>
-              <li><a href="#">Agent Resources</a></li>
-              <li><a href="#">Home Buyers</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">About Us</a></li>
-            </ul>
-            <!-- Social Media Icons -->
-            <div class="social-icons">
-              <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
-              <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
-              <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
-              <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
-              <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
-            </div>
-          </div>
-          <hr class="line">
-          <!-- Footer Bottom Text -->
-          <div class="footer-bottom">
-            <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
-            <ul class="footer-bottom-links">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Cookies Settings</a></li>
-            </ul>
-          </div>
-        </footer>
-        
-    
       </div>
-    
-    
-    
-    
-    
-      <script src="./rent.js"></script>
-    </body>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="sale-container">
+      <div class="sale-container-flex">
+        <div class="sale">
+          <p>Rent</p>
+          <i class='bx bx-chevron-down'></i>
+        </div>
+        <div class="search-box">
+          <img src="../../assets/icon/Vector.png" class="searchicon" />
+          <input type="text" placeholder="Search location...">
+
+        </div>
+        <div class="advance_filter" id="toggleFilter">
+          <input type="text" placeholder="Filters" class="toggle-filter-btn"">
+                    <img src=" ../../assets/icon/advanced_filter.png" class="filtericon" />
+        </div>
+
+        <div class="btnn">
+          <button class="search">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="details-container">
+        <h1>property for rent in Nigeria</h1>
+        <p class="intro">There are 75,446 available flats, houses, land and commercial property for rent in Nigeria. The
+          property have been listed by estate agents who can be contacted using the contact information provided for
+          each property listing.
+          The list can be filtered by price, furnishing and recency.</p>
+        <p class="down-p">Content from Our Agent</p>
+        <p>Read more at: <a href="#" class="blog-link">Blog Link</a></p>
+
+        <div class="sort-container">
+          <p>Result 1-20 of 75,000</p>
+
+          <div>
+            <select name="" id="">
+              <option value="">Default</option>
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+              <option value="">Option 4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="featuredbox-container" id="properties">
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">${property.propertyName}</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-box">
+              <img src="../../images/featured_image.png" alt="card image">
+            </div>
+
+            <div class="text-box">
+              <div class="first-box">
+                <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                <p class="location">Ipaja Lagos</p>
+                <p class="description">Newly Built 1 Bedroom Apartment for sale, safe and secure environment, easy road
+                  networks....</p>
+                <p href="" class="details-link">
+                  <a href="">Propery Details &#10142;</a>
+                </p>
+                <p class="agent-profile">
+                  <img src="../../images/profile-image.png" alt="" class="agent-profile">
+                  <b class="agent-name">Adebayo's Realty</b>
+                </p>
+              </div>
+
+
+              <div class="second-box">
+                <div class="top-box">
+                  <p class="price">
+                    70,000,000
+                    <i class="bx bx-bookmark"></i>
+                  </p>
+
+                  <p class="availablity">
+                    1 Bed 1 Baths
+                  </p>
+                </div>
+
+                <div class="bottom-box">
+                  <a href="" class="call-link"><i class='bx bxs-phone'></i>call</a>
+                  <a href="" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="available-container">
+        <h3>available property</h3>
+
+        <div class="content">
+          <p class="heading">currently available for rent in nigeria</p>
+
+          <div class="heading">
+            <p>Property Type</p>
+            <p>Property Count</p>
+          </div>
+          <div>
+            <p>Co-working place</p>
+            <p>100</p>
+          </div>
+          <div>
+            <p>Flat/Apartment</p>
+            <p>7542</p>
+          </div>
+          <div>
+            <p>Commercial Properties</p>
+            <p>8000</p>
+          </div>
+          <div>
+            <p>Land</p>
+            <p>1000</p>
+          </div>
+          <div>
+            <p>House</p>
+            <p>9999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <main>
+    <div class="main_container">
+      <section class="advance-filter-container">
+        <button class="cancel-btn" id="cancelFilter">Cancel</button>
+        <h2>choose category</h2>
+
+        <div class="select-box">
+          <select name="" id="">
+            <option value=""><a href="">Rent</a></option>
+            <option value=""><a href="">Sale</a></option>
+          </select>
+        </div>
+
+        <div class="search_box">
+          <i class='bx bx-search' style='color:#0873d2'></i>
+          <input type="search" name="" id="" placeholder="Search location...">
+        </div>
+
+        <div class="bedrooms-selection">
+          <h3>Bedrooms</h3>
+
+          <div class="row-select-box">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+          </div>
+        </div>
+
+        <div class="property-type-container">
+          <h3>property types</h3>
+
+          <div class="row-display-container">
+            <a href="#">All</a>
+            <a href="#">Warehouse</a>
+            <a href="#">Detached Bungalow</a>
+            <a href="#">Office Spaces</a>
+            <a href="#">Lands</a>
+            <a href="#">Apartments</a>
+            <a href="#">Commercial properties</a>
+            <a href="#">Shops</a>
+            <a href="#">Mini Flat</a>
+            <a href="#">Detached Duplex</a>
+            <a href="#">Co-working Spaces</a>
+            <a href="#">Self-contained</a>
+          </div>
+        </div>
+
+        <div class="selectedControl-box">
+          <a href="#" class="reset-btn">Reset</a>
+          <a href="#" class="apply-btn">Apply Filters</a>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <div class="footer-div">
+    <section class="download-section">
+      <div class="first-section">
+        <p>Download our app today to access more features</p>
+      </div>
+      <div class="second-section">
+        <p>Unlock the potential of your property journey with us. Download the app today to connect with agents and find
+          your dream home!</p>
+
+        <a href="">Click here to download</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <!-- Logo and Links -->
+        <div class="footer-logo">
+          <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
+
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Property Listings</a></li>
+          <li><a href="#">Agent Resources</a></li>
+          <li><a href="#">Home Buyers</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
+        </div>
+      </div>
+      <hr class="line">
+      <!-- Footer Bottom Text -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookies Settings</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+  </div>
+
+
+
+
+
+  <script src="./rent.js"></script>
+  
+</body>

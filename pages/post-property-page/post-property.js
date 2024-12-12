@@ -79,11 +79,17 @@ document.getElementById("post-property-form").addEventListener("submit", async (
         const data = await response.json();
 
         if (data.status === "success") {
-            // Show success message
-            alert(data.message || "Property added successfully!");
+            // Show success message with SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: data.message || "Property added successfully!",
+                timer: 3000, // Auto close after 3 seconds
+                showConfirmButton: false,
+            });
             form.reset(); // Optionally, reset the form
         } else if (data.status === "error") {
-            // Display backend error messages
+            // Display backend error messages with SweetAlert2
             const errors = data.errors || {};
             for (const field in errors) {
                 const errorElement = document.getElementById(`${field}-error`);
@@ -95,16 +101,23 @@ document.getElementById("post-property-form").addEventListener("submit", async (
 
             // General error message (if any)
             if (data.message) {
-                alert(data.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: data.message,
+                });
             }
         }
     } catch (error) {
         console.error("Error:", error);
-        alert("An unexpected error occurred. Please try again later.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'An unexpected error occurred. Please try again later.',
+        });
     } finally {
         // Re-enable button
         submitButton.disabled = false;
         submitButton.textContent = "Register";
     }
 });
-

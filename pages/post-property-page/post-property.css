@@ -249,7 +249,7 @@
 
 
 
-  button {
+  .button {
     background-color:  rgba(8, 97, 175, 1);
     color: white;
     border: none;
@@ -265,13 +265,13 @@
   }
   
   /* Hover effect */
-  button:hover {
+  .button:hover {
     background-color: #000000;
     color: #fff;
   }
 
   /* Active (pressed) effect */
-button:active {
+.button:active {
     background-color: #3e8e41;
     transform: scale(0.95);
   }

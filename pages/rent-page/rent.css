@@ -369,6 +369,7 @@ width: 3rem;
 
 .featuredbox-container>.card>.image-box>img {
   height: 180px;
+  width: 180px;
 }
 
 .featuredbox-container>.card>.text-box {
@@ -415,10 +416,15 @@ width: 3rem;
   display: flex;
   align-items: center;
   margin-top: 10px;
+  font-size: 14px;
 }
 
 .featuredbox-container>.card>.text-box>.first-box>.agent-profile>.agent-name {
   margin-left: 10px;
+  font-size: 14px;
+}
+.agent-name{
+font-size: 14px;
 }
 
 .featuredbox-container>.card>.text-box>.second-box {
@@ -852,6 +858,7 @@ width: 3rem;
     display: flex;
     width: 170px;
     padding-left: 17px;
+
   }
 
   .featuredbox-container>.card {
@@ -905,6 +912,9 @@ width: 3rem;
   .featuredbox-container>.card>.text-box>.second-box {
     width: 141px;
   }
+  .featuredbox-container>.card {
+    width: 98%;
+  }
 }
 
 
@@ -919,6 +929,7 @@ width: 3rem;
   .featuredbox-container>.card {
     width: 118%;
   }
+  
 
   .container>.available-container {
     width: 55%;
@@ -930,7 +941,7 @@ width: 3rem;
 }
 
 
-@media screen and (max-width: 829px) {
+@media screen and (max-width: 857px) {
   .nav-links3 {
     display: block;
     margin-top: 0.4rem;
@@ -1037,8 +1048,10 @@ width: 3rem;
   }
 
   .featuredbox-container .card .image-box img {
-    width: 200px;
-  }
+    width: 90%;
+    height: 90%;
+    margin-left: 1rem;
+}
 
   .featuredbox-container .card .text-box {
     flex-direction: column;
@@ -1134,6 +1147,10 @@ width: 3rem;
     /* Full width for smaller screens */
   }
 
+  .featuredbox-container .card .image-box img {
+
+    margin-left: 0rem;
+}
 
 }
 
