@@ -14,46 +14,46 @@
     <!-- Header Section -->
     <header>
         <nav class="navbar">
-          <div class="logo">
-    
-            <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-    
-            <ul class="nav-links">
-              <li><a href="../buy-page/buy.html">Sale</a></li>
-              <li><a href="../rent-page/rent.html">Rent</a></li>
-              <li><a href="#services">Saved properties</a></li>
-              <li><a href="#contact">About us</a></li>
-              <div class="nav-links3 ">
-                <div class="access-box">
-                  <a href="" class="post">Post A Property</a>
-                  <a href="../login-page/login.html" class="login">Sign up or Log in</a>
-                </div>
-              </div>
-            </ul>
-          </div>
-    
-          </div>
-    
-          <label class="menu-toggle" onClick={onToggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-    
-          <!-- <button class="menu-toggle" aria-label="Toggle navigation">
+            <div class="logo">
+
+                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+
+                <ul class="nav-links">
+                    <li><a href="../buy-page/buy.html">Sale</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="#services">Saved properties</a></li>
+                    <li><a href="#contact">About us</a></li>
+                    <div class="nav-links3 ">
+                        <div class="access-box">
+                            <a href="" class="post">Post A Property</a>
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+
+            </div>
+
+            <label class="menu-toggle" onClick={onToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
           <i class="bx bx-menu"></i>
         </button> -->
-          <div class="nav-links2">
-    
-    
-            <div class="access-box">
-              <a href="" class="post">Post A Property</a>
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+            <div class="nav-links2">
+
+
+                <div class="access-box">
+                    <a href="" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
             </div>
-          </div>
         </nav>
-      </header>
-    
+    </header>
+
 
 
 
@@ -61,58 +61,67 @@
         <div class="property-container">
             <div class="container">
                 <div class="form-header">
-                    <h1>Post Your Property for Rent</h1>
-                    <p>Let potential renters discover your property. Fill out the form with accurate details to maximize exposure.</p>
+                    <h1>Post Your Property for Rent or Sell</h1>
+                    <p>Let potential renters discover your property. Fill out the form with accurate details to maximize
+                        exposure.</p>
                 </div>
-                
-                <form id="post-property-form" method="POST" action="your-backend-endpoint.php" enctype="multipart/form-data">
+
+                <form id="post-property-form" method="POST" action="your-backend-endpoint.php"
+                    enctype="multipart/form-data">
                     <!-- Agent Details -->
                     <section class="form-section">
                         <h2>Agent Information</h2>
                         <p>Provide your details so renters can reach out to you directly.</p>
-                        
+
                         <div class="form-group">
                             <label for="agent-name">Full Name</label>
-                            <input type="text" id="agent-name" name="agentName" placeholder="Enter your full name" required>
+                            <input type="text" id="agent-name" name="agentName" placeholder="Enter your full name"
+                                required>
                             <span id="agentName-error" class="error-message"></span>
                         </div>
                     </section>
-            
+
                     <!-- Property Details -->
                     <section class="form-section">
                         <h2>Property Information</h2>
                         <p>Describe the property in detail to attract the right tenants.</p>
-                        
+
                         <div class="form-group">
                             <label for="property-name">Property Name</label>
-                            <input type="text" id="property-name" name="propertyName" placeholder="Enter the property name" required>
+                            <input type="text" id="property-name" name="propertyName"
+                                placeholder="Enter the property name" required>
                             <span id="propertyName-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description" placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4" required></textarea>
+                            <textarea id="description" name="description"
+                                placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4"
+                                required></textarea>
                             <span id="description-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="price">Price (₦)</label>
-                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price" required>
+                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price"
+                                required>
                             <span id="price-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" id="location" name="location" placeholder="Enter the exact address or area" required>
+                            <input type="text" id="location" name="location"
+                                placeholder="Enter the exact address or area" required>
                             <span id="location-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="size">Property Size</label>
-                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)" required>
+                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)"
+                                required>
                             <span id="size-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="property-type">Property Type</label>
                             <select id="property-type" name="propertyType" required>
@@ -125,53 +134,59 @@
                             <span id="propertyType-error" class="error-message"></span>
                         </div>
                     </section>
-            
+
                     <!-- Room Details -->
                     <section class="form-section">
                         <h2>Room & Bathroom Details</h2>
                         <p>Specify the number of rooms and bathrooms available in the property.</p>
-                        
+
                         <div class="form-group">
                             <label for="roomNo">Number of Rooms</label>
-                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms" required>
+                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms"
+                                required>
                             <span id="roomNo-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="bathNo">Number of Bathrooms</label>
-                            <input type="number" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
+                            <input type="number" id="bathNo" name="bathNo"
+                                placeholder="Enter the total number of bathrooms" required>
                             <span id="bathNo-error" class="error-message"></span>
                         </div>
                     </section>
-            
+
+                    <!-- Account Type -->
+                    <div class="form-group">
+                        <label>Select the category:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="category" value="Rent"> Rent</label>
+                            <label><input type="radio" name="category" value="Sell"> Sell </label>
+                        </div>
+                        <span id="category-error" class="error-message"></span>
+                    </div>
+
                     <!-- Images Upload -->
                     <section class="form-section">
                         <h2>Upload Property Images</h2>
                         <p>Images significantly increase engagement. Upload clear pictures of the property.</p>
-                        
+
                         <div class="form-group">
                             <label for="images">Select Images</label>
-                            <input 
-                                type="file" 
-                                id="images" 
-                                name="images[]" 
-                                multiple 
-                                accept="image/png, image/jpeg, image/jpg, image/webp" 
-                                required
-                            >
+                            <input type="file" id="images" name="images[]" multiple
+                                accept="image/png, image/jpeg, image/jpg, image/webp" required>
                             <span id="images-error" class="error-message"></span>
                             <p class="info-message">You can upload up to 3 images only.</p>
                         </div>
-                        
+
                     </section>
-            
+
                     <!-- Submit -->
                     <div class="form-submit">
                         <button type="submit" class="button">Post Your Property</button>
                     </div>
                 </form>
             </div>
-            
+
         </div>
 
 

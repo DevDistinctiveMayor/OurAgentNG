@@ -23,7 +23,7 @@ cancelButton.addEventListener('click', () => {
   body.classList.remove('overlay-active'); // Enable body scrolling
 });
 
-fetch('https://ouragent.com.ng/get_property.php')
+fetch('https://ouragent.com.ng/getrent_property.php')
   .then((response) => response.json())
   .then((data) => {
     if (data.status === 'success') {
