@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Our Agent | Property Details</title>
@@ -115,6 +115,21 @@
               <a href="#" class="similar-properties">View similar properties nearby</a>
             </div>
           </div>
+
+          <div class="description-box">
+            <h3>Description</h3>
+
+            <p>Lorem ipsum dolor sit amet consectetur. Eu volutpat lobortis posuere arcu congue sit consectetur. </p>
+            <p>Location:- Facilisi vel sagittis ultrices vulputate.</p>
+            <p>Prices:- Facilisi </p>
+            <p>Features:- Facilisi </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Commodo amet enim justo vitae accumsan erat at purus. Sit aenean neque tempus ultrices elit. Amet sollicitudin amet et arcu ultricies fames tellus. Dictum fames urna consequat tristique. Turpis purus egestas ultrices congue amet scelerisque sagittis lacus.
+              Scelerisque nunc donec quam sed ut velit. Sed semper leo quam dapibus sed.
+            </p>
+
+            <button><i class='bx bx-bookmark' style='color:#ea4335'  ></i> Save</button>
+          </div>
         </div>
 
 
@@ -127,15 +142,308 @@
                 </div>
                 <div class="text-box">
                     <p class="description">Realty, 23 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
-                    <a href="#" class="telephone"><i class='bx bxs-phone' style='color:#222222'  ></i>  +234 803 123 4567</p>
-                    <a href="#" class="website"><i class='bx bx-globe' style='color:#222222' ></i>  Website</p>
-                    <a href="#" class="year-usec"><i class='bx bx-user' style='color:#222222' ></i>  Registered 1 year ago</p>
-                    <a href="#" class="others-link"><i class='bx bx-briefcase-alt' style='color:#222222'  ></i>  View all properties from agent</p>
+                    <p href="#" class="telephone"><i class='bx bxs-phone' style='color:#222222'  ></i>  +234 803 123 4567</p>
+                    <p href="#" class="website"><i class='bx bx-globe' style='color:#222222' ></i>  Website</p>
+                    <p href="#" class="year-usec"><i class='bx bx-user' style='color:#222222' ></i>  Registered 1 year ago</p>
+                    <p href="#" class="others-link"><i class='bx bx-briefcase-alt' style='color:#222222'  ></i>  View all properties from agent</p>
                 </div>
+            </div>
+
+            <div class="sp">
+              <h3><i class='bx bx-search' style='color:#ffffff'  ></i> Search for Property</h3>
+
+              <form action="" class="search-form-field">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Ikoyi, Lagos">
+                
+                <label for="category">Category</label>
+                <input type="text" id="category" placeholder="For sale">
+
+                <div class="row-display">
+                  <div class="select-box">
+                    <label for="type">Type</label>
+                    <select name="" id="type">
+                      <option value="">House</option>
+                      <option value="">House</option>
+                      <option value="">House</option>
+                    </select>
+                  </div>
+
+                  <div class="select-box">
+                    <label for="bedroom">Bedroom</label>
+                    <select name="" id="bedroom">
+                      <option value="">Any</option>
+                      <option value="">Any</option>
+                      <option value="">Any</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row-display">
+                  <div class="select-box">
+                    <label for="minprice">Min price</label>
+                    <select name="" id="minprice">
+                      <option value="">No Min</option>
+                      <option value="">No Min</option>
+                      <option value="">No Min</option>
+                    </select>
+                  </div>
+
+                  <div class="select-box">
+                    <label for="maxprice">Max Price</label>
+                    <select name="" id="maxprice">
+                      <option value="">No Max</option>
+                      <option value="">No Max</option>
+                      <option value="">No Max</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row-display">
+                  <div class="select-box">
+                    <label for="furnishing">Type</label>
+                    <select name="" id="furnishing">
+                      <option value="">Yes</option>
+                      <option value="">No</option>
+                      <option value="">Yes</option>
+                    </select>
+                  </div>
+
+                  <div class="select-box">
+                    <label for="servicing">Bedroom</label>
+                    <select name="" id="servicing">
+                      <option value="">Yes</option>
+                      <option value="">Yes</option>
+                      <option value="">Yes</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                <label for="properRef">Property Ref</label>
+                <input type="text" id="properRef" placeholder="e.g 1234">
+              </form>
             </div>
         </div>
     </div>
+
+    <div class="box-top">
+      <h3>Recommended Properties</h3>
+      <a href="#">See all <i class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+    <div class="recommended-property">
+
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="status">For Rent</span>
+            <span class="icon"> <i class="bx bx-bookmark"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N21,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="status">For Rent</span>
+            <span class="icon"> <i class="bx bx-bookmark"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N21,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="status">For Rent</span>
+            <span class="icon"> <i class="bx bx-bookmark"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="status">For Rent</span>
+            <span class="icon"> <i class="bx bx-bookmark"></i> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-top">
+      <h3>Sold Properties</h3>
+      <a href="#">See all <i class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+
+    <div class="sold-properties">
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap" style="float: right;">
+            <span class="icon"> <i class="bx bx-bookmark" style="text-align: right;"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="icon"> <i class="bx bx-bookmark" style="float: right;"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="icon"> <i class="bx bx-bookmark" style="float: right;"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-container">
+        <div class="house-card">
+          <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+          <div class="details">
+            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+            <div class="price">N1,000,000</div>
+            <div class="location">
+              <div class="location-name">Lekki Phase 1</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="icon"> <i class="bx bx-bookmark" style="float: right;"></i> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subscription">
+      <h2>Subscribe to Our News letter</h2>
+
+      <form action="">
+        <input type="email" name="" id="" placeholder="Please enter email">
+        <button>Subscribe</button>
+      </form>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <!-- Logo and Links -->
+      <div class="footer-logo">
+        <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
+
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Property Listings</a></li>
+        <li><a href="#">Agent Resources</a></li>
+        <li><a href="#">Home Buyers</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
+      </div>
+    </div>
+    <hr class="line">
+    <!-- Footer Bottom Text -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookies Settings</a></li>
+      </ul>
+    </div>
+  </footer>
+  
 
   <script src="./property-desc.js"></script>
 </body>
