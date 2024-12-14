@@ -161,7 +161,6 @@ header {
 .sale {
   border: 1pt solid rgba(8, 97, 175, 1);
   width: 10rem;
-  font-size: 14px;
   display: flex;
   padding: 1rem;
   justify-content: center;
@@ -172,10 +171,7 @@ header {
 
 .sale>i {
   font-size: 1.3rem;
-  padding-top: px;
 }
-
-.search-box {}
 
 .search-box>input {
   font-family: inherit;
@@ -195,7 +191,6 @@ header {
 }
 
 .search-box>input::placeholder {
-  font-size: 14px;
   color: rgba(2, 24, 43, 0.46);
 }
 
@@ -203,7 +198,7 @@ header {
   position: absolute;
   margin-left: 1rem;
   margin-top: 1.3rem;
-  width: 14px;
+  width: 18px;
 }
 
 .advance_filter {
@@ -710,10 +705,9 @@ header {
 .search_box {
   border: 1pt solid #0861AF;
   padding: 8px 10px;
-
   display: flex;
   font-size: 17px;
-  background-color: #EEEEEE;
+  background-color: white ;
   border-radius: 5px;
   margin-top: 10px;
   align-items: center;
@@ -725,7 +719,6 @@ header {
   outline: none;
   border: none;
   font-family: inherit;
-  background-color: #EEEEEE;
   font-size: 1rem;
 
 }
@@ -766,7 +759,8 @@ header {
 }
 
 .bedrooms-selection .row-select-box a:hover {
-  background: #EEEEEE;
+  background: #0861AF;
+  color: white;
   transition: background 0.2s ease;
 }
 
@@ -800,7 +794,8 @@ header {
 }
 
 .property-type-container .row-display-container a:hover {
-  background: #EEEEEE;
+  background:#0861AF;
+  color: #ffff;
   transition: background 0.2s ease;
 }
 
@@ -823,9 +818,10 @@ header {
   border-radius: 3pt;
   cursor: pointer;
   font-size: 0.9rem;
+  background-color: white;
 }
 
-.reset-btn:active {
+.reset-btn:hover {
   background-color: #0861AF;
   color: white;
 }
@@ -1043,10 +1039,10 @@ header {
   width: 18px;
 }
 
-  .advance_filter {
-    width: 8rem;
-    height: 41px;
-  }
+.advance_filter {
+  width: 8rem;
+  height: 41px;
+}
 
   .advance_filter>input {
     height: 20px;
