@@ -206,12 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             propertiesContainer.appendChild(propertyElement);
           });
-
-          // Scroll to properties section after fetching
-          propertiesContainer.scrollIntoView({
-            behavior: 'smooth',  // Smooth scrolling
-            block: 'start'       // Scroll to the top of the element
-          });
         } else {
           propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
         }
@@ -235,4 +229,3 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchAndRenderProperties(queryParams);
   });
 });
-

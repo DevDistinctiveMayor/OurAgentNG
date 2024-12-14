@@ -237,7 +237,12 @@ header {
   cursor: pointer;
   font-size: 14px;
 }
+.search:active{
+  color:#000000;
+  background-color: white;
+  border: 1px solid #0861AF;
 
+}
 /* Container */
 .container {
   display: flex;
