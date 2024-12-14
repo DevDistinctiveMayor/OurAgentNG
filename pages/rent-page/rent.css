@@ -1033,7 +1033,7 @@ header {
   }
 
   .search-box>input {
-    width: 20em;
+    width: 78%;
     padding: 4px;
     padding-left: 2.5rem;
   }
@@ -1056,18 +1056,13 @@ header {
     padding: 0rem 1rem;
     height: 31px;
   }
-
-  .search-box>input {
-    width: 98%;
-  }
-
   .container>.details-container {
     width: 100%;
   }
 
   .container>.details-container>h1 {
     font-size: 25px;
-    margin-top: -24px;
+    margin-top: 4px;
 
   }
 
