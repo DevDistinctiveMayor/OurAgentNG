@@ -160,6 +160,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     padding: 4%;
+    @media (max-width: 768px){padding: 3%;}
 
     .hero{
         display: flex;
@@ -375,6 +376,44 @@ main {
                 }
             }
         }
+
+        @media (max-width: 768px){
+            display: unset;
+            gap: 50px;
+            padding: 1rem;
+
+            .profile-card{
+                flex-direction: column;
+                width: unset;
+                .img{
+                    width: 150px;
+                    height: 150px;
+                }
+                .agent-name{
+                    font-size: 20px;
+                }
+            }
+
+            .recently-sold{
+                width: 100%;
+                margin-top: 2rem;
+                .heading{
+                    font-family: 24px;
+                }
+                .house-card-container{
+                    margin-top: .5rem;
+                    .container{
+                        min-width: 250px;
+                        min-height: 352px;
+                        padding: 20px;
+                    }
+                }
+                .left-right-icons{
+                    position: unset;
+                    margin-top: 10px;
+                }
+            }
+        }
     }
 
     .about-agent {
@@ -399,6 +438,12 @@ main {
         }
         .website-link {
             color: #0861AF;
+        }
+
+        @media (max-width: 768px){
+            padding: 1rem;
+            font-size: 16px;
+            width: unset;
         }
     }
 
@@ -568,6 +613,50 @@ main {
             }
             span{ cursor: pointer; }
         }
+
+        @media (max-width: 768px){
+            margin: 3rem 0;
+            .heading{ font-size: 22;}
+
+            .btn-container{
+                margin: 1rem 0;
+                button{
+                    padding: 10px 15px;
+                    width: 100%;
+                    font-size: 16px;
+                }
+            }
+
+            .house-card-container{
+                margin-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+
+                .container{
+                    min-height: unset;
+
+                    .house-card{
+                        width: unset;
+                        position: relative;
+                        .details {
+                            .price{
+                                font-size: 20px;
+                                margin: 3px 0;
+                                padding: .5rem 0;
+                            }
+                            .location{
+                                .view-icon{
+                                    gap: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -728,14 +817,12 @@ main {
     .for_sale {
       gap: 3rem;
     }
-  
     .footer-top {
         flex-direction: row;
         justify-content: space-between;
     
         margin: 50px auto;
     }
-  
     .footer-links {
         gap: 30px;
     }
