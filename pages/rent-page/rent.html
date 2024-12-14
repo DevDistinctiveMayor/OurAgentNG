@@ -972,69 +972,81 @@
   </main>
 
 
+  
   <main>
-    <div class="main_container">
+    <div class="main_container" id="searchForm">
       <section class="advance-filter-container">
         <button class="cancel-btn" id="cancelFilter">Cancel</button>
-        <h2>choose category</h2>
-
+        <h2>Choose Category</h2>
+  
+        <!-- Category Selection -->
         <div class="select-box">
-          <select name="" id="">
-            <option value=""><a href="">Rent</a></option>
-            <option value=""><a href="">Sale</a></option>
+          <select name="category" id="category">
+            <option value="">All Categories</option>
+            <option value="rent">Rent</option>
+            <!-- <option value="sell">Sale</option> -->
           </select>
         </div>
-
+  
+        <!-- Location Search -->
         <div class="search_box">
-          <i class='bx bx-search' style='color:#0873d2'></i>
-          <input type="search" name="" id="" placeholder="Search location...">
+          <i class="bx bx-search" style="color: #0873d2"></i>
+          <input type="search" name="location" id="location" placeholder="Search location...">
         </div>
-
+  
+        <!-- Bedrooms Selection -->
         <div class="bedrooms-selection">
           <h3>Bedrooms</h3>
-
           <div class="row-select-box">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">7</a>
-            <a href="#">8</a>
-            <a href="#">9</a>
-            <a href="#">10</a>
+            <!-- Using data-bedroom to dynamically fetch bedroom count -->
+            <a href="#" data-bedroom="1">1</a>
+            <a href="#" data-bedroom="2">2</a>
+            <a href="#" data-bedroom="3">3</a>
+            <a href="#" data-bedroom="4">4</a>
+            <a href="#" data-bedroom="5">5</a>
+            <a href="#" data-bedroom="6">6</a>
+            <a href="#" data-bedroom="7">7</a>
+            <a href="#" data-bedroom="8">8</a>
+            <a href="#" data-bedroom="9">9</a>
+            <a href="#" data-bedroom="10">10</a>
           </div>
         </div>
-
+  
+        <!-- Property Types -->
         <div class="property-type-container">
-          <h3>property types</h3>
-
+          <h3>Property Types</h3>
           <div class="row-display-container">
-            <a href="#">All</a>
-            <a href="#">Warehouse</a>
-            <a href="#">Detached Bungalow</a>
-            <a href="#">Office Spaces</a>
-            <a href="#">Lands</a>
-            <a href="#">Apartments</a>
-            <a href="#">Commercial properties</a>
-            <a href="#">Shops</a>
-            <a href="#">Mini Flat</a>
-            <a href="#">Detached Duplex</a>
-            <a href="#">Co-working Spaces</a>
-            <a href="#">Self-contained</a>
+            <!-- Using data-type for dynamic property type selection -->
+            <a  data-type="">All</a>
+            <a href="#" data-type="Warehouse">Warehouse</a>
+            <a href="#" data-type="Detached Bungalow">Detached Bungalow</a>
+            <a href="#" data-type="Office Spaces">Office Spaces</a>
+            <a href="#" data-type="Lands">Lands</a>
+            <a href="#" data-type="Apartments">Apartments</a>
+            <a href="#" data-type="Commercial Properties">Commercial Properties</a>
+            <a href="#" data-type="Shops">Shops</a>
+            <a href="#" data-type="Mini Flat">Mini Flat</a>
+            <a href="#" data-type="Detached Duplex">Detached Duplex</a>
+            <a href="#" data-type="Co-working Spaces">Co-working Spaces</a>
+            <a href="#" data-type="Self-contained">Self-contained</a>
           </div>
         </div>
-
+  
+        <!-- Filter Buttons -->
         <div class="selectedControl-box">
-          <a href="#" class="reset-btn">Reset</a>
-          <a href="#" class="apply-btn">Apply Filters</a>
+          <button class="reset-btn" id="resetFilter">Reset</button>
+          <button class="apply-btn" id="applyFilter">Apply Filters</button>
         </div>
       </section>
     </div>
-
   </main>
-
+  
+<section id="properties-container">
+  <h2>Properties</h2>
+  <div id="properties" class="properties-grid">
+    <!-- Dynamic property cards will be displayed here -->
+  </div>
+</section>
   <div class="footer-div">
     <section class="download-section">
       <div class="first-section">
