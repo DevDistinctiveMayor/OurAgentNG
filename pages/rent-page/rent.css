@@ -213,6 +213,7 @@ header {
   border: 1px solid #0861AF;
   border-radius: 5px;
   width: 8rem;
+  cursor: pointer;
 }
 
 .advance_filter>.filtericon {
@@ -818,17 +819,26 @@ font-size: 21px;
   padding: 8px 15px;
   border: 1pt solid #0861AF;
   border-radius: 3pt;
+  cursor: pointer;
   font-size: 0.9rem;
 }
 
+.reset-btn:active{
+  background-color: #0861AF;
+  color: white;
+}
 .selectedControl-box .apply-btn {
   padding: 8px 15px;
   color: #FFFFFF;
   background-color: #0861AF;
   border-radius: 3pt;
   font-size: 0.9rem;
+  cursor: pointer;
 }
-
+.apply-btn:active{
+  background-color: whitesmoke;
+  color: black;
+}
 .cancel-btn {
   position: absolute;
   top: 10px;
@@ -1012,7 +1022,7 @@ font-size: 21px;
     width: 98%;
   }
   .container {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .container>.details-container {
