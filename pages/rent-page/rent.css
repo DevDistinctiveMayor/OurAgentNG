@@ -1028,23 +1028,24 @@ header {
 
   .sale {
     width: 5rem;
-    padding: 5.5px;
-    height: 33px;
-  }
+    padding: 9.5px;
+    height: 41px;
+}
 
-  .search-box>input {
-    width: 78%;
-    padding: 4px;
-    padding-left: 2.5rem;
-  }
+.search-box>input {
+  width: 11rem;
+  padding: 8px;
+  padding-left: 2.5rem;
+}
 
-  .searchicon {
-    margin-top: 0.7rem;
-  }
+.searchicon {
+  margin-top: 0.7rem;
+  width: 18px;
+}
 
   .advance_filter {
     width: 8rem;
-    height: 33px;
+    height: 41px;
   }
 
   .advance_filter>input {
@@ -1054,7 +1055,7 @@ header {
 
   .btnn>.search {
     padding: 0rem 1rem;
-    height: 31px;
+    height: 41px;
   }
   .container>.details-container {
     width: 100%;
