@@ -9,7 +9,6 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   let selectedBedrooms = 0;
   let selectedPropertyType = "";
@@ -35,13 +34,18 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="featuredbox-container">
                 <div class="card">
                   <div class="image-box">
-                    <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
+                    <img src="https://ouragent.com.ng/${
+                      property.images[0]
+                    }" alt="Property Image">
                   </div>
                   <div class="text-box">
                     <div class="first-box">
                       <p class="heading">${property.propertyName}</p>
                       <p class="location">${property.location}</p>
-                      <p class="description">${property.description.substring(0, 100)}...</p>
+                      <p class="description">${property.description.substring(
+                        0,
+                        100
+                      )}...</p>
                       <p class="details-link">
                         <a href="#">Property Details &#10142;</a>
                       </p>
@@ -56,12 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
                           <p>&#8358;${property.price}</p>
                           <i class="bx bx-bookmark i"></i>
                         </div>
-                        <p class="availability">${property.roomNo} Bed ${property.bathNo} Baths</p>
+                        <p class="availability">${property.roomNo} Bed ${
+              property.bathNo
+            } Baths</p>
                       </div>
-                      <div class="bottom-box">
+                    <div class="bottom-box">
+                      <p class="info-message">Contact details are available in the agent's profile.</p>
+                  
+  
                         <a href="#" class="call-link"><i class='bx bxs-phone'></i> Call</a>
                         <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
                       </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -70,7 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
             propertiesContainer.appendChild(propertyElement);
           });
         } else {
-          propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+          propertiesContainer.innerHTML = `<p>${
+            data.message || "No properties found."
+          }</p>`;
         }
       })
       .catch((error) => {
@@ -99,7 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       selectedBedrooms = e.target.dataset.bedroom || 0;
-      document.querySelectorAll(".row-select-box a").forEach((el) => el.classList.remove("selected"));
+      document
+        .querySelectorAll(".row-select-box a")
+        .forEach((el) => el.classList.remove("selected"));
       e.target.classList.add("selected");
     });
   });
@@ -109,7 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       selectedPropertyType = e.target.dataset.type || "";
-      document.querySelectorAll(".row-display-container a").forEach((el) => el.classList.remove("selected"));
+      document
+        .querySelectorAll(".row-display-container a")
+        .forEach((el) => el.classList.remove("selected"));
       e.target.classList.add("selected");
     });
   });
@@ -124,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedBedrooms = 0;
     selectedPropertyType = "";
 
-    document.querySelectorAll(".row-select-box a, .row-display-container a").forEach((el) => el.classList.remove("selected"));
+    document
+      .querySelectorAll(".row-select-box a, .row-display-container a")
+      .forEach((el) => el.classList.remove("selected"));
     fetchAndRenderProperties(); // Fetch all properties again
   });
 
@@ -140,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ...(category && { category }),
       ...(location && { location }),
       ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
-      ...(selectedPropertyType && { propertyType: selectedPropertyType })
+      ...(selectedPropertyType && { propertyType: selectedPropertyType }),
     }).toString();
 
     // Fetch filtered properties
@@ -151,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove("overlay-active");
   });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const propertiesContainer = document.getElementById("properties");
@@ -172,13 +189,18 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="featuredbox-container">
                 <div class="card">
                   <div class="image-box">
-                    <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
+                    <img src="https://ouragent.com.ng/${
+                      property.images[0]
+                    }" alt="Property Image">
                   </div>
                   <div class="text-box">
                     <div class="first-box">
                       <p class="heading">${property.propertyName}</p>
                       <p class="location">${property.location}</p>
-                      <p class="description">${property.description.substring(0, 100)}...</p>
+                      <p class="description">${property.description.substring(
+                        0,
+                        100
+                      )}...</p>
                       <p class="details-link">
                         <a href="#">Property Details &#10142;</a>
                       </p>
@@ -193,7 +215,9 @@ document.addEventListener("DOMContentLoaded", () => {
                           <p>&#8358;${property.price}</p>
                           <i class="bx bx-bookmark i"></i>
                         </div>
-                        <p class="availability">${property.roomNo} Bed ${property.bathNo} Baths</p>
+                        <p class="availability">${property.roomNo} Bed ${
+              property.bathNo
+            } Baths</p>
                       </div>
                       <div class="bottom-box">
                         <a href="#" class="call-link"><i class='bx bxs-phone'></i> Call</a>
@@ -207,7 +231,9 @@ document.addEventListener("DOMContentLoaded", () => {
             propertiesContainer.appendChild(propertyElement);
           });
         } else {
-          propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+          propertiesContainer.innerHTML = `<p>${
+            data.message || "No properties found."
+          }</p>`;
         }
       })
       .catch((error) => {
@@ -222,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Build query parameters
     const queryParams = new URLSearchParams({
-      ...(location && { location }) // Only include location if it has a value
+      ...(location && { location }), // Only include location if it has a value
     }).toString();
 
     // Fetch and render properties dynamically

@@ -31,7 +31,7 @@ document.getElementById("post-property-form").addEventListener("submit", async (
 
     // Validate file upload: Number of files
     const images = form.querySelector("input[type='file']").files;
-    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    const maxFileSize = 3 * 1024 * 1024; // 5MB
 
     if (images.length > 3) {
         const errorElement = document.getElementById("images-error");
@@ -44,7 +44,7 @@ document.getElementById("post-property-form").addEventListener("submit", async (
     for (const file of images) {
         if (file.size > maxFileSize) {
             const errorElement = document.getElementById("images-error");
-            errorElement.textContent = `${file.name} is larger than 5MB. Please upload smaller images.`;
+            errorElement.textContent = `${file.name} is larger than 3MB. Please upload smaller images.`;
             errorElement.style.display = "block";
             hasError = true;
         }
