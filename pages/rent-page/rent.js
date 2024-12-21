@@ -61,15 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
                           <i class="bx bx-bookmark i"></i>
                         </div>
                         <p class="availability">${property.roomNo} Bed ${
-              property.bathNo
-            } Baths</p>
+                        property.bathNo
+                        } Baths</p>
                       </div>
                     <div class="bottom-box">
-                      <p class="info-message">Contact details are available in the agent's profile.</p>
-                  
-  
-                        <a href="#" class="call-link"><i class='bx bxs-phone'></i> Call</a>
-                        <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                        <a href="tel:${property.phoneNo}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
+                        <a href="${
+                          property.whatsapp
+                        }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
                       </div>
                     </div>
                     </div>
@@ -220,8 +219,12 @@ document.addEventListener("DOMContentLoaded", () => {
             } Baths</p>
                       </div>
                       <div class="bottom-box">
-                        <a href="#" class="call-link"><i class='bx bxs-phone'></i> Call</a>
-                        <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                        <a href="#" class="call-link"><i class='bx bxs-phone'>${
+                          property.phoneNo
+                        }</i> Call</a>
+                        <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'>${
+                          property.whatsapp
+                        }</i></a>
                       </div>
                     </div>
                   </div>
