@@ -147,7 +147,8 @@ header {
   display: flex;
   justify-content: center;
   border-radius: 8px;
-  margin-top: 7rem;
+  margin-top: 10rem;
+  height: 100vh;
 }
 
 .login-container h1 {

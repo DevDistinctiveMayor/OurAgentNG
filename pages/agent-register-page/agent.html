@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="agent.css">
@@ -19,15 +20,15 @@
                 <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
 
                 <ul class="nav-links">
-                    <li><a href="../buy-page/buy.html">Sale</a></li>
+                    <li><a href="../buy-page/buy.html">Buy</a></li>
                     <li><a href="../rent-page/rent.html">Rent</a></li>
                     <li><a href="../land-page/land.html">Land</a></li>
                     <li><a href="#services">Saved properties</a></li>
                     <li><a href="#contact">About us</a></li>
                     <div class="nav-links3 ">
                         <div class="access-box">
-                            <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                            <a href="./../login-page/" class="login">Sign up or Log in</a>
+                            <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                         </div>
                     </div>
                 </ul>
@@ -48,8 +49,8 @@
 
 
                 <div class="access-box">
-                    <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                    <a href="./../login-page/" class="login">Sign up or Log in</a>
+                    <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                 </div>
             </div>
         </nav>
@@ -109,8 +110,9 @@
             
                 <!-- Date of Birth -->
                 <div class="form-group">
+                    <!-- <input type="text" id="date-picker" placeholder="Select a date" /> -->
                     <label for="dateOfBirth">Date of Birth</label>
-                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                    <input type="text" id="dateOfBirth" name="dateOfBirth"  placeholder="Select a date"  required>
                     <span id="dateOfBirth-error" class="error-message"></span>
                 </div>
             
@@ -198,6 +200,12 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#dateOfBirth", {
+          dateFormat: "Y-m-d", // Set desired format
+        });
+      </script>
 
     <script src="./agent.js"></script>
 </body>
