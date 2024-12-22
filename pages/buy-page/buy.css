@@ -161,7 +161,6 @@ header {
 .sale {
   border: 1pt solid rgba(8, 97, 175, 1);
   width: 10rem;
-  font-size: 14px;
   display: flex;
   padding: 1rem;
   justify-content: center;
@@ -172,10 +171,7 @@ header {
 
 .sale>i {
   font-size: 1.3rem;
-  padding-top: px;
 }
-
-.search-box {}
 
 .search-box>input {
   font-family: inherit;
@@ -195,7 +191,6 @@ header {
 }
 
 .search-box>input::placeholder {
-  font-size: 14px;
   color: rgba(2, 24, 43, 0.46);
 }
 
@@ -203,7 +198,7 @@ header {
   position: absolute;
   margin-left: 1rem;
   margin-top: 1.3rem;
-  width: 14px;
+  width: 18px;
 }
 
 .advance_filter {
@@ -213,6 +208,7 @@ header {
   border: 1px solid #0861AF;
   border-radius: 5px;
   width: 8rem;
+  cursor: pointer;
 }
 
 .advance_filter>.filtericon {
@@ -228,7 +224,7 @@ header {
   font-family: inherit;
   outline: none;
   font-size: 15px;
-width: 3rem;
+  width: 3rem;
 }
 
 .btnn>.search {
@@ -241,7 +237,12 @@ width: 3rem;
   cursor: pointer;
   font-size: 14px;
 }
+.search:active{
+  color:#000000;
+  background-color: white;
+  border: 1px solid #0861AF;
 
+}
 /* Container */
 .container {
   display: flex;
@@ -423,8 +424,9 @@ width: 3rem;
   margin-left: 10px;
   font-size: 14px;
 }
-.agent-name{
-font-size: 14px;
+
+.agent-name {
+  font-size: 14px;
 }
 
 .featuredbox-container>.card>.text-box>.second-box {
@@ -443,7 +445,7 @@ font-size: 14px;
   font-size: 16px;
   display: flex;
   align-items: center;
- gap: 3rem;
+  gap: 3rem;
 }
 
 /* .featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
@@ -465,11 +467,12 @@ font-size: 14px;
   position: absolute;
   margin-left: 6rem;
 }
+
 .i:active {
-font-size: 21px;
+  font-size: 21px;
 }
 
-.availability{
+.availability {
   margin-top: 10px;
   color: #0861AF9C;
   margin-left: 0px;
@@ -707,10 +710,9 @@ font-size: 21px;
 .search_box {
   border: 1pt solid #0861AF;
   padding: 8px 10px;
-
   display: flex;
   font-size: 17px;
-  background-color: #EEEEEE;
+  background-color: white ;
   border-radius: 5px;
   margin-top: 10px;
   align-items: center;
@@ -722,8 +724,8 @@ font-size: 21px;
   outline: none;
   border: none;
   font-family: inherit;
-  background-color: #EEEEEE;
   font-size: 1rem;
+  background-color: white;
 
 }
 
@@ -763,7 +765,8 @@ font-size: 21px;
 }
 
 .bedrooms-selection .row-select-box a:hover {
-  background: #EEEEEE;
+  background: #0861AF;
+  color: white;
   transition: background 0.2s ease;
 }
 
@@ -797,7 +800,8 @@ font-size: 21px;
 }
 
 .property-type-container .row-display-container a:hover {
-  background: #EEEEEE;
+  background:#0861AF;
+  color: #ffff;
   transition: background 0.2s ease;
 }
 
@@ -818,7 +822,14 @@ font-size: 21px;
   padding: 8px 15px;
   border: 1pt solid #0861AF;
   border-radius: 3pt;
+  cursor: pointer;
   font-size: 0.9rem;
+  background-color: white;
+}
+
+.reset-btn:hover {
+  background-color: #0861AF;
+  color: white;
 }
 
 .selectedControl-box .apply-btn {
@@ -827,6 +838,12 @@ font-size: 21px;
   background-color: #0861AF;
   border-radius: 3pt;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.apply-btn:active {
+  background-color: whitesmoke;
+  color: black;
 }
 
 .cancel-btn {
@@ -844,6 +861,7 @@ font-size: 21px;
   /* Hidden by default */
   z-index: 1100;
 }
+
 .cancel-btn {
   display: block;
   /* Show cancel button on smaller screens */
@@ -927,6 +945,7 @@ font-size: 21px;
   .featuredbox-container>.card>.text-box>.second-box {
     width: 141px;
   }
+
   .featuredbox-container>.card {
     width: 98%;
   }
@@ -944,7 +963,7 @@ font-size: 21px;
   .featuredbox-container>.card {
     width: 118%;
   }
-  
+
 
   .container>.available-container {
     width: 55%;
@@ -1002,29 +1021,69 @@ font-size: 21px;
   }
 
 
+
   .sale-container-flex {
     gap: 1rem;
-    padding: 0px 2em;
-    margin-top: 67px;
+    padding: 0px 7px;
+    margin-top: 80px;
   }
 
-  .search-box>input {
-    width: 98%;
-  }
-  .container {
-    flex-direction: column-reverse;
+  .sale {
+    width: 5rem;
+    padding: 9.5px;
+    height: 41px;
+}
+
+.search-box>input {
+  width: max-content;
+  padding: 8px;
+  padding-left: 2.5rem;
+}
+
+.searchicon {
+  margin-top: 0.7rem;
+  width: 18px;
+}
+
+.advance_filter {
+  width: 7rem;
+  height: 41px;
+}
+
+  .advance_filter>input {
+    height: 20px;
+    font-size: 15px;
   }
 
+  .btnn>.search {
+    padding: 0rem 1rem;
+    height: 41px;
+  }
   .container>.details-container {
     width: 100%;
   }
 
   .container>.details-container>h1 {
+    font-size: 25px;
+    margin-top: 4px;
+
+  }
+
+  .container>.details-container>p.intro {
+    margin-top: 6px;
     width: 100%;
   }
 
-  .container>.details-container>.intro {
-    width: 100%;
+  .container>.details-container>p.down-p {
+    margin-top: 15px;
+  }
+
+  .container>.details-container>.sort-container {
+    margin-top: 1rem;
+  }
+
+  .container>.details-container>.sort-container>p {
+    font-size: 17px;
   }
 
   .container>.details-container>.down-p {
@@ -1038,23 +1097,21 @@ font-size: 21px;
   }
 
   .container {
-    padding: 3rem 1rem;
+    padding: 1rem 1rem;
+    flex-direction: column;
   }
 
   .container>.details-container {
     width: 100%;
   }
 
-  .container>.details-container>h1 {
-    font-size: 25px;
-    margin-top: 50px;
-  }
 
   .featuredbox-container .card {
     display: flex;
     flex-direction: column;
     width: 95%;
-    margin: 30px auto;
+    margin: 10px auto;
+    margin-top: -3rem;
   }
 
   .featuredbox-container .card .image-box {
@@ -1066,7 +1123,7 @@ font-size: 21px;
     width: 90%;
     /* height: 90%; */
     margin-left: 1rem;
-}
+  }
 
   .featuredbox-container .card .text-box {
     flex-direction: column;
@@ -1158,9 +1215,8 @@ font-size: 21px;
   }
 
   .featuredbox-container .card .image-box img {
-
     margin-left: 0rem;
-}
+  }
 
 }
 
