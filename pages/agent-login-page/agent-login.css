@@ -55,7 +55,7 @@
     display: flex;
     list-style: none;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
   }
   
   .nav-links li a {
@@ -69,7 +69,7 @@
   .access-box {
     display: flex;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 15px;
   }
   
   .access-box > a {
@@ -95,7 +95,7 @@
     position: relative;
     cursor: pointer;
     width: 30px;
-    height: 14px;
+    height: 15px;
     display: none;
     margin-top: 0.8rem;
   }
@@ -159,7 +159,7 @@
   }
   
   .login-container p {
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
     font-weight: 600;
     margin-bottom: 20px;
@@ -190,7 +190,7 @@
     width: 100%;
     border: 1.2px solid #000000;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.5s ease;
     color: rgba(8, 97, 175, 1);
@@ -244,13 +244,13 @@
   .form-group label {
     display: block;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     margin-top: 0.7rem;
   }
   
   .form-group > input {
-    font-size: 14px;
+    font-size: 15px;
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(185, 185, 185);
@@ -284,7 +284,7 @@
     margin-top: 1rem;
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 15px;
     margin-left: 2rem;
   }
   
@@ -297,7 +297,7 @@
     align-items: center;
     gap: 0.7rem;
     margin-top: 0.5rem;
-    font-size: 14px;
+    font-size: 15px;
   }
   
   /* Style for the checkbox */
@@ -381,8 +381,8 @@
     border: 2px solid #666666;
     border-top: 2px solid transparent;
     border-radius: 50%;
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     display: inline-block;
     animation: spin 1s linear infinite;
   } */
@@ -435,7 +435,7 @@
   .footer-links a {
     color: rgba(8, 97, 175, 1);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
   }
   
@@ -478,7 +478,7 @@
   .footer-bottom-links a {
     color: rgba(8, 97, 175, 1);
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 15px;
     text-decoration: underline;
   }
   
@@ -543,7 +543,7 @@
       font-size: 12px;
     }
     .footer-bottom-links a {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
   

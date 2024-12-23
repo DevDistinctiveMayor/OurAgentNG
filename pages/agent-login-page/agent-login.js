@@ -90,7 +90,7 @@ document
           }
   
           // Redirect to the dashboard or home page
-          window.location.href = "../agent-profile/agent-profile.html";
+          window.location.href = "https://ouragent.com.ng/agentsignup.php";
         } else {
           // Display validation errors
           if (data.errors) {
