@@ -212,6 +212,8 @@ main .hero .profile-card .change_image {
     padding: 8px;
     border-radius: 8px;
     margin-top: 0.5rem;
+    font-size: 14px;
+    border: none;
 }
 
 main .hero .profile-card .address {
@@ -444,14 +446,6 @@ main .hero .profile-card .contact-icons span:active .bx {
 .left-right-icons span:active .fa {
     font-size: 22px;
 }
-
-/* Media Query for responsive design */
-
-/* @media (max-width: 768px) {
-    display: unset;
-    gap: 50px;
-    padding: 1rem;
-} */
 
 .about-agent {
     padding: 3rem 0;
