@@ -382,6 +382,14 @@ form {
     text-decoration: none;
 }
 
+@media screen and (max-width: 800px) {
+  .logo {
+      gap: 0.5rem;
+  }
+  .nav-links li a {
+      padding: 5px 7px;
+  }
+}
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {

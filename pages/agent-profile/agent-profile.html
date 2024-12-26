@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Our Agent - Profile</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar ">
@@ -22,47 +24,59 @@
                     <li><a href="#contact">About us</a></li>
                     <div class="nav-links3 ">
                         <div class="access-box">
-                            <a href="#" class="post">Post A Property</a>
+                            <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
                             <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                         </div>
                     </div>
                 </ul>
             </div>
-    
-            <label
-                class="menu-toggle"
-                onClick={onToggleMenu}>
+
+            <label class="menu-toggle" onClick={onToggleMenu}>
                 <span></span>
                 <span></span>
-                <span></span>  
+                <span></span>
             </label>
-    
+
             <!-- <button class="menu-toggle" aria-label="Toggle navigation">
                 <i class="bx bx-menu"></i>
             </button> -->
             <div class="nav-links2">
                 <div class="access-box">
-                <a href="#" class="post">Post A Property</a>
-                <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                    <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                 </div>
             </div>
         </nav>
     </header>
 
+<div class="content">
     <main class="main">
         <section class="hero">
             <div class="profile-card">
-                <div class="img"> <img src="../../images/agent-profile-img.png" alt="agent-image"> </div>
-                <div class="agent-name"> Chinedu's Realty </div>
-                <div class="contact">
-                    <div class="address">Realty, No.5 Golden Estate, Amawa Ogbunike, Anambra state, Nigeria</div>
-                    <div class="contact-icons">
-                        <span class="phone-icon"> <i class="bx bx-phone"></i> </span>
-                        <span class="heart-icon"> <i class="bx bx-heart"></i> </span>
-                        <span class="message-icon"> <i class="bx bx-message"></i> </span>
-                    </div>
+                <div class="img">
+                  <img id="profileImage" src="../../images/agent-profile-img.png" class="img1"alt="agent-image">
+                  <input type="file" id="imageUpload" accept="image/*" style="display: none;">
                 </div>
-            </div>
+                <button id="uploadButton" class="change_image">Change Image</button>
+                <div class="agent-name" id="fullName">Loading...</div>
+                <div class="contact">
+                  <div class="address" id="address">Loading address...</div>
+                  <div class="contact-icons">
+                    <span class="phone-icon">
+                      <a href="tel:" id="phoneNumber" style="color: rgba(8, 97, 175, 1);">
+                        <i class="bx bx-phone"></i>
+                      </a>
+                    </span>
+                    <span class="heart-icon">
+                      <i class="bx bx-heart"></i>
+                    </span>
+                    <span class="message-icon">
+                      <i class="bx bx-message"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
 
             <div class="recently-sold">
                 <div class="heading">Recently Sold</div>
@@ -81,7 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -101,7 +115,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -121,7 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -141,7 +155,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -161,7 +175,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -181,7 +195,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="img-overlap"> 
+                            <div class="img-overlap">
                                 <span class="status">Sold</span>
                                 <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                             </div>
@@ -198,14 +212,14 @@
         <section class="about-agent">
             <div class="heading">About Me</div>
             <div class="description">
-                Lorem ipsum dolor sit amet consectetur. 
-                Sapien laoreet odio mattis nibh nisl lorem elementum sit sodales. 
-                Sit sed mattis tempor convallis sem velit tortor in. 
-                At in blandit pulvinar purus vitae aliquam semper. Faucibus est pellentesque 
+                Lorem ipsum dolor sit amet consectetur.
+                Sapien laoreet odio mattis nibh nisl lorem elementum sit sodales.
+                Sit sed mattis tempor convallis sem velit tortor in.
+                At in blandit pulvinar purus vitae aliquam semper. Faucibus est pellentesque
                 risus turpis dolor adipiscing aenean amet.
-                <br/><br/>
-                Lorem ipsum dolor sit amet consectetur. Sapien laoreet odio mattis nibh nisl 
-                lorem elementum sit sodales. Sit sed mattis tempor convallis 
+                <br /><br />
+                Lorem ipsum dolor sit amet consectetur. Sapien laoreet odio mattis nibh nisl
+                lorem elementum sit sodales. Sit sed mattis tempor convallis
             </div>
             <div class="exp"> 2 years of Experience </div>
             <a href="/" class="website-link">
@@ -221,6 +235,8 @@
                 <button type="button" class="btn">Rent</button>
             </div>
 
+
+            <div class="house-card-container_flex">
             <div class="house-card-container">
                 <div class="container">
                     <div class="house-card">
@@ -236,7 +252,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="img-overlap"> 
+                        <div class="img-overlap">
                             <span class="status">Sold</span>
                             <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                         </div>
@@ -256,7 +272,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="img-overlap"> 
+                        <div class="img-overlap">
                             <span class="status">Sold</span>
                             <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                         </div>
@@ -276,7 +292,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="img-overlap"> 
+                        <div class="img-overlap">
                             <span class="status">Sold</span>
                             <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                         </div>
@@ -296,7 +312,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="img-overlap"> 
+                        <div class="img-overlap">
                             <span class="status">Sold</span>
                             <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                         </div>
@@ -316,36 +332,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="img-overlap"> 
+                        <div class="img-overlap">
                             <span class="status">Sold</span>
                             <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="next-prev-page">
                 <span class="left-angle"> <i class="fa fa-angle-left"></i> </span>
                 <span class="num-container">
-                    <span class="num num-active">1</span>   
-                    <span class="num">2</span>   
-                    <span class="num">3</span>   
-                    <span class="num">4</span>   
-                    <span class="num">5</span>   
-                    <span class="num">6</span>   
-                    <span class="num">7</span>   
-                    <span class="num">8</span>   
+                    <span class="num num-active">1</span>
+                    <span class="num">2</span>
+                    <span class="num">3</span>
+                    <span class="num">4</span>
+                    <span class="num">5</span>
+                    <span class="num">6</span>
+                    <span class="num">7</span>
+                    <span class="num">8</span>
                 </span>
                 <span class="right-angle"> <i class="fa fa-angle-right"></i> </span>
             </div>
         </section>
     </main>
+</div>
 
     <footer class="footer">
         <div class="footer-top">
             <!-- Logo and Links -->
             <div class="footer-logo">
-                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
+                <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
+                    alt="Our Agent NG Logo">
             </div>
             <ul class="footer-links">
                 <li><a href="#">Property Listings</a></li>
@@ -356,11 +375,16 @@
             </ul>
             <!-- Social Media Icons -->
             <div class="social-icons">
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                        width="20"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                        width="20"></a>
             </div>
         </div>
         <hr class="line">
@@ -376,5 +400,7 @@
     </footer>
 
     <script src="./agent.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
