@@ -462,9 +462,7 @@ main .hero .profile-card .contact-icons span:active .bx {
     color: #02182B;
 }
 .editable-bio {
-    width: 100%;
     height: max-content;
-
     margin-top: 1rem;
     width: 60%;
     border-radius: 5px;
@@ -473,7 +471,6 @@ main .hero .profile-card .contact-icons span:active .bx {
     font-size: 14px;
     line-height: 1.5;
       font-family: "poppins";
-      src: url(../../assets/font/Poppins-Regular.woff2);
     }
 
 .editable-bio:empty {
@@ -879,11 +876,9 @@ button {
         margin: 1rem 0;
     }
 
-    /* Optional: Uncomment and use this if needed
-        .profile-card .img {
-            width: 150px;
-            height: 150px;
-        } */
+    .editable-bio {
+        width: 100%;
+    }
     .properties .heading {
         color: #02182B;
         font-size: 21px;
