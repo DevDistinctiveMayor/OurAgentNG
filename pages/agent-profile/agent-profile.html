@@ -210,17 +210,20 @@
         </section>
 
         <section class="about-agent">
-            <div class="heading">About Me</div>
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur.
-                Sapien laoreet odio mattis nibh nisl lorem elementum sit sodales.
-                Sit sed mattis tempor convallis sem velit tortor in.
-                At in blandit pulvinar purus vitae aliquam semper. Faucibus est pellentesque
-                risus turpis dolor adipiscing aenean amet.
-                <br /><br />
-                Lorem ipsum dolor sit amet consectetur. Sapien laoreet odio mattis nibh nisl
-                lorem elementum sit sodales. Sit sed mattis tempor convallis
-            </div>
+    
+            <label for="bio" class="heading">About Me</label>
+            <form id="bioForm">
+         
+                <div id="bio" class="editable-bio" contenteditable="true">           
+                 
+                </div>
+                <div>
+                    <button id="editBioBtn">Edit Bio</button>
+                    <button class="submit_bio"type="submit">Update Bio</button>
+                </div>
+            </form>
+            
+            
             <div class="exp"> 2 years of Experience </div>
             <a href="/" class="website-link">
                 <span><i class="fa-solid fa-link"></i></span>
