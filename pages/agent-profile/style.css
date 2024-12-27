@@ -989,18 +989,27 @@ button {
         gap: 10px;
         position: relative;
     }
+    .properties .btn-container button {
+        padding: 7px 8px;
+        border: 1px solid #EEEEEE;
+        color: #000000;
+        display: inline-block;
+        cursor: pointer;
+        width: 100%;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .properties .btn-container {
+        min-width: 142px;
+        width: 5%;
+    }
 }
 
 @media screen and (max-width: 410px) {
     main .hero {
         padding: 2rem 0rem;
     }
-
-    .properties .btn-container {
-        min-width: 240px;
-        width: 0%;
-    }
-
+    
     .properties {
         margin: 1rem 14px;
     }
