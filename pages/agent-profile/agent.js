@@ -52,12 +52,11 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-
 document.addEventListener("DOMContentLoaded", async () => {
-    const email = sessionStorage.getItem("email");
+    const agentId = sessionStorage.getItem("agent_id"); // Get agent_id from sessionStorage
 
-    // Check if email exists in session storage
-    if (!email) {
+    // Check if agent_id exists in session storage
+    if (!agentId) {
         Swal.fire({
             title: "Session Expired",
             text: "Your session has expired. Redirecting to the login page...",
@@ -70,13 +69,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        // Fetch user data from the server
+        // Fetch user data from the server using agent_id
         const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ agent_id: agentId }), // Send agent_id instead of email
         });
 
         if (!response.ok) {
@@ -93,6 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const profileImage = document.getElementById("profileImage");
             profileImage.src = user.profileImage || "../../images/agent-profile-img.png";
             document.getElementById("phoneNumber").href = `tel:${user.phoneNumber || ""}`;
+            
         } else {
             Swal.fire("Error", data.message || "Failed to load user data.", "error");
         }
@@ -113,7 +113,11 @@ document.getElementById("imageUpload").addEventListener("change", async (event) 
     if (file) {
         const formData = new FormData();
         formData.append("profileImage", file);
-        formData.append("email", sessionStorage.getItem("email"));
+        formData.append("agent_id", sessionStorage.getItem("agent_id")); // Send agent_id instead of email
+
+        // Disable the button and show loading state
+        uploadButton.disabled = true;
+        uploadButton.textContent = "Processing...";
 
         try {
             const response = await fetch("https://ouragent.com.ng/uploadProfileImage.php", {
@@ -129,53 +133,48 @@ document.getElementById("imageUpload").addEventListener("change", async (event) 
                 Swal.fire("Error", result.message || "Image upload failed.", "error");
             }
         } catch (error) {
-            console.error("Upload error:", error);
-            Swal.fire("Error", "An error occurred during image upload.", "error");
+            Swal.fire({
+                icon: 'error',
+                title: 'Fetch Error!',
+                text: 'An error occurred while uploading the image. Please try again later.',
+            });
+        } finally {
+            uploadButton.disabled = false;
+            uploadButton.textContent = "Change Image";
         }
     }
 });
 
-
-
-
+// Handle bio editing and submission
 document.addEventListener('DOMContentLoaded', () => {
     const bioDiv = document.getElementById("bio");
     const editBioBtn = document.getElementById("editBioBtn");
     const submitBtn = document.querySelector("button[type='submit']");
     const wordCountLimit = 200; // Maximum word count
 
-    // Initially, the bio is in read-only mode
     bioDiv.contentEditable = false;
 
-    // Toggle between read-only and editable
     editBioBtn.addEventListener("click", (event) => {
-        // Prevent the form submission when editing
-        event.preventDefault(); 
-        
+        event.preventDefault();
         if (bioDiv.contentEditable === "false") {
-            bioDiv.contentEditable = true; // Make bio editable
-            bioDiv.style.backgroundColor = "#f0f0f0"; // Change background color
-            bioDiv.style.padding = "10px"; // Change background color
-            bioDiv.style.border = "2pt solid #0861AF"
-          
-            editBioBtn.textContent = "Cancel Edit"; // Change button text
+            bioDiv.contentEditable = true;
+            bioDiv.style.backgroundColor = "#f0f0f0";
+            bioDiv.style.padding = "10px";
+            bioDiv.style.border = "2pt solid #0861AF";
+            editBioBtn.textContent = "Cancel Edit";
         } else {
-            bioDiv.contentEditable = false; // Make bio read-only
-            bioDiv.style.backgroundColor = "#ffffff"; // Revert background color
-            editBioBtn.textContent = "Edit Bio"; // Change button text back
+            bioDiv.contentEditable = false;
+            bioDiv.style.backgroundColor = "#ffffff";
+            editBioBtn.textContent = "Edit Bio";
         }
     });
 
-    // Function to count words in the bio div
     function countWords(text) {
         return text.trim().split(/\s+/).length;
     }
 
-    // Event listener for typing in the div
     bioDiv.addEventListener('input', () => {
         const wordCount = countWords(bioDiv.innerText);
-
-        // If the word count exceeds the limit, prevent further typing
         if (wordCount > wordCountLimit) {
             bioDiv.innerText = bioDiv.innerText.split(/\s+/).slice(0, wordCountLimit).join(" ");
             Swal.fire({
@@ -186,13 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle form submission
     document.getElementById("bioForm").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent the form from reloading the page
+        event.preventDefault();
 
-        const userInfo = bioDiv.innerText; // Get the bio text
-
-        // Validate input
+        const userInfo = bioDiv.innerText;
         if (!userInfo) {
             Swal.fire({
                 icon: 'warning',
@@ -202,31 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Disable submit button and change text to "Processing..."
         submitBtn.textContent = "Processing...";
         submitBtn.disabled = true;
 
-        // Get the email from sessionStorage (or other method)
-        const email = sessionStorage.getItem("email");
+        const agentId = sessionStorage.getItem("agent_id");
 
-        // Send the update request to the backend
-        await updateUserInfo(email, userInfo);
+        await updateUserInfo(agentId, userInfo);
 
-        // Enable submit button and reset text after processing
         submitBtn.textContent = "Update Bio";
         submitBtn.disabled = false;
 
-        // After successful update, return div to read-only mode
         bioDiv.contentEditable = false;
         bioDiv.style.backgroundColor = "#ffffff";
-        bioDiv.style.border = "none"; 
-        bioDiv.style.padding = "0px"; 
+        bioDiv.style.border = "none";
+        bioDiv.style.padding = "0px";
         editBioBtn.textContent = "Edit Bio";
     });
 
-    // Function to send the POST request to the backend
-    async function updateUserInfo(email, userInfo) {
-        const url = 'https://ouragent.com.ng/userInfo.php'; // Replace with your actual endpoint URL
+    async function updateUserInfo(agentId, userInfo) {
+        const url = 'https://ouragent.com.ng/userInfo.php';
 
         try {
             const response = await fetch(url, {
@@ -234,22 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, userInfo }) // Send email and bio as JSON
+                body: JSON.stringify({ agent_id: agentId, userInfo }) // Send agent_id instead of email
             });
 
-            const result = await response.json(); // Parse the JSON response
+            const result = await response.json();
 
             if (response.ok) {
-                console.log("Success:", result.message);
-                // Show success message using SweetAlert2
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
                     text: 'Bio updated successfully!',
                 });
             } else {
-                console.error("Error:", result.message);
-                // Show error message using SweetAlert2
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
@@ -257,8 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } catch (error) {
-            console.error("Fetch Error:", error);
-            // Show error message using SweetAlert2
             Swal.fire({
                 icon: 'error',
                 title: 'Fetch Error!',

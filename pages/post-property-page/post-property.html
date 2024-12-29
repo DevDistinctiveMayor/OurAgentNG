@@ -67,62 +67,51 @@
                         exposure.</p>
                 </div>
 
-                <form id="post-property-form" method="POST" action="your-backend-endpoint.php"
-                    enctype="multipart/form-data">
+                <form id="post-property-form" enctype="multipart/form-data">
+                    <!-- Remove the hidden user_id field since agent_id will be dynamically handled -->
+                    <input type="hidden" name="agent_id" id="agent-id-field">
+                
                     <!-- Agent Details -->
                     <section class="form-section">
                         <h2>Agent Information</h2>
                         <p>Provide your details so renters can reach out to you directly.</p>
-
-                        <div class="form-group">
-                            <label for="agent-name">Full Name</label>
-                            <input type="text" id="agent-name" name="agentName" placeholder="Enter your full name"
-                                required>
-                            <span id="agentName-error" class="error-message"></span>
-                        </div>
                     </section>
-
+                
                     <!-- Property Details -->
                     <section class="form-section">
                         <h2>Property Information</h2>
                         <p>Describe the property in detail to attract the right tenants.</p>
-
+                
                         <div class="form-group">
                             <label for="property-name">Property Name</label>
-                            <input type="text" id="property-name" name="propertyName"
-                                placeholder="Enter the property name" required>
+                            <input type="text" id="property-name" name="propertyName" placeholder="Enter the property name" required>
                             <span id="propertyName-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description"
-                                placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4"
-                                required></textarea>
+                            <textarea id="description" name="description" placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4" required></textarea>
                             <span id="description-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="price">Price (₦)</label>
-                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price"
-                                required>
+                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price" required>
                             <span id="price-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" id="location" name="location"
-                                placeholder="Enter the exact address or area" required>
+                            <input type="text" id="location" name="location" placeholder="Enter the exact address or area" required>
                             <span id="location-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="size">Property Size</label>
-                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)"
-                                required>
+                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)" required>
                             <span id="size-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="property-type">Property Type</label>
                             <select id="property-type" name="propertyType" required>
@@ -131,60 +120,47 @@
                                 <option value="house">House</option>
                                 <option value="office">Office</option>
                                 <option value="land">Land</option>
-                                <option value="office">Warehouse</option>
-                                <option value="land">Detached Bungalow</option>
-                                <option value="office">Commercial Properties</option>
-                                <option value="land">Shops</option>
-                                <option value="office">Co-working Spaces</option>
-                                <option value="land">Self-contained</option>
+                                <option value="warehouse">Warehouse</option>
+                                <option value="bungalow">Detached Bungalow</option>
+                                <option value="commercial">Commercial Properties</option>
+                                <option value="shops">Shops</option>
+                                <option value="coworking">Co-working Spaces</option>
+                                <option value="selfcontained">Self-contained</option>
                             </select>
                             <span id="propertyType-error" class="error-message"></span>
                         </div>
                     </section>
-
+                
                     <!-- Room Details -->
                     <section class="form-section">
                         <h2>Room & Bathroom Details</h2>
                         <p>Specify the number of rooms and bathrooms available in the property.</p>
-
+                
                         <div class="form-group">
                             <label for="roomNo">Number of Rooms</label>
-                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms"
-                                required>
+                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms" required>
                             <span id="roomNo-error" class="error-message"></span>
                         </div>
-
+                
                         <div class="form-group">
                             <label for="bathNo">Number of Bathrooms</label>
-                            <input type="number" id="bathNo" name="bathNo"
-                                placeholder="Enter the total number of bathrooms" required>
+                            <input type="number" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
                             <span id="bathNo-error" class="error-message"></span>
                         </div>
                     </section>
-
-
-                     <!-- Contact Details -->
-                     <section class="form-section">
+                
+                    <!-- Contact Details -->
+                    <section class="form-section">
                         <h2>Contact Info</h2>
                         <p>Please, verify your phone number and link.</p>
-
+                
                         <div class="form-group">
                             <label for="whatsapp">Whatsapp Link</label>
-                            <input type="text" id="whatsapp" name="whatsapp" placeholder="Enter your valid link number"
-                                required>
+                            <input type="text" id="whatsapp" name="whatsapp" placeholder="Enter your valid link number" required>
                             <span id="whatsapp-error" class="error-message"></span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="phoneNo">Phone No</label>
-                            <input type="number" id="phoneNo" name="phoneNo"
-                                placeholder="Enter your valid phone no" required>
-                            <span id="bathNo-error" class="error-message"></span>
-                        </div>
                     </section>
-    
-
-
+                
                     <!-- Account Type -->
                     <div class="form-group">
                         <label>Select the category:</label>
@@ -194,27 +170,27 @@
                         </div>
                         <span id="category-error" class="error-message"></span>
                     </div>
-
+                
                     <!-- Images Upload -->
                     <section class="form-section">
                         <h2>Upload Property Images</h2>
                         <p>Images significantly increase engagement. Upload clear pictures of the property.</p>
-
+                
                         <div class="form-group">
                             <label for="images">Select Images</label>
-                            <input type="file" id="images" name="images[]" multiple
-                                accept="image/png, image/jpeg, image/jpg, image/webp" required>
+                            <input type="file" id="images" name="images[]" multiple accept="image/png, image/jpeg, image/jpg, image/webp" required>
                             <span id="images-error" class="error-message"></span>
                             <p class="info-message">You can upload up to 3 images only.</p>
                         </div>
-
                     </section>
-
+                
                     <!-- Submit -->
                     <div class="form-submit">
                         <button type="submit" class="button">Post Your Property</button>
                     </div>
                 </form>
+                
+                
             </div>
 
         </div>

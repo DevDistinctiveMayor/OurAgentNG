@@ -28,12 +28,12 @@ document
     }
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("form").addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
+        const email = document.getElementById("email").value.trim(); // Optional if email is used only for login
         const keepMeLoggedIn = document.getElementById("keep-me").checked;
         const submitButton = document.getElementById("submitButton");
 
@@ -62,7 +62,7 @@ document
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    email,
+                    email, // Assuming email is required for login
                     password,
                 }),
             });
@@ -75,9 +75,8 @@ document
 
             if (data.status === "success") {
                 const userData = {
-                    email: data.email,
-                    token: data.token,
-                    userId: data.userId,
+                    agent_id: data.agent_id, // Store agent_id instead of email
+                    token: data.token, // Optional: store token for session management
                 };
 
                 // Save login state
@@ -88,9 +87,7 @@ document
                 }
 
                 // Redirect to the dashboard
-                sessionStorage.setItem("userId", data.userId);
-                sessionStorage.setItem("email", email);
-               // window.location.href = "../otp-page/otp.html";
+                sessionStorage.setItem("agent_id", data.agent_id);
                 window.location.href = "../agent-profile/agent-profile.html";
             } else {
                 // Display validation errors
@@ -114,6 +111,6 @@ document
     // Redirect to dashboard if user is already logged in
     // const sessionUser = sessionStorage.getItem("user");
     // if (sessionUser) {
-    //     window.location.href = "../agent-profile/index.html";
+    //     window.location.href = "../agent-profile/agent-profile.html";
     // }
 });

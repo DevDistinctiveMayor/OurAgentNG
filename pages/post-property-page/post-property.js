@@ -9,115 +9,72 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
+const urlParams = new URLSearchParams(window.location.search);
+const agentId = urlParams.get("agent_id");
 
-document.getElementById("post-property-form").addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+// const agentId = sessionStorage.getItem("agent_id");
+const agentName = sessionStorage.getItem("agent_name");
+const phoneNo = sessionStorage.getItem("phone_no");
 
-    const form = e.target;
-    const formData = new FormData(form);
+document.addEventListener("DOMContentLoaded", async () => {
 
-    // Select the submit button
-    const submitButton = form.querySelector("button[type='submit']");
-    submitButton.disabled = true;
-    submitButton.textContent = "Processing...";
-
-    // Clear previous error messages
-    document.querySelectorAll(".error-message").forEach((el) => {
-        el.textContent = "";
-        el.style.display = "none";
-    });
-
-    let hasError = false;
-
-    // Validate file upload: Number of files
-    const images = form.querySelector("input[type='file']").files;
-    const maxFileSize = 3 * 1024 * 1024; // 5MB
-
-    if (images.length > 3) {
-        const errorElement = document.getElementById("images-error");
-        errorElement.textContent = "You can only upload up to 3 images.";
-        errorElement.style.display = "block";
-        hasError = true;
-    }
-
-    // Validate file upload: File size
-    for (const file of images) {
-        if (file.size > maxFileSize) {
-            const errorElement = document.getElementById("images-error");
-            errorElement.textContent = `${file.name} is larger than 3MB. Please upload smaller images.`;
-            errorElement.style.display = "block";
-            hasError = true;
-        }
-    }
-
-    // Validate required fields
-    form.querySelectorAll("input[required], textarea[required], select[required]").forEach((field) => {
-        if (!field.value.trim()) {
-            const errorElement = document.getElementById(`${field.name}-error`);
-            if (errorElement) {
-                errorElement.textContent = `${field.placeholder || field.name} is required.`;
-                errorElement.style.display = "block";
-            }
-            hasError = true;
-        }
-    });
-
-    if (hasError) {
-        submitButton.disabled = false;
-        submitButton.textContent = "Register";
-        return; // Stop execution if there are validation errors
-    }
-
-    try {
-        // Send the form data to the server
-        const response = await fetch("https://ouragent.com.ng/addproperty.php", {
-            method: "POST",
-            body: formData,
+    if (!agentName || !phoneNo) {
+        Swal.fire({
+            title: "Session Expired",
+            text: "Your session has expired. Redirecting to the login page...",
+            icon: "warning",
+            confirmButtonText: "OK",
+        }).then(() => {
+            window.location.href = "../agent-login-page/agent-login.html";
         });
+        return;
+    }
 
-        // Parse the JSON response
-        const data = await response.json();
+    // Add event listener to the post property form
+    document.getElementById("post-property-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-        if (data.status === "success") {
-            // Show success message with SweetAlert2
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: data.message || "Property added successfully!",
-                timer: 3000, // Auto close after 3 seconds
-                showConfirmButton: false,
+        const form = e.target;
+        const formData = new FormData(form);
+
+        // Append agent details to the form data
+        formData.append("agent_name", agentName);
+        formData.append("phone_no", phoneNo);
+
+        const submitButton = form.querySelector("button[type='submit']");
+        submitButton.disabled = true;
+        submitButton.textContent = "Processing...";
+
+        try {
+            const response = await fetch("https://ouragent.com.ng/addproperty.php", {
+                method: "POST",
+                body: formData,
             });
-            form.reset(); // Optionally, reset the form
-        } else if (data.status === "error") {
-            // Display backend error messages with SweetAlert2
-            const errors = data.errors || {};
-            for (const field in errors) {
-                const errorElement = document.getElementById(`${field}-error`);
-                if (errorElement) {
-                    errorElement.textContent = errors[field];
-                    errorElement.style.display = "block";
-                }
-            }
 
-            // General error message (if any)
-            if (data.message) {
+            const data = await response.json();
+
+            if (data.status === "success") {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
+                    icon: "success",
+                    title: "Success!",
+                    text: data.message,
+                }).then(() => form.reset());
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error!",
                     text: data.message,
                 });
             }
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "An error occurred while posting the property.",
+            });
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Post Your Property";
         }
-    } catch (error) {
-        console.error("Error:", error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'An unexpected error occurred. Please try again later.',
-        });
-    } finally {
-        // Re-enable button
-        submitButton.disabled = false;
-        submitButton.textContent = "Register";
-    }
+    });
 });
