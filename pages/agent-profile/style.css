@@ -478,10 +478,10 @@ main .hero .profile-card .contact-icons span:active .bx {
     
 }
 button {
-    padding: 10px 15px;
+    padding: 9px 13px;
     cursor: pointer;
-    margin-top: 10px ;
-    font-size: 15px;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
 #editBioBtn {
@@ -508,8 +508,8 @@ button {
 
 .about-agent .website-link {
     color: #0861AF;
+    margin-top: 2rem;
 }
-
 .properties {
     margin: 6rem 0;
 }
@@ -912,11 +912,16 @@ button {
         position: unset;
         margin-top: 10px;
     }
+    .about-agent .heading {
+        font-size: 20px;
+       
+    }
 
     .about-agent {
         padding: 1rem;
         font-size: 16px;
         width: unset;
+        margin-top: -3rem;
     }
 
     .next-prev-page {
