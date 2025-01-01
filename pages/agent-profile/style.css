@@ -160,6 +160,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     padding: 4%;
+    margin-top: 2.5rem;
 }
 
 
@@ -171,6 +172,16 @@ main .hero {
     padding: 3rem 2rem;
     margin-bottom: 3rem;
     box-shadow: 0 0 4px #EEEEEE;
+}
+
+.company-name {
+    font-size: 26px;
+    color: #02182B;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: #0861AF;
 }
 
 main .hero .profile-card {
@@ -468,14 +479,17 @@ main .hero .profile-card .contact-icons span:active .bx {
     border-radius: 5px;
     resize: vertical;
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
       font-family: "poppins";
     }
 
 .editable-bio:empty {
-    color: #888; /* Placeholder color */
-    
+    color: #888; /* Placeholder color */  
+}
+#wordCountDisplay{
+    margin-top: 1rem;
+    font-size: 14px;
 }
 button {
     padding: 9px 13px;

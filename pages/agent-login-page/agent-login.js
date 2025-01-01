@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Redirect to the dashboard
                 sessionStorage.setItem("agent_id", data.agent_id);
-                window.location.href = "../agent-profile/agent-profile.html";
+                window.location.href = "../post-property-page/post-property.html";
             } else {
                 // Display validation errors
                 if (data.errors) {

@@ -51,6 +51,7 @@
 
 <div class="content">
     <main class="main">
+        <div class="company-name" id="companyName"></div>
         <section class="hero">
             <div class="profile-card">
                 <div class="img">
@@ -71,7 +72,9 @@
                       <i class="bx bx-heart"></i>
                     </span>
                     <span class="message-icon">
-                      <i class="bx bx-message"></i>
+                      <a href="mailto:" id="email" style="color: rgba(8, 97, 175, 1);">
+                        <i class="bx bx-message"></i>
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -214,14 +217,23 @@
             <label for="bio" class="heading">About Me</label>
             <form id="bioForm">
          
-                <div id="bio" class="editable-bio" contenteditable="true">           
-                 
-                </div>
+                <div id="bio" class="editable-bio" contenteditable="false">Enter your bio here...</div>
+                <p id="wordCountDisplay">Remaining words: 150</p>
                 <div>
+                    
                     <button id="editBioBtn">Edit Bio</button>
                     <button class="submit_bio"type="submit">Update Bio</button>
                 </div>
             </form>
+
+            <!-- <form id="bioForm">
+                <div id="bio" contenteditable="false">Enter your bio here...</div>
+                <p id="charCountDisplay">Remaining characters: 150</p>
+                <button id="editBioBtn">Edit Bio</button>
+                <button type="submit">Update Bio</button>
+            </form> -->
+            
+            
             
             
             <!-- <div class="exp"> 2 years of Experience </div> -->

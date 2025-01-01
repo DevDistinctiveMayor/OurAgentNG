@@ -86,8 +86,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (data.status === "success") {
             const user = data.data;
             document.getElementById("fullName").textContent = user.fullName || "N/A";
+            document.getElementById("companyName").textContent = user.companyName || "N/A";
             document.getElementById("address").textContent = user.address || "N/A";
             document.getElementById("bio").textContent = user.userInfo || "N/A";
+            document.getElementById("email").href = `mailto:${user.email || ""}`;
 
             const profileImage = document.getElementById("profileImage");
             profileImage.src = user.profileImage || "../../images/agent-profile-img.png";
@@ -145,12 +147,14 @@ document.getElementById("imageUpload").addEventListener("change", async (event) 
     }
 });
 
-// Handle bio editing and submission
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const bioDiv = document.getElementById("bio");
     const editBioBtn = document.getElementById("editBioBtn");
     const submitBtn = document.querySelector("button[type='submit']");
-    const wordCountLimit = 200; // Maximum word count
+    const charCountDisplay = document.getElementById("charCountDisplay"); // Element to show character count
+    const charCountLimit = 200; // Maximum character count
 
     bioDiv.contentEditable = false;
 
@@ -160,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bioDiv.contentEditable = true;
             bioDiv.style.backgroundColor = "#f0f0f0";
             bioDiv.style.padding = "10px";
-            bioDiv.style.border = "2pt solid #0861AF";
+            bioDiv.style.border = "1pt solid #0861AF";
             editBioBtn.textContent = "Cancel Edit";
         } else {
             bioDiv.contentEditable = false;
@@ -169,26 +173,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function countWords(text) {
-        return text.trim().split(/\s+/).length;
+    function countCharacters(text) {
+        return text.length; // Count every character, including spaces and punctuation
     }
 
     bioDiv.addEventListener('input', () => {
-        const wordCount = countWords(bioDiv.innerText);
-        if (wordCount > wordCountLimit) {
-            bioDiv.innerText = bioDiv.innerText.split(/\s+/).slice(0, wordCountLimit).join(" ");
+        const charCount = countCharacters(bioDiv.innerText);
+
+        if (charCount > charCountLimit) {
+            // Truncate content to the allowed limit
+            bioDiv.innerText = bioDiv.innerText.slice(0, charCountLimit);
+
+            // Move the cursor to the end
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(bioDiv);
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+
             Swal.fire({
                 icon: 'warning',
-                title: 'Word Limit Exceeded',
-                text: `Your bio can only be up to ${wordCountLimit} words. Excess words have been removed.`,
+                title: 'Character Limit Reached',
+                text: `You cannot enter more than ${charCountLimit} characters.`,
             });
         }
+
+        const remainingChars = charCountLimit - Math.min(charCount, charCountLimit);
+        charCountDisplay.textContent = `Remaining characters: ${remainingChars}`;
+        charCountDisplay.style.color = remainingChars <= 0 ? "red" : "black";
     });
 
     document.getElementById("bioForm").addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const userInfo = bioDiv.innerText;
+        const userInfo = bioDiv.innerText.trim();
+        const charCount = countCharacters(userInfo);
+
+        if (charCount > charCountLimit) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Character Limit Exceeded',
+                text: `Your bio exceeds the ${charCountLimit}-character limit. Please reduce it before submitting.`,
+            });
+            return;
+        }
+
         if (!userInfo) {
             Swal.fire({
                 icon: 'warning',
@@ -224,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ agent_id: agentId, userInfo }) // Send agent_id instead of email
+                body: JSON.stringify({ agent_id: agentId, userInfo })
             });
 
             const result = await response.json();
@@ -250,4 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Initialize the character count display
+    const initialCharCount = countCharacters(bioDiv.innerText);
+    charCountDisplay.textContent = `Remaining characters: ${charCountLimit - initialCharCount}`;
 });
+

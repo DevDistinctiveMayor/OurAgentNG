@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Gather form inputs
     const fullName = document.getElementById("fullName").value.trim();
+    const companyName = document.getElementById("companyName").value.trim();
     const email = document.getElementById("email").value.trim();
     const address = document.getElementById("address").value.trim();
     const ninNumber = document.getElementById("ninNumber").value.trim();
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear previous error messages
     [
       "fullName",
+      "companyName",
       "email",
       "address",
       "ninNumber",
@@ -106,6 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
       setError("fullName-error", "Full Name is required.");
       hasError = true;
     }
+    if (!companyName) {
+      setError("company-error", "company Name is required.");
+      hasError = true;
+    }
     if (!email) {
       setError("email-error", "Email Address is required.");
       hasError = true;
@@ -133,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         body: JSON.stringify({
           fullName,
+          companyName,
           email,
           address,
           ninNumber,

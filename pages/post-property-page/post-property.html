@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,24 +66,15 @@
                         exposure.</p>
                 </div>
 
-                <form id="post-property-form" enctype="multipart/form-data">
-                    <!-- Remove the hidden user_id field since agent_id will be dynamically handled -->
-                    <input type="hidden" name="agent_id" id="agent-id-field">
-                
-                    <!-- Agent Details -->
-                    <section class="form-section">
-                        <h2>Agent Information</h2>
-                        <p>Provide your details so renters can reach out to you directly.</p>
-                    </section>
-                
+                <form id="addPropertyForm" enctype="multipart/form-data">
                     <!-- Property Details -->
                     <section class="form-section">
                         <h2>Property Information</h2>
                         <p>Describe the property in detail to attract the right tenants.</p>
                 
                         <div class="form-group">
-                            <label for="property-name">Property Name</label>
-                            <input type="text" id="property-name" name="propertyName" placeholder="Enter the property name" required>
+                            <label for="propertyName">Property Name:</label>
+                            <input type="text" id="propertyName" name="propertyName" placeholder="Enter the property name" required>
                             <span id="propertyName-error" class="error-message"></span>
                         </div>
                 
@@ -149,24 +139,12 @@
                         </div>
                     </section>
                 
-                    <!-- Contact Details -->
-                    <section class="form-section">
-                        <h2>Contact Info</h2>
-                        <p>Please, verify your phone number and link.</p>
-                
-                        <div class="form-group">
-                            <label for="whatsapp">Whatsapp Link</label>
-                            <input type="text" id="whatsapp" name="whatsapp" placeholder="Enter your valid link number" required>
-                            <span id="whatsapp-error" class="error-message"></span>
-                        </div>
-                    </section>
-                
-                    <!-- Account Type -->
+                    <!-- Category Selection -->
                     <div class="form-group">
                         <label>Select the category:</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="category" value="Rent"> Rent</label>
-                            <label><input type="radio" name="category" value="Sell"> Sell </label>
+                            <label><input type="radio" name="category" value="Rent" required> Rent</label>
+                            <label><input type="radio" name="category" value="Sell" required> Sell </label>
                         </div>
                         <span id="category-error" class="error-message"></span>
                     </div>
@@ -178,7 +156,7 @@
                 
                         <div class="form-group">
                             <label for="images">Select Images</label>
-                            <input type="file" id="images" name="images[]" multiple accept="image/png, image/jpeg, image/jpg, image/webp" required>
+                            <input type="file" id="propertyImages" name="images[]" multiple accept="image/png, image/jpeg, image/jpg, image/webp" required>
                             <span id="images-error" class="error-message"></span>
                             <p class="info-message">You can upload up to 3 images only.</p>
                         </div>
@@ -186,9 +164,10 @@
                 
                     <!-- Submit -->
                     <div class="form-submit">
-                        <button type="submit" class="button">Post Your Property</button>
+                        <button type="submit" id="submitButton" class="button">Post Your Property</button>
                     </div>
                 </form>
+                
                 
                 
             </div>
@@ -249,3 +228,4 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="post-property.js"></script>
 </body>
+</html>
