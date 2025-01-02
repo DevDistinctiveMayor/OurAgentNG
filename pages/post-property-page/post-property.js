@@ -123,9 +123,9 @@ menuToggle.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const form = document.getElementById("addPropertyForm");
-    const agentId = sessionStorage.getItem("agent_id");
 
-    // Check for session expiration
+    let agentId = sessionStorage.getItem("agent_id");
+
     if (!agentId) {
         Swal.fire({
             title: "Session Expired",
@@ -139,8 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        // Verify agent profile
-        const response = await fetch("https://ouragent.com.ng/addproperty.php", {
+        const response = await fetch("https://ouragent.com.ng/agent_profile_verification.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ agent_id: agentId }),
@@ -148,7 +147,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const result = await response.json();
 
-        // Check if the agent's profile is incomplete
         if (result.status === "incomplete") {
             Swal.fire({
                 title: "Profile Incomplete",
@@ -173,31 +171,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const agentId = sessionStorage.getItem("agent_id");
         const submitButton = document.getElementById("submitButton");
         submitButton.disabled = true;
         submitButton.textContent = "Uploading...";
 
         const formData = new FormData(form);
-        formData.append("agent_id", agentId); // Append agent_id to form data
+        formData.append("agent_id", agentId);
 
         try {
             const response = await fetch("https://ouragent.com.ng/addproperty.php", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    agent_id: agentId,
-                    propertyName: formData.get("propertyName"),
-                    description: formData.get("description"),
-                    price: formData.get("price"),
-                    location: formData.get("location"),
-                    size: formData.get("size"),
-                    propertyType: formData.get("propertyType"),
-                    roomNo: formData.get("roomNo"),
-                    bathNo: formData.get("bathNo"),
-                    category: formData.get("category")
-                })
+                body: formData,
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
 
             const result = await response.json();
 
