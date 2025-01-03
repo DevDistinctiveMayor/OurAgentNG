@@ -121,6 +121,41 @@ menuToggle.addEventListener("click", () => {
 //     }
 // });
 
+
+function previewImages() {
+    const input = document.getElementById('propertyImages');
+    const previewContainer = document.getElementById('imagePreview');
+    const fileChosenText = document.getElementById('file-chosen-text');
+    const maxFiles = 3;
+
+    previewContainer.innerHTML = ''; // Clear previous previews
+    fileChosenText.textContent = `${input.files.length} file(s) selected`;
+
+    if (input.files.length > maxFiles) {
+        alert('You can upload a maximum of 3 images only.');
+        input.value = ''; // Clear the input
+        fileChosenText.textContent = 'No images chosen';
+        return;
+    }
+
+    Array.from(input.files).forEach(file => {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                previewContainer.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            alert('Only image files are allowed!');
+            input.value = '';
+            fileChosenText.textContent = 'No images chosen';
+        }
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const form = document.getElementById("addPropertyForm");
 

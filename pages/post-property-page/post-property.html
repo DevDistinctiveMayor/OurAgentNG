@@ -103,7 +103,7 @@
                         </div>
                 
                         <div class="custom-select-container">
-                            <label for="property-type">Property Type</label>
+                            <label for="property-type" class="property-type">Property Type</label>
                             <div class="custom-select">
                                 <select id="property-type" name="propertyType" required onchange="toggleRoomBathroomFields()">
                                     <option value="" disabled selected>Select a property type</option>
@@ -155,15 +155,27 @@
                 
                     <!-- Images Upload -->
                     <section class="form-section">
-                        <h2>Upload Property Images</h2>
-                        <p>Images significantly increase engagement. Upload clear pictures of the property.</p>
-                
-                        <div class="form-group">
-                            <label for="images">Select Images</label>
-                            <input type="file" id="propertyImages" name="images[]" multiple accept="image/png, image/jpeg, image/jpg, image/webp" required>
+                        <h2>Upload Property Images</h2>                
+                        <div class="custom-file-input-container">
+                            <label for="propertyImages">Select Images</label>
+                            <div class="custom-file-input">
+                                <input 
+                                    type="file" 
+                                    id="propertyImages" 
+                                    name="images[]" 
+                                    multiple 
+                                    accept="image/png, image/jpeg, image/jpg, image/webp" 
+                                    onchange="previewImages()" 
+                                    hidden 
+                                    required
+                                >
+                                <button type="button" onclick="document.getElementById('propertyImages').click()">Choose Images</button>
+                                <span id="file-chosen-text">No images chosen</span>
+                            </div>
                             <span id="images-error" class="error-message"></span>
                             <p class="info-message">You can upload up to 3 images only.</p>
-                        </div>
+                            <div id="imagePreview" class="image-preview-container"></div>
+                        </div>                        
                     </section>
                 
                     <!-- Submit -->
