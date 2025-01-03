@@ -104,7 +104,7 @@
                 
                         <div class="form-group">
                             <label for="property-type">Property Type</label>
-                            <select id="property-type" name="propertyType" required>
+                            <select id="property-type" name="propertyType" required onchange="toggleRoomBathroomFields()">
                                 <option value="" disabled selected>Select a property type</option>
                                 <option value="apartment">Apartment</option>
                                 <option value="house">House</option>
@@ -122,19 +122,19 @@
                     </section>
                 
                     <!-- Room Details -->
-                    <section class="form-section">
+                    <section class="form-section"  id="roomBathroomSection">
                         <h2>Room & Bathroom Details</h2>
                         <p>Specify the number of rooms and bathrooms available in the property.</p>
                 
                         <div class="form-group">
                             <label for="roomNo">Number of Rooms</label>
-                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms" required>
+                            <input type="number" id="roomNo" required min="1" name="roomNo" placeholder="Enter the total number of rooms" required>
                             <span id="roomNo-error" class="error-message"></span>
                         </div>
                 
                         <div class="form-group">
                             <label for="bathNo">Number of Bathrooms</label>
-                            <input type="number" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
+                            <input type="number" required min="1" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
                             <span id="bathNo-error" class="error-message"></span>
                         </div>
                     </section>

@@ -205,3 +205,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 });
+
+
+function toggleRoomBathroomFields() {
+    const propertyType = document.getElementById("property-type").value;
+    const roomBathroomSection = document.getElementById("roomBathroomSection");
+
+    if (propertyType === "land") {
+        roomBathroomSection.style.display = "none";
+        // Clear the fields and remove required attribute when hidden
+        document.getElementById("roomNo").value = "";
+        document.getElementById("bathNo").value = "";
+        document.getElementById("roomNo").removeAttribute("required");
+        document.getElementById("bathNo").removeAttribute("required");
+    } else {
+        roomBathroomSection.style.display = "block";
+        // Add required attribute back when visible
+        document.getElementById("roomNo").setAttribute("required", "true");
+        document.getElementById("bathNo").setAttribute("required", "true");
+    }
+}
