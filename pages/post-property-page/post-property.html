@@ -86,9 +86,13 @@
                 
                         <div class="form-group">
                             <label for="price">Price (₦)</label>
-                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price" required>
+                            <div class="currency-input">
+                                <span class="naira-symbol">₦</span>
+                                <input type="text" id="price" name="price" placeholder="0.00" required oninput="formatCurrency(this)">
+                            </div>
                             <span id="price-error" class="error-message"></span>
-                        </div>
+                        </div>                        
+                        
                 
                         <div class="form-group">
                             <label for="location">Location</label>
@@ -158,7 +162,8 @@
                         </div>
                         <span id="category-error" class="error-message"></span>
                     </div>
-                
+                   
+                    
                     <!-- Images Upload -->
                     <section class="form-section">
                         <h2>Upload Property Images</h2>                

@@ -157,6 +157,8 @@ function previewImages() {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+
+    
     const form = document.getElementById("addPropertyForm");
 
     let agentId = sessionStorage.getItem("agent_id");
@@ -258,5 +260,37 @@ function toggleRoomBathroomFields() {
         // Add required attribute back when visible
         document.getElementById("roomNo").setAttribute("required", "true");
         document.getElementById("bathNo").setAttribute("required", "true");
+    }
+}
+
+function formatCurrency(input) {
+    // Remove non-numeric characters except decimal points
+    let value = input.value.replace(/[^0-9.]/g, '');
+
+    // Split the number into whole and decimal parts
+    let parts = value.split('.');
+    let integerPart = parts[0];
+    let decimalPart = parts[1] ? parts[1].substring(0, 2) : '';
+
+    // Add comma formatting for thousands
+    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    // Reassemble the formatted number
+    input.value = decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
+}
+function submitButton() {
+    const radios = document.querySelectorAll('input[name="category"]');
+    const errorSpan = document.getElementById('category-error');
+    let isChecked = false;
+
+    radios.forEach((radio) => {
+        if (radio.checked) isChecked = true;
+    });
+
+    if (!isChecked) {
+        errorSpan.textContent = "Please select a category!";
+    } else {
+        errorSpan.textContent = ""; // Clear error
+        alert('Form submitted successfully!');
     }
 }
