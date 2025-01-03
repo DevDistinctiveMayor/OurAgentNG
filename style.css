@@ -16,6 +16,7 @@ body {
 .content-blur {
   filter: blur(3px); 
   pointer-events: none; 
+  -webkit-user-select: none;
   user-select: none; 
   transition: filter 0.3s ease;
 }
@@ -176,6 +177,7 @@ main {
 .filter {
   width: 35%;
   margin: auto;
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   padding: 15px;
   display: flex;
