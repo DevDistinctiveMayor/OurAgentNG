@@ -182,6 +182,7 @@ main .hero {
     justify-content: center;
     margin-bottom: 2rem;
     color: #0861AF;
+    margin-top: 2rem;
 }
 
 main .hero .profile-card {
@@ -201,6 +202,7 @@ main .hero .profile-card .img1 {
     align-items: center;
     border-radius: 100px;
     overflow: hidden;
+    margin: 2rem;
 }
 
 main .hero .profile-card .img1 img {
@@ -880,12 +882,13 @@ button {
         margin-top: -4rem;
         width: 100%;
     }
-    textarea {
-        border: 1pt solid #0861AF;
-        border-radius: 5px;
-        width: 100%;
-    }
 
+    main .hero .profile-card .img1 {
+        margin-top: 5rem;
+    }
+    .company-name {
+        margin-top: 3rem;
+    }
     .properties {
         margin: 1rem 0;
     }
