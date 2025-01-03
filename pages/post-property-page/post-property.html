@@ -147,8 +147,14 @@
                     <div class="form-group">
                         <label>Select the category:</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="category" value="Rent" required> Rent</label>
-                            <label><input type="radio" name="category" value="Sell" required> Sell </label>
+                            <div class="radio">
+                                <label>Rent</label>
+                                <input type="radio" name="category" class="category" value="Rent" required> 
+                            </div>
+                            <div class="radio">
+                                <label>Sell</label>
+                                <input type="radio" name="category" class="category" value="Sell" required> 
+                            </div>
                         </div>
                         <span id="category-error" class="error-message"></span>
                     </div>
