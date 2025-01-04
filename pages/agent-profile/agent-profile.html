@@ -22,20 +22,28 @@
                     <li><a href="../land-page/land.html">Land</a></li>
                     <li><a href="#services">Saved properties</a></li>
                     <li><a href="#contact">About us</a></li>
+
                     <div class="nav-links3 ">
                         <div class="access-box">
-                            <a href="../post-property-page/post-property.html" class="post">Post A Property</a>
+                            <!-- <a href="../post-property-page/post-property.html" class="post">Post A Property</a> -->
                             <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                         </div>
                     </div>
                 </ul>
             </div>
 
-            <label class="menu-toggle" onClick={onToggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+
+            <div class="call_action">
+                <div class="access-box">
+                    <a href="../post-property-page/post-property.html" class="post">Post A Property</a>
+                </div>
+                <label class="menu-toggle" onClick={onToggleMenu}>
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
 
             <!-- <button class="menu-toggle" aria-label="Toggle navigation">
                 <i class="bx bx-menu"></i>
@@ -49,330 +57,341 @@
         </nav>
     </header>
 
-<div class="content">
-    <main class="main">
-        <div class="company-name" id="companyName"></div>
-        <section class="hero">
-            <div class="profile-card">
-                <div class="img">
-                  <img id="profileImage" src="../../images/agent-profile-img.png" class="img1"alt="agent-image">
-                  <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+    <div class="content">
+        <main class="main">
+            <div class="company-name" id="companyName"></div>
+            <section class="hero">
+                <div class="profile-card">
+                    <div class="img">
+                        <img id="profileImage" src="../../images/agent-profile-img.png" class="img1" alt="agent-image">
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    </div>
+                    <button id="uploadButton" class="change_image">Change Image</button>
+                    <div class="agent-name" id="fullName">Loading...</div>
+                    <div class="contact">
+                        <div class="address" id="address">Loading address...</div>
+                        <div class="contact-icons">
+                            <span class="phone-icon">
+                                <a href="tel:" id="phoneNumber" style="color: rgba(8, 97, 175, 1);">
+                                    <i class="bx bx-phone"></i>
+                                </a>
+                            </span>
+                            <span class="heart-icon">
+                                <i class="bx bx-heart"></i>
+                            </span>
+                            <span class="message-icon">
+                                <a href="mailto:" id="email" style="color: rgba(8, 97, 175, 1);">
+                                    <i class="bx bx-message"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <button id="uploadButton" class="change_image">Change Image</button>
-                <div class="agent-name" id="fullName">Loading...</div>
-                <div class="contact">
-                  <div class="address" id="address">Loading address...</div>
-                  <div class="contact-icons">
-                    <span class="phone-icon">
-                      <a href="tel:" id="phoneNumber" style="color: rgba(8, 97, 175, 1);">
-                        <i class="bx bx-phone"></i>
-                      </a>
-                    </span>
-                    <span class="heart-icon">
-                      <i class="bx bx-heart"></i>
-                    </span>
-                    <span class="message-icon">
-                      <a href="mailto:" id="email" style="color: rgba(8, 97, 175, 1);">
-                        <i class="bx bx-message"></i>
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
 
-            <div class="recently-sold">
-                <div class="heading">Recently Sold</div>
-                <div class="house-card-container">
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="house-card">
-                            <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                            <div class="details">
-                                <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                                <div class="price">N1,000,000</div>
-                                <div class="location">
-                                    <div class="location-name">Lekki Phase 1</div>
-                                    <div class="view-icon">
-                                        <span class="view">View</span>
-                                        <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-overlap">
-                                <span class="status">Sold</span>
-                                <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="left-right-icons">
-                    <span class="left-angle"> <i class="fa fa-angle-left"></i> </span>
-                    <span class="right-angle"> <i class="fa fa-angle-right"></i> </span>
-                </div>
-            </div>
-        </section>
 
-        <section class="about-agent">
-    
-            <label for="bio" class="heading">About Me</label>
-            <form id="bioForm">
-         
-                <div id="bio" class="editable-bio" contenteditable="false">Enter your bio here...</div>
-                <p id="charCountDisplay">words: 150</p>
-                <div>
-                    
-                    <button id="editBioBtn">Edit Bio</button>
-                    <button class="submit_bio"type="submit">Update Bio</button>
+                <div class="recently-sold">
+                    <div class="heading">Recently Sold</div>
+                    <div class="house-card-container">
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-right-icons">
+                        <span class="left-angle"> <i class="fa fa-angle-left"></i> </span>
+                        <span class="right-angle"> <i class="fa fa-angle-right"></i> </span>
+                    </div>
                 </div>
-            </form>
+            </section>
 
-            <!-- <form id="bioForm">
+            <section class="about-agent">
+
+                <label for="bio" class="heading">About Me</label>
+                <form id="bioForm">
+
+                    <div id="bio" class="editable-bio" contenteditable="false">Enter your bio here...</div>
+                    <p id="charCountDisplay">words: 150</p>
+                    <div>
+
+                        <button id="editBioBtn">Edit Bio</button>
+                        <button class="submit_bio" type="submit">Update Bio</button>
+                    </div>
+                </form>
+
+                <!-- <form id="bioForm">
                 <div id="bio" contenteditable="false">Enter your bio here...</div>
                 <p id="charCountDisplay">Remaining characters: 150</p>
                 <button id="editBioBtn">Edit Bio</button>
                 <button type="submit">Update Bio</button>
             </form> -->
-            
-            
-            
-            
-            <!-- <div class="exp"> 2 years of Experience </div> -->
-            <a href="/" class="website-link">
-                <span><i class="fa-solid fa-link"></i></span>
-                <span>Visit our website</span>
-            </a>
-        </section>
-
-        <section class="properties">
-            <div class="heading">Properties for Sale by Chinedu's Realty</div>
-            <div class="btn-container">
-                <button type="button" class="btn active">Sale</button>
-                <button type="button" class="btn">Rent</button>
-            </div>
 
 
-            <div class="house-card-container_flex">
-            <div class="house-card-container">
-                <div class="container">
-                    <div class="house-card">
-                        <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                        <div class="details">
-                            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                            <div class="price">N21,000,000</div>
-                            <div class="location">
-                                <div class="location-name">Lekki Phase 1</div>
-                                <div class="view-icon">
-                                    <span class="view">View</span>
-                                    <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img-overlap">
-                            <span class="status">Sold</span>
-                            <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="house-card">
-                        <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                        <div class="details">
-                            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                            <div class="price">N21,000,000</div>
-                            <div class="location">
-                                <div class="location-name">Lekki Phase 1</div>
-                                <div class="view-icon">
-                                    <span class="view">View</span>
-                                    <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img-overlap">
-                            <span class="status">Sold</span>
-                            <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="house-card">
-                        <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                        <div class="details">
-                            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                            <div class="price">N21,000,000</div>
-                            <div class="location">
-                                <div class="location-name">Lekki Phase 1</div>
-                                <div class="view-icon">
-                                    <span class="view">View</span>
-                                    <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img-overlap">
-                            <span class="status">Sold</span>
-                            <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="house-card">
-                        <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                        <div class="details">
-                            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                            <div class="price">N21,000,000</div>
-                            <div class="location">
-                                <div class="location-name">Lekki Phase 1</div>
-                                <div class="view-icon">
-                                    <span class="view">View</span>
-                                    <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img-overlap">
-                            <span class="status">Sold</span>
-                            <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="house-card">
-                        <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
-                        <div class="details">
-                            <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
-                            <div class="price">N1,000,000</div>
-                            <div class="location">
-                                <div class="location-name">Lekki Phase 1</div>
-                                <div class="view-icon">
-                                    <span class="view">View</span>
-                                    <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img-overlap">
-                            <span class="status">Sold</span>
-                            <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-            <div class="next-prev-page">
-                <span class="left-angle"> <i class="fa fa-angle-left"></i> </span>
-                <span class="num-container">
-                    <span class="num num-active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <span class="num">4</span>
-                    <span class="num">5</span>
-                    <span class="num">6</span>
-                    <span class="num">7</span>
-                    <span class="num">8</span>
-                </span>
-                <span class="right-angle"> <i class="fa fa-angle-right"></i> </span>
-            </div>
-        </section>
-    </main>
-</div>
+
+                <!-- <div class="exp"> 2 years of Experience </div> -->
+                <a href="/" class="website-link">
+                    <span><i class="fa-solid fa-link"></i></span>
+                    <span>Visit our website</span>
+                </a>
+            </section>
+
+            <section class="properties">
+                <div class="heading">Properties for Sale by Chinedu's Realty</div>
+                <div class="btn-container">
+                    <button type="button" class="btn active">Sale</button>
+                    <button type="button" class="btn">Rent</button>
+                </div>
+
+
+                <div class="house-card-container_flex">
+                    <div class="house-card-container">
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N21,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N21,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N21,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N21,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="house-card">
+                                <div class="img"> <img src="../../images/featured_image.png" alt=""> </div>
+                                <div class="details">
+                                    <div class="description">Smart Luxury 2 Bedroom Apartment with *Swimming*:</div>
+                                    <div class="price">N1,000,000</div>
+                                    <div class="location">
+                                        <div class="location-name">Lekki Phase 1</div>
+                                        <div class="view-icon">
+                                            <span class="view">View</span>
+                                            <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="img-overlap">
+                                    <span class="status">Sold</span>
+                                    <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-prev-page">
+                    <span class="left-angle"> <i class="fa fa-angle-left"></i> </span>
+                    <span class="num-container">
+                        <span class="num num-active">1</span>
+                        <span class="num">2</span>
+                        <span class="num">3</span>
+                        <span class="num">4</span>
+                        <span class="num">5</span>
+                        <span class="num">6</span>
+                        <span class="num">7</span>
+                        <span class="num">8</span>
+                    </span>
+                    <span class="right-angle"> <i class="fa fa-angle-right"></i> </span>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <footer class="footer">
         <div class="footer-top">

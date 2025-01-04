@@ -85,6 +85,9 @@ main {
     border-radius: 7px;
 }
 
+.call_action{
+    display: flex;
+}
 .menu-toggle {
     position: relative;
     cursor: pointer;
