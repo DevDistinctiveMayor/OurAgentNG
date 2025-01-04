@@ -91,6 +91,10 @@ header {
   border-radius: 7px;
 }
 
+.call_action{
+  display: none;
+}
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
@@ -544,6 +548,10 @@ form {
     display: flex;
     transform: translateX(0);
     opacity: 1;
+  }
+  .call_action {
+    display: block;
+    display: flex;
   }
   .menu-toggle {
     display: block;

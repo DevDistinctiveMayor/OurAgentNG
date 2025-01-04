@@ -96,6 +96,11 @@ main {
   border-radius: 7px;
 }
 
+.call_action{
+  display: none;
+}
+
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
@@ -644,7 +649,11 @@ main {
     gap: 3rem;
   }
 
-  .menu-toggle {
+.call_action {
+    display: block;
+    display: flex;
+  }
+  .menu-toggle{
     display: block;
   }
   .form-header h1 {

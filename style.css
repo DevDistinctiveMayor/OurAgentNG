@@ -96,6 +96,10 @@ main {
   border-radius: 7px;
 }
 
+.call_action{
+  display: none;
+}
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
@@ -115,6 +119,7 @@ main {
   transition: all 0.2s ease;
   z-index: 30;
 }
+
 
 .menu-toggle span:nth-child(1) {
   top: 0;
@@ -760,6 +765,10 @@ main {
 
   .for_sale {
     gap: 3rem;
+  }
+  .call_action {
+    display: block;
+    display: flex;
   }
 
   .menu-toggle {
