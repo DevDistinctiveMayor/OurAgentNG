@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const remainingChars = charCountLimit - Math.min(charCount, charCountLimit);
-        charCountDisplay.textContent = `words: ${remainingChars}`;
+        charCountDisplay.textContent = `: ${remainingChars}`;
         charCountDisplay.style.color = remainingChars <= 0 ? "red" : "black";
     });
 
@@ -283,6 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the character count display
     const initialCharCount = countCharacters(bioDiv.innerText);
-    charCountDisplay.textContent = `words: ${charCountLimit - initialCharCount}`;
+    charCountDisplay.textContent = `: ${charCountLimit - initialCharCount}`;
 });
 

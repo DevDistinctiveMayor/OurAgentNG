@@ -121,67 +121,106 @@ menuToggle.addEventListener("click", () => {
 //     }
 // });
 
-
 function previewImages() {
     const input = document.getElementById('propertyImages');
     const previewContainer = document.getElementById('imagePreview');
     const fileChosenText = document.getElementById('file-chosen-text');
+    const errorText = document.getElementById('images-error');
     const maxFiles = 3;
 
-    previewContainer.innerHTML = ''; // Clear previous previews
+    // Clear previous states
+    previewContainer.innerHTML = '';
+    errorText.textContent = '';
     fileChosenText.textContent = `${input.files.length} file(s) selected`;
 
+    // Validation: Check if files are selected
+    if (input.files.length === 0) {
+        errorText.textContent = "Please upload at least one image.";
+        return;
+    }
+
+    // Validation: Check the max file limit
     if (input.files.length > maxFiles) {
-        alert('You can upload a maximum of 3 images only.');
-        input.value = ''; // Clear the input
+        errorText.textContent = `You can upload a maximum of ${maxFiles} images only.`;
+        input.value = '';
         fileChosenText.textContent = 'No images chosen';
         return;
     }
 
+    // Preview images if valid
     Array.from(input.files).forEach(file => {
-        if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                previewContainer.appendChild(img);
-            }
-            reader.readAsDataURL(file);
-        } else {
-            alert('Only image files are allowed!');
+        if (!file.type.startsWith('image/')) {
+            errorText.textContent = "Only image files are allowed!";
             input.value = '';
             fileChosenText.textContent = 'No images chosen';
+            return;
         }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.width = '100px';
+            img.style.margin = '5px';
+            previewContainer.appendChild(img);
+        }
+        reader.readAsDataURL(file);
     });
 }
 
-
-document.addEventListener("DOMContentLoaded", async () => {
-
+// ✅ Force the required check on submission
+document.getElementById('addPropertyForm').addEventListener('submit', function (e) {
+    const input = document.getElementById('propertyImages');
+    const errorText = document.getElementById('images-error');
     
-    const form = document.getElementById("addPropertyForm");
+    if (input.files.length === 0) {
+        e.preventDefault();
+        errorText.textContent = "Please upload at least one image before submitting.";
+        input.focus();
+    }
+});
 
-    let agentId = sessionStorage.getItem("agent_id");
+
+
+
+// Form Submission and Agent Verification
+document.addEventListener("DOMContentLoaded", async () => {
+    const form = document.getElementById("addPropertyForm");
+    const agentId = sessionStorage.getItem("agent_id");
 
     if (!agentId) {
-        Swal.fire({
-            title: "Session Expired",
-            text: "Your session has expired. Redirecting to the login page...",
-            icon: "warning",
-            confirmButtonText: "OK",
-        }).then(() => {
-            window.location.href = "../agent-login-page/agent-login.html";
-        });
+        redirectToLogin("Your session has expired. Redirecting to the login page...");
         return;
     }
 
+    if (!(await verifyAgentProfile(agentId))) return;
+
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        handleFormSubmission(form, agentId);
+    });
+});
+
+// Redirect if session expires
+function redirectToLogin(message) {
+    Swal.fire({
+        title: "Session Expired",
+        text: message,
+        icon: "warning",
+        confirmButtonText: "OK"
+    }).then(() => {
+        window.location.href = "../agent-login-page/agent-login.html";
+    });
+}
+
+// Verify agent profile
+async function verifyAgentProfile(agentId) {
     try {
         const response = await fetch("https://ouragent.com.ng/agent_profile_verification.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ agent_id: agentId }),
+            body: JSON.stringify({ agent_id: agentId })
         });
-
         const result = await response.json();
 
         if (result.status === "incomplete") {
@@ -189,108 +228,84 @@ document.addEventListener("DOMContentLoaded", async () => {
                 title: "Profile Incomplete",
                 text: result.message,
                 icon: "info",
-                confirmButtonText: "Update Profile",
+                confirmButtonText: "Update Profile"
             }).then(() => {
                 window.location.href = "../agent-profile/agent-profile.html";
             });
-            return;
+            return false;
         }
+        return true;
     } catch (error) {
-        console.error("Verification error:", error);
-        Swal.fire("Error", "An error occurred while verifying your profile.", "error");
-        return;
+        Swal.fire("Error", "An error occurred during profile verification.", "error");
+        console.error("Verification Error:", error);
+        return false;
     }
+}
 
-    if (!form) {
-        console.error("Form with id 'addPropertyForm' not found.");
-        return;
+// Form Submission Handler
+async function handleFormSubmission(form, agentId) {
+    const submitButton = document.getElementById("submitButton");
+    submitButton.disabled = true;
+    submitButton.textContent = "Uploading...";
+
+    const formData = new FormData(form);
+    formData.append("agent_id", agentId);
+
+    try {
+        const response = await fetch("https://ouragent.com.ng/addproperty.php", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        Swal.fire(result.status === "success" ? "Success" : "Error", 
+                  result.message, 
+                  result.status === "success" ? "success" : "error");
+
+        if (result.status === "success") form.reset();
+    } catch (error) {
+        Swal.fire("Error", "An unexpected error occurred. Please try again.", "error");
+        console.error("Submission Error:", error);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Property";
     }
+}
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const submitButton = document.getElementById("submitButton");
-        submitButton.disabled = true;
-        submitButton.textContent = "Uploading...";
-
-        const formData = new FormData(form);
-        formData.append("agent_id", agentId);
-
-        try {
-            const response = await fetch("https://ouragent.com.ng/addproperty.php", {
-                method: "POST",
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const result = await response.json();
-
-            if (result.status === "success") {
-                Swal.fire("Success", result.message, "success");
-                form.reset();
-            } else {
-                Swal.fire("Error", result.message || "An unexpected error occurred.", "error");
-            }
-        } catch (error) {
-            console.error("Error occurred:", error);
-            Swal.fire("Error", "An unexpected error occurred. Please try again.", "error");
-        } finally {
-            submitButton.disabled = false;
-            submitButton.textContent = "Submit Property";
-        }
-    });
-});
-
-
+// Toggle Room and Bathroom Fields Based on Property Type
 function toggleRoomBathroomFields() {
     const propertyType = document.getElementById("property-type").value;
     const roomBathroomSection = document.getElementById("roomBathroomSection");
+    const fields = ["roomNo", "bathNo"];
 
     if (propertyType === "land") {
         roomBathroomSection.style.display = "none";
-        // Clear the fields and remove required attribute when hidden
-        document.getElementById("roomNo").value = "";
-        document.getElementById("bathNo").value = "";
-        document.getElementById("roomNo").removeAttribute("required");
-        document.getElementById("bathNo").removeAttribute("required");
+        fields.forEach(field => {
+            document.getElementById(field).value = "";
+            document.getElementById(field).removeAttribute("required");
+        });
     } else {
         roomBathroomSection.style.display = "block";
-        // Add required attribute back when visible
-        document.getElementById("roomNo").setAttribute("required", "true");
-        document.getElementById("bathNo").setAttribute("required", "true");
+        fields.forEach(field => document.getElementById(field).setAttribute("required", "true"));
     }
 }
 
+// Currency Formatter with Decimal Support
 function formatCurrency(input) {
-    // Remove non-numeric characters except decimal points
     let value = input.value.replace(/[^0-9.]/g, '');
-
-    // Split the number into whole and decimal parts
-    let parts = value.split('.');
-    let integerPart = parts[0];
-    let decimalPart = parts[1] ? parts[1].substring(0, 2) : '';
-
-    // Add comma formatting for thousands
-    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-    // Reassemble the formatted number
-    input.value = decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
+    const [integerPart, decimalPart] = value.split('.');
+    input.value = decimalPart 
+        ? `${integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}.${decimalPart.substring(0, 2)}`
+        : integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
-function submitButton() {
+
+// Radio Button Validation
+function validateRadioSelection() {
     const radios = document.querySelectorAll('input[name="category"]');
     const errorSpan = document.getElementById('category-error');
-    let isChecked = false;
+    const isChecked = Array.from(radios).some(radio => radio.checked);
 
-    radios.forEach((radio) => {
-        if (radio.checked) isChecked = true;
-    });
-
-    if (!isChecked) {
-        errorSpan.textContent = "Please select a category!";
-    } else {
-        errorSpan.textContent = ""; // Clear error
-        alert('Form submitted successfully!');
-    }
+    errorSpan.textContent = isChecked ? "" : "Please select a category!";
+    return isChecked;
 }

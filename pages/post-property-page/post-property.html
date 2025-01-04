@@ -86,10 +86,9 @@
                 
                         <div class="form-group">
                             <label for="price">Price (₦)</label>
-                            <div class="currency-input">
-                                <span class="naira-symbol">₦</span>
+                           
                                 <input type="text" id="price" name="price" placeholder="0.00" required oninput="formatCurrency(this)">
-                            </div>
+                     
                             <span id="price-error" class="error-message"></span>
                         </div>                        
                         
@@ -165,11 +164,12 @@
                    
                     
                     <!-- Images Upload -->
-                    <section class="form-section">
-                        <h2>Upload Property Images</h2>                
+                    <section class="form-section">           
                         <div class="custom-file-input-container">
-                            <label for="propertyImages">Select Images</label>
+                            <h2>Upload Property Images</h2>     
+                            <label for="propertyImages" class="propertyImages">Select Images</label>
                             <div class="custom-file-input">
+                                <!-- Keeping it hidden but using JS for validation -->
                                 <input 
                                     type="file" 
                                     id="propertyImages" 
@@ -177,7 +177,6 @@
                                     multiple 
                                     accept="image/png, image/jpeg, image/jpg, image/webp" 
                                     onchange="previewImages()" 
-                                    hidden 
                                     required
                                 >
                                 <button type="button" onclick="document.getElementById('propertyImages').click()">Choose Images</button>
@@ -188,6 +187,9 @@
                             <div id="imagePreview" class="image-preview-container"></div>
                         </div>                        
                     </section>
+                    
+                    
+                    
                 
                     <!-- Submit -->
                     <div class="form-submit">
