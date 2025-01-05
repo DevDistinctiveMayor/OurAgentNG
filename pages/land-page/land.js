@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="bottom-box">
                         <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
                         <a href="${
-                          property.whatsapp
+                          property.socialMediaHandles
                         }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
                       </div>
                     </div>
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           property.phoneNumber
                         }</i> Call</a>
                         <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'>${
-                          property.whatsapp
+                          property.socialMediaHandles
                         }</i></a>
                       </div>
                     </div>
