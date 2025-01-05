@@ -86,7 +86,7 @@ main {
 }
 
 .call_action{
-    display: flex;
+    display: none;
 }
 .menu-toggle {
     position: relative;
@@ -867,6 +867,11 @@ button {
         display: flex;
         transform: translateX(0);
         opacity: 1;
+    }
+
+    .call_action{
+        display: block;
+        display: flex;
     }
 
     .menu-toggle {

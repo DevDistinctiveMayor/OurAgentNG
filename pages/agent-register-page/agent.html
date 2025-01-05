@@ -27,7 +27,7 @@
                     <li><a href="#contact">About us</a></li>
                     <div class="nav-links3 ">
                         <div class="access-box">
-                            <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+                            <!-- <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a> -->
                             <a href="../login-page/login.html" class="login">Sign up or Log in</a>
                         </div>
                     </div>
@@ -36,18 +36,18 @@
 
             </div>
 
-            <label class="menu-toggle" onClick={onToggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+            <div class="call_action">
+                <div class="access-box">
+                    <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+                </div>
+                <label class="menu-toggle" onClick={onToggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
 
-            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
-          <i class="bx bx-menu"></i>
-        </button> -->
             <div class="nav-links2">
-
-
                 <div class="access-box">
                     <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
                     <a href="../login-page/login.html" class="login">Sign up or Log in</a>
@@ -56,14 +56,12 @@
         </nav>
     </header>
 
-
-
-
     <main class="content">
         <div class="form-container">
             <h1>Agent Verification Form</h1>
             <p>
-              Already a member? <a href="../agent-login-page/agent-login.html" class="register-container_a"> Log In</a>
+                Already a member? <a href="../agent-login-page/agent-login.html" class="register-container_a"> Log
+                    In</a>
             </p>
             <form id="signup-form">
                 <!-- Full Name -->
@@ -72,11 +70,12 @@
                     <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
                     <span id="fullName-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Company Name -->
                 <div class="form-group">
                     <label for="fullName">Company Name</label>
-                    <input type="text" id="companyName" name="companyName" placeholder="Enter your company name" required>
+                    <input type="text" id="companyName" name="companyName" placeholder="Enter your company name"
+                        required>
                     <span id="companyName-error" class="error-message"></span>
                 </div>
 
@@ -86,61 +85,63 @@
                     <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                     <span id="email-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Address -->
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address" placeholder="Enter your address" required>
                     <span id="address-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- NIN Number -->
                 <div class="form-group">
                     <label for="ninNumber">NIN Number</label>
                     <input type="text" id="ninNumber" name="ninNumber" placeholder="Enter your NIN number" required>
                     <span id="ninNumber-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Phone Number -->
                 <div class="form-group">
                     <label for="phoneNumber">Active Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number"
+                        required>
                     <span id="phoneNumber-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- CAC Number -->
                 <div class="form-group">
                     <label for="cacNumber">CAC Number (optional)</label>
                     <input type="text" id="cacNumber" name="cacNumber" placeholder="Enter your CAC number">
                     <span id="cacNumber-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Date of Birth -->
                 <div class="form-group">
                     <!-- <input type="text" id="date-picker" placeholder="Select a date" /> -->
                     <label for="dateOfBirth">Date of Birth</label>
-                    <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Select a date"  required>
+                    <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Select a date" required>
                     <span id="dateOfBirth-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Password -->
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="password-container form-group">
-                        <input type="password" id="password" name="password" placeholder="Create a secure password" required minlength="8">
+                        <input type="password" id="password" name="password" placeholder="Create a secure password"
+                            required minlength="8">
                         <span id="toggle-password" class="toggle-password">
                             <i id="eye-icon" class="fas fa-eye"></i>
                         </span>
                     </div>
                     <span id="password-error" class="error-message"></span>
                 </div>
-            
+
                 <!-- Submit Button -->
                 <div class="form-submit">
                     <button type="submit" class="btn primary" id="submitButton">Register</button>
                 </div>
             </form>
-            
+
 
             <div class="content-section">
                 <h2>Why Verification is Important</h2>
