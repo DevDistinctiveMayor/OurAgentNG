@@ -752,8 +752,9 @@
   
   .footer-links {
     display: flex;
-    gap: 20px;
+    gap: 17px;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   .footer-links li {

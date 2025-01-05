@@ -213,7 +213,7 @@ main {
   display: block;
   margin-bottom: 5px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 0.7rem;
 }
 
@@ -329,7 +329,7 @@ main {
 .property-type {
   display: block;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
 }
 
@@ -378,7 +378,7 @@ main {
 .propertyImages {
   display: block;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
 }
 /* Hide the input but keep it focusable */
@@ -522,10 +522,10 @@ main {
 
 .footer-links {
   display: flex;
-  gap: 20px;
+  gap: 17px;
   flex-wrap: wrap;
+  justify-content: center;
 }
-
 .footer-links li {
   list-style: none;
 }
@@ -657,11 +657,21 @@ main {
     display: block;
   }
   .form-header h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    margin-top: -1rem;
+}
+.form-section h2 {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 0rem;
+  margin-bottom: 9px;
 }
   .form-group label {
-    font-size: 16px;
+    font-size: 15px;
   }
+  .radio label {
+    padding: 5px 15px;
+}
   .download-section {
     margin-top: 0rem;
   }
