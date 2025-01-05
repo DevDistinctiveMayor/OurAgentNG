@@ -1128,7 +1128,7 @@ header {
 
   .featuredbox-container .card .image-box img {
     width: 90%;
-    height: 90%;
+border-radius: 13px;
     margin-left: 1rem;
   }
 

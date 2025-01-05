@@ -90,6 +90,11 @@
     padding: 9px;
     border-radius: 7px;
   }
+
+  
+.call_action {
+  display: none;
+  }
   
   .menu-toggle {
     position: relative;
@@ -541,6 +546,16 @@
       transform: translateX(0);
       opacity: 1;
     }
+
+    .call_action {
+      display: block;
+      display: flex;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
     .menu-toggle {
       display: block;
     }

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       </p>
                       <p class="agent-profile">
                         <p alt="Agent Name" class="agent-profile">Agent Name</p>
-                        <b class="agent-name">${property.agentName}</b>
+                        <b class="agent-name">${property.fullName}</b>
                       </p>
                     </div>
                     <div class="second-box">
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         } Baths</p>
                       </div>
                     <div class="bottom-box">
-                        <a href="tel:${property.phoneNo}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
+                        <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
                         <a href="${
                           property.whatsapp
                         }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       </p>
                       <p class="agent-profile">
                         <p alt="Agent Name" class="agent-profile">Agent Name</p>
-                        <b class="agent-name">${property.agentName}</b>
+                        <b class="agent-name">${property.fullName}</b>
                       </p>
                     </div>
                     <div class="second-box">
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       </div>
                       <div class="bottom-box">
                         <a href="#" class="call-link"><i class='bx bxs-phone'>${
-                          property.phoneNo
+                          property.phoneNumber
                         }</i> Call</a>
                         <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'>${
                           property.whatsapp
