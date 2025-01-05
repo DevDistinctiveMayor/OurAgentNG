@@ -253,6 +253,11 @@ main {
     transform: scale(0.95);
 }
 
+.toggle-password {
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(8, 97, 175, 1);
+}
 
 .content-section {
     margin-top: 20px;
