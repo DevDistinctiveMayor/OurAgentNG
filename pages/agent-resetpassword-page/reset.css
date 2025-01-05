@@ -313,9 +313,10 @@
   }
     
   .footer-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
     
   .footer-links li {

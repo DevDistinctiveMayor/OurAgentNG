@@ -97,6 +97,11 @@ main {
   border-radius: 7px;
 }
 
+.call_action{
+  display: none;
+}
+
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
@@ -339,9 +344,9 @@ h1 {
 
 .footer-links {
   display: flex;
-  gap: 20px;
+  gap: 17px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .footer-links li {
@@ -453,6 +458,11 @@ h1 {
     opacity: 1;
   }
 
+  .call_action {
+    display: block;
+    display: flex;
+  }
+  
   .menu-toggle {
     display: block;
   }
