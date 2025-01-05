@@ -375,6 +375,7 @@ header {
 .featuredbox-container>.card>.image-box>img {
   height: 180px;
   width: 200px;
+  border-radius: 10px;
 }
 
 .featuredbox-container>.card>.text-box {
@@ -1128,7 +1129,6 @@ header {
 
   .featuredbox-container .card .image-box img {
     width: 90%;
-border-radius: 13px;
     margin-left: 1rem;
   }
 

@@ -26,11 +26,7 @@ document
     }
   });
 
-// Initialize Flatpickr
-flatpickr("#dateOfBirth", {
-  dateFormat: "Y-m-d", // Ensure format matches your expectations
-  maxDate: new Date(), // Prevent selecting future dates
-});
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("signup-form");
@@ -47,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const ninNumber = document.getElementById("ninNumber").value.trim();
     const phoneNumber = document.getElementById("phoneNumber").value.trim();
     const cacNumber = document.getElementById("cacNumber").value.trim();
-    const dateOfBirth = document.getElementById("dateOfBirth").value.trim();
+    const socialMediaHandles = document.getElementById("socialMediaHandles").value.trim();
     const password = document.getElementById("password").value.trim();
 
     // Utility function to set error messages
@@ -67,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "ninNumber",
       "phoneNumber",
       "cacNumber",
-      "dateOfBirth",
+      "socialMediaHandles",
       "password",
     ].forEach((field) => setError(`${field}-error`, ""));
 
@@ -85,21 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const ninRegex = /^\d{11}$/;
     if (!ninRegex.test(ninNumber)) {
       setError("ninNumber-error", "NIN must be exactly 11 digits.");
-      hasError = true;
-    }
-
-    // Validate age (must be at least 17 years old)
-    if (dateOfBirth) {
-      const dob = new Date(dateOfBirth);
-      const today = new Date();
-      const ageLimitDate = new Date(today.setFullYear(today.getFullYear() - 17));
-
-      if (dob > ageLimitDate) {
-        setError("dateOfBirth-error", "You must be at least 17 years old.");
-        hasError = true;
-      }
-    } else {
-      setError("dateOfBirth-error", "Date of Birth is required.");
       hasError = true;
     }
 
@@ -145,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ninNumber,
           phoneNumber,
           cacNumber,
-          dateOfBirth,
+          socialMediaHandles,
           password,
         }),
       });

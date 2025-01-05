@@ -253,13 +253,6 @@ main {
     transform: scale(0.95);
 }
 
-#dateOfBirth {
-    width: 100%;
-}
-
-#dateOfBirth::placeholder {
-    color: #000;
-}
 
 .content-section {
     margin-top: 20px;
