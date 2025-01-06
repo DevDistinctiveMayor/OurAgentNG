@@ -172,89 +172,85 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const propertiesContainer = document.getElementById("properties");
-  const locationSearch = document.getElementById("locationSearch");
+  const stateSearch = document.getElementById("stateSearch");
+  const lgaSearch = document.getElementById("lgaSearch");
 
   // Function to fetch and display properties
   const fetchAndRenderProperties = (queryParams = "") => {
-    fetch(`https://ouragent.com.ng/advance_searchbuy.php?${queryParams}`)
-      .then((response) => response.json())
-      .then((data) => {
-        propertiesContainer.innerHTML = ""; // Clear existing content
+      fetch(`https://ouragent.com.ng/advance_searchbuy.php?${queryParams}`)
+          .then((response) => response.json())
+          .then((data) => {
+              propertiesContainer.innerHTML = ""; // Clear existing content
 
-        if (data.status === "success" && data.data.length > 0) {
-          data.data.forEach((property) => {
-            const propertyElement = document.createElement("div");
-            propertyElement.className = "property-card";
-            propertyElement.innerHTML = `
-              <div class="featuredbox-container">
-                <div class="card">
-                  <div class="image-box">
-                    <img src="https://ouragent.com.ng/${
-                      property.images[0]
-                    }" alt="Property Image">
-                  </div>
-                  <div class="text-box">
-                    <div class="first-box">
-                      <p class="heading">${property.propertyName}</p>
-                      <p class="location">${property.state}</p>
-                      <p class="location">${property.lga}</p>
-                      <p class="description">${property.description.substring(
-                        0,
-                        100
-                      )}...</p>
-                      <p class="details-link">
-                        <a href="#">Property Details &#10142;</a>
-                      </p>
-                      <p class="agent-profile">
-                        <p alt="Agent Name" class="agent-profile">Agent Name</p>
-                        <b class="agent-name">${property.fullName}</b>
-                      </p>
-                    </div>
-                    <div class="second-box">
-                      <div class="top-box">
-                        <div class="price">
-                          <p>&#8358;${property.price}</p>
-                          <i class="bx bx-bookmark i"></i>
+              if (data.status === "success" && data.data.length > 0) {
+                  data.data.forEach((property) => {
+                      const propertyElement = document.createElement("div");
+                      propertyElement.className = "property-card";
+                      propertyElement.innerHTML = `
+                        <div class="featuredbox-container">
+                          <div class="card">
+                            <div class="image-box">
+                              <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
+                            </div>
+                            <div class="text-box">
+                              <div class="first-box">
+                                <p class="heading">${property.propertyName}</p>
+                                <p class="location">${property.state}</p>
+                                <p class="location">${property.lga}</p>
+                                <p class="description">${property.description.substring(0, 100)}...</p>
+                                <p class="details-link">
+                                  <a href="#">Property Details &#10142;</a>
+                                </p>
+                                <p class="agent-profile">
+                                  <p alt="Agent Name" class="agent-profile">Agent Name</p>
+                                  <b class="agent-name">${property.fullName}</b>
+                                </p>
+                              </div>
+                              <div class="second-box">
+                                <div class="top-box">
+                                  <div class="price">
+                                    <p>&#8358;${property.price}</p>
+                                    <i class="bx bx-bookmark i"></i>
+                                  </div>
+                                  <p class="availability">${property.roomNo} Bed ${property.bathNo} Baths</p>
+                                </div>
+                                <div class="bottom-box">
+                                  <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
+                                  <a href="${property.socialMediaHandles}" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <p class="availability">${property.roomNo}Bed ${
-              property.bathNo
-            } Baths</p>
-                      </div>
-                        <div class="bottom-box">
-                        <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
-                        <a href="${
-                          property.socialMediaHandles
-                        }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-            propertiesContainer.appendChild(propertyElement);
+                      `;
+                      propertiesContainer.appendChild(propertyElement);
+                  });
+              } else {
+                  propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+              }
+          })
+          .catch((error) => {
+              console.error("Error:", error);
+              propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
           });
-        } else {
-          propertiesContainer.innerHTML = `<p>${
-            data.message || "No properties found."
-          }</p>`;
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
-      });
   };
 
-  // Event listener for location input (as-you-type filtering)
-  stateSearch.addEventListener("input", () => {
-    const state = stateSearch.value.trim(); // Get the current value of the input field
+  // Event listeners for both state and LGA filters
+  const updateSearch = () => {
+      const state = stateSearch.value.trim();
+      const lga = lgaSearch.value.trim();
 
-    // Build query parameters
-    const queryParams = new URLSearchParams({
-      ...(state && { state }), // Only include location if it has a value
-    }).toString();
+      // Build query parameters
+      const queryParams = new URLSearchParams({
+          ...(state && { state }),
+          ...(lga && { lga })
+      }).toString();
 
-    // Fetch and render properties dynamically
-    fetchAndRenderProperties(queryParams);
-  });
+      // Fetch and render properties dynamically
+      fetchAndRenderProperties(queryParams);
+  };
+
+  // Event listeners for state and LGA input
+  stateSearch.addEventListener("input", updateSearch);
+  lgaSearch.addEventListener("input", updateSearch);
 });
