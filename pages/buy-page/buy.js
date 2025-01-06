@@ -131,12 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Event listener for location input
-  const locationInput = document.getElementById("location");
+  const stateInput = document.getElementById("state");
 
   // Reset filters
   document.getElementById("resetFilter").addEventListener("click", () => {
     document.getElementById("category").value = "";
-    locationInput.value = "";
+    stateInput.value = "";
     selectedBedrooms = 0;
     selectedPropertyType = "";
 
@@ -151,12 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const category = document.getElementById("category").value;
-    const location = locationInput.value;
+    const state = stateInput.value;
 
     // Build query parameters
     const queryParams = new URLSearchParams({
       ...(category && { category }),
-      ...(location && { location }),
+      ...(state && { state }),
       ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
       ...(selectedPropertyType && { propertyType: selectedPropertyType }),
     }).toString();
@@ -216,17 +216,15 @@ document.addEventListener("DOMContentLoaded", () => {
                           <p>&#8358;${property.price}</p>
                           <i class="bx bx-bookmark i"></i>
                         </div>
-                        <p class="availability">${property.roomNo} Bed ${
+                        <p class="availability">${property.roomNo}Bed ${
               property.bathNo
             } Baths</p>
                       </div>
-                      <div class="bottom-box">
-                        <a href="#" class="call-link"><i class='bx bxs-phone'>${
-                          property.phoneNumber
-                        }</i> Call</a>
-                        <a href="#" class="whatsapp-link"><i class='bx bxl-whatsapp'>${
+                        <div class="bottom-box">
+                        <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
+                        <a href="${
                           property.socialMediaHandles
-                        }</i></a>
+                        }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
                       </div>
                     </div>
                   </div>
@@ -248,12 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Event listener for location input (as-you-type filtering)
-  locationSearch.addEventListener("input", () => {
-    const location = locationSearch.value.trim(); // Get the current value of the input field
+  stateSearch.addEventListener("input", () => {
+    const state = stateSearch.value.trim(); // Get the current value of the input field
 
     // Build query parameters
     const queryParams = new URLSearchParams({
-      ...(location && { location }), // Only include location if it has a value
+      ...(state && { state }), // Only include location if it has a value
     }).toString();
 
     // Fetch and render properties dynamically
