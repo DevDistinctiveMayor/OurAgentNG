@@ -180,8 +180,8 @@ header {
 /* Wrapping the select and arrow */
 .custom-select {
   position: relative;
-  width: 100%;
-  max-width: 300px;
+  /* width: 100%; */
+  /* max-width: 300px; */
 }
 
 /* Styling the select dropdown */
@@ -201,6 +201,23 @@ header {
   margin-top: 1px;
 }
 
+.select-lga{
+  appearance: none;
+  width: 100%;
+  padding: 2.6px 18px;
+  border: 1pt solid rgba(8, 97, 175, 1);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: border 0.3s;
+  margin-top: 1px;
+
+}
+
 /* Dropdown hover and focus effect */
 .custom-select select:hover, 
 .custom-select select:focus {
@@ -213,6 +230,42 @@ header {
   position: absolute;
   top: 50%;
   right: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 22px;
+  color:  rgba(8, 97, 175, 1);
+}
+
+
+
+.custom-select2 select {
+  appearance: none;
+  width: 100%;
+  padding: 9px 18px;
+  border: 1pt solid rgba(8, 97, 175, 1);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: border 0.3s;
+  margin-top: 8px;
+}
+/* Dropdown hover and focus effect */
+.custom-select2 select:hover, 
+.custom-select2 select:focus {
+  border: 1px solid rgba(8, 97, 175, 1);
+  box-shadow: 0 0 2px rgba(8, 97, 175, 1);
+}
+
+/* Custom arrow icon */
+.custom-select2 .arrow {
+  position: absolute;
+  /* top: 50%; */
+  margin-top: 20px;
+  right: 30px;
   transform: translateY(-50%);
   pointer-events: none;
   font-size: 22px;
@@ -743,41 +796,6 @@ header {
   /* Width of the dropdown options */
 }
 
-
-
-.location-icon2 {
-  position: absolute;
-  margin-left: 0rem;
-  margin-top: 0rem;
-  width: 16px;
-  color: rgba(8, 97, 175, 1);
-}
-.lga_search input {
-  outline: none;
-  border: none;
-  font-family: inherit;
-  font-size: 0.9rem;
-  background-color: white;
-  width: 114px;
-  margin-left: 2rem;
-}
-.lga_search input {
-  outline: none;
-  border: none;
-  font-family: inherit;
-  font-size: 0.9rem;
-  background-color: white;
-  width: 114px;
-  margin-left: 1.5rem;
-}
-.search_box input {
-  outline: none;
-  border: none;
-  font-family: inherit;
-  font-size: 0.9rem;
-  background-color: white;
-  width: 114px;
-}
 .bedrooms-selection {
   margin-top: 10px;
   display: flex;
