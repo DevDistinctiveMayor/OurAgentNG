@@ -203,13 +203,13 @@ header {
   margin-top: 1.3rem;
   width: 16px;
 }
-.location-icon{
-    position: absolute;
-    margin-left: 0.5rem;
-    margin-top: 0.9rem;
-    width: 17px;
-    color: rgba(8, 97, 175, 1);
 
+.location-icon{
+  position: absolute;
+  margin-left: 0.6rem;
+  margin-top: 1.2rem;
+  width: 17px;
+  color: rgba(8, 97, 175, 1);
 }
 
 .advance_filter {
@@ -1095,6 +1095,13 @@ header {
   padding-left: 2rem;
 }
 
+.location-icon {
+  position: absolute;
+  margin-left: 0.6rem;
+  margin-top: 0.8rem;
+  width: 17px;
+  color: rgba(8, 97, 175, 1);
+}
 .searchicon {
   margin-top: 0.9rem;
   width: 16px;
