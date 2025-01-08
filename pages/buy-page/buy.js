@@ -284,3 +284,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const lgaSearch = document.getElementById('lgaSearch');
+
+
