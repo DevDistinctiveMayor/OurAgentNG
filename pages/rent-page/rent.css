@@ -92,7 +92,7 @@ header {
   border-radius: 7px;
 }
 
-.call_action{
+.call_action {
   display: none;
 }
 
@@ -160,6 +160,7 @@ header {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 6rem;
+  height: 3px;
 }
 
 .sale {
@@ -177,32 +178,100 @@ header {
   font-size: 1.3rem;
 }
 
-.search-box>input {
-  font-family: inherit;
-  width: 20em;
-  font-size: 1rem;
-  padding: 15px;
-  outline: none;
-  border: 1px solid rgba(8, 97, 175, 1);
-  transition: border 0.2s ease;
-  /* Smooth border transition */
+
+/* Wrapping the select and arrow */
+.custom-select {
+  position: relative;
+  /* width: 100%; */
+  /* max-width: 300px; */
+}
+
+/* Styling the select dropdown */
+.custom-select select {
+  appearance: none;
+  width: 130px;
+  padding: 19px 18px;
+  border: 1pt solid rgba(8, 97, 175, 1);
   border-radius: 5px;
-  padding-left: 4rem;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: border 0.3s;
+  margin-top: 1px;
 }
 
-.search-box>input:focus {
+/* Dropdown hover and focus effect */
+.custom-select select:hover,
+.custom-select select:focus {
   border: 1px solid rgba(8, 97, 175, 1);
+  box-shadow: 0 0 2px rgba(8, 97, 175, 1);
 }
 
-.search-box>input::placeholder {
-  color: rgba(2, 24, 43, 0.46);
+/* Custom arrow icon */
+.custom-select .arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 22px;
+  color: rgba(8, 97, 175, 1);
 }
+
+
+
+.custom-select2 select {
+  appearance: none;
+  width: 100%;
+  padding: 9px 18px;
+  border: 1pt solid rgba(8, 97, 175, 1);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: border 0.3s;
+  margin-top: 8px;
+}
+
+/* Dropdown hover and focus effect */
+.custom-select2 select:hover,
+.custom-select2 select:focus {
+  border: 1px solid rgba(8, 97, 175, 1);
+  box-shadow: 0 0 2px rgba(8, 97, 175, 1);
+}
+
+/* Custom arrow icon */
+.custom-select2 .arrow {
+  position: absolute;
+  /* top: 50%; */
+  margin-top: 20px;
+  right: 30px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 22px;
+  color: rgba(8, 97, 175, 1);
+}
+
 
 .searchicon {
   position: absolute;
   margin-left: 1rem;
   margin-top: 1.3rem;
-  width: 18px;
+  width: 16px;
+}
+
+.location-icon {
+  position: absolute;
+  margin-left: 0.6rem;
+  margin-top: 1.2rem;
+  width: 17px;
+  color: rgba(8, 97, 175, 1);
 }
 
 .advance_filter {
@@ -241,12 +310,14 @@ header {
   cursor: pointer;
   font-size: 14px;
 }
-.search:active{
-  color:#000000;
+
+.search:active {
+  color: #000000;
   background-color: white;
   border: 1px solid #0861AF;
 
 }
+
 /* Container */
 .container {
   display: flex;
@@ -405,7 +476,7 @@ header {
   color: #0861AF9C;
   font-weight: 400;
   margin-top: 15px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .featuredbox-container>.card>.text-box>.first-box>.details-link {
@@ -577,6 +648,7 @@ header {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .footer-links li {
   list-style: none;
 }
@@ -712,28 +784,6 @@ header {
   /* Width of the dropdown options */
 }
 
-.search_box {
-  border: 1pt solid #0861AF;
-  padding: 8px 10px;
-  display: flex;
-  font-size: 17px;
-  background-color: white ;
-  border-radius: 5px;
-  margin-top: 10px;
-  align-items: center;
-  gap: 8%;
-  box-shadow: 1px 2px 5px 2px #00000040;
-}
-
-.search_box input {
-  outline: none;
-  border: none;
-  font-family: inherit;
-  font-size: 1rem;
-  background-color: white;
-
-}
-
 .bedrooms-selection {
   margin-top: 10px;
   display: flex;
@@ -805,7 +855,7 @@ header {
 }
 
 .property-type-container .row-display-container a:hover {
-  background:#0861AF;
+  background: #0861AF;
   color: #ffff;
   transition: background 0.2s ease;
 }
@@ -1020,10 +1070,12 @@ header {
     transform: translateX(0);
     opacity: 1;
   }
+
   .call_action {
     display: block;
     display: flex;
   }
+
   .menu-toggle {
     display: block;
   }
@@ -1040,23 +1092,18 @@ header {
     width: 5rem;
     padding: 9.5px;
     height: 41px;
-}
+  }
 
-.search-box>input {
-  width: max-content;
-  padding: 8px;
-  padding-left: 2.5rem;
-}
+  .custom-select select {
+    appearance: none;
+    width: 100px;
+    padding: 11px 5px;
+  }
 
-.searchicon {
-  margin-top: 0.7rem;
-  width: 18px;
-}
-
-.advance_filter {
-  width: 7rem;
-  height: 41px;
-}
+  .advance_filter {
+    width: 7rem;
+    height: 41px;
+  }
 
   .advance_filter>input {
     height: 20px;
@@ -1067,14 +1114,14 @@ header {
     padding: 0rem 1rem;
     height: 41px;
   }
+
   .container>.details-container {
     width: 100%;
   }
 
   .container>.details-container>h1 {
     font-size: 25px;
-    margin-top: 4px;
-
+    margin-top: 3rem;
   }
 
   .container>.details-container>p.intro {
@@ -1130,7 +1177,9 @@ header {
   .featuredbox-container .card .image-box img {
     width: 90%;
     margin-left: 1rem;
+    height: 400px;
   }
+
 
   .featuredbox-container .card .text-box {
     flex-direction: column;
@@ -1221,9 +1270,50 @@ header {
     /* Full width for smaller screens */
   }
 
-  .featuredbox-container .card .image-box img {
+  .custom-select select {
+    appearance: none;
+    width: 100px;
+    padding: 7px 8px;
+  }
 
+  .sale {
+    width: 4rem;
+    padding: 5.5px;
+    height: 33px;
+    font-size: 14px;
+  }
+
+  .advance_filter {
+    width: 5rem;
+    height: 33px;
+  }
+
+  .advance_filter>input {
+    font-size: 14px;
+  }
+
+  .advance_filter>.filtericon {
+    width: 11px;
+    height: 13px;
+  }
+
+  .btnn>.search {
+    padding: 0rem 0.5rem;
+    height: 33px;
+    font-size: 13px;
+  }
+
+  .sale-container-flex {
+    gap: 0.5rem;
+  }
+
+  .featuredbox-container .card .image-box img {
     margin-left: 0rem;
+  }
+
+  .container>.details-container>h1 {
+    font-size: 19px;
+    margin-top: 5rem;
   }
 
 }
@@ -1241,3 +1331,6 @@ header {
     gap: 30px;
   }
 }
+
+
+@media (max-width: 326px) {}
