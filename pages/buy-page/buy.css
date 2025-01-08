@@ -91,9 +91,11 @@ header {
   padding: 9px;
   border-radius: 7px;
 }
-.call_action{
+
+.call_action {
   display: none;
 }
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
@@ -187,39 +189,22 @@ header {
 /* Styling the select dropdown */
 .custom-select select {
   appearance: none;
-  width: 100%;
+  width: 130px;
   padding: 19px 18px;
   border: 1pt solid rgba(8, 97, 175, 1);
   border-radius: 5px;
   background-color: white;
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
   cursor: pointer;
   outline: none;
   font-weight: 500;
   transition: border 0.3s;
   margin-top: 1px;
-}
-
-.select-lga{
-  appearance: none;
-  width: 100%;
-  padding: 2.6px 18px;
-  border: 1pt solid rgba(8, 97, 175, 1);
-  border-radius: 5px;
-  background-color: white;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  outline: none;
-  font-weight: 500;
-  transition: border 0.3s;
-  margin-top: 1px;
-
 }
 
 /* Dropdown hover and focus effect */
-.custom-select select:hover, 
+.custom-select select:hover,
 .custom-select select:focus {
   border: 1px solid rgba(8, 97, 175, 1);
   box-shadow: 0 0 2px rgba(8, 97, 175, 1);
@@ -233,7 +218,7 @@ header {
   transform: translateY(-50%);
   pointer-events: none;
   font-size: 22px;
-  color:  rgba(8, 97, 175, 1);
+  color: rgba(8, 97, 175, 1);
 }
 
 
@@ -253,8 +238,9 @@ header {
   transition: border 0.3s;
   margin-top: 8px;
 }
+
 /* Dropdown hover and focus effect */
-.custom-select2 select:hover, 
+.custom-select2 select:hover,
 .custom-select2 select:focus {
   border: 1px solid rgba(8, 97, 175, 1);
   box-shadow: 0 0 2px rgba(8, 97, 175, 1);
@@ -269,7 +255,7 @@ header {
   transform: translateY(-50%);
   pointer-events: none;
   font-size: 22px;
-  color:  rgba(8, 97, 175, 1);
+  color: rgba(8, 97, 175, 1);
 }
 
 
@@ -280,7 +266,7 @@ header {
   width: 16px;
 }
 
-.location-icon{
+.location-icon {
   position: absolute;
   margin-left: 0.6rem;
   margin-top: 1.2rem;
@@ -324,12 +310,14 @@ header {
   cursor: pointer;
   font-size: 14px;
 }
-.search:active{
-  color:#000000;
+
+.search:active {
+  color: #000000;
   background-color: white;
   border: 1px solid #0861AF;
 
 }
+
 /* Container */
 .container {
   display: flex;
@@ -867,7 +855,7 @@ header {
 }
 
 .property-type-container .row-display-container a:hover {
-  background:#0861AF;
+  background: #0861AF;
   color: #ffff;
   transition: background 0.2s ease;
 }
@@ -1082,7 +1070,8 @@ header {
     transform: translateX(0);
     opacity: 1;
   }
-  .call_action{
+
+  .call_action {
     display: block;
     display: flex;
   }
@@ -1103,30 +1092,18 @@ header {
     width: 5rem;
     padding: 9.5px;
     height: 41px;
-}
+  }
 
-.search-box>input {
-  width: 9rem;
-  padding: 8px;
-  padding-left: 2rem;
-}
+  .custom-select select {
+    appearance: none;
+    width: 100px;
+    padding: 11px 5px;
+  }
 
-.location-icon {
-  position: absolute;
-  margin-left: 0.6rem;
-  margin-top: 0.8rem;
-  width: 17px;
-  color: rgba(8, 97, 175, 1);
-}
-.searchicon {
-  margin-top: 0.9rem;
-  width: 16px;
-  margin-left: 0.6rem;
-}
-.advance_filter {
-  width: 7rem;
-  height: 41px;
-}
+  .advance_filter {
+    width: 7rem;
+    height: 41px;
+  }
 
   .advance_filter>input {
     height: 20px;
@@ -1137,14 +1114,14 @@ header {
     padding: 0rem 1rem;
     height: 41px;
   }
+
   .container>.details-container {
     width: 100%;
   }
 
   .container>.details-container>h1 {
     font-size: 25px;
-    margin-top: 4px;
-
+    margin-top: 3rem;
   }
 
   .container>.details-container>p.intro {
@@ -1293,8 +1270,50 @@ header {
     /* Full width for smaller screens */
   }
 
+  .custom-select select {
+    appearance: none;
+    width: 100px;
+    padding: 7px 8px;
+  }
+
+  .sale {
+    width: 4rem;
+    padding: 5.5px;
+    height: 33px;
+    font-size: 14px;
+  }
+
+  .advance_filter {
+    width: 5rem;
+    height: 33px;
+  }
+
+  .advance_filter>input {
+    font-size: 14px;
+  }
+
+  .advance_filter>.filtericon {
+    width: 11px;
+    height: 13px;
+  }
+
+  .btnn>.search {
+    padding: 0rem 0.5rem;
+    height: 33px;
+    font-size: 13px;
+  }
+
+  .sale-container-flex {
+    gap: 0.5rem;
+  }
+
   .featuredbox-container .card .image-box img {
     margin-left: 0rem;
+  }
+
+  .container>.details-container>h1 {
+    font-size: 19px;
+    margin-top: 5rem;
   }
 
 }
@@ -1312,3 +1331,6 @@ header {
     gap: 30px;
   }
 }
+
+
+@media (max-width: 326px) {}

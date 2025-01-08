@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
   [...document.querySelectorAll(".input-location-dependant")].forEach(input => {
       input.addEventListener("change", () => {
           const selectedState = input.value;
-          lgaSearch.innerHTML = "<option value=''>Select LGA</option>";
+          // lgaSearch.innerHTML = "<option value='slete'> LGA</option>";
 
           const lgaOptions = {
               Lagos: ["Ikeja", "Surulere", "Epe"],
@@ -283,3 +283,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const lgaSearch = document.getElementById('lgaSearch');
+
+// lgaSearch.addEventListener('change', function () {
+//     if (this.value === 'lga') {
+//         this.style.border = '2px solid red';
+//         this.style.color = 'red';
+//         this.style.fontWeight = 'bold';
+//         this.style.fontSize = "10px";
+
+//     } else {
+//         this.style.border = '2px solid green';
+//         this.style.color = 'green';
+//         this.style.fontWeight = 'bold';
+//         this.style.fontSize = "10px";
+//     }
+// });
