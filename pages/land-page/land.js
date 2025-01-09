@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     stateInput.value = "";
     lgaInput.value = "";
     selectedBedrooms = 0;
-   
+    selectedPropertyType = "";
 
     document
       .querySelectorAll(".row-select-box a, .row-display-container a")
@@ -149,29 +149,31 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchAndRenderProperties(); // Fetch all properties again
   });
 
-// Apply filters when clicking "Apply Filter"
-document.getElementById("applyFilter").addEventListener("click", (e) => {
-  e.preventDefault();
+  // Apply filters when clicking "Apply Filter"
+  document.getElementById("applyFilter").addEventListener("click", (e) => {
+    e.preventDefault();
 
-  const propertyType = document.getElementById("propertyType").value;
-  const state = stateInput.value;
-  const lga = lgaInput.value;
+    const propertyType = document.getElementById("propertyType").value;
+    const state = stateInput.value;
+    const lga = lgaInput.value;
 
-  // Ensure it fetches properties even if only state is provided
-  const queryParams = new URLSearchParams({
+    // Build query parameters
+    const queryParams = new URLSearchParams({
       ...(propertyType && { propertyType }),
-      ...(state && { state }), // State is included even if LGA is empty
-      ...(lga ? { lga } : {})  // Only include LGA if it's provided
-  }).toString();
+      ...(state && { state }),
+      ...(lga && { lga }),
+      ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
+      ...(selectedPropertyType && { propertyType: selectedPropertyType }),
+    }).toString();
 
-  // Fetch filtered properties
-  fetchAndRenderProperties(queryParams);
+    // Fetch filtered properties
+    fetchAndRenderProperties(queryParams);
 
-  // Close filter container and remove overlay
-  filterContainer.classList.remove("show");
-  body.classList.remove("overlay-active");
+    // Close filter container and remove overlay
+    filterContainer.classList.remove("show");
+    body.classList.remove("overlay-active");
+  });
 });
-
 
 
 
