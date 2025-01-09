@@ -1051,7 +1051,7 @@ header {
     width: 80%;
     padding: 30px 0px;
     transform: translateX(100%);
-    border-radius: 5px;
+    border-radius: 8px;
     z-index: 10;
   }
 
@@ -1304,9 +1304,11 @@ header {
   .sale-container-flex {
     gap: 0.5rem;
   }
-
+  
   .featuredbox-container .card .image-box img {
+    width: 90%;
     margin-left: 0rem;
+    height: 200px;
   }
 
   .container>.details-container>h1 {

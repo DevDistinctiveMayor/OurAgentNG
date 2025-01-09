@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           <p>&#8358;${property.price}</p>
                           <i class="bx bx-bookmark i"></i>
                         </div>
-                        <p class="availability">${property.roomNo} Bed ${
+                        <p class="availability">${property.roomNo} 38Bed ${
                         property.bathNo
                         } Baths</p>
                       </div>
@@ -154,16 +154,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const category = document.getElementById("category").value;
-    const state = stateInput.value;
-    const lga = lgaInput.value;
+    const state = stateInput.value.trim();
+    const lga = lgaInput.value.trim();
 
-    // Build query parameters
+    // Build query parameters (if state is selected, ignore LGA if not provided)
     const queryParams = new URLSearchParams({
-      ...(category && { category }),
-      ...(state && { state }),
-      ...(lga && { lga }),
-      ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
-      ...(selectedPropertyType && { propertyType: selectedPropertyType }),
+        ...(category && { category }),
+        ...(state && { state }),
+        ...(lga && { lga }),
+        ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
+        ...(selectedPropertyType && { propertyType: selectedPropertyType }),
     }).toString();
 
     // Fetch filtered properties
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close filter container and remove overlay
     filterContainer.classList.remove("show");
     body.classList.remove("overlay-active");
-  });
+});
 });
 
 
@@ -265,11 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
       input.addEventListener("change", () => {
           const selectedState = input.value;
           // lgaSearch.innerHTML = "<option value='slete'> LGA</option>";
-
-          const lgaOptions = {
-              Lagos: ["Ikeja", "Surulere", "Epe"],
-              Ogun: ["Abeokuta", "Ijebu-Ode"]
-          };
 
           if (lgaOptions[selectedState]) {
               lgaOptions[selectedState].forEach(lga => {
