@@ -108,6 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove("overlay-active");
   });
 
+
+
+
+  
   // Event listener for bedrooms selection
   document.querySelectorAll(".row-select-box a").forEach((link) => {
     link.addEventListener("click", (e) => {

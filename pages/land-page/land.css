@@ -785,38 +785,39 @@ header {
 }
 
 .bedrooms-selection {
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 10px;
 }
+
 
 .bedrooms-selection h3 {
   color: #0861AF;
   font-size: 14px;
+  margin-top: 0.5rem;
 }
 
-.bedrooms-selection .row-select-box {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  overflow-x: auto;
-  margin-top: -15px;
-  /* min-width: 100%; */
+.property-type-container h3 {
+  color: #0861AF;
+  text-transform: capitalize;
+  font-size: 14px;
+  margin-top: 1rem;
 }
 
-.bedrooms-selection .row-select-box::-webkit-scrollbar {
-  width: 0;
-}
-
+/* Bedrooms Selection */
 .bedrooms-selection .row-select-box a {
   color: #0861AF;
   text-decoration: none;
   padding: 3px 8px;
   border: 1pt solid #0861AF;
   border-radius: 3px;
-  font-weight: bold;
   font-size: 14px;
+}
+
+.bedrooms-selection .row-select-box a.selected {
+  background: #0861AF;
+  color: white;
 }
 
 .bedrooms-selection .row-select-box a:hover {
@@ -825,18 +826,8 @@ header {
   transition: background 0.2s ease;
 }
 
-.property-type-container {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+/* Property Types */
 
-.property-type-container h3 {
-  color: #0861AF;
-  text-transform: capitalize;
-  font-size: 14px;
-}
 
 .property-type-container .row-display-container {
   display: flex;
@@ -845,21 +836,32 @@ header {
   gap: 10px;
 }
 
+.property-type-container {
+  margin-top:10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .property-type-container .row-display-container a {
   text-decoration: none;
   border: 1pt solid #0861AF;
   color: #0861AF;
-  padding: 8px;
+  padding:3px 8px;
   border-radius: 3px;
   font-size: 14px;
 }
 
-.property-type-container .row-display-container a:hover {
+.property-type-container .row-display-container a.selected {
   background: #0861AF;
-  color: #ffff;
-  transition: background 0.2s ease;
+  color: white;
 }
 
+.property-type-container .row-display-container a:hover {
+  background: #0861AF;
+  color: white;
+  transition: background 0.2s ease;
+}
 
 .selectedControl-box {
   margin-top: 10px;
