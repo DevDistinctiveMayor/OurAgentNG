@@ -286,3 +286,47 @@ document.addEventListener('DOMContentLoaded', () => {
     charCountDisplay.textContent = `: ${charCountLimit - initialCharCount}`;
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const agentId = sessionStorage.getItem("agent_id");
+
+    if (!agentId) {
+        alert("Agent ID is missing from session storage.");
+        document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
+        return;
+    }
+
+    fetch(`https://ouragent.com.ng/agentProperty_dashboard.php?agent_id=${agentId}`)
+        .then(response => response.json())
+        .then(property => {
+            const container = document.getElementById('propertiesContainer');
+            container.innerHTML = '';
+
+            if (property.status === "error") {
+                container.innerHTML = `<p>${property.message}</p>`;
+                return;
+            }
+
+            property.forEach(property => {
+                const card = document.createElement('div');
+                card.classList.add('house-card');
+
+                card.innerHTML = `
+                    <div class="img">
+                        <img src="${property.images}" alt="Property Image" />
+                    </div>
+                    <div class="details">
+                        <div class="description">${property.description}</div>
+                        <div class="price">₦${property.price} </div>
+                        <div class="location">
+                            <div class="location-name">${property.state}, ${property.lga}</div>
+                            <a href="delete_property.php?id=${property.agent_id}" class="mark-sold" onclick="return confirm('Mark this property as sold?')">Mark as Sold</a>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Error fetching properties:', error));
+});
