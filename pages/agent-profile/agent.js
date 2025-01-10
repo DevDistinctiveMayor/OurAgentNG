@@ -287,46 +287,98 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const agentId = sessionStorage.getItem("agent_id");
 
     if (!agentId) {
-        alert("Agent ID is missing from session storage.");
+   //     alert("Agent ID is missing from session storage.");
         document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
         return;
     }
 
-    fetch(`https://ouragent.com.ng/agentProperty_dashboard.php?agent_id=${agentId}`)
-        .then(response => response.json())
-        .then(property => {
-            const container = document.getElementById('propertiesContainer');
-            container.innerHTML = '';
+    fetchAgentProperties(agentId);
+});
 
-            if (property.status === "error") {
-                container.innerHTML = `<p>${property.message}</p>`;
-                return;
-            }
+document.addEventListener('DOMContentLoaded', function () {
+    const agentId = sessionStorage.getItem("agent_id");
 
-            property.forEach(property => {
-                const card = document.createElement('div');
-                card.classList.add('house-card');
+    if (!agentId) {
+    //    alert("Agent ID is missing from session storage.");
+        document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
+        return;
+    }
 
-                card.innerHTML = `
-                    <div class="img">
-                        <img src="${property.images}" alt="Property Image" />
-                    </div>
-                    <div class="details">
-                        <div class="description">${property.description}</div>
-                        <div class="price">₦${property.price} </div>
-                        <div class="location">
-                            <div class="location-name">${property.state}, ${property.lga}</div>
-                            <a href="delete_property.php?id=${property.agent_id}" class="mark-sold" onclick="return confirm('Mark this property as sold?')">Mark as Sold</a>
+    fetchAgentProperties(agentId);
+});
+
+async function fetchAgentProperties(agentId) {
+    const url = `https://ouragent.com.ng/agentProperty_dashboard.php?agent_id=${agentId}`;
+    const container = document.getElementById('propertiesContainer');
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ agent_id: agentId })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch properties.');
+        }
+
+        const properties = await response.json();
+        container.innerHTML = '';
+
+        if (properties.status === "error") {
+            container.innerHTML = `<p>${properties.message}</p>`;
+            return;
+        }
+
+        properties.forEach(property => {
+            const containerDiv = document.createElement('div');
+            containerDiv.classList.add('container');
+
+            const card = document.createElement('div');
+            card.classList.add('house-card');
+
+            const imageUrl = Array.isArray(property.images) && property.images.length > 0
+                ? `https://ouragent.com.ng/${property.images[0]}`
+                : '../../images/featured_image.png';
+
+            card.innerHTML = `
+                <div class="img">
+                    <img src="${imageUrl}" alt="Property Image">
+                </div>
+                <div class="details">
+                    <div class="description">${property.description}</div>
+                    <div class="price">₦${property.price}</div>
+                    <div class="location">
+                        <div class="location-name">${property.state}, ${property.lga}</div>
+                        <div class="view-icon">
+                            <span class="view">View</span>
+                            <span class="arrow-icon">
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </span>
                         </div>
                     </div>
-                `;
+                </div>
+                <div class="img-overlap">
+                    <span class="status">Sold</span>
+                    <span class="icon">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </span>
+                </div>
+            `;
 
-                container.appendChild(card);
-            });
-        })
-        .catch(error => console.error('Error fetching properties:', error));
-});
+            containerDiv.appendChild(card);
+            container.appendChild(containerDiv);
+        });
+
+    } catch (error) {
+        console.error('Error fetching properties:', error);
+        container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+    }
+}
