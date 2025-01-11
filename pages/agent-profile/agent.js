@@ -300,11 +300,12 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchAgentProperties(agentId);
 });
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const agentId = sessionStorage.getItem("agent_id");
 
     if (!agentId) {
-    //    alert("Agent ID is missing from session storage.");
+        alert("Agent ID is missing from session storage.");
         document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
         return;
     }
@@ -313,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 async function fetchAgentProperties(agentId) {
-    const url = `https://ouragent.com.ng/agentProperty_dashboard.php?agent_id=${agentId}`;
+    const url = `https://ouragent.com.ng/agentProperty_dashboard.php`;
     const container = document.getElementById('propertiesContainer');
 
     try {
@@ -344,13 +345,14 @@ async function fetchAgentProperties(agentId) {
             const card = document.createElement('div');
             card.classList.add('house-card');
 
-            const imageUrl = Array.isArray(property.images) && property.images.length > 0
-                ? `https://ouragent.com.ng/${property.images[0]}`
-                : '../../images/featured_image.png';
+            // Handling multiple images, showing only the first one
+            const imageUrl = Array.isArray(property.images) && property.images.length > 0 
+                ? property.images[0] 
+                : '../../images/featured_image.png'; // Fallback image if none provided
 
             card.innerHTML = `
                 <div class="img">
-                    <img src="${imageUrl}" alt="Property Image">
+                    <img src="${imageUrl}" alt="Property Image" />
                 </div>
                 <div class="details">
                     <div class="description">${property.description}</div>
