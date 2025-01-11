@@ -284,7 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAgentProperties(agentId, 'propertiesContainer', 'https://ouragent.com.ng/agentrent_property_ondash.php', "Sold");
     
     // Fetch rent properties
-    fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentProperty_dashboard.php', "Rent");
+    fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentsell_property_dashboard.php', "Rent");
+
+    switchpageI();
 });
 
 async function fetchAgentProperties(agentId, containerId, url, status) {
@@ -311,48 +313,97 @@ async function fetchAgentProperties(agentId, containerId, url, status) {
             return;
         }
 
-        properties.forEach(property => {
-            const containerDiv = document.createElement('div');
-            containerDiv.classList.add('container');
+        let currentPage = 1;
+        const propertiesPerPage = 5;
 
-            const card = document.createElement('div');
-            card.classList.add('house-card');
+        function displayProperties(page) {
+            container.innerHTML = '';
+            const start = (page - 1) * propertiesPerPage;
+            const end = start + propertiesPerPage;
+            const paginatedProperties = properties.slice(start, end);
 
-            const imageUrl = Array.isArray(property.images) && property.images.length > 0 
-                ? property.images[0] 
-                : '../../images/featured_image.png'; 
+            paginatedProperties.forEach(property => {
+                const containerDiv = document.createElement('div');
+                containerDiv.classList.add('container');
 
-            card.innerHTML = `
-                <div class="img">
-                    <img src="${imageUrl}" alt="Property Image" />
-                </div>
-                <div class="details">
-                    <div class="description">${property.description}</div>
-                    <div class="price">₦${property.price}</div>
-                    <div class="location">
-                        <div class="location-name">${property.state}, ${property.lga}</div>
-                        <div class="view-icon">
-                            <span class="view">View</span>
-                            <span class="arrow-icon">
-                                <i class="fa-solid fa-arrow-right-long"></i>
-                            </span>
+                const card = document.createElement('div');
+                card.classList.add('house-card');
+
+                const imageUrl = Array.isArray(property.images) && property.images.length > 0 
+                    ? property.images[0] 
+                    : '../../images/featured_image.png';
+
+                card.innerHTML = `
+                    <div class="img">
+                        <img src="${imageUrl}" alt="Property Image" />
+                    </div>
+                    <div class="details">
+                        <div class="description">${property.description}</div>
+                        <div class="price">₦${property.price}</div>
+                        <div class="location">
+                            <div class="location-name">${property.state}, ${property.lga}</div>
+                            <div class="view-icon">
+                                <span class="view">View</span>
+                                <span class="arrow-icon">
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="img-overlap">
-                    <span class="status">${status}</span>
-                    <span class="icon">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </span>
-                </div>
-            `;
+                    <div class="img-overlap">
+                        <span class="status">${status}</span>
+                        <span class="icon">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </span>
+                    </div>
+                `;
 
-            containerDiv.appendChild(card);
-            container.appendChild(containerDiv);
-        });
+                containerDiv.appendChild(card);
+                container.appendChild(containerDiv);
+            });
+
+            updatePagination(page, Math.ceil(properties.length / propertiesPerPage));
+        }
+
+        displayProperties(currentPage);
+
+        function updatePagination(page, totalPages) {
+            const paginationContainer = document.querySelector('.num-container');
+            paginationContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageNumber = document.createElement('span');
+                pageNumber.classList.add('num');
+                if (i === page) pageNumber.classList.add('num-active');
+                pageNumber.innerText = i;
+                pageNumber.addEventListener('click', () => displayProperties(i));
+                paginationContainer.appendChild(pageNumber);
+            }
+        }
 
     } catch (error) {
         console.error('Error fetching properties:', error);
         container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
     }
+}
+
+function switchpageI() {
+    const saleButton = document.getElementById("sellpage");
+    const rentButton = document.getElementById("rentpage");
+    const saleContainer = document.getElementById("propertiesContainer");
+    const rentContainer = document.getElementById("propertiesContainer_2");
+
+    saleButton.addEventListener("click", () => {
+        saleButton.classList.add("active");
+        rentButton.classList.remove("active");
+        saleContainer.style.display = "flex";
+        rentContainer.style.display = "none";
+    });
+
+    rentButton.addEventListener("click", () => {
+        rentButton.classList.add("active");
+        saleButton.classList.remove("active");
+        rentContainer.style.display = "flex";
+        saleContainer.style.display = "none";
+    });
 }

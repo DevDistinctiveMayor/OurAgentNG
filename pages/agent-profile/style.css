@@ -178,14 +178,14 @@ main .hero {
 }
 
 .company-name {
-    font-size: 26px;
+    font-size: 24px;
     color: #02182B;
     font-weight: 600;
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: #0861AF;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 main .hero .profile-card {
@@ -584,6 +584,61 @@ button {
     border-radius: 7px;
     cursor: pointer;
 }
+.btn-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+}
+
+.btn.active {
+    background-color: #0861AF;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+#propertiesContainer, #propertiesContainer_2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Individual property card styling */
+.house-card {
+    width: calc(33.33% - 16px); /* Desktop view: 3 cards per row */
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.house-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.house-card:hover {
+    transform: scale(1.05);
+}
+
 
 .properties .house-card-container .container .house-card {
     width: 230px;
@@ -919,7 +974,9 @@ button {
         width: 100%;
         margin-top: 2rem;
     }
-
+    .house-card {
+        width: calc(50% - 16px); /* Mobile view: 2 cards per row */
+    }
     .recently-sold .heading {
         font-size: 24px;
     }
@@ -1041,7 +1098,9 @@ button {
     .properties {
         margin: 1rem 14px;
     }
-
+    .house-card {
+        width: 100%; /* Small screens: 1 card per row */
+    }
     .next-prev-page {
         gap: 0;
     }
