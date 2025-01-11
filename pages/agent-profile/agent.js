@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (data.status === "success") {
             const user = data.data;
             document.getElementById("fullName").textContent = user.fullName || "N/A";
+            document.getElementById("agentName").textContent = user.fullName || "N/A";
             document.getElementById("companyName").textContent = user.companyName || "N/A";
             document.getElementById("address").textContent = user.address || "N/A";
             document.getElementById("bio").textContent = user.userInfo || "N/A";
@@ -153,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bioDiv = document.getElementById("bio");
     const editBioBtn = document.getElementById("editBioBtn");
     const submitBtn = document.querySelector("button[type='submit']");
-    const charCountDisplay = document.getElementById("charCountDisplay"); // Element to show character count
-    const charCountLimit = 200; // Maximum character count
+    const charCountDisplay = document.getElementById("charCountDisplay");
+    const charCountLimit = 200; 
 
     bioDiv.contentEditable = false;
 
@@ -174,34 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function countCharacters(text) {
-        return text.length; // Count every character, including spaces and punctuation
+        return text.trim().length; 
     }
 
     bioDiv.addEventListener('input', () => {
         const charCount = countCharacters(bioDiv.innerText);
-
-        if (charCount > charCountLimit) {
-            // Truncate content to the allowed limit
-            bioDiv.innerText = bioDiv.innerText.slice(0, charCountLimit);
-
-            // Move the cursor to the end
-            const selection = window.getSelection();
-            const range = document.createRange();
-            range.selectNodeContents(bioDiv);
-            range.collapse(false);
-            selection.removeAllRanges();
-            selection.addRange(range);
-
-            Swal.fire({
-                icon: 'warning',
-                title: 'Character Limit Reached',
-                text: `You cannot enter more than ${charCountLimit} characters.`,
-            });
-        }
-
-        const remainingChars = charCountLimit - Math.min(charCount, charCountLimit);
+        const remainingChars = Math.max(0, charCountLimit - charCount);
         charCountDisplay.textContent = `: ${remainingChars}`;
-        charCountDisplay.style.color = remainingChars <= 0 ? "red" : "black";
+        charCountDisplay.style.color = remainingChars === 0 ? "red" : "black";
     });
 
     document.getElementById("bioForm").addEventListener("submit", async (event) => {
@@ -281,41 +262,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize the character count display
-    const initialCharCount = countCharacters(bioDiv.innerText);
-    charCountDisplay.textContent = `: ${charCountLimit - initialCharCount}`;
+    window.addEventListener('load', () => {
+        // const initialCharCount = countCharacters(bioDiv.innerText);
+        const remainingChars = Math.max(0, charCountLimit - initialCharCount);
+        charCountDisplay.textContent = `: ${remainingChars}`;
+        charCountDisplay.style.color = remainingChars === 0 ? "red" : "black";
+    });
 });
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const agentId = sessionStorage.getItem("agent_id");
 
     if (!agentId) {
-   //     alert("Agent ID is missing from session storage.");
         document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
+        document.getElementById('propertiesContainer_2').innerHTML = "<p>Agent ID is missing.</p>";
         return;
     }
 
-    fetchAgentProperties(agentId);
+    // Fetch sold properties
+    fetchAgentProperties(agentId, 'propertiesContainer', 'https://ouragent.com.ng/agentrent_property_ondash.php', "Sold");
+    
+    // Fetch rent properties
+    fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentProperty_dashboard.php', "Rent");
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const agentId = sessionStorage.getItem("agent_id");
-
-    if (!agentId) {
-        alert("Agent ID is missing from session storage.");
-        document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
-        return;
-    }
-
-    fetchAgentProperties(agentId);
-});
-
-async function fetchAgentProperties(agentId) {
-    const url = `https://ouragent.com.ng/agentProperty_dashboard.php`;
-    const container = document.getElementById('propertiesContainer');
+async function fetchAgentProperties(agentId, containerId, url, status) {
+    const container = document.getElementById(containerId);
 
     try {
         const response = await fetch(url, {
@@ -345,10 +318,9 @@ async function fetchAgentProperties(agentId) {
             const card = document.createElement('div');
             card.classList.add('house-card');
 
-            // Handling multiple images, showing only the first one
             const imageUrl = Array.isArray(property.images) && property.images.length > 0 
                 ? property.images[0] 
-                : '../../images/featured_image.png'; // Fallback image if none provided
+                : '../../images/featured_image.png'; 
 
             card.innerHTML = `
                 <div class="img">
@@ -368,7 +340,7 @@ async function fetchAgentProperties(agentId) {
                     </div>
                 </div>
                 <div class="img-overlap">
-                    <span class="status">Sold</span>
+                    <span class="status">${status}</span>
                     <span class="icon">
                         <i class="fa-regular fa-bookmark"></i>
                     </span>
