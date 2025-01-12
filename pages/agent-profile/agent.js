@@ -350,12 +350,12 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                                 </span>
                             </div>
                         </div>
-                        <button class="mark-sold-btn" onclick="markAsSold(${property.id})" ${propertystatus === 'Sold' ? 'disabled' : ''}>
+                        <button class="mark-sold-btn" onclick="markAsSold(${property.propertystatus})" ${propertystatus === 'Sold' ? 'disabled' : ''}>
                             Mark as Sold
                         </button>
                     </div>
                     <div class="img-overlap">
-                        <span class="propertystatus">${propertystatus}</span>
+                        <span class="status">${status}</span>
                         <span class="icon">
                             <i class="fa-regular fa-bookmark"></i>
                         </span>
@@ -413,14 +413,14 @@ function switchpageI() {
     });
 }
 
-async function markAsSold(propertyId) {
+async function markAsSold(agentId) {
     try {
         const response = await fetch('https://ouragent.com.ng/agentmark_property_sold.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ property_id: propertyId }) // Changed to property_id
+            body: JSON.stringify({ agent_id: agentId })
         });
 
         const result = await response.json();
@@ -428,7 +428,7 @@ async function markAsSold(propertyId) {
             alert('Property marked as sold successfully.');
             location.reload(); // Refresh the page to reflect changes
         } else {
-            alert('Error marking property as sold.');
+            alert(result.message); // Display error message
         }
     } catch (error) {
         console.error('Error:', error);
