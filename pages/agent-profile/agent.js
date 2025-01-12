@@ -281,15 +281,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fetch sold properties
-    fetchAgentProperties(agentId, 'propertiesContainer', 'https://ouragent.com.ng/agentrent_property_ondash.php', "Sold");
+    fetchAgentProperties(agentId, 'propertiesContainer', 'https://ouragent.com.ng/agentrent_property_ondash.php', "Rent");
     
     // Fetch rent properties
-    fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentsell_property_dashboard.php', "Rent");
+    fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentsell_property_dashboard.php', "Sell");
 
     switchpageI();
 });
 
-async function fetchAgentProperties(agentId, containerId, url, status) {
+async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
     const container = document.getElementById(containerId);
 
     try {
@@ -333,9 +333,10 @@ async function fetchAgentProperties(agentId, containerId, url, status) {
                     ? property.images[0] 
                     : '../../images/featured_image.png';
 
-                card.innerHTML = `
-                    <div class="img">
+                    card.innerHTML = `
+                    <div class="img ${propertystatus === 'Sold' ? 'sold-overlay' : ''}">
                         <img src="${imageUrl}" alt="Property Image" />
+                        ${propertystatus === 'Sold' ? '<div class="sold-label">Sold Out</div>' : ''}
                     </div>
                     <div class="details">
                         <div class="description">${property.description}</div>
@@ -349,14 +350,18 @@ async function fetchAgentProperties(agentId, containerId, url, status) {
                                 </span>
                             </div>
                         </div>
+                        <button class="mark-sold-btn" onclick="markAsSold(${property.id})" ${propertystatus === 'Sold' ? 'disabled' : ''}>
+                            Mark as Sold
+                        </button>
                     </div>
                     <div class="img-overlap">
-                        <span class="status">${status}</span>
+                        <span class="propertystatus">${propertystatus}</span>
                         <span class="icon">
                             <i class="fa-regular fa-bookmark"></i>
                         </span>
                     </div>
                 `;
+                
 
                 containerDiv.appendChild(card);
                 container.appendChild(containerDiv);
@@ -406,4 +411,26 @@ function switchpageI() {
         rentContainer.style.display = "flex";
         saleContainer.style.display = "none";
     });
+}
+
+async function markAsSold(propertyId) {
+    try {
+        const response = await fetch('https://ouragent.com.ng/agentmark_property_sold.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ property_id: propertyId }) // Changed to property_id
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+            alert('Property marked as sold successfully.');
+            location.reload(); // Refresh the page to reflect changes
+        } else {
+            alert('Error marking property as sold.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
