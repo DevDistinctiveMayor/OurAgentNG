@@ -269,21 +269,16 @@ document.addEventListener('DOMContentLoaded', () => {
         charCountDisplay.style.color = remainingChars === 0 ? "red" : "black";
     });
 });
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const agentId = sessionStorage.getItem("agent_id");
-
     if (!agentId) {
         document.getElementById('propertiesContainer').innerHTML = "<p>Agent ID is missing.</p>";
         document.getElementById('propertiesContainer_2').innerHTML = "<p>Agent ID is missing.</p>";
         return;
     }
 
-    // Fetch sold properties
+    // Fetch properties for both sale and rent
     fetchAgentProperties(agentId, 'propertiesContainer', 'https://ouragent.com.ng/agentrent_property_ondash.php', "Rent");
-    
-    // Fetch rent properties
     fetchAgentProperties(agentId, 'propertiesContainer_2', 'https://ouragent.com.ng/agentsell_property_dashboard.php', "Sell");
 
     switchpageI();
@@ -298,7 +293,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ agent_id: agentId })
+            body: JSON.stringify({ agent_id: agentId }) // Removed duplicated body
         });
 
         if (!response.ok) {
@@ -333,7 +328,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                     ? property.images[0] 
                     : '../../images/featured_image.png';
 
-                    card.innerHTML = `
+                card.innerHTML = `
                     <div class="img ${propertystatus === 'Sold' ? 'sold-overlay' : ''}">
                         <img src="${imageUrl}" alt="Property Image" />
                         ${propertystatus === 'Sold' ? '<div class="sold-label">Sold Out</div>' : ''}
@@ -350,18 +345,15 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                                 </span>
                             </div>
                         </div>
-                        <button class="mark-sold-btn" onclick="markAsSold(${property.propertystatus})" ${propertystatus === 'Sold' ? 'disabled' : ''}>
-                            Mark as Sold
-                        </button>
+                         <button class="mark-sold-btn" onclick="markAsSold('${property.id}')">Mark as Sold</button>
                     </div>
                     <div class="img-overlap">
-                        <span class="status">${status}</span>
+                        <span class="status">${propertystatus}</span>
                         <span class="icon">
                             <i class="fa-regular fa-bookmark"></i>
                         </span>
                     </div>
                 `;
-                
 
                 containerDiv.appendChild(card);
                 container.appendChild(containerDiv);
@@ -391,6 +383,36 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
         container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
     }
 }
+window.markAsSold = async function(propertyId) {
+    // Ensure property_id is retrieved correctly
+    propertyId = propertyId || sessionStorage.getItem("property_id");
+    
+    if (!propertyId) {
+        alert("Property ID is missing");
+        return;
+    }
+
+    try {
+        const response = await fetch('https://ouragent.com.ng/agentmark_property_sold.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ property_id: propertyId })  
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+            alert('Property marked as sold successfully.');
+            location.reload();
+        } else {
+            alert(result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while marking the property as sold.');
+    }
+};
 
 function switchpageI() {
     const saleButton = document.getElementById("sellpage");
@@ -411,26 +433,4 @@ function switchpageI() {
         rentContainer.style.display = "flex";
         saleContainer.style.display = "none";
     });
-}
-
-async function markAsSold(agentId) {
-    try {
-        const response = await fetch('https://ouragent.com.ng/agentmark_property_sold.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ agent_id: agentId })
-        });
-
-        const result = await response.json();
-        if (result.status === 'success') {
-            alert('Property marked as sold successfully.');
-            location.reload(); // Refresh the page to reflect changes
-        } else {
-            alert(result.message); // Display error message
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
 }
