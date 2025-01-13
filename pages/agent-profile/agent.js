@@ -326,39 +326,39 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
             return;
         }
 
-       properties.forEach((property) => {
-    const containerDiv = document.createElement("div");
-    containerDiv.classList.add("container");
+        properties.forEach((property) => {
+            const containerDiv = document.createElement("div");
+            containerDiv.classList.add("container");
 
-    const card = document.createElement("div");
-    card.classList.add("house-card");
+            const card = document.createElement("div");
+            card.classList.add("house-card");
 
-    const imageUrl = Array.isArray(property.images) && property.images.length > 0
-        ? property.images[0]
-        : "../../images/featured_image.png";
+            const imageUrl = Array.isArray(property.images) && property.images.length > 0
+                ? property.images[0]
+                : "../../images/featured_image.png";
 
-    card.innerHTML = `
-        <div class="img ${property.propertystatus === 'sold' ? 'sold-overlay' : ''}">
-            <img src="${imageUrl}" alt="Property Image" />
-            ${property.propertystatus === 'sold' ? '<div class="sold-label">Sold Out</div>' : ""}
-        </div>
-        <div class="details">
-            <div class="description">${property.description}</div>
-            <div class="price">₦${property.price}</div>
-            <div class="location">
-                <div class="location-name">${property.state}, ${property.lga}</div>
-            </div>
-            <button class="mark-sold-btn" 
-                data-property-id="${property.id}"
-                onclick="markAsSold('${property.id}')"
-                ${property.propertystatus === 'sold' ? 'disabled' : ''}>
-                ${property.propertystatus === 'sold' ? 'Sold' : 'Mark as Sold'}
-            </button>
-        </div>
-    `;
-    containerDiv.appendChild(card);
-    container.appendChild(containerDiv);
-});
+            card.innerHTML = `
+                <div class="img ${property.propertystatus === 'sold' ? 'sold-overlay' : ''}">
+                    <img src="${imageUrl}" alt="Property Image" />
+                    ${property.propertystatus === 'sold' ? '<div class="sold-label">Sold Out</div>' : ""}
+                </div>
+                <div class="details">
+                    <div class="description">${property.description}</div>
+                    <div class="price">₦${property.price}</div>
+                    <div class="location">
+                        <div class="location-name">${property.state}, ${property.lga}</div>
+                    </div>
+                    <button class="mark-sold-btn" 
+                        data-property-id="${property.id}"
+                        onclick="markAsSold('${property.id}')"
+                        ${property.propertystatus === 'sold' ? 'disabled' : ''}>
+                        ${property.propertystatus === 'sold' ? 'Sold' : 'Mark as Sold'}
+                    </button>
+                </div>
+            `;
+            containerDiv.appendChild(card);
+            container.appendChild(containerDiv);
+        });
     } catch (error) {
         console.error("Error fetching properties:", error);
         container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
@@ -366,9 +366,8 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
 }
 
 async function markAsSold(propertyId) {
-    console.log("Property ID:", propertyId);
     const agentId = sessionStorage.getItem("agent_id");
-
+    console.log(propertyId);
 
     if (!propertyId) {
         alert("Property ID is missing.");
