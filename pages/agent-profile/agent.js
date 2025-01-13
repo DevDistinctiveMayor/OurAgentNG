@@ -326,9 +326,18 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
             return;
         }
 
-        properties.forEach((property) => {
-            const containerDiv = document.createElement("div");
-            containerDiv.classList.add("container");
+        let currentPage = 1;
+const propertiesPerPage = 5;
+
+function displayProperties(page) {
+    container.innerHTML = '';
+    const start = (page - 1) * propertiesPerPage;
+    const end = start + propertiesPerPage;
+    const paginatedProperties = properties.slice(start, end);
+
+    paginatedProperties.forEach(property => {
+        const containerDiv = document.createElement('div');
+        containerDiv.classList.add('container');
 
             const card = document.createElement("div");
             card.classList.add("house-card");
@@ -355,15 +364,39 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                         ${property.propertystatus === 'sold' ? 'Sold' : 'Mark as Sold'}
                     </button>
                 </div>
-            `;
-            containerDiv.appendChild(card);
-            container.appendChild(containerDiv);
-        });
-    } catch (error) {
-        console.error("Error fetching properties:", error);
-        container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+`;
+
+containerDiv.appendChild(card);
+container.appendChild(containerDiv);
+});
+
+
+updatePagination(page, Math.ceil(properties.length / propertiesPerPage));
+}
+
+displayProperties(currentPage);
+
+function updatePagination(page, totalPages) {
+    const paginationContainer = document.querySelector('.num-container');
+    paginationContainer.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageNumber = document.createElement('span');
+        pageNumber.classList.add('num');
+        if (i === page) pageNumber.classList.add('num-active');
+        pageNumber.innerText = i;
+        pageNumber.addEventListener('click', () => displayProperties(i));
+        paginationContainer.appendChild(pageNumber);
     }
 }
+
+} catch (error) {
+console.error('Error fetching properties:', error);
+container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+}
+}
+
+
 
 async function markAsSold(propertyId) {
     const agentId = sessionStorage.getItem("agent_id");
