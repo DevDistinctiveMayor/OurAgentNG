@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             propertyElement.className = "property-card";
             propertyElement.innerHTML = `
               <div class="featuredbox-container">
+                <div class="sold-overlay">${property.propertystatus}</div>
                 <div class="card">
                   <div class="image-box">
                     <img src="https://ouragent.com.ng/${
@@ -195,6 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       propertyElement.className = "property-card";
                       propertyElement.innerHTML = `
                         <div class="featuredbox-container">
+                          <div class="sold-overlay">${property.propertystatus}</div>
                           <div class="card">
                             <div class="image-box">
                               <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">

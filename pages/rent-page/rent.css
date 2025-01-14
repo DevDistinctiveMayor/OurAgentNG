@@ -443,6 +443,20 @@ header {
   box-shadow: 5px 5px 5px 5px hsla(0, 2%, 82%, 0.76);
 }
 
+.sold-overlay {
+  /* filter: grayscale(100%); */
+  /* opacity: 0.7; */
+  position: absolute;
+  background-color: #34A853;
+  color: white;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 .featuredbox-container>.card>.image-box>img {
   height: 180px;
   width: 200px;
@@ -837,7 +851,7 @@ header {
 }
 
 .property-type-container {
-  margin-top:10px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -847,7 +861,7 @@ header {
   text-decoration: none;
   border: 1pt solid #0861AF;
   color: #0861AF;
-  padding:3px 8px;
+  padding: 3px 8px;
   border-radius: 3px;
   font-size: 14px;
 }
@@ -1121,6 +1135,10 @@ header {
     width: 100%;
   }
 
+  .sold-overlay {
+    margin-left: 2.5rem;
+  }
+
   .container>.details-container>h1 {
     font-size: 25px;
     margin-top: 3rem;
@@ -1270,6 +1288,10 @@ header {
   .advance-filter-container {
     width: 100%;
     /* Full width for smaller screens */
+  }
+
+  .sold-overlay {
+    margin-left: 1.5rem;
   }
 
   .custom-select select {

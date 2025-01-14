@@ -341,10 +341,19 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
     const propertiesPerPage = 5;
 
     function displayProperties(page) {
+      currentPage = page;
       container.innerHTML = "";
+
       const start = (page - 1) * propertiesPerPage;
-      const end = start + propertiesPerPage;
-      const paginatedProperties = properties.slice(start, end);
+      const paginatedProperties = properties.slice(
+        start,
+        start + propertiesPerPage
+      );
+
+      if (paginatedProperties.length === 0) {
+        container.innerHTML = "<p>No properties available on this page.</p>";
+        return;
+      }
 
       paginatedProperties.forEach((property) => {
         const containerDiv = document.createElement("div");
@@ -359,134 +368,82 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
             : "../../images/featured_image.png";
 
         card.innerHTML = `
-                <div class="img ${
-                  property.propertystatus === "sold" ? "sold-overlay" : ""
-                }">
-                    <img src="${imageUrl}" alt="Property Image" />
-                    ${
-                      property.propertystatus === "sold"
-                        ? '<div class="sold-label">Sold Out</div>'
-                        : ""
-                    }
-                </div>
-                <div class="details">
-                    <div class="description">${property.description}</div>
-                    <div class="price">₦${property.price}</div>
-                    <div class="location">
-                        <div class="location-name">${property.state}, ${
-          property.lga
-        }</div>
-                    </div>
-                    <button class="mark-sold-btn" 
-                        data-property-id="${property.id}"
-                        onclick="markAsSold('${property.id}')"
-                        ${property.propertystatus === "sold" ? "disabled" : ""}>
+                    <div class="img ${
+                      property.propertystatus === "sold" ? "sold-overlay" : ""
+                    }">
+                        <img src="${imageUrl}" alt="Property Image" />
                         ${
                           property.propertystatus === "sold"
-                            ? "Sold"
-                            : "Mark as Sold"
+                            ? '<div class="sold-label">Sold Out</div>'
+                            : ""
                         }
-                    </button>
-                </div>
-`;
+                    </div>
+                    <div class="details">
+                        <div class="description">${property.description}</div>
+                        <div class="price">₦${property.price}</div>
+                        <div class="location">
+                            <div class="location-name">${property.state}, ${
+          property.lga
+        }</div>
+                        </div>
+                        <button class="mark-sold-btn" 
+                            data-property-id="${property.id}"
+                            onclick="markAsSold('${property.id}')"
+                            ${
+                              property.propertystatus === "sold"
+                                ? "disabled"
+                                : ""
+                            }>
+                            ${
+                              property.propertystatus === "sold"
+                                ? "Sold"
+                                : "Mark as Sold"
+                            }
+                        </button>
+                    </div>
+                `;
 
         containerDiv.appendChild(card);
         container.appendChild(containerDiv);
       });
 
-      updatePagination(page, Math.ceil(properties.length / propertiesPerPage));
+      updatePagination(
+        currentPage,
+        Math.ceil(properties.length / propertiesPerPage)
+      );
     }
-
-    displayProperties(currentPage);
 
     function updatePagination(page, totalPages) {
       const paginationContainer = document.querySelector(".num-container");
+      const leftArrow = document.getElementById("left-angle");
+      const rightArrow = document.getElementById("right-angle");
+
       paginationContainer.innerHTML = "";
+
+      leftArrow.onclick = () => {
+        if (page > 1) displayProperties(page - 1);
+      };
 
       for (let i = 1; i <= totalPages; i++) {
         const pageNumber = document.createElement("span");
         pageNumber.classList.add("num");
         if (i === page) pageNumber.classList.add("num-active");
         pageNumber.innerText = i;
-        pageNumber.addEventListener("click", () => displayProperties(i));
+        pageNumber.onclick = () => displayProperties(i);
         paginationContainer.appendChild(pageNumber);
       }
+
+      rightArrow.onclick = () => {
+        if (page < totalPages) displayProperties(page + 1);
+      };
     }
+
+    // Initial call to display properties
+    displayProperties(currentPage);
   } catch (error) {
     console.error("Error fetching properties:", error);
     container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
   }
-}
-
-
-async function markAsSold(propertyId) {
-    const agentId = sessionStorage.getItem("agent_id");
-
-    if (!propertyId) {
-        alert("Property ID is missing.");
-        return;
-    }
-
-    if (!agentId) {
-        alert("Agent ID is missing. Please log in.");
-        return;
-    }
-
-    const soldButton = document.querySelector(`button[data-property-id="${propertyId}"]`);
-    
-    if (!soldButton) {
-        alert("Button not found.");
-        return;
-    }
-
-    // Disable button and show processing state
-    soldButton.disabled = true;
-    soldButton.textContent = "Processing...";
-    soldButton.classList.add("processing");
-
-    try {
-        const response = await fetch("https://ouragent.com.ng/agentmark_property_sold.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                agent_id: parseInt(agentId),
-                property_id: parseInt(propertyId)
-            }),
-        });
-
-        const result = await response.json();
-
-        if (result.status === "success") {
-            // Success feedback: Mark the property as sold
-            soldButton.textContent = "Sold";
-            soldButton.disabled = true;
-            soldButton.classList.remove("processing");
-            soldButton.classList.add("disabled-button");
-
-            const propertyCard = soldButton.closest(".house-card");
-            if (propertyCard) {
-                propertyCard.classList.add("sold-overlay");
-                const soldLabel = document.createElement("div");
-                soldLabel.classList.add("sold-label");
-                soldLabel.textContent = "Sold Out";
-                propertyCard.querySelector(".img").appendChild(soldLabel);
-            }
-        } else {
-            // Error feedback
-            alert(result.message);
-            soldButton.textContent = "Mark as Sold";
-            soldButton.disabled = false;
-            soldButton.classList.remove("processing");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred while marking the property as sold.");
-        soldButton.textContent = "Mark as Sold";
-        soldButton.disabled = false;
-        soldButton.classList.remove("processing");
-    }
 }
 
 function switchpageI() {
@@ -508,4 +465,79 @@ function switchpageI() {
     rentContainer.style.display = "flex";
     saleContainer.style.display = "none";
   });
+}
+
+async function markAsSold(propertyId) {
+  const agentId = sessionStorage.getItem("agent_id");
+
+  if (!propertyId) {
+    alert("Property ID is missing.");
+    return;
+  }
+
+  if (!agentId) {
+    alert("Agent ID is missing. Please log in.");
+    return;
+  }
+
+  const soldButton = document.querySelector(
+    `button[data-property-id="${propertyId}"]`
+  );
+
+  if (!soldButton) {
+    alert("Button not found.");
+    return;
+  }
+
+  // Disable button and show processing state
+  soldButton.disabled = true;
+  soldButton.textContent = "Processing...";
+  soldButton.classList.add("processing");
+
+  try {
+    const response = await fetch(
+      "https://ouragent.com.ng/agentmark_property_sold.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          agent_id: parseInt(agentId),
+          property_id: parseInt(propertyId),
+        }),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      // Success feedback: Mark the property as sold
+      soldButton.textContent = "Sold";
+      soldButton.disabled = true;
+      soldButton.classList.remove("processing");
+      soldButton.classList.add("disabled-button");
+
+      const propertyCard = soldButton.closest(".house-card");
+      if (propertyCard) {
+        propertyCard.classList.add("sold-overlay");
+        const soldLabel = document.createElement("div");
+        soldLabel.classList.add("sold-label");
+        soldLabel.textContent = "Sold Out";
+        propertyCard.querySelector(".img").appendChild(soldLabel);
+      }
+    } else {
+      // Error feedback
+      alert(result.message);
+      soldButton.textContent = "Mark as Sold";
+      soldButton.disabled = false;
+      soldButton.classList.remove("processing");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred while marking the property as sold.");
+    soldButton.textContent = "Mark as Sold";
+    soldButton.disabled = false;
+    soldButton.classList.remove("processing");
+  }
 }
