@@ -285,122 +285,142 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const agentId = sessionStorage.getItem("agent_id");
+  const agentId = sessionStorage.getItem("agent_id");
 
-    if (!agentId) {
-        document.getElementById("propertiesContainer").innerHTML = "<p>Agent ID is missing.</p>";
-        document.getElementById("propertiesContainer_2").innerHTML = "<p>Agent ID is missing.</p>";
-        return;
-    }
+  if (!agentId) {
+    document.getElementById("propertiesContainer").innerHTML =
+      "<p>Agent ID is missing.</p>";
+    document.getElementById("propertiesContainer_2").innerHTML =
+      "<p>Agent ID is missing.</p>";
+    return;
+  }
 
-    // Fetch properties for both sale and rent
-    fetchAgentProperties(agentId, "propertiesContainer", "https://ouragent.com.ng/agentrent_property_ondash.php", "Rent");
-    fetchAgentProperties(agentId, "propertiesContainer_2", "https://ouragent.com.ng/agentsell_property_dashboard.php", "Sell");
+  // Fetch properties for both sale and rent
+  fetchAgentProperties(
+    agentId,
+    "propertiesContainer",
+    "https://ouragent.com.ng/agentrent_property_ondash.php",
+    "Rent"
+  );
+  fetchAgentProperties(
+    agentId,
+    "propertiesContainer_2",
+    "https://ouragent.com.ng/agentsell_property_dashboard.php",
+    "Sell"
+  );
 
-    switchpageI();
+  switchpageI();
 });
 
 async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
-    const container = document.getElementById(containerId);
+  const container = document.getElementById(containerId);
 
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ agent_id: agentId }),
-        });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ agent_id: agentId }),
+    });
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch properties.");
-        }
+    if (!response.ok) {
+      throw new Error("Failed to fetch properties.");
+    }
 
-        const properties = await response.json();
-        container.innerHTML = "";
+    const properties = await response.json();
+    container.innerHTML = "";
 
-        if (properties.status === "error") {
-            container.innerHTML = `<p>${properties.message}</p>`;
-            return;
-        }
+    if (properties.status === "error") {
+      container.innerHTML = `<p>${properties.message}</p>`;
+      return;
+    }
 
-        let currentPage = 1;
-const propertiesPerPage = 5;
+    let currentPage = 1;
+    const propertiesPerPage = 5;
 
-function displayProperties(page) {
-    container.innerHTML = '';
-    const start = (page - 1) * propertiesPerPage;
-    const end = start + propertiesPerPage;
-    const paginatedProperties = properties.slice(start, end);
+    function displayProperties(page) {
+      container.innerHTML = "";
+      const start = (page - 1) * propertiesPerPage;
+      const end = start + propertiesPerPage;
+      const paginatedProperties = properties.slice(start, end);
 
-    paginatedProperties.forEach(property => {
-        const containerDiv = document.createElement('div');
-        containerDiv.classList.add('container');
+      paginatedProperties.forEach((property) => {
+        const containerDiv = document.createElement("div");
+        containerDiv.classList.add("container");
 
-            const card = document.createElement("div");
-            card.classList.add("house-card");
+        const card = document.createElement("div");
+        card.classList.add("house-card");
 
-            const imageUrl = Array.isArray(property.images) && property.images.length > 0
-                ? property.images[0]
-                : "../../images/featured_image.png";
+        const imageUrl =
+          Array.isArray(property.images) && property.images.length > 0
+            ? property.images[0]
+            : "../../images/featured_image.png";
 
-            card.innerHTML = `
-                <div class="img ${property.propertystatus === 'sold' ? 'sold-overlay' : ''}">
+        card.innerHTML = `
+                <div class="img ${
+                  property.propertystatus === "sold" ? "sold-overlay" : ""
+                }">
                     <img src="${imageUrl}" alt="Property Image" />
-                    ${property.propertystatus === 'sold' ? '<div class="sold-label">Sold Out</div>' : ""}
+                    ${
+                      property.propertystatus === "sold"
+                        ? '<div class="sold-label">Sold Out</div>'
+                        : ""
+                    }
                 </div>
                 <div class="details">
                     <div class="description">${property.description}</div>
                     <div class="price">₦${property.price}</div>
                     <div class="location">
-                        <div class="location-name">${property.state}, ${property.lga}</div>
+                        <div class="location-name">${property.state}, ${
+          property.lga
+        }</div>
                     </div>
                     <button class="mark-sold-btn" 
                         data-property-id="${property.id}"
                         onclick="markAsSold('${property.id}')"
-                        ${property.propertystatus === 'sold' ? 'disabled' : ''}>
-                        ${property.propertystatus === 'sold' ? 'Sold' : 'Mark as Sold'}
+                        ${property.propertystatus === "sold" ? "disabled" : ""}>
+                        ${
+                          property.propertystatus === "sold"
+                            ? "Sold"
+                            : "Mark as Sold"
+                        }
                     </button>
                 </div>
 `;
 
-containerDiv.appendChild(card);
-container.appendChild(containerDiv);
-});
+        containerDiv.appendChild(card);
+        container.appendChild(containerDiv);
+      });
 
-
-updatePagination(page, Math.ceil(properties.length / propertiesPerPage));
-}
-
-displayProperties(currentPage);
-
-function updatePagination(page, totalPages) {
-    const paginationContainer = document.querySelector('.num-container');
-    paginationContainer.innerHTML = '';
-
-    for (let i = 1; i <= totalPages; i++) {
-        const pageNumber = document.createElement('span');
-        pageNumber.classList.add('num');
-        if (i === page) pageNumber.classList.add('num-active');
-        pageNumber.innerText = i;
-        pageNumber.addEventListener('click', () => displayProperties(i));
-        paginationContainer.appendChild(pageNumber);
+      updatePagination(page, Math.ceil(properties.length / propertiesPerPage));
     }
-}
 
-} catch (error) {
-console.error('Error fetching properties:', error);
-container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
-}
-}
+    displayProperties(currentPage);
 
+    function updatePagination(page, totalPages) {
+      const paginationContainer = document.querySelector(".num-container");
+      paginationContainer.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageNumber = document.createElement("span");
+        pageNumber.classList.add("num");
+        if (i === page) pageNumber.classList.add("num-active");
+        pageNumber.innerText = i;
+        pageNumber.addEventListener("click", () => displayProperties(i));
+        paginationContainer.appendChild(pageNumber);
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+  }
+}
 
 
 async function markAsSold(propertyId) {
     const agentId = sessionStorage.getItem("agent_id");
-    console.log(propertyId);
 
     if (!propertyId) {
         alert("Property ID is missing.");
@@ -412,6 +432,18 @@ async function markAsSold(propertyId) {
         return;
     }
 
+    const soldButton = document.querySelector(`button[data-property-id="${propertyId}"]`);
+    
+    if (!soldButton) {
+        alert("Button not found.");
+        return;
+    }
+
+    // Disable button and show processing state
+    soldButton.disabled = true;
+    soldButton.textContent = "Processing...";
+    soldButton.classList.add("processing");
+
     try {
         const response = await fetch("https://ouragent.com.ng/agentmark_property_sold.php", {
             method: "POST",
@@ -419,37 +451,43 @@ async function markAsSold(propertyId) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                agent_id: parseInt(agentId),  // Corrected JSON structure for agent_id
-                property_id: parseInt(propertyId)  // Corrected JSON structure for property_id
-            })
+                agent_id: parseInt(agentId),
+                property_id: parseInt(propertyId)
+            }),
         });
 
         const result = await response.json();
 
-        if (result.status === 'success') {
-            alert("Property marked as sold successfully.");
-            const soldButton = document.querySelector(`button[data-property-id="${propertyId}"]`);
-            if (soldButton) {
-                soldButton.disabled = true;
-                soldButton.innerText = "Sold";
-                soldButton.classList.add('disabled-button');
+        if (result.status === "success") {
+            // Success feedback: Mark the property as sold
+            soldButton.textContent = "Sold";
+            soldButton.disabled = true;
+            soldButton.classList.remove("processing");
+            soldButton.classList.add("disabled-button");
 
-                // Optionally update the status of the property in the DOM to reflect the sold status
-                const propertyCard = soldButton.closest(".house-card");
-                const soldLabel = propertyCard.querySelector(".sold-label");
-                if (soldLabel) {
-                    soldLabel.style.display = 'block';
-                }
+            const propertyCard = soldButton.closest(".house-card");
+            if (propertyCard) {
+                propertyCard.classList.add("sold-overlay");
+                const soldLabel = document.createElement("div");
+                soldLabel.classList.add("sold-label");
+                soldLabel.textContent = "Sold Out";
+                propertyCard.querySelector(".img").appendChild(soldLabel);
             }
         } else {
+            // Error feedback
             alert(result.message);
+            soldButton.textContent = "Mark as Sold";
+            soldButton.disabled = false;
+            soldButton.classList.remove("processing");
         }
     } catch (error) {
         console.error("Error:", error);
         alert("An error occurred while marking the property as sold.");
+        soldButton.textContent = "Mark as Sold";
+        soldButton.disabled = false;
+        soldButton.classList.remove("processing");
     }
 }
-
 
 function switchpageI() {
   const saleButton = document.getElementById("sellpage");
