@@ -1174,6 +1174,9 @@ header {
     width: 100%;
   }
 
+  .sold-overlay {
+    margin-left: 2.5rem;
+}
 
   .featuredbox-container .card {
     display: flex;
@@ -1283,7 +1286,9 @@ header {
     width: 100%;
     /* Full width for smaller screens */
   }
-
+  .sold-overlay {
+    margin-left: 1.5rem;
+}
   .custom-select select {
     appearance: none;
     width: 100px;
