@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             propertyElement.innerHTML = `
               <div class="featuredbox-container">
                 <div class="card">
+                        <div class="sold-overlay">${property.propertystatus}</div>
                   <div class="image-box">
                     <img src="https://ouragent.com.ng/${
                       property.images[0]
@@ -229,8 +230,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                   <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
                                   <a href="${property.socialMediaHandles}" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
                                 </div>
-                              </div>
                             </div>
+
                           </div>
                         </div>
                       `;
