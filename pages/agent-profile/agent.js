@@ -347,7 +347,7 @@ async function fetchSoldProperties(agentId, containerId, url) {
                     <div class="location">
                         <div class="location-name">${property.state}, ${property.lga}</div>
                     </div>
-                    <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete Property</button>
+                    <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete</button>
                 </div>
             `;
 
@@ -480,7 +480,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                                 : "Mark as Sold"
                             }
                         </button>
-                           <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete Property</button>
+                           <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete</button>
                     </div>
                 `;
 

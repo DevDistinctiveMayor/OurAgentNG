@@ -489,7 +489,15 @@ main .hero .profile-card .contact-icons span:active .bx {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.delete-btn{
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgba(197, 0, 0, 0.766);
+    color: white;
+}
 .mark-sold-btn:disabled {
     background: gray;
     cursor: not-allowed;
