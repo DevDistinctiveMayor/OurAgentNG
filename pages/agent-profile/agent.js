@@ -342,7 +342,7 @@ async function fetchSoldProperties(agentId, containerId, url) {
                     <div class="sold-label">Sold Out</div>
                 </div>
                 <div class="details">
-                    <div class="description">${property.description}</div>
+                    <div class="description">${property.description.substring(0, 25)}</div>
                     <div class="price">₦${property.price}</div>
                     <div class="location">
                         <div class="location-name">${property.state}, ${property.lga}</div>
@@ -459,7 +459,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                         }
                     </div>
                     <div class="details">
-                        <div class="description">${property.description}</div>
+                        <div class="description">${property.description.substring(0, 25)}...</div>
                         <div class="price">₦${property.price}</div>
                         <div class="location">
                             <div class="location-name">${property.state}, ${
