@@ -285,6 +285,85 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const agentId = sessionStorage.getItem("agent_id");
+    if (!agentId) {
+        document.getElementById("propertiesSold").innerHTML =
+          "<p>Agent ID is missing.</p>";
+        return;
+    }
+    fetchSoldProperties(
+        agentId,
+        "propertiesSold",
+        "https://ouragent.com.ng/agent_sold_property.php"
+    );
+});
+
+async function fetchSoldProperties(agentId, containerId, url) {
+    const container = document.getElementById(containerId);
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ agent_id: agentId }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch properties.");
+        }
+
+        const properties = await response.json();
+        container.innerHTML = "";
+
+        if (properties.status === "error") {
+            container.innerHTML = `<p>${properties.message}</p>`;
+            return;
+        }
+
+        properties.forEach(property => {
+            const containerDiv = document.createElement("div");
+            containerDiv.classList.add("container");
+
+            const card = document.createElement("div");
+            card.classList.add("house-card");
+
+            const imageUrl =
+                Array.isArray(property.images) && property.images.length > 0
+                    ? property.images[0]
+                    : "../../images/featured_image.png";
+
+            card.innerHTML = `
+                <div class="img sold-overlay">
+                    <img src="${imageUrl}" alt="Property Image" />
+                    <div class="sold-label">Sold Out</div>
+                </div>
+                <div class="details">
+                    <div class="description">${property.description}</div>
+                    <div class="price">₦${property.price}</div>
+                    <div class="location">
+                        <div class="location-name">${property.state}, ${property.lga}</div>
+                    </div>
+                    <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete Property</button>
+                </div>
+            `;
+
+            containerDiv.appendChild(card);
+            container.appendChild(containerDiv);
+        });
+
+    } catch (error) {
+        console.error("Error fetching properties:", error);
+        container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+    }
+}
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const agentId = sessionStorage.getItem("agent_id");
 
@@ -312,6 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   switchpageI();
 });
+
 
 async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
   const container = document.getElementById(containerId);
@@ -447,9 +527,21 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
   }
 }
 
+
+
 async function deleteProperty(propertyId) {
-    if (!confirm("Are you sure you want to delete this property?")) {
-      return;
+    const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    });
+
+    if (!result.isConfirmed) {
+        return;
     }
 
     try {
@@ -462,7 +554,12 @@ async function deleteProperty(propertyId) {
         });
 
         const result = await response.json();
-        alert(result.message);
+        await Swal.fire(
+            result.status === "success" ? "Deleted!" : "Error!",
+            result.message,
+            result.status === "success" ? "success" : "error"
+        );
+
         if (result.status === "success") {
             location.reload();
         }

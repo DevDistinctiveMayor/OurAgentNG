@@ -345,6 +345,8 @@ main .hero .profile-card .contact-icons span:active .bx {
     color: #0861AF;
     padding: 5px 0;
     font-size: 14px;
+    width: 10px;
+    height: 50px;
 }
 
 /* Price */
