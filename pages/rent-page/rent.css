@@ -453,8 +453,8 @@ header {
   font-size: 14px;
   font-weight: bold;
   border-radius: 5px;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .featuredbox-container>.card>.image-box>img {
@@ -1135,10 +1135,6 @@ header {
     width: 100%;
   }
 
-  .sold-overlay {
-    margin-left: 2.5rem;
-  }
-
   .container>.details-container>h1 {
     font-size: 25px;
     margin-top: 3rem;
@@ -1288,10 +1284,6 @@ header {
   .advance-filter-container {
     width: 100%;
     /* Full width for smaller screens */
-  }
-
-  .sold-overlay {
-    margin-left: 1.5rem;
   }
 
   .custom-select select {

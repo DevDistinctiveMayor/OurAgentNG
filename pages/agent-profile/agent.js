@@ -400,6 +400,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                                 : "Mark as Sold"
                             }
                         </button>
+                           <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete Property</button>
                     </div>
                 `;
 
@@ -444,6 +445,30 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
     console.error("Error fetching properties:", error);
     container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
   }
+}
+
+async function deleteProperty(propertyId) {
+    if (!confirm("Are you sure you want to delete this property?")) {
+      return;
+    }
+
+    try {
+        const response = await fetch('https://ouragent.com.ng/agentdelete_property.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ property_id: propertyId })
+        });
+
+        const result = await response.json();
+        alert(result.message);
+        if (result.status === "success") {
+            location.reload();
+        }
+    } catch (error) {
+        console.error("Error deleting property:", error);
+    }
 }
 
 function switchpageI() {
