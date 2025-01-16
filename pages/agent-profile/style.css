@@ -1126,7 +1126,10 @@ button {
         font-size: 18px;
         font-weight: 600;
     }
-
+    .properties .house-card-container .container .house-card {
+        width: 270px;
+        position: relative;
+    }
 }
 
 @media screen and (max-width: 410px) {
@@ -1162,6 +1165,15 @@ button {
 }
 
 @media screen and (max-width: 360px) {
+    .properties .btn-container {
+        min-width: 250px;
+        width: 24%;
+        margin: 2rem 0;
+    }
+    .properties .house-card-container .container .house-card {
+        width: 250px;
+        position: relative;
+    }
     .footer {
         background-color: #f9f9f9;
         padding: 20px;
@@ -1170,6 +1182,16 @@ button {
     }
 }
 
+
+@media screen and (max-width: 280px) {
+    .properties .btn-container {
+        min-width: 230px;
+    }
+    .properties .house-card-container .container .house-card {
+        width: 230px;
+        position: relative;
+    }
+}
 @media (min-width: 768px) {
     .for_sale {
         gap: 3rem;

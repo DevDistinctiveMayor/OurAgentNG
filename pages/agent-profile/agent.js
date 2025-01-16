@@ -94,6 +94,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("address").textContent = user.address || "N/A";
       document.getElementById("bio").textContent = user.userInfo || "N/A";
       document.getElementById("email").href = `mailto:${user.email || ""}`;
+      document.getElementById("socialMediaHandles").href = `${
+        user.socialMediaHandles || ""
+      }`;
 
       const profileImage = document.getElementById("profileImage");
       profileImage.src =
@@ -285,84 +288,86 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const agentId = sessionStorage.getItem("agent_id");
-    if (!agentId) {
-        document.getElementById("propertiesSold").innerHTML =
-          "<p>Agent ID is missing.</p>";
-        return;
-    }
-    fetchSoldProperties(
-        agentId,
-        "propertiesSold",
-        "https://ouragent.com.ng/agent_sold_property.php"
-    );
+  const agentId = sessionStorage.getItem("agent_id");
+  if (!agentId) {
+    document.getElementById("propertiesSold").innerHTML =
+      "<p>Agent ID is missing.</p>";
+    return;
+  }
+  fetchSoldProperties(
+    agentId,
+    "propertiesSold",
+    "https://ouragent.com.ng/agent_sold_property.php"
+  );
 });
 
 async function fetchSoldProperties(agentId, containerId, url) {
-    const container = document.getElementById(containerId);
+  const container = document.getElementById(containerId);
 
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ agent_id: agentId }),
-        });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ agent_id: agentId }),
+    });
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch properties.");
-        }
+    if (!response.ok) {
+      throw new Error("Failed to fetch properties.");
+    }
 
-        const properties = await response.json();
-        container.innerHTML = "";
+    const properties = await response.json();
+    container.innerHTML = "";
 
-        if (properties.status === "error") {
-            container.innerHTML = `<p>${properties.message}</p>`;
-            return;
-        }
+    if (properties.status === "error") {
+      container.innerHTML = `<p>${properties.message}</p>`;
+      return;
+    }
 
-        properties.forEach(property => {
-            const containerDiv = document.createElement("div");
-            containerDiv.classList.add("container");
+    properties.forEach((property) => {
+      const containerDiv = document.createElement("div");
+      containerDiv.classList.add("container");
 
-            const card = document.createElement("div");
-            card.classList.add("house-card");
+      const card = document.createElement("div");
+      card.classList.add("house-card");
 
-            const imageUrl =
-                Array.isArray(property.images) && property.images.length > 0
-                    ? property.images[0]
-                    : "../../images/featured_image.png";
+      const imageUrl =
+        Array.isArray(property.images) && property.images.length > 0
+          ? property.images[0]
+          : "../../images/featured_image.png";
 
-            card.innerHTML = `
+      card.innerHTML = `
                 <div class="img sold-overlay">
                     <img src="${imageUrl}" alt="Property Image" />
-                    <div class="sold-label">Sold Out</div>
+                    <div class="sold-label">${property.propertystatus}</div>
                 </div>
                 <div class="details">
-                    <div class="description">${property.description.substring(0, 25)}</div>
+                    <div class="description">${property.description.substring(
+                      0,
+                      25
+                    )}</div>
                     <div class="price">₦${property.price}</div>
                     <div class="location">
-                        <div class="location-name">${property.state}, ${property.lga}</div>
+                        <div class="location-name">${property.state}, ${
+        property.lga
+      }</div>
                     </div>
-                    <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete</button>
+                    <button class="delete-btn" onclick="deleteProperty('${
+                      property.id
+                    }')">Delete</button>
                 </div>
             `;
 
-            containerDiv.appendChild(card);
-            container.appendChild(containerDiv);
-        });
-
-    } catch (error) {
-        console.error("Error fetching properties:", error);
-        container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
-    }
+      containerDiv.appendChild(card);
+      container.appendChild(containerDiv);
+    });
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
+  }
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const agentId = sessionStorage.getItem("agent_id");
@@ -382,6 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://ouragent.com.ng/agentrent_property_ondash.php",
     "Rent"
   );
+
   fetchAgentProperties(
     agentId,
     "propertiesContainer_2",
@@ -391,7 +397,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   switchpageI();
 });
-
 
 async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
   const container = document.getElementById(containerId);
@@ -459,28 +464,38 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
                         }
                     </div>
                     <div class="details">
-                        <div class="description">${property.description.substring(0, 25)}...</div>
+                        <div class="description">${property.description.substring(
+                          0,
+                          25
+                        )}...</div>
                         <div class="price">₦${property.price}</div>
                         <div class="location">
                             <div class="location-name">${property.state}, ${
           property.lga
         }</div>
                         </div>
-                        <button class="mark-sold-btn" 
-                            data-property-id="${property.id}"
-                            onclick="markAsSold('${property.id}')"
-                            ${
-                              property.propertystatus === "sold"
-                                ? "disabled"
-                                : ""
-                            }>
-                            ${
-                              property.propertystatus === "sold"
-                                ? "Sold"
-                                : "Mark as Sold"
-                            }
-                        </button>
-                           <button class="delete-btn" onclick="deleteProperty('${property.id}')">Delete</button>
+   <button class="mark-status-btn" 
+    data-property-id="${property.id}" 
+    onclick="markPropertyStatus('${property.id}', '${propertystatus}')"
+    ${
+      (propertystatus === "Sell" && property.propertystatus === "sold") ||
+      (propertystatus === "Rent" && property.propertystatus === "rent-out")
+        ? "disabled"
+        : ""
+    }>
+    ${
+      propertystatus === "Sell"
+        ? property.propertystatus === "sold"
+          ? "Sold"
+          : "Mark as Sold"
+        : property.propertystatus === "rent-out"
+        ? "Rent Out"
+        : "Mark as Rent Out"
+    }
+</button>
+                           <button class="delete-btn" onclick="deleteProperty('${
+                             property.id
+                           }')">Delete</button>
                     </div>
                 `;
 
@@ -527,45 +542,46 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
   }
 }
 
-
-
 async function deleteProperty(propertyId) {
-    const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    });
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  });
 
-    if (!result.isConfirmed) {
-        return;
+  if (!result.isConfirmed) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      "https://ouragent.com.ng/agentdelete_property.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ property_id: propertyId }),
+      }
+    );
+
+    const result = await response.json();
+    await Swal.fire(
+      result.status === "success" ? "Deleted!" : "Error!",
+      result.message,
+      result.status === "success" ? "success" : "error"
+    );
+
+    if (result.status === "success") {
+      location.reload();
     }
-
-    try {
-        const response = await fetch('https://ouragent.com.ng/agentdelete_property.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ property_id: propertyId })
-        });
-
-        const result = await response.json();
-        await Swal.fire(
-            result.status === "success" ? "Deleted!" : "Error!",
-            result.message,
-            result.status === "success" ? "success" : "error"
-        );
-
-        if (result.status === "success") {
-            location.reload();
-        }
-    } catch (error) {
-        console.error("Error deleting property:", error);
-    }
+  } catch (error) {
+    console.error("Error deleting property:", error);
+  }
 }
 
 function switchpageI() {
@@ -589,7 +605,7 @@ function switchpageI() {
   });
 }
 
-async function markAsSold(propertyId) {
+async function markPropertyStatus(propertyId, propertystatus) {
   const agentId = sessionStorage.getItem("agent_id");
 
   if (!propertyId) {
@@ -602,19 +618,39 @@ async function markAsSold(propertyId) {
     return;
   }
 
-  const soldButton = document.querySelector(
+  // Use SweetAlert for confirmation
+  const confirmation = await Swal.fire({
+    title: `Are you sure?`,
+    text: `Do you want to mark this property as ${
+      propertystatus === "Sell" ? "Sold" : "Rent Out"
+    }?`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: `Yes, mark as ${
+      propertystatus === "Sell" ? "Sold" : "Rent Out"
+    }`,
+  });
+
+  if (!confirmation.isConfirmed) {
+    return; // Stop the process if the agent cancels the action
+  }
+
+  let newStatus = propertystatus === "Sell" ? "sold" : "rent-out";
+  const statusButton = document.querySelector(
     `button[data-property-id="${propertyId}"]`
   );
 
-  if (!soldButton) {
+  if (!statusButton) {
     alert("Button not found.");
     return;
   }
 
   // Disable button and show processing state
-  soldButton.disabled = true;
-  soldButton.textContent = "Processing...";
-  soldButton.classList.add("processing");
+  statusButton.disabled = true;
+  statusButton.textContent = "Processing...";
+  statusButton.classList.add("processing");
 
   try {
     const response = await fetch(
@@ -627,6 +663,7 @@ async function markAsSold(propertyId) {
         body: JSON.stringify({
           agent_id: parseInt(agentId),
           property_id: parseInt(propertyId),
+          propertystatus: newStatus,
         }),
       }
     );
@@ -634,33 +671,33 @@ async function markAsSold(propertyId) {
     const result = await response.json();
 
     if (result.status === "success") {
-        location.reload();
-      // Success feedback: Mark the property as sold
-      soldButton.textContent = "Sold";
-      soldButton.disabled = true;
-      soldButton.classList.remove("processing");
-      soldButton.classList.add("disabled-button");
-
-      const propertyCard = soldButton.closest(".house-card");
-      if (propertyCard) {
-        propertyCard.classList.add("sold-overlay");
-        const soldLabel = document.createElement("div");
-        soldLabel.classList.add("sold-label");
-        soldLabel.textContent = "Sold Out";
-        propertyCard.querySelector(".img").appendChild(soldLabel);
-      }
+      Swal.fire({
+        title: "Success!",
+        text: `Property successfully marked as ${
+          newStatus === "sold" ? "Sold" : "Rented Out"
+        }.`,
+        icon: "success",
+      });
+      location.reload(); // Refresh the page to reflect changes
     } else {
-      // Error feedback
-      alert(result.message);
-      soldButton.textContent = "Mark as Sold";
-      soldButton.disabled = false;
-      soldButton.classList.remove("processing");
+      Swal.fire({
+        title: "Error!",
+        text: result.message,
+        icon: "error",
+      });
+      statusButton.textContent = "Mark as Sold / Rent Out";
+      statusButton.disabled = false;
+      statusButton.classList.remove("processing");
     }
   } catch (error) {
     console.error("Error:", error);
-    alert("An error occurred while marking the property as sold.");
-    soldButton.textContent = "Mark as Sold";
-    soldButton.disabled = false;
-    soldButton.classList.remove("processing");
+    Swal.fire({
+      title: "Error!",
+      text: "An error occurred while updating the property status.",
+      icon: "error",
+    });
+    statusButton.textContent = "Mark as Sold / Rent Out";
+    statusButton.disabled = false;
+    statusButton.classList.remove("processing");
   }
 }
