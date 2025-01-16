@@ -634,6 +634,7 @@ async function markAsSold(propertyId) {
     const result = await response.json();
 
     if (result.status === "success") {
+        location.reload();
       // Success feedback: Mark the property as sold
       soldButton.textContent = "Sold";
       soldButton.disabled = true;
