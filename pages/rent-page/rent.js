@@ -21,81 +21,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterContainer = document.querySelector(".advance-filter-container");
   const body = document.body;
 
-  // Function to fetch and display properties
-  const fetchAndRenderProperties = (queryParams = "") => {
-    fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
+// Function to fetch and display properties
+const fetchAndRenderProperties = (queryParams = "") => {
+  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
       .then((response) => response.json())
       .then((data) => {
-        propertiesContainer.innerHTML = ""; // Clear existing content
+          propertiesContainer.innerHTML = ""; // Clear existing content
 
-        if (data.status === "success" && data.data.length > 0) {
-          data.data.forEach((property) => {
-            const propertyElement = document.createElement("div");
-            propertyElement.className = "property-card";
-            propertyElement.innerHTML = `
-              <div class="featuredbox-container">
-                <div class="sold-overlay">${property.propertystatus}</div>
-                <div class="card">
-                  <div class="image-box">
-                    <img src="https://ouragent.com.ng/${
-                      property.images[0]
-                    }" alt="Property Image">
-                  </div>
-                  <div class="text-box">
-                    <div class="first-box">
-                      <p class="heading">${property.propertyName}</p>
-                      <p class="location">${property.state}</p>
-                       <p class="location">${property.lga}</p>
-                      <p class="description">${property.description.substring(
-                        0,
-                        100
-                      )}...</p>
-                      <p class="details-link">
-                        <a href="#">Property Details &#10142;</a>
-                      </p>
-                      <p class="agent-profile">
-                        <p alt="Agent Name" class="agent-profile">Agent Name</p>
-                        <b class="agent-name">${property.fullName}</b>
-                      </p>
-                    </div>
-                    <div class="second-box">
-                      <div class="top-box">
-                        <div class="price">
-                          <p>&#8358;${property.price}</p>
-                          <i class="bx bx-bookmark i"></i>
-                        </div>
-                        <p class="availability">${property.roomNo} 38Bed ${
-                        property.bathNo
-                        } Baths</p>
+          if (data.status === "success" && data.data.length > 0) {
+              data.data.forEach((property) => {
+                  const propertyElement = document.createElement("div");
+                  propertyElement.className = "property-card";
+                  propertyElement.innerHTML = `
+                      <div class="featuredbox-container">
+                          <div class="sold-overlay">${property.propertystatus}</div>
+                          <div class="card">
+                              <div class="image-box">
+                                  <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
+                              </div>
+                              <div class="text-box">
+                                  <div class="first-box">
+                                      <p class="heading">${property.propertyName}</p>
+                                      <p class="location">${property.state}</p>
+                                      <p class="location">${property.lga}</p>
+                                      <p class="description">${property.description.substring(0, 100)}...</p>
+                                      <!-- Updated Property Details Button -->
+                                      <p class="details-link">
+                                          <a href="../property-description/index.html?propertyId=${property.id}">Property Details &#10142;</a>
+                                      </p>
+                                      <p class="agent-profile">
+                                          <p alt="Agent Name" class="agent-profile">Agent Name</p>
+                                          <b class="agent-name">${property.fullName}</b>
+                                      </p>
+                                  </div>
+                                  <div class="second-box">
+                                      <div class="top-box">
+                                          <div class="price">
+                                              <p>&#8358;${property.price}</p>
+                                              <i class="bx bx-bookmark i"></i>
+                                          </div>
+                                          <p class="availability">${property.roomNo} Beds | ${property.bathNo} Baths</p>
+                                      </div>
+                                      <div class="bottom-box">
+                                          <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
+                                          <a href="${property.socialMediaHandles}" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                    <div class="bottom-box">
-                        <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
-                        <a href="${
-                          property.socialMediaHandles
-                        }" class="whatsapp-link"><i class='bx bxl-whatsapp' value=""></i></a>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-            propertiesContainer.appendChild(propertyElement);
-          });
-        } else {
-          propertiesContainer.innerHTML = `<p>${
-            data.message || "No properties found."
-          }</p>`;
-        }
+                  `;
+                  propertiesContainer.appendChild(propertyElement);
+              });
+          } else {
+              propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+          }
       })
       .catch((error) => {
-        console.error("Error:", error);
-        propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
+          console.error("Error:", error);
+          propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
       });
-  };
+};
 
-  // Fetch all properties initially
-  fetchAndRenderProperties();
+// Fetch all properties initially
+fetchAndRenderProperties();
+
 
   // Event listener for toggle filter button
   toggleButton.addEventListener("click", () => {
