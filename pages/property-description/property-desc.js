@@ -89,6 +89,7 @@ fetch(`https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
             document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
             document.querySelector(".text-box .description").textContent = property.agentAddress;
             document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
+			document.querySelector(".text-box .year-user").textContent = ` ${property.created_at}`;
 			document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;
 			
         } else {
