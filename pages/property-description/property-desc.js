@@ -79,7 +79,7 @@ fetch(`https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
             document.querySelector(".property-text-details h3").textContent = `₦${property.price}`;
             document.querySelector(".address-details .location").innerHTML = 
                 `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
-            document.querySelector(".address-details .last-updated").textContent = `Last updated: ${property.last_updated}`;
+            document.querySelector(".address-details .last-updated").textContent = `Last updated: ${property.created_at}`;
 
             // Update description
             document.querySelector(".description-box p").textContent = property.description;
@@ -88,6 +88,7 @@ fetch(`https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
             document.querySelector(".agent-name").textContent = property.fullName;
             document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
             document.querySelector(".text-box .description").textContent = property.agentAddress;
+			document.querySelector(".search-form-field .location").innerHTML = `${property.state}, ${property.lga}`
             document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
 			document.querySelector(".text-box .year-user").textContent = ` ${property.created_at}`;
 			document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;

@@ -523,27 +523,28 @@
     font-size: 15px;
   }
 
-  .right-container .sp form input{
+  .right-container .sp div p{
     margin-bottom: 10px;
   }
   
-  .right-container .sp form input,select{
+  .right-container .sp div p{
     font-family: inherit;
     padding:10px;
     border: 1pt solid #AAAAAA;
     outline: none;
   }
 
-  .right-container .sp form .row-display{
+  .right-container .sp div .row-display{
     display: flex;
     flex-direction: row;
     gap: 10px;
     margin-bottom: 10px;
   }
-  .right-container .sp form .select-box{
+  .right-container .sp div .select-box{
     display: flex;
     flex-direction: column;
     width: 50%;
+    border: 1pt solid blue;
   }
 
   .recommended-property, .sold-properties{
