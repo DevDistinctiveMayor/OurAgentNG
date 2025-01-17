@@ -1,26 +1,24 @@
-const carouselInner = document.querySelector('.carousel-inner');
-const carouselItems = document.querySelectorAll('.carousel-item');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
+// const carouselInner = document.querySelector(".carousel-inner");
+// const carouselItems = document.querySelectorAll(".carousel-item");
+// const prevButton = document.querySelector(".prev");
+// const nextButton = document.querySelector(".next");
 
-let currentIndex = 0;
+// let currentIndex = 0;
 
-function updateCarousel() {
-  const offset = -currentIndex * 100; 
-  carouselInner.style.transform = `translateX(${offset}%)`;
-}
+// function updateCarousel() {
+//   const offset = -currentIndex * 100;
+//   carouselInner.style.transform = `translateX(${offset}%)`;
+// }
 
-prevButton.addEventListener('click', () => {
-  currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
-  updateCarousel();
-});
+// prevButton.addEventListener("click", () => {
+//   currentIndex = currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
+//   updateCarousel();
+// });
 
-nextButton.addEventListener('click', () => {
-  currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
-  updateCarousel();
-});
-
-
+// nextButton.addEventListener("click", () => {
+//   currentIndex = currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
+//   updateCarousel();
+// });
 
 // //Fetch all States
 // fetch('https://nga-states-lga.onrender.com/fetch')
@@ -32,7 +30,7 @@ nextButton.addEventListener('click', () => {
 // 				option.text = data[index];
 // 				option.value = data[index];
 // 				x.add(option);
-// 		       } 
+// 		       }
 // 	   		});
 // //Fetch Local Goverments based on selected state
 // function selectLGA(target) {
@@ -41,7 +39,7 @@ nextButton.addEventListener('click', () => {
 // 		   .then((res) => res.json())
 // 		   .then((data) => {
 // 		    var x = document.getElementById("lga");
-				
+
 // 		    var select = document.getElementById("lga");
 //               var length = select.options.length;
 //               for (i = length-1; i >= 0; i--) {
@@ -52,79 +50,166 @@ nextButton.addEventListener('click', () => {
 // 					option.text = data[index];
 // 					option.value = data[index];
 // 					x.add(option);
-// 		        } 
+// 		        }
 // 	   		});
 // 	}
 const urlParams = new URLSearchParams(window.location.search);
-const propertyId = urlParams.get('propertyId');
+const propertyId = urlParams.get("propertyId");
 
-fetch(`https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
-            const property = data.data;
+fetch(
+  `https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
+)
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.status === "success") {
+      const property = data.data;
 
-            // Set the property title
-            document.querySelector(".left-container h1").textContent = property.propertyName;
+      // Set the property title
+      document.querySelector(".left-container h1").textContent =
+        property.propertyName;
 
-            // Update the carousel images
-            const carouselContainer = document.getElementById('propertyDetailsContainer');
-            carouselContainer.innerHTML = property.images.map((image, index) => `
-                <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                    <img src="https://ouragent.com.ng/${image}" alt="Property Image">
-                </div>
-            `).join('');
+      // Update the carousel images
+      const carouselContainer = document.getElementById("propertyDetailsContainer");
+      const propertyImagesBox = document.querySelector(".property-images-box");
 
-            // Update property details
-            document.querySelector(".property-text-details h3").textContent = `₦${property.price}`;
-            document.querySelector(".address-details .location").innerHTML = 
-                `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
-            document.querySelector(".address-details .last-updated").textContent = `Last updated: ${property.created_at}`;
+      // Populate the carousel with property images
+      carouselContainer.innerHTML = property.images
+        .map(
+          (image, index) => `
+            <div class="carousel-item ${index === 0 ? "active" : ""}">
+                <img src="https://ouragent.com.ng/${image}" alt="Property Image">
+            </div>
+          `
+        )
+        .join("");
 
-            // Update description
-            document.querySelector(".description-box p").textContent = property.description;
+      // Populate the property-images-box with remaining property images
+      propertyImagesBox.innerHTML = property.images
+        .map(
+          (image) => `
+            <div>
+                <img src="https://ouragent.com.ng/${image}" alt="Property Image">
+            </div>
+          `
+        )
+        .join("");
 
-            // Update agent details (Profile Image, Name, Address, Phone)
-            document.querySelector(".agent-name").textContent = property.fullName;
-            document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
-            document.querySelector(".text-box .description").textContent = property.agentAddress;
-			document.querySelector(".search-form-field .location").textContent = `${property.state}, ${property.lga}`
-            document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
-			document.querySelector(".text-box .year-user").textContent = ` ${property.created_at}`;
-			document.querySelector(".search-form-field .category").textContent = ` ${property.category}`;
-			document.querySelector(".search-form-field .type").textContent = ` ${property.propertyType}`;
-			document.querySelector(".search-form-field .bedroom").textContent = ` ${property.roomNo}`;
-			document.querySelector(".search-form-field .minprice").textContent = '\u20A6' + ' ' + property.price;
-			document.querySelector(".search-form-field .maxprice").textContent = '\u20A6' + ' ' + property.price;
-			document.querySelector(".search-form-field .bathroom").textContent = ` ${property.bathNo}`;
-			document.querySelector(".search-form-field .properRef").textContent = ` ${property.id}`;
-			document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;
-			
-        } else {
-            alert(data.message);
-        }
+      // Get the carousel inner and items
+      const carouselInner = document.querySelector(".carousel-inner");
+      const carouselItems = document.querySelectorAll(".carousel-item");
+      const prevButton = document.querySelector(".prev");
+      const nextButton = document.querySelector(".next");
+
+      let currentIndex = 0;
+
+      function updateCarousel() {
+        // Update the active class based on currentIndex
+        carouselItems.forEach((item, index) => {
+          item.classList.remove("active");
+          if (index === currentIndex) {
+            item.classList.add("active");
+          }
+        });
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
+        updateCarousel();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
+        updateCarousel();
+      });
+
+      // Update property details
+      document.querySelector(".property-text-details h3").textContent = `₦${property.price}`;
+      document.querySelector(".address-details .location").innerHTML =
+        `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
+      document.querySelector(".address-details .last-updated").textContent = `Last updated: ${property.created_at}`;
+
+      // Update description
+      document.querySelector(".description-box p").textContent = property.description;
+
+      // Update agent details (Profile Image, Name, Address, Phone)
+      document.querySelector(".agent-name").textContent = property.fullName;
+      document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
+      document.querySelector(".text-box .description").textContent = property.agentAddress;
+      document.querySelector(".search-form-field .location").textContent = `${property.state}, ${property.lga}`;
+      document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
+      document.querySelector(".text-box .year-user").textContent = `${property.created_at}`;
+      document.querySelector(".search-form-field .category").textContent = `${property.category}`;
+      document.querySelector(".search-form-field .type").textContent = `${property.propertyType}`;
+      document.querySelector(".search-form-field .bedroom").textContent = `${property.roomNo}`;
+      document.querySelector(".search-form-field .minprice").textContent = "\u20A6" + " " + property.price;
+      document.querySelector(".search-form-field .maxprice").textContent = "\u20A6" + " " + property.price;
+      document.querySelector(".search-form-field .bathroom").textContent = `${property.bathNo}`;
+      document.querySelector(".search-form-field .properRef").textContent = `${property.id}`;
+      document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;
+
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching property details:", error);
+  });
+
+// Function to fetch and display properties
+const fetchAndRenderProperties = (queryParams = "") => {
+  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
+    .then((response) => response.json())
+    .then((data) => {
+      propertiesContainer.innerHTML = ""; // Clear existing content
+
+      if (data.status === "success" && data.data.length > 0) {
+        data.data.forEach((property) => {
+          const propertyElement = document.createElement("div");
+          propertyElement.className = "house-card";
+          propertyElement.innerHTML = `
+				
+						<div class="featured-container">
+        <div class="house-card">
+         <img class="img" src="https://ouragent.com.ng/${
+           property.images[0]
+         }" alt="Property Image">
+          <div class="details">
+            <div class="description">${property.description.substring(
+              0,
+              100
+            )}...</div>
+            <div class="price">&#8358;${property.price}</div>
+            <div class="location">
+              <div class="location-name">${property.lga}, ${
+            property.state
+          }</div>
+              <div class="view-icon">
+                <span class="view">View</span>
+                <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+              </div>
+            </div>
+          </div>
+          <div class="img-overlap">
+            <span class="status">${property.propertystatus}</span>
+            <span class="icon"> <i class="bx bx-bookmark"></i> </span>
+          </div>
+        </div>
+
+
+					`;
+          propertiesContainer.appendChild(propertyElement);
+        });
+      } else {
+        propertiesContainer.innerHTML = `<p>${
+          data.message || "No properties found."
+        }</p>`;
+      }
     })
-    .catch(error => {
-        console.error('Error fetching property details:', error);
+    .catch((error) => {
+      console.error("Error:", error);
+      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
     });
+};
 
-
-
-
-	
-{/* <div class="carousel-inner" id="propertyDetailsContainer"></div>
-<div class="property-text-details">
-    <h3></h3>
-    <div class="address-details">
-        <p class="location"></p>
-        <p class="last-updated"></p>
-    </div>
-</div>
-<div class="description-box">
-    <p></p>
-</div>
-<div class="agent-details">
-    <img src="" alt="Agent Profile Image" class="profile-pics">
-    <p class="agent-name"></p>
-    <p class="telephone"></p>
-</div> */}
+// Fetch all properties initially
+fetchAndRenderProperties();

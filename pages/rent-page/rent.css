@@ -447,7 +447,7 @@ header {
   /* filter: grayscale(100%); */
   /* opacity: 0.7; */
   position: absolute;
-  background-color: #34A853;
+  background: rgba(254, 133, 21, 1);
   color: white;
   padding: 4px 8px;
   font-size: 14px;
