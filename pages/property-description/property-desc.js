@@ -88,9 +88,16 @@ fetch(`https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
             document.querySelector(".agent-name").textContent = property.fullName;
             document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
             document.querySelector(".text-box .description").textContent = property.agentAddress;
-			document.querySelector(".search-form-field .location").innerHTML = `${property.state}, ${property.lga}`
+			document.querySelector(".search-form-field .location").textContent = `${property.state}, ${property.lga}`
             document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
 			document.querySelector(".text-box .year-user").textContent = ` ${property.created_at}`;
+			document.querySelector(".search-form-field .category").textContent = ` ${property.category}`;
+			document.querySelector(".search-form-field .type").textContent = ` ${property.propertyType}`;
+			document.querySelector(".search-form-field .bedroom").textContent = ` ${property.roomNo}`;
+			document.querySelector(".search-form-field .minprice").textContent = '\u20A6' + ' ' + property.price;
+			document.querySelector(".search-form-field .maxprice").textContent = '\u20A6' + ' ' + property.price;
+			document.querySelector(".search-form-field .bathroom").textContent = ` ${property.bathNo}`;
+			document.querySelector(".search-form-field .properRef").textContent = ` ${property.id}`;
 			document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;
 			
         } else {

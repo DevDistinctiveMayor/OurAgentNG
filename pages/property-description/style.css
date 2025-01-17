@@ -510,12 +510,12 @@
     flex-direction: row;
     align-items: center;
     gap: 7px;
+    margin-bottom: 1rem;
   }
 
-  .right-container .sp form{
+  .right-container .sp p{
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
   }
 
   .right-container .sp label{
