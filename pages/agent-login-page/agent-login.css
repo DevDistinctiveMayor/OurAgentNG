@@ -152,11 +152,12 @@
     display: flex;
     justify-content: center;
     border-radius: 8px;
-    margin-top: 10rem;
+    margin-top: 7rem;
  /* text-align: center; */
     height: 100vh;
+
   }
-  
+ 
   .login-container h1 {
     font-size: 1.2rem;
     color: #0d1b2a;
@@ -167,7 +168,7 @@
     font-size: 15px;
     color: #555;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .login-container_a {
@@ -178,8 +179,38 @@
   .login-container_a:hover {
     text-decoration: underline;
   }
+
+  .notice {
+    font-size: 1.2rem;
+    color:white; 
+    background-color:#3e8e41;;/* Vibrant orange color for attention */
+    padding: 10px 20px; /* Add padding for better spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center the text */
+
+    animation: pulse 1.5s infinite; /* Add a pulsing effect */
+    margin-bottom: 1rem;
+  }
   
-  .auth-buttons {
+  /* Keyframes for pulse animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05); /* Slightly enlarge */
+      opacity: 0.9; /* Slightly fade */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  
+  /* .auth-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -222,7 +253,7 @@
     width: 20px;
     height: 20px;
   }
-  
+   */
   .divider {
     display: flex;
     align-items: center;
@@ -559,6 +590,7 @@
     .menu-toggle {
       display: block;
     }
+
     .footer{
       margin-top: 3rem;
     }
