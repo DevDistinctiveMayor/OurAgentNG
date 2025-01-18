@@ -100,7 +100,7 @@ main {
   display: none;
 }
 
-#greeting {
+.greeting_mobile {
   font-size: 15px;
   /* color: red;  */
   margin-top: 10px;

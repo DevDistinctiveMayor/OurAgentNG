@@ -102,9 +102,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function fetchClientData(clientId, url) {
   const greeting = document.getElementById("greeting");
+  const greeting_mobile = document.getElementById("greeting_mobile");
   const loginButton = document.getElementById("login-button");
+  const loginButtonMobile = document.getElementById("login-button_mobile");
   const logoutButton = document.getElementById("logout-button");
   const postPropertyButton = document.getElementById("post-property");
+  const postPropertyButton_mobile = document.getElementById("post-property_mobile");
 
   try {
     // Send POST request to the server
@@ -128,19 +131,27 @@ async function fetchClientData(clientId, url) {
       // Extract fullName from the nested client object
       const fullName = data.client.fullName; // Fallback to "User" if undefined
       greeting.textContent = `${fullName.substring(0, 8)}...`;
-      loginButton.style.display = "none"; // Hide login button
+      greeting_mobile.textContent = `${fullName.substring(0, 8)}...`;
+      loginButton.style.display = "none"; 
+      loginButtonMobile.style.display = "none"; // Hide login button
       logoutButton.style.display = "inline"; // Show logout button
       postPropertyButton.style.display = "inline"; // Show post property button
+      postPropertyButton_mobile.style.display = "inline"; // Show post property button
     } else {
       // User is not logged in or session is invalid
+
       greeting.textContent = "Welcome, Guest!";
-      loginButton.style.display = "inline"; // Show login button
+      greeting_mobile.textContent = "Welcome, Guest!";
+      loginButton.style.display = "inline";
+      loginButtonMobile.style.display = "inline"; // Show login button
       logoutButton.style.display = "none"; // Hide logout button
       postPropertyButton.style.display = "none"; // Hide post property button
+      postPropertyButton_mobile.style.display = "none"; // Hide post property button
     }
   } catch (error) {
     console.error("Error checking session:", error);
     greeting.textContent = "Error loading user session.";
+    greeting_mobile.textContent = "Error loading user session.";
   }
 
   // Logout button event listener
