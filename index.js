@@ -78,3 +78,43 @@ menuToggle.addEventListener("click", () => {
   content.classList.toggle("content-blur"); // Add blur effect to the content
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const greeting = document.getElementById("greeting");
+  const loginButton = document.getElementById("login-button");
+  const logoutButton = document.getElementById("logout-button");
+  const postPropertyButton = document.getElementById("post-property");
+
+  try {
+    const response = await fetch("https://ouragent.com.ng/get_user_session.php");
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      // User is logged in
+      greeting.textContent = `Hello, ${data.fullName}`;
+      loginButton.style.display = "none";  // Hide login button
+      logoutButton.style.display = "inline"; // Show logout button
+      postPropertyButton.style.display = "inline"; // Show post property button
+    } else {
+      // User is not logged in
+      greeting.textContent = "";
+      loginButton.style.display = "inline"; // Show login button
+      logoutButton.style.display = "none"; // Hide logout button
+      postPropertyButton.style.display = "none"; // Hide post property button
+    }
+  } catch (error) {
+    console.error("Error checking session:", error);
+  }
+
+  logoutButton.addEventListener("click", () => {
+    // Handle logout logic
+    sessionStorage.clear();
+    window.location.reload();
+  });
+});
