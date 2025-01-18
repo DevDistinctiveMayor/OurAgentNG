@@ -5,8 +5,12 @@ let autoSlideInterval;
 let itemWidth;
 
 // Clone the first and last few items for seamless infinite scrolling
-const clonesAtStart = carouselItems.slice(-4).map((item) => item.cloneNode(true));
-const clonesAtEnd = carouselItems.slice(0, 4).map((item) => item.cloneNode(true));
+const clonesAtStart = carouselItems
+  .slice(-4)
+  .map((item) => item.cloneNode(true));
+const clonesAtEnd = carouselItems
+  .slice(0, 4)
+  .map((item) => item.cloneNode(true));
 
 clonesAtStart.forEach((clone) => carouselTrack.prepend(clone));
 clonesAtEnd.forEach((clone) => carouselTrack.append(clone));
@@ -39,11 +43,15 @@ function scrollCarousel(direction = "right") {
     if (currentIndex >= totalItems - 4) {
       currentIndex = 4;
       carouselTrack.style.transition = "none";
-      carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      carouselTrack.style.transform = `translateX(-${
+        currentIndex * itemWidth
+      }px)`;
     } else if (currentIndex < 4) {
       currentIndex = totalItems - 8;
       carouselTrack.style.transition = "none";
-      carouselTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      carouselTrack.style.transform = `translateX(-${
+        currentIndex * itemWidth
+      }px)`;
     }
   }, 500);
 }
@@ -79,42 +87,79 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-
 document.addEventListener("DOMContentLoaded", async () => {
+  const clientId = sessionStorage.getItem("client_id");
+  if (!clientId) {
+    //   alert("Client ID is missing. Please log in again.");
+    return;
+  }
+  // Fetch client data using the provided client ID
+  await fetchClientData(
+    clientId,
+    "https://ouragent.com.ng/get_user_session.php"
+  );
+});
+
+async function fetchClientData(clientId, url) {
   const greeting = document.getElementById("greeting");
   const loginButton = document.getElementById("login-button");
   const logoutButton = document.getElementById("logout-button");
   const postPropertyButton = document.getElementById("post-property");
 
   try {
-    const response = await fetch("https://ouragent.com.ng/get_user_session.php");
+    // Send POST request to the server
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ client_id: clientId }),
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
 
+    // Parse the response JSON
     const data = await response.json();
+    console.log("Server Response:", data); // Debugging line
 
-    if (data.status === "success") {
-      // User is logged in
-      greeting.textContent = `Hello, ${data.fullName}`;
-      loginButton.style.display = "none";  // Hide login button
+    if (data.status === "success" && data.client) {
+      // Extract fullName from the nested client object
+      const fullName = data.client.fullName; // Fallback to "User" if undefined
+      greeting.textContent = `${fullName.substring(0, 8)}...`;
+      loginButton.style.display = "none"; // Hide login button
       logoutButton.style.display = "inline"; // Show logout button
       postPropertyButton.style.display = "inline"; // Show post property button
     } else {
-      // User is not logged in
-      greeting.textContent = "";
+      // User is not logged in or session is invalid
+      greeting.textContent = "Welcome, Guest!";
       loginButton.style.display = "inline"; // Show login button
       logoutButton.style.display = "none"; // Hide logout button
       postPropertyButton.style.display = "none"; // Hide post property button
     }
   } catch (error) {
     console.error("Error checking session:", error);
+    greeting.textContent = "Error loading user session.";
   }
 
-  logoutButton.addEventListener("click", () => {
-    // Handle logout logic
-    sessionStorage.clear();
-    window.location.reload();
+  // Logout button event listener
+  logoutButton.addEventListener("click", async () => {
+    try {
+      // Send logout request to the server
+      const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", {
+        method: "POST",
+      });
+
+      if (logoutResponse.ok) {
+        // Clear local session storage and reload the page
+        sessionStorage.clear();
+        window.location.reload();
+      } else {
+        console.error("Logout failed.");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
   });
-});
+}
