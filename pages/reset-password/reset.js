@@ -27,79 +27,89 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
     });
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("emailForm");
-    const submitButton = document.getElementById("submitButton");
-    const responseMessage = document.getElementById("responseMessage");
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("resetPasswordForm");
+  const submitButton = document.getElementById("submitButton");
 
-      // Clear error messages
-      document.getElementById("email-error").textContent = "";
-      document.getElementById("otp-error").textContent = "";
-      document.getElementById("password-error").textContent = "";
-      responseMessage.textContent = "";
+  // Retrieve the email from sessionStorage
+  const email = sessionStorage.getItem("resetEmail");
 
-      // Collect input data
-      const email = document.getElementById("email").value.trim();
-      const otp = document.getElementById("otp").value.trim();
-      const newPassword = document.getElementById("newPassword").value.trim();
-      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+  if (!email) {
+    // If no email is found in sessionStorage, redirect to the forgot password page
+    Swal.fire({
+      title: "Session Expired",
+      text: "Please start the password reset process again.",
+      icon: "error",
+      confirmButtonText: "Go Back",
+    }).then(() => {
+      window.location.href = "../forgot-password/forgot.html"; // Redirect to forgot password page
+    });
+    return;
+  }
 
-      // Validate passwords match
-      if (newPassword !== confirmPassword) {
-        document.getElementById("password-error").textContent = "Passwords do not match.";
-        return;
-      }
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-      // Disable the button and show loading state
-      submitButton.disabled = true;
-      submitButton.textContent = "Processing...";
+    const otp = document.getElementById("otp").value.trim();
+    const newPassword = document.getElementById("newPassword").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-      try {
-        // Send data to backend
-        const response = await fetch("https://ouragent.com.ng/reset_password.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, otp, new_password: newPassword }),
+    // Validate passwords match
+    if (newPassword !== confirmPassword) {
+      Swal.fire({
+        title: "Error",
+        text: "Passwords do not match. Please try again.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
+      return;
+    }
+
+    // Disable the button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = "Processing...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/reset_password.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ otp, new_password: newPassword }),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        Swal.fire({
+          title: "Reset Successful",
+          text: "Your password has been reset successfully.",
+          icon: "success",
+          confirmButtonText: "Login",
+        }).then(() => {
+          // Redirect to login page
+          window.location.href = "../login-page/login.html";
         });
-
-        const result = await response.json();
-
-        if (result.status === "success") {
-       
-          Swal.fire({
-            title: "Reset Successful",
-            text: result.message || "Password reset successfully.",
-            icon: "success",
-            confirmButtonText: "Login",
-          }).then(() => {
-            // Redirect to OTP verification page, passing email and userId
-            window.location.href = "../login-page/login.html";
-          });
-        } else {
-          Swal.fire({
-            title: "Registration Failed",
-            text: result.message  || "Something went wrong. Please try again.",
-            icon: "error",
-            confirmButtonText: "Retry",
-          });
-        
-        }
-      } catch (error) {
+      } else {
         Swal.fire({
           title: "Error",
-          text: error.message || "An error occurred. Please try again.",
+          text: result.message || "Invalid OTP or reset failed. Please try again.",
           icon: "error",
           confirmButtonText: "Retry",
         });
-      } finally {
-        // Re-enable button
-        submitButton.disabled = false;
-        submitButton.textContent = "Reset Password";
       }
-    });
+    } catch (error) {
+      Swal.fire({
+        title: "Unexpected Error",
+        text: "An error occurred. Please try again later.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      });
+    } finally {
+      // Re-enable the button and remove loading state
+      submitButton.disabled = false;
+      submitButton.textContent = "Reset Password";
+    }
   });
+});

@@ -183,7 +183,7 @@
   .notice {
     font-size: 1.2rem;
     color:white; 
-    background-color:#3e8e41;;/* Vibrant orange color for attention */
+    background-color: rgba(8, 97, 175, 1);/* Vibrant orange color for attention */
     padding: 10px 20px; /* Add padding for better spacing */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */

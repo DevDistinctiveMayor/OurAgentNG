@@ -106,6 +106,7 @@ async function fetchClientData(clientId, url) {
   const loginButton = document.getElementById("login-button");
   const loginButtonMobile = document.getElementById("login-button_mobile");
   const logoutButton = document.getElementById("logout-button");
+  const logoutButtonMobile = document.getElementById("logout-button_mobile");
   const postPropertyButton = document.getElementById("post-property");
   const postPropertyButton_mobile = document.getElementById("post-property_mobile");
 
@@ -135,8 +136,10 @@ async function fetchClientData(clientId, url) {
       loginButton.style.display = "none"; 
       loginButtonMobile.style.display = "none"; // Hide login button
       logoutButton.style.display = "inline"; // Show logout button
+      logoutButtonMobile.style.display = "inline"; // Show logout button
       postPropertyButton.style.display = "inline"; // Show post property button
       postPropertyButton_mobile.style.display = "inline"; // Show post property button
+      
     } else {
       // User is not logged in or session is invalid
 
@@ -145,6 +148,7 @@ async function fetchClientData(clientId, url) {
       loginButton.style.display = "inline";
       loginButtonMobile.style.display = "inline"; // Show login button
       logoutButton.style.display = "none"; // Hide logout button
+      logoutButtonMobile.style.display = "none"; // Hide logout button
       postPropertyButton.style.display = "none"; // Hide post property button
       postPropertyButton_mobile.style.display = "none"; // Hide post property button
     }
