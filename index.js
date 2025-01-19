@@ -87,95 +87,61 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   const clientId = sessionStorage.getItem("client_id");
+  const greetings = document.querySelectorAll(".greeting");
+  const loginButtons = document.querySelectorAll(".login-btn");
+  const logoutButtons = document.querySelectorAll(".logout-btn");
+  const postPropertyButtons = document.querySelectorAll(".post-property-btn");
+
   if (!clientId) {
-    //   alert("Client ID is missing. Please log in again.");
+    // Handle unauthenticated user
+    greetings.forEach((el) => (el.textContent = "Welcome, Guest!"));
+    loginButtons.forEach((el) => (el.style.display = "inline"));
+    logoutButtons.forEach((el) => (el.style.display = "none"));
+    postPropertyButtons.forEach((el) => (el.style.display = "none"));
     return;
   }
-  // Fetch client data using the provided client ID
-  await fetchClientData(
-    clientId,
-    "https://ouragent.com.ng/get_user_session.php"
-  );
-});
-
-
-async function fetchClientData(clientId, url) {
-  const greeting = document.getElementById("greeting");
-  const greeting_mobile = document.getElementById("greeting_mobile");
-  const loginButton = document.getElementById("login-button");
-  const loginButtonMobile = document.getElementById("login-button_mobile");
-  const logoutButton = document.getElementById("logout-button");
-  const logoutButtonMobile = document.getElementById("logout-button_mobile");
-  const postPropertyButton = document.getElementById("post-property");
-  const postPropertyButton_mobile = document.getElementById("post-property_mobile");
 
   try {
-    // Send POST request to the server
-    const response = await fetch(url, {
+    // Fetch client data
+    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ client_id: clientId }),
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status}`);
-    }
-
-    // Parse the response JSON
     const data = await response.json();
-   // console.log("Server Response:", data); // Debugging line
-
     if (data.status === "success" && data.client) {
-      // Extract fullName from the nested client object
-      const fullName = data.client.fullName; // Fallback to "User" if undefined
-      greeting.textContent = `${fullName.substring(0, 8)}...`;
-      greeting_mobile.textContent = `${fullName.substring(0, 8)}...`;
-      loginButton.style.display = "none"; 
-      loginButtonMobile.style.display = "none"; // Hide login button
-      logoutButton.style.display = "inline"; // Show logout button
-      logoutButtonMobile.style.display = "inline"; // Show logout button
-      postPropertyButton.style.display = "inline"; // Show post property button
-      postPropertyButton_mobile.style.display = "inline"; // Show post property button
-      
+      const fullName = data.client.fullName;
+      greetings.forEach((el) => (el.textContent = `${fullName.substring(0, 8)}...`));
+      loginButtons.forEach((el) => (el.style.display = "none"));
+      logoutButtons.forEach((el) => (el.style.display = "inline"));
+      postPropertyButtons.forEach((el) => (el.style.display = "inline"));
     } else {
-      // User is not logged in or session is invalid
-
-      greeting.textContent = "Welcome, Guest!";
-      greeting_mobile.textContent = "Welcome, Guest!";
-      loginButton.style.display = "inline";
-      loginButtonMobile.style.display = "inline"; // Show login button
-      logoutButton.style.display = "none"; // Hide logout button
-      logoutButtonMobile.style.display = "none"; // Hide logout button
-      postPropertyButton.style.display = "none"; // Hide post property button
-      postPropertyButton_mobile.style.display = "none"; // Hide post property button
+      throw new Error("Invalid session.");
     }
   } catch (error) {
-    console.error("Error checking session:", error);
-    greeting.textContent = "Error loading user session.";
-    greeting_mobile.textContent = "Error loading user session.";
+    console.error("Error:", error);
+    greetings.forEach((el) => (el.textContent = "Error loading session."));
   }
 
-  // Logout button event listener
-  logoutButton.addEventListener("click", async () => {
-    try {
-      // Send logout request to the server
-      const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", {
-        method: "POST",
-      });
-
-      if (logoutResponse.ok) {
-        // Clear local session storage and reload the page
-        sessionStorage.clear();
-        window.location.reload();
-      } else {
-        console.error("Logout failed.");
+  // Add logout functionality
+  logoutButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      try {
+        const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", { method: "POST" });
+        if (logoutResponse.ok) {
+          sessionStorage.clear();
+          window.location.reload();
+        } else {
+          console.error("Logout failed.");
+        }
+      } catch (error) {
+        console.error("Error during logout:", error);
       }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
+    });
   });
-}
+});
