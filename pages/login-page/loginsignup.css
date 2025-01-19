@@ -175,6 +175,31 @@ header {
   text-decoration: underline;
 }
 
+
+.greeting_mobile {
+  font-size: 15px;
+  /* color: red;  */
+  margin-top: 10px;
+  font-weight: 600;
+  /* cursor: pointer; */
+}
+.bx-user {
+  color: #222222;
+  font-size: 20px;
+  margin-top: 10px;
+  padding-right: 1px;
+  text-decoration: none;
+}
+
+.logout {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: rgba(8, 97, 175, 1);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* 
 .auth-buttons {
   display: flex;
   flex-direction: column;
@@ -217,7 +242,7 @@ header {
 .facebook-button img {
   width: 20px;
   height: 20px;
-}
+} */
 
 .divider {
   display: flex;
