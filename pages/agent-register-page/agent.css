@@ -60,7 +60,7 @@ main {
     display: flex;
     list-style: none;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .nav-links li a {
@@ -74,7 +74,7 @@ main {
 .access-box {
     display: flex;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .access-box>a {
@@ -96,11 +96,14 @@ main {
     border-radius: 7px;
 }
 
+.call_action{
+    display: none;
+}
 .menu-toggle {
     position: relative;
     cursor: pointer;
     width: 30px;
-    height: 14px;
+    height: 15px;
     display: none;
     margin-top: 0.8rem;
 }
@@ -165,18 +168,24 @@ main {
     font-size: 1.7rem;
     margin-bottom: 1rem;
 }
+
 .form-container p {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
     font-weight: 500;
     margin-bottom: 20px;
-  }
+}
 
-  .register-container_a {
+.register-container_a {
     color: rgba(8, 97, 175, 1);
     text-decoration: none;
     font-weight: 600;
-  }
+    font-size: 16px;
+}
+
+.register-container_a:hover {
+    text-decoration: underline;
+}
 
 .form-group {
     margin-bottom: 15px;
@@ -185,7 +194,7 @@ main {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     margin-top: 0.7rem;
 }
@@ -196,8 +205,8 @@ main {
     border: 1px solid rgb(185, 185, 185);
     border-radius: 5px;
     outline: none;
-    font-size: 14px;
-    /* Removes default blue outline */
+    font-size: 15px;
+    margin-bottom: 0.3rem;
 }
 
 .form-group input:focus {
@@ -244,6 +253,11 @@ main {
     transform: scale(0.95);
 }
 
+.toggle-password {
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(8, 97, 175, 1);
+}
 
 .content-section {
     margin-top: 20px;
@@ -335,8 +349,9 @@ main {
 
 .footer-links {
     display: flex;
-    gap: 20px;
+    gap: 17px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-links li {
@@ -346,7 +361,7 @@ main {
 .footer-links a {
     color: rgba(8, 97, 175, 1);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -389,7 +404,7 @@ main {
 .footer-bottom-links a {
     color: rgba(8, 97, 175, 1);
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 15px;
     text-decoration: underline;
 }
 
@@ -405,6 +420,16 @@ main {
 .terms a {
     color: #007bff;
     text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .logo {
+        gap: 0.5rem;
+    }
+
+    .nav-links li a {
+        padding: 5px 7px;
+    }
 }
 
 /* Responsive Design */
@@ -453,6 +478,11 @@ main {
         gap: 3rem;
     }
 
+    .call_action {
+        display: block;
+        display: flex;
+    }
+
     .menu-toggle {
         display: block;
     }
@@ -466,15 +496,12 @@ main {
         font-size: 13px;
     }
 
-
-
-
     .download-section {
         margin-top: 0rem;
     }
 
     .footer-links a {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .footer-bottom-links a {

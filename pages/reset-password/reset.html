@@ -17,41 +17,49 @@
             <div class="logo">
                 <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
                 <ul class="nav-links">
+                    <div class="access-box nav-links3">
+                        <!-- <a href="#" id="post-property" class="post">Post A Property</a> -->
+                        <i class='bx bx-user year-user'><span id="greeting_mobile" class="greeting_mobile"></span></i>
+                    </div>
                     <li><a href="../buy-page/buy.html">Buy</a></li>
                     <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="../land-page/land.html">Land</a></li>
                     <li><a href="#services">Saved properties</a></li>
                     <li><a href="#contact">About us</a></li>
                     <div class="nav-links3 ">
-                        <div class="access-box">
-                            <a href="" class="post">Post A Property</a>
-                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+
+                        <div>
+                            <a href="#" id="logout-button_mobile" class="logout" style="display: none;">Log Out</a>
                         </div>
+
                     </div>
                 </ul>
-
             </div>
 
-            <label class="menu-toggle" onClick={onToggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <!-- <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="bx bx-menu"></i>
-      </button> -->
-            <div class="nav-links2">
-
-
+            <div class="call_action">
                 <div class="access-box">
-                    <a href="" class="post">Post A Property</a>
-                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                    <a href="../agent-login-page/agent-login.html" id="post-property_mobile" style="display: none;"
+                        class="post">Post A Property</a>
+                    <a href="../login-page/login.html" id="login-button_mobile" class="login">Sign up or Log in</a>
+                </div>
+                <label class="menu-toggle" onClick={onToggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+
+            <div class="nav-links2">
+                <div class="access-box">
+                    <a href="../agent-login-page/agent-login.html" id="post-property" style="display: none;"
+                        class="post">Post A Property</a>
+                    <a href="../login-page/login.html" id="login-button" class="login">Sign up or Log in</a>
+                    <i class='bx bx-user year-user'><span id="greeting" class="greeting_mobile"></span></i>
+                    <a href="#" id="logout-button" class="logout" style="display: none;">Log Out</a>
                 </div>
             </div>
         </nav>
     </header>
-
-
 
     <main class="otp_body content">
         <div class="login-container">
@@ -64,20 +72,12 @@
 
             <h1>Reset Password</h1>
             <p>Create a new password</p>
-
-            <form id="emailForm">
-
-                
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    <small id="email-error" class="error"></small>
-                </div>
-
+            <form id="resetPasswordForm">
                 <div class="form-group">
                     <label for="otp">Enter OTP:</label>
                     <div class="form-group">
-                        <input type="text" class="otp-input" id="otp" name="otp" required>
+                        <input type="text" class="otp-input" id="otp" name="otp" autocomplete="one-time-code"
+                            required />
                     </div>
                     <small id="otp-error" class="error"></small>
                 </div>
@@ -86,31 +86,29 @@
                     <label for="newPassword">New Password:</label>
                     <div class="password-container form-group">
                         <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password"
-                        required>
+                            autocomplete="new-password" required />
                         <span class="toggle-password" data-target="newPassword">
                             <i class="fas fa-eye"></i>
                         </span>
                     </div>
                     <small id="password-error" class="error"></small>
-                    
                 </div>
 
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password:</label>
                     <div class="password-container form-group">
                         <input type="password" id="confirmPassword" name="confirmPassword"
-                        placeholder="Confirm new password" required>
+                            placeholder="Confirm new password" autocomplete="new-password" required />
                         <span class="toggle-password" data-target="confirmPassword">
                             <i class="fas fa-eye"></i>
                         </span>
                     </div>
                 </div>
 
-
-
-
                 <button type="submit" id="submitButton" class="button">Reset Password</button>
-<!-- 
+            </form>
+
+            <!-- 
                 <div class="form-group">
                     <label for="email">Email Address:</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -137,9 +135,9 @@
                 </div>
 
                 <button type="submit" id="submitButton">Reset Password</button> -->
-                <p id="responseMessage"></p>
+            <!-- <p id="responseMessage"></p>
 
-            </form>
+            </form> -->
 
         </div>
     </main>

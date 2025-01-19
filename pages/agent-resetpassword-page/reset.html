@@ -12,13 +12,13 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
-    <link rel="stylesheet" href="./forgot.css" />
+    <link rel="stylesheet" href="./reset.css" />
     <title>Our AgentNG | Website</title>
   </head>
 
@@ -38,8 +38,10 @@
             <li><a href="#contact">About us</a></li>
             <div class="nav-links3">
               <div class="access-box">
-                <!-- <a href="./../agent-register-page/agent.html" class="post">Post A Property</a> -->
-                <a href="./../login-page/" class="login">Sign up or Log in</a>
+                <!-- <a href="" class="post">Post A Property</a> -->
+                <a href="../login-page/login.html" class="login"
+                  >Sign up or Log in</a
+                >
               </div>
             </div>
           </ul>
@@ -47,9 +49,7 @@
 
         <div class="call_action">
           <div class="access-box">
-            <a href="../agent-login-page/agent-login.html" class="post"
-              >Post A Property</a
-            >
+            <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
           </div>
           <label class="menu-toggle" onClick="{onToggleMenu}">
             <span></span>
@@ -57,12 +57,11 @@
             <span></span>
           </label>
         </div>
+
         <div class="nav-links2">
           <div class="access-box">
-            <a href="./../agent-register-page/agent.html" class="post"
-              >Post A Property</a
-            >
-            <a href="./../login-page/" class="login">Sign up or Log in</a>
+            <a href="" class="post">Post A Property</a>
+            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
           </div>
         </div>
       </nav>
@@ -76,24 +75,99 @@
           </div>
         </div>
 
-        <h1>Password Reset</h1>
-        <p>
-          We will send a <span class="span">one-time password(OTP)</span> to
-          your email
-        </p>
+        <h1>Reset Password</h1>
+        <p>Create a new password</p>
 
-        <form id="resetForm">
-          <input
-            type="email"
-            id="email"
-            class="otp-input"
-            name="email"
-            placeholder="your@gmail.com"
-            required
-          />
+        <form id="emailForm">
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <small id="email-error" class="error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="otp">Enter OTP:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                class="otp-input"
+                id="otp"
+                name="otp"
+                required
+              />
+            </div>
+            <small id="otp-error" class="error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="newPassword">New Password:</label>
+            <div class="password-container form-group">
+              <input
+                type="password"
+                id="newPassword"
+                name="newPassword"
+                placeholder="Enter new password"
+                required
+              />
+              <span class="toggle-password" data-target="newPassword">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+            <small id="password-error" class="error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <div class="password-container form-group">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm new password"
+                required
+              />
+              <span class="toggle-password" data-target="confirmPassword">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+          </div>
+
           <button type="submit" id="submitButton" class="button">
-            Get OTP
+            Reset Password
           </button>
+          <!-- 
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <small id="email-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="otp">OTP:</label>
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+                    <small id="otp-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password"
+                        required>
+                    <small id="password-error" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm new password" required>
+                </div>
+
+                <button type="submit" id="submitButton">Reset Password</button> -->
           <p id="responseMessage"></p>
         </form>
       </div>
@@ -162,6 +236,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./forgot.js"></script>
+    <script src="./reset.js"></script>
   </body>
 </html>

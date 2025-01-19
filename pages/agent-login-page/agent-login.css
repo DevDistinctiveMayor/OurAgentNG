@@ -90,12 +90,17 @@
     padding: 9px;
     border-radius: 7px;
   }
+
+  
+.call_action {
+  display: none;
+  }
   
   .menu-toggle {
     position: relative;
     cursor: pointer;
     width: 30px;
-    height: 14px;
+    height: 15px;
     display: none;
     margin-top: 0.8rem;
   }
@@ -148,8 +153,11 @@
     justify-content: center;
     border-radius: 8px;
     margin-top: 7rem;
+ /* text-align: center; */
+    height: 100vh;
+
   }
-  
+ 
   .login-container h1 {
     font-size: 1.2rem;
     color: #0d1b2a;
@@ -157,10 +165,10 @@
   }
   
   .login-container p {
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .login-container_a {
@@ -171,8 +179,38 @@
   .login-container_a:hover {
     text-decoration: underline;
   }
+
+  .notice {
+    font-size: 1.2rem;
+    color:white; 
+    background-color: rgba(8, 97, 175, 1);/* Vibrant orange color for attention */
+    padding: 10px 20px; /* Add padding for better spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center the text */
+
+    animation: pulse 1.5s infinite; /* Add a pulsing effect */
+    margin-bottom: 1rem;
+  }
   
-  .auth-buttons {
+  /* Keyframes for pulse animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05); /* Slightly enlarge */
+      opacity: 0.9; /* Slightly fade */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  
+  /* .auth-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -188,7 +226,7 @@
     width: 100%;
     border: 1.2px solid #000000;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.5s ease;
     color: rgba(8, 97, 175, 1);
@@ -215,7 +253,7 @@
     width: 20px;
     height: 20px;
   }
-  
+   */
   .divider {
     display: flex;
     align-items: center;
@@ -242,13 +280,13 @@
   .form-group label {
     display: block;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     margin-top: 0.7rem;
   }
   
   .form-group > input {
-    font-size: 14px;
+    font-size: 15px;
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(185, 185, 185);
@@ -282,7 +320,7 @@
     margin-top: 1rem;
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 15px;
     margin-left: 2rem;
   }
   
@@ -295,7 +333,7 @@
     align-items: center;
     gap: 0.7rem;
     margin-top: 0.5rem;
-    font-size: 14px;
+    font-size: 15px;
   }
   
   /* Style for the checkbox */
@@ -379,20 +417,20 @@
     border: 2px solid #666666;
     border-top: 2px solid transparent;
     border-radius: 50%;
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     display: inline-block;
     animation: spin 1s linear infinite;
   } */
   
-  @keyframes spin {
+  /* @keyframes spin {
     from {
         transform: rotate(0deg);
     }
     to {
         transform: rotate(360deg);
     }
-  }
+  } */
   .footer {
     /* background-color: #f9f9f9; */
     padding: 20px;
@@ -421,9 +459,9 @@
   
   .footer-links {
     display: flex;
-    gap: 20px;
+    gap: 17px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .footer-links li {
@@ -433,7 +471,7 @@
   .footer-links a {
     color: rgba(8, 97, 175, 1);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
   }
   
@@ -476,7 +514,7 @@
   .footer-bottom-links a {
     color: rgba(8, 97, 175, 1);
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 15px;
     text-decoration: underline;
   }
   
@@ -490,6 +528,14 @@
     }
   }
   
+  @media screen and (max-width: 800px) {
+    .logo {
+        gap: 0.5rem;
+    }
+    .nav-links li a {
+        padding: 5px 7px;
+    }
+}
   /* For mobile screens (up to 767px) */
   @media (max-width: 768px) {
     .nav-links3 {
@@ -531,17 +577,28 @@
       transform: translateX(0);
       opacity: 1;
     }
+
+    .call_action {
+      display: block;
+      display: flex;
+    }
+  
     .menu-toggle {
       display: block;
     }
+  
+    .menu-toggle {
+      display: block;
+    }
+
     .footer{
       margin-top: 3rem;
     }
     .footer-links a {
-      font-size: 12px;
+      font-size: 14px;
     }
     .footer-bottom-links a {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
   

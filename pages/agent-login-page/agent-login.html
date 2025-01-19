@@ -22,36 +22,35 @@
         <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
 
         <ul class="nav-links">
-          <li><a href="../buy-page/buy.html">Sale</a></li>
+          <li><a href="../buy-page/buy.html">Buy</a></li>
           <li><a href="../rent-page/rent.html">Rent</a></li>
+          <li><a href="../land-page/land.html">Land</a></li>
           <li><a href="#services">Saved properties</a></li>
           <li><a href="../otp-page/otp.html">About us</a></li>
           <div class="nav-links3 ">
             <div class="access-box">
-                <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                <a href="./../login-page/" class="login">Sign up or Log in</a>
+              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
             </div>
           </div>
         </ul>
       </div>
 
+      <div class="call_action">
+        <div class="access-box">
+          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+        </div>
+        <label class="menu-toggle" onClick="{onToggleMenu}">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
       </div>
 
-      <label class="menu-toggle" onClick={onToggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
 
-      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
-      <i class="bx bx-menu"></i>
-    </button> -->
       <div class="nav-links2">
-
-
         <div class="access-box">
-            <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-            <a href="./../login-page/" class="login">Sign up or Log in</a>
+          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
         </div>
       </div>
     </nav>
@@ -60,8 +59,15 @@
 
   <!-- Login Section -->
   <div class="login-container content">
-    <div>
-      <h1>Log into your account</h1>
+    <div class="container_size">
+      <div>
+        <div class="notice">
+          Become an agent today and gain <br/> access to exclusive tools and features!<br/>
+        </div>
+      </div>
+
+      
+      <h1>Sign-in as an Agent</h1>
       <p class="new_user">
         New to OurAgent? <br><br> <a href="../agent-register-page/agent.html" class="login-container_a">Create an
           account</a> to get
@@ -96,7 +102,7 @@
             </span>
           </div>
           <small id="email-error" class="error-text"></small> <!-- Error message for email -->
-          <a href="../forgot-page/forgot.html" class="forgot-password">Forgot Password?</a>
+          <a href="../agent-forgot-page/agentforgot.html" class="forgot-password">Forgot Password?</a>
         </div>
 
         <div class="keep-me">
@@ -105,7 +111,7 @@
         </div>
 
         <div class="btn-button">
-          <button type="submit" class="btn primary" id="submitButton">Register</button>
+          <button type="submit" class="btn primary" id="submitButton">Login</button>
         </div>
 
       </form>
@@ -152,11 +158,8 @@
       </ul>
     </div>
   </footer>
-  
+
   <script src="./agent-login.js"></script>
 </body>
 
 </html>
-
-
-

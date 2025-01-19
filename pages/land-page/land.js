@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch and display properties
   const fetchAndRenderProperties = (queryParams = "") => {
-    fetch(`https://ouragent.com.ng/advance_searchbuy.php?${queryParams}`)
+    fetch(`https://ouragent.com.ng/advance_searchland.php?${queryParams}`)
       .then((response) => response.json())
       .then((data) => {
         propertiesContainer.innerHTML = ""; // Clear existing content
@@ -109,10 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove("overlay-active");
   });
 
-
-
-
-  
   // Event listener for bedrooms selection
   document.querySelectorAll(".row-select-box a").forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -142,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lgaInput = document.getElementById("lga");
   // Reset filters
   document.getElementById("resetFilter").addEventListener("click", () => {
-    document.getElementById("category").value = "";
+    document.getElementById("propertyType").value = "";
     stateInput.value = "";
     lgaInput.value = "";
     selectedBedrooms = 0;
@@ -158,13 +154,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("applyFilter").addEventListener("click", (e) => {
     e.preventDefault();
 
-    const category = document.getElementById("category").value;
+    const propertyType = document.getElementById("propertyType").value;
     const state = stateInput.value;
     const lga = lgaInput.value;
 
     // Build query parameters
     const queryParams = new URLSearchParams({
-      ...(category && { category }),
+      ...(propertyType && { propertyType }),
       ...(state && { state }),
       ...(lga && { lga }),
       ...(selectedBedrooms > 0 && { bedrooms: selectedBedrooms }),
@@ -189,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch and display properties
   const fetchAndRenderProperties = (queryParams = "") => {
-      fetch(`https://ouragent.com.ng/advance_searchbuy.php?${queryParams}`)
+      fetch(`https://ouragent.com.ng/advance_searchland.php?${queryParams}`)
           .then((response) => response.json())
           .then((data) => {
               propertiesContainer.innerHTML = ""; // Clear existing content
@@ -231,8 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                   <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
                                   <a href="${property.socialMediaHandles}" class="whatsapp-link"><i class='bx bxl-whatsapp'></i></a>
                                 </div>
+                              </div>
                             </div>
-
                           </div>
                         </div>
                       `;
@@ -290,5 +286,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const lgaSearch = document.getElementById('lgaSearch');
-
-

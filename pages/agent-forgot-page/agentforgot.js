@@ -21,7 +21,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
   submitButton.disabled = true;
   submitButton.textContent = "Processing...";
   try {
-    const response = await fetch("https://ouragent.com.ng/forgot_password.php", {
+    const response = await fetch("https://ouragent.com.ng/agentforgot_password.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
             confirmButtonColor: "rgba(8, 97, 175, 1)", // Green confirm button
 
         }).then(() => {
-            window.location.href = "../reset-password/reset.html"; // Redirect to reset password page
+            window.location.href = "../agent-resetpassword-page/reset.html"; // Redirect to reset password page
         });
     } else {
         // Display error message using SweetAlert

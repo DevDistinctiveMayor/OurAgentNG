@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
     <link rel="stylesheet" href="post-property.css">
     <title>Our AgentNG | Website</title>
 </head>
@@ -14,164 +15,242 @@
     <!-- Header Section -->
     <header>
         <nav class="navbar">
-          <div class="logo">
-    
-            <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-    
-            <ul class="nav-links">
-              <li><a href="../buy-page/buy.html">Sale</a></li>
-              <li><a href="../rent-page/rent.html">Rent</a></li>
-              <li><a href="#services">Saved properties</a></li>
-              <li><a href="#contact">About us</a></li>
-              <div class="nav-links3 ">
-                <div class="access-box">
-                  <a href="" class="post">Post A Property</a>
-                  <a href="../login-page/login.html" class="login">Sign up or Log in</a>
-                </div>
-              </div>
-            </ul>
-          </div>
-    
-          </div>
-    
-          <label class="menu-toggle" onClick={onToggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-    
-          <!-- <button class="menu-toggle" aria-label="Toggle navigation">
-          <i class="bx bx-menu"></i>
-        </button> -->
-          <div class="nav-links2">
-    
-    
-            <div class="access-box">
-              <a href="" class="post">Post A Property</a>
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
-            </div>
-          </div>
-        </nav>
-      </header>
-    
+            <div class="logo">
 
+                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
+
+                <ul class="nav-links">
+                    <li><a href="../buy-page/buy.html">Sale</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="../land-page/land.html">Land</a></li>
+                    <li><a href="#services">Saved properties</a></li>
+                    <li><a href="#contact">About us</a></li>
+                    <div class="nav-links3 ">
+                        <div class="access-box">
+                            <!-- <a href="" class="post">Post A Property</a> -->
+                            <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="call_action">
+                <div class="access-box">
+                    <a href="" class="post">Post A Property</a>
+                </div>
+                <label class="menu-toggle" onClick={onToggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+
+            <div class="nav-links2">
+                <div class="access-box">
+                    <a href="" class="post">Post A Property</a>
+                    <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 
     <main class="content">
         <div class="property-container">
             <div class="container">
                 <div class="form-header">
-                    <h1>Post Your Property for Rent</h1>
-                    <p>Let potential renters discover your property. Fill out the form with accurate details to maximize exposure.</p>
+                    <h1>Post Your Property for Rent or Sell</h1>
+                    <p>Let potential renters discover your property. Fill out the form with accurate details to maximize
+                        exposure.</p>
                 </div>
-                
-                <form id="post-property-form" method="POST" action="your-backend-endpoint.php" enctype="multipart/form-data">
-                    <!-- Agent Details -->
-                    <section class="form-section">
-                        <h2>Agent Information</h2>
-                        <p>Provide your details so renters can reach out to you directly.</p>
-                        
-                        <div class="form-group">
-                            <label for="agent-name">Full Name</label>
-                            <input type="text" id="agent-name" name="agentName" placeholder="Enter your full name" required>
-                            <span id="agentName-error" class="error-message"></span>
-                        </div>
-                    </section>
-            
+
+                <form id="addPropertyForm" enctype="multipart/form-data">
                     <!-- Property Details -->
                     <section class="form-section">
                         <h2>Property Information</h2>
                         <p>Describe the property in detail to attract the right tenants.</p>
-                        
+
                         <div class="form-group">
-                            <label for="property-name">Property Name</label>
-                            <input type="text" id="property-name" name="propertyName" placeholder="Enter the property name" required>
+                            <label for="propertyName">Property Name:</label>
+                            <input type="text" id="propertyName" name="propertyName"
+                                placeholder="Enter the property name" required>
                             <span id="propertyName-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description" placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4" required></textarea>
+                            <textarea id="description" name="description"
+                                placeholder="Provide a detailed description (e.g., features, nearby amenities)" rows="4"
+                                required></textarea>
                             <span id="description-error" class="error-message"></span>
                         </div>
-            
+
                         <div class="form-group">
                             <label for="price">Price (₦)</label>
-                            <input type="number" id="price" name="price" placeholder="Enter the monthly rent price" required>
+
+                            <input type="text" id="price" name="price" placeholder="0.00" required
+                                oninput="formatCurrency(this)">
+
                             <span id="price-error" class="error-message"></span>
                         </div>
-            
+
+
                         <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" name="location" placeholder="Enter the exact address or area" required>
-                            <span id="location-error" class="error-message"></span>
+                            <label>Location</label>
+                            <div class="custom-select">
+                                <select onchange="toggleLGA(this);" name="state" id="state" class="">
+                                    <option value="" selected="selected">- Select -</option>
+                                    <option value="Abia">Abia</option>
+                                    <option value="Adamawa">Adamawa</option>
+                                    <option value="AkwaIbom">AkwaIbom</option>
+                                    <option value="Anambra">Anambra</option>
+                                    <option value="Bauchi">Bauchi</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Benue">Benue</option>
+                                    <option value="Borno">Borno</option>
+                                    <option value="Cross River">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Ebonyi">Ebonyi</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Ekiti">Ekiti</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="FCT">FCT</option>
+                                    <option value="Gombe">Gombe</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Jigawa">Jigawa</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Katsina">Katsina</option>
+                                    <option value="Kebbi">Kebbi</option>
+                                    <option value="Kogi">Kogi</option>
+                                    <option value="Kwara">Kwara</option>
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Nasarawa">Nasarawa</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Ogun">Ogun</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Osun">Osun</option>
+                                    <option value="Oyo">Oyo</option>
+                                    <option value="Plateau">Plateau</option>
+                                    <option value="Rivers">Rivers</option>
+                                    <option value="Sokoto">Sokoto</option>
+                                    <option value="Taraba">Taraba</option>
+                                    <option value="Yobe">Yobe</option>
+                                    <option value="Zamfara">Zamafara</option>
+                                </select>
+                                <span class="arrow">&#9662;</span>
+                            </div>
                         </div>
-            
+
+
                         <div class="form-group">
-                            <label for="size">Property Size</label>
-                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)" required>
-                            <span id="size-error" class="error-message"></span>
+                            <label class="control-label">LGA of Origin</label>
+                            <div class="custom-select">
+                                <select name="lga" id="lga" class="form-control select-lga" required>
+                                </select>
+                                <span class="arrow">&#9662;</span>
+                            </div>
                         </div>
-            
-                        <div class="form-group">
-                            <label for="property-type">Property Type</label>
-                            <select id="property-type" name="propertyType" required>
-                                <option value="" disabled selected>Select a property type</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="house">House</option>
-                                <option value="office">Office</option>
-                                <option value="land">Land</option>
-                            </select>
+
+
+                        <div class="custom-select-container">
+                            <label for="property-type" class="property-type">Property Type</label>
+                            <div class="custom-select">
+                                <select id="property-type" name="propertyType" required
+                                    onchange="toggleRoomBathroomFields()">
+                                    <option value="" disabled selected>Select a property type</option>
+                                    <option value="apartment">Apartment</option>
+                                    <option value="house">House</option>
+                                    <option value="office">Office</option>
+                                    <option value="land">Land</option>
+                                    <option value="warehouse">Warehouse</option>
+                                    <option value="bungalow">Detached Bungalow</option>
+                                    <option value="commercial">Commercial Properties</option>
+                                    <option value="shops">Shops</option>
+                                    <option value="coworking">Co-working Spaces</option>
+                                    <option value="selfcontained">Self-contained</option>
+                                </select>
+                                <span class="arrow">&#9662;</span>
+                            </div>
                             <span id="propertyType-error" class="error-message"></span>
                         </div>
+
+                        <div class="form-group" id="sizeField">
+                            <label for="size">Property Size</label>
+                            <input type="text" id="size" name="size" placeholder="Enter the size (e.g., 1200 sqft)">
+                            <span id="size-error" class="error-message"></span>
+                        </div>
+
+
                     </section>
-            
+
                     <!-- Room Details -->
-                    <section class="form-section">
+                    <section class="form-section" id="roomBathroomSection">
                         <h2>Room & Bathroom Details</h2>
-                        <p>Specify the number of rooms and bathrooms available in the property.</p>
-                        
                         <div class="form-group">
                             <label for="roomNo">Number of Rooms</label>
-                            <input type="number" id="roomNo" name="roomNo" placeholder="Enter the total number of rooms" required>
+                            <input type="number" id="roomNo" min="1" name="roomNo"
+                                placeholder="Enter the total number of rooms">
                             <span id="roomNo-error" class="error-message"></span>
                         </div>
-            
                         <div class="form-group">
                             <label for="bathNo">Number of Bathrooms</label>
-                            <input type="number" id="bathNo" name="bathNo" placeholder="Enter the total number of bathrooms" required>
+                            <input type="number" min="1" id="bathNo" name="bathNo"
+                                placeholder="Enter the total number of bathrooms">
                             <span id="bathNo-error" class="error-message"></span>
                         </div>
                     </section>
-            
+
+                    <!-- Category Selection -->
+                    <div class="form-group">
+                        <label>Select the category:</label>
+                        <div class="radio-group">
+                            <div class="radio">
+                                <input type="radio" id="rent" name="category" value="Rent" required>
+                                <label for="rent">Rent</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="sell" name="category" value="Sell" required>
+                                <label for="sell">Sell</label>
+                            </div>
+                        </div>
+                        <span id="category-error" class="error-message"></span>
+                    </div>
+
+
                     <!-- Images Upload -->
                     <section class="form-section">
-                        <h2>Upload Property Images</h2>
-                        <p>Images significantly increase engagement. Upload clear pictures of the property.</p>
-                        
-                        <div class="form-group">
-                            <label for="images">Select Images</label>
-                            <input 
-                                type="file" 
-                                id="images" 
-                                name="images[]" 
-                                multiple 
-                                accept="image/png, image/jpeg, image/jpg, image/webp" 
-                                required
-                            >
+                        <div class="custom-file-input-container">
+                            <h2>Upload Property Images</h2>
+                            <label for="propertyImages" class="propertyImages">Select Images</label>
+                            <div class="custom-file-input">
+                                <!-- Keeping it hidden but using JS for validation -->
+                                <input type="file" id="propertyImages" name="images[]" multiple
+                                    accept="image/png, image/jpeg, image/jpg, image/webp" onchange="previewImages()"
+                                    required>
+                                <button type="button" onclick="document.getElementById('propertyImages').click()">Choose
+                                    Images</button>
+                                <span id="file-chosen-text">No images chosen</span>
+                            </div>
                             <span id="images-error" class="error-message"></span>
-                            <p class="info-message">You can upload up to 3 images only.</p>
+                            <!-- <p class="info-message">You can upload up to 3 images only.</p> -->
+                            <div id="imagePreview" class="image-preview-container"></div>
                         </div>
-                        
                     </section>
-            
+
+
+
+
                     <!-- Submit -->
                     <div class="form-submit">
-                        <button type="submit">Post Your Property</button>
+                        <button type="submit" id="submitButton" class="button">Post Your Property</button>
                     </div>
                 </form>
+
+
+
             </div>
-            
+
         </div>
 
 
@@ -224,7 +303,14 @@
     </footer>
 
 
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="post-property.js"></script>
 </body>
+
+</html>

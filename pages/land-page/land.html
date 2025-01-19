@@ -1,11 +1,12 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
-  <link rel="stylesheet" href="./rent.css" />
+  <link rel="stylesheet" href="./land.css" />
   <title>Our AgentNG | Website</title>
 </head>
 
@@ -16,18 +17,15 @@
       <div class="logo">
         <a href="../../index.html"><img src="../../assets/logo.svg" alt="" /></a>
         <ul class="nav-links">
-          <div class="access-box nav-links3">
-            <!-- <a href="#" id="post-property" class="post">Post A Property</a> -->
-            <i class="bx bx-user year-user"><span id="greeting_mobile" class="greeting_mobile"></span></i>
-          </div>
           <li><a href="../buy-page/buy.html">Buy</a></li>
           <li><a href="../rent-page/rent.html">Rent</a></li>
           <li><a href="../land-page/land.html">Land</a></li>
           <li><a href="#services">Saved properties</a></li>
           <li><a href="#contact">About us</a></li>
           <div class="nav-links3">
-            <div>
-              <a href="#" id="logout-button_mobile" class="logout" style="display: none">Log Out</a>
+            <div class="access-box">
+              <!-- <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a> -->
+              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
             </div>
           </div>
         </ul>
@@ -35,9 +33,7 @@
 
       <div class="call_action">
         <div class="access-box">
-          <a href="../pages/agent-login-page/agent-login.html" id="post-property_mobile" style="display: none"
-            class="post">Post A Property</a>
-          <a href="../pages/login-page/login.html" id="login-button_mobile" class="login">Sign up or Log in</a>
+          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
         </div>
         <label class="menu-toggle" onClick="{onToggleMenu}">
           <span></span>
@@ -48,11 +44,8 @@
 
       <div class="nav-links2">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" id="post-property" style="display: none" class="post">Post A
-            Property</a>
-          <a href="../login-page/login.html" id="login-button" class="login">Sign up or Log in</a>
-          <i class="bx bx-user year-user"><span id="greeting" class="greeting_mobile"></span></i>
-          <a href="#" id="logout-button" class="logout" style="display: none">Log Out</a>
+          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
         </div>
       </div>
     </nav>
@@ -61,61 +54,64 @@
   <main class="content">
     <div class="sale-container">
       <div class="sale-container-flex">
-        <div class="sale" id="category">
-          <p value="rent">Rent</p>
+        <div class="sale" id="propertyType">
+          <p value="land">land</p>
         </div>
+        
         <div class="search_box">
           <div class="custom-select">
-            <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch" class="">
-              <option value="" selected="selected">- Select -</option>
-              <option value="Abia">Abia</option>
-              <option value="Adamawa">Adamawa</option>
-              <option value="AkwaIbom">AkwaIbom</option>
-              <option value="Anambra">Anambra</option>
-              <option value="Bauchi">Bauchi</option>
-              <option value="Bayelsa">Bayelsa</option>
-              <option value="Benue">Benue</option>
-              <option value="Borno">Borno</option>
-              <option value="Cross River">Cross River</option>
-              <option value="Delta">Delta</option>
-              <option value="Ebonyi">Ebonyi</option>
-              <option value="Edo">Edo</option>
-              <option value="Ekiti">Ekiti</option>
-              <option value="Enugu">Enugu</option>
-              <option value="FCT">FCT</option>
-              <option value="Gombe">Gombe</option>
-              <option value="Imo">Imo</option>
-              <option value="Jigawa">Jigawa</option>
-              <option value="Kaduna">Kaduna</option>
-              <option value="Kano">Kano</option>
-              <option value="Katsina">Katsina</option>
-              <option value="Kebbi">Kebbi</option>
-              <option value="Kogi">Kogi</option>
-              <option value="Kwara">Kwara</option>
-              <option value="Lagos">Lagos</option>
-              <option value="Nasarawa">Nasarawa</option>
-              <option value="Niger">Niger</option>
-              <option value="Ogun">Ogun</option>
-              <option value="Ondo">Ondo</option>
-              <option value="Osun">Osun</option>
-              <option value="Oyo">Oyo</option>
-              <option value="Plateau">Plateau</option>
-              <option value="Rivers">Rivers</option>
-              <option value="Sokoto">Sokoto</option>
-              <option value="Taraba">Taraba</option>
-              <option value="Yobe">Yobe</option>
-              <option value="Zamfara">Zamafara</option>
+              <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch" class="">
+                  <option value="" selected="selected">- Select -</option>
+                  <option value="Abia">Abia</option>
+                  <option value="Adamawa">Adamawa</option>
+                  <option value="AkwaIbom">AkwaIbom</option>
+                  <option value="Anambra">Anambra</option>
+                  <option value="Bauchi">Bauchi</option>
+                  <option value="Bayelsa">Bayelsa</option>
+                  <option value="Benue">Benue</option>
+                  <option value="Borno">Borno</option>
+                  <option value="Cross River">Cross River</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Ebonyi">Ebonyi</option>
+                  <option value="Edo">Edo</option>
+                  <option value="Ekiti">Ekiti</option>
+                  <option value="Enugu">Enugu</option>
+                  <option value="FCT">FCT</option>
+                  <option value="Gombe">Gombe</option>
+                  <option value="Imo">Imo</option>
+                  <option value="Jigawa">Jigawa</option>
+                  <option value="Kaduna">Kaduna</option>
+                  <option value="Kano">Kano</option>
+                  <option value="Katsina">Katsina</option>
+                  <option value="Kebbi">Kebbi</option>
+                  <option value="Kogi">Kogi</option>
+                  <option value="Kwara">Kwara</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Nasarawa">Nasarawa</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Ogun">Ogun</option>
+                  <option value="Ondo">Ondo</option>
+                  <option value="Osun">Osun</option>
+                  <option value="Oyo">Oyo</option>
+                  <option value="Plateau">Plateau</option>
+                  <option value="Rivers">Rivers</option>
+                  <option value="Sokoto">Sokoto</option>
+                  <option value="Taraba">Taraba</option>
+                  <option value="Yobe">Yobe</option>
+                  <option value="Zamfara">Zamafara</option>
+              </select>
+              <span class="arrow">&#9662;</span>
+          </div>
+      </div>
+
+      <div class="lga_search">
+        <div class="custom-select">
+            <select name="lga" id="lgaSearch" class="select-lga" required>
             </select>
             <span class="arrow">&#9662;</span>
-          </div>
         </div>
+    </div>
 
-        <div class="lga_search">
-          <div class="custom-select">
-            <select name="lga" id="lgaSearch" class="select-lga" required></select>
-            <span class="arrow">&#9662;</span>
-          </div>
-        </div>
 
         <div class="advance_filter" id="toggleFilter">
           <span type="text" placeholder="Filters" class="toggle-filter-btn">Filter</span>
@@ -130,13 +126,13 @@
 
     <div class="container">
       <div class="details-container">
-        <h1>Property for Rent in Nigeria</h1>
+        <h1>Property for buy in Nigeria</h1>
         <p class="intro">
           There are 75,446 available flats, houses, land and commercial
-          property for rent in Nigeria. The property have been listed by
-          estate agents who can be contacted using the contact information
-          provided for each property listing. The list can be filtered by
-          price, furnishing and recency.
+          property for buy in Nigeria. The property have been listed by estate
+          agents who can be contacted using the contact information provided
+          for each property listing. The list can be filtered by price,
+          furnishing and recency.
         </p>
         <p class="down-p">Content from Our Agent</p>
         <p>Read more at: <a href="#" class="blog-link">Blog Link</a></p>
@@ -271,62 +267,67 @@
 
         <!-- Category Selection -->
         <div class="select-box">
-          <p>Buy</p>
+          <p>Land</p>
         </div>
 
+
+
+
+        
         <div class="search_box">
           <div class="custom-select2">
-            <select onchange="toggleLGA(this);" name="state" id="state" class="">
-              <option value="" selected="selected">- Select state -</option>
-              <option value="Abia">Abia</option>
-              <option value="Adamawa">Adamawa</option>
-              <option value="AkwaIbom">AkwaIbom</option>
-              <option value="Anambra">Anambra</option>
-              <option value="Bauchi">Bauchi</option>
-              <option value="Bayelsa">Bayelsa</option>
-              <option value="Benue">Benue</option>
-              <option value="Borno">Borno</option>
-              <option value="Cross River">Cross River</option>
-              <option value="Delta">Delta</option>
-              <option value="Ebonyi">Ebonyi</option>
-              <option value="Edo">Edo</option>
-              <option value="Ekiti">Ekiti</option>
-              <option value="Enugu">Enugu</option>
-              <option value="FCT">FCT</option>
-              <option value="Gombe">Gombe</option>
-              <option value="Imo">Imo</option>
-              <option value="Jigawa">Jigawa</option>
-              <option value="Kaduna">Kaduna</option>
-              <option value="Kano">Kano</option>
-              <option value="Katsina">Katsina</option>
-              <option value="Kebbi">Kebbi</option>
-              <option value="Kogi">Kogi</option>
-              <option value="Kwara">Kwara</option>
-              <option value="Lagos">Lagos</option>
-              <option value="Nasarawa">Nasarawa</option>
-              <option value="Niger">Niger</option>
-              <option value="Ogun">Ogun</option>
-              <option value="Ondo">Ondo</option>
-              <option value="Osun">Osun</option>
-              <option value="Oyo">Oyo</option>
-              <option value="Plateau">Plateau</option>
-              <option value="Rivers">Rivers</option>
-              <option value="Sokoto">Sokoto</option>
-              <option value="Taraba">Taraba</option>
-              <option value="Yobe">Yobe</option>
-              <option value="Zamfara">Zamafara</option>
+              <select onchange="toggleLGA(this);" name="state" id="state" class="">
+                  <option value="" selected="selected">- Select state -</option>
+                  <option value="Abia">Abia</option>
+                  <option value="Adamawa">Adamawa</option>
+                  <option value="AkwaIbom">AkwaIbom</option>
+                  <option value="Anambra">Anambra</option>
+                  <option value="Bauchi">Bauchi</option>
+                  <option value="Bayelsa">Bayelsa</option>
+                  <option value="Benue">Benue</option>
+                  <option value="Borno">Borno</option>
+                  <option value="Cross River">Cross River</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Ebonyi">Ebonyi</option>
+                  <option value="Edo">Edo</option>
+                  <option value="Ekiti">Ekiti</option>
+                  <option value="Enugu">Enugu</option>
+                  <option value="FCT">FCT</option>
+                  <option value="Gombe">Gombe</option>
+                  <option value="Imo">Imo</option>
+                  <option value="Jigawa">Jigawa</option>
+                  <option value="Kaduna">Kaduna</option>
+                  <option value="Kano">Kano</option>
+                  <option value="Katsina">Katsina</option>
+                  <option value="Kebbi">Kebbi</option>
+                  <option value="Kogi">Kogi</option>
+                  <option value="Kwara">Kwara</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Nasarawa">Nasarawa</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Ogun">Ogun</option>
+                  <option value="Ondo">Ondo</option>
+                  <option value="Osun">Osun</option>
+                  <option value="Oyo">Oyo</option>
+                  <option value="Plateau">Plateau</option>
+                  <option value="Rivers">Rivers</option>
+                  <option value="Sokoto">Sokoto</option>
+                  <option value="Taraba">Taraba</option>
+                  <option value="Yobe">Yobe</option>
+                  <option value="Zamfara">Zamafara</option>
+              </select>
+              <span class="arrow">&#9662;</span>
+          </div>
+      </div>
+
+      <div class="lga_search">
+        <div class="custom-select2">
+            <select name="lga" id="lga" class="form-control select-lga"  required>
             </select>
-            <span class="arrow">&#9662;</span>
-          </div>
-        </div>
-
-        <div class="lga_search">
-          <div class="custom-select2">
-            <select name="lga" id="lga" class="form-control select-lga" required></select>
 
             <span class="arrow">&#9662;</span>
-          </div>
         </div>
+    </div>
 
         <!-- <div class="ad_search">
           Location Search
@@ -340,6 +341,9 @@
             <i class='bx bx-current-location location-icon2'></i>
             <input type="search" name="lga" id="lga" class="lg" placeholder="Search LG..." />
           </div> -->
+
+
+        
 
         <!-- Bedrooms Selection -->
         <div class="bedrooms-selection">
@@ -445,7 +449,7 @@
     </footer>
   </div>
 
-  <script src="./rent.js"></script>
+  <script src="./land.js"></script>
 </body>
 
 </html>

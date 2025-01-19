@@ -15,47 +15,52 @@
   <header>
     <nav class="navbar ">
       <div class="logo">
-        <a href="./index.html"><img src="./assets/logo.svg" alt=""></a>
+        <a href="/index.html"><img src="/assets/logo.svg" alt="Logo"></a>
         <ul class="nav-links">
-          <li><a href="./pages/buy-page/buy.html">Sale</a></li>
+          <div class="access-box nav-links3">
+            <!-- <a href="#" id="post-property" class="post">Post A Property</a> -->
+            <i class='bx bx-user year-user'><span id="greeting_mobile" class="greeting_mobile"></span></i>
+          </div>
+          <li><a href="./pages/buy-page/buy.html">Buy</a></li>
           <li><a href="./pages/rent-page/rent.html">Rent</a></li>
+          <li><a href="./pages/land-page/land.html">Land</a></li>
           <li><a href="#services">Saved properties</a></li>
           <li><a href="#contact">About us</a></li>
           <div class="nav-links3 ">
-            <div class="access-box">
-              <a href="./pages/agent-register-page/agent.html" class="post">Post A Property</a>
-              <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+
+            <div>
+              <a href="#" id="logout-button_mobile" class="logout" style="display: none;">Log Out</a>
             </div>
           </div>
         </ul>
-
       </div>
 
-      <label class="menu-toggle" onClick={onToggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-      <!-- <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="bx bx-menu"></i>
-      </button> -->
-      <div class="nav-links2">
-
-
+      <div class="call_action">
         <div class="access-box">
-          <a href="./pages/agent-register-page/agent.html" class="post">Post A Property</a>
-          <a href="./pages/login-page/login.html" class="login">Sign up or Log in</a>
+          <a href="./pages/agent-login-page/agent-login.html" id="post-property_mobile" style="display: none;"
+            class="post">Post A Property</a>
+          <a href="./pages/login-page/login.html" id="login-button_mobile" class="login">Sign up or Log in</a>
+        </div>
+        <label class="menu-toggle" onClick={onToggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links2">
+        <div class="access-box">
+          <a href="./pages/agent-login-page/agent-login.html" id="post-property" style="display: none;"
+            class="post">Post A Property</a>
+          <a href="./pages/login-page/login.html" id="login-button" class="login">Sign up or Log in</a>
+          <i class='bx bx-user year-user'><span id="greeting" class="greeting_mobile"></span></i>
+          <a href="#" id="logout-button" class="logout" style="display: none;">Log Out</a>
         </div>
       </div>
     </nav>
   </header>
 
-
-
-
   <main class="content">
-
     <!-- Hero Section -->
     <div class="hero-section">
       <div class="container">
@@ -86,7 +91,6 @@
         <div class="carousel">
           <!-- Left Arrow for Navigation -->
           <img src="./assets/icon/arrow_left.png" class="nav-arrow left-arrow" onclick="scrollCarousel('left')" />
-
           <!-- Carousel Items -->
           <div class="carousel-track">
             <div class="carousel-item">
@@ -290,29 +294,30 @@
       </div>
     </section>
 
-    <div class="footer-div"> 
+    <div class="footer-div">
       <section class="download-section">
-          <div class="first-section">
-            <p>Download our app today to access more features</p>
-          </div>
-          <div class="second-section">
-            <p>Unlock the potential of your property journey with us. Download the app today to connect with agents and find
-              your dream home!</p>
-  
-            <a href="">Click here to download</a>
-          </div>
-        </section>
-    
-        
-    
-    
-    
+        <div class="first-section">
+          <p>Download our app today to access more features</p>
+        </div>
+        <div class="second-section">
+          <p>Unlock the potential of your property journey with us. Download the app today to connect with agents and
+            find
+            your dream home!</p>
+
+          <a href="">Click here to download</a>
+        </div>
+      </section>
+
+
+
+
+
       <footer class="footer">
         <div class="footer-top">
           <!-- Logo and Links -->
           <div class="footer-logo">
             <img style="width:200px;" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo">
-    
+
           </div>
           <ul class="footer-links">
             <li><a href="#">Property Listings</a></li>
@@ -326,7 +331,8 @@
             <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20"></a>
             <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20"></a>
             <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20"></a>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn" width="20"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                width="20"></a>
             <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20"></a>
           </div>
         </div>
@@ -341,15 +347,15 @@
           </ul>
         </div>
       </footer>
-      
-  
-    </div>
-  
-  
-  
-  
 
-  <script src="index.js"></script>
+
+    </div>
+
+
+
+
+
+    <script src="index.js"></script>
 </body>
 
 </html>
