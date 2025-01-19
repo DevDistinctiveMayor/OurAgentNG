@@ -96,11 +96,36 @@ header {
   display: none;
 }
 
+.greeting_mobile {
+  font-size: 15px;
+  margin-top: -10rem;
+  font-family: "poppins";
+  margin-top: 10px;
+}
+
+.logout {
+  margin-top: 10px;
+  margin-left: 20px;
+  color: rgba(8, 97, 175, 1);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.bx-user {
+  color: #333;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 700;
+  padding-right: 1px;
+  text-decoration: none;
+  font-family: "poppins";
+}
+
 .menu-toggle {
   position: relative;
   cursor: pointer;
-  width: 30px;
-  height: 14px;
+  width: 42px;
+  height: 19px;
   display: none;
   margin-top: 0.8rem;
 }
@@ -108,7 +133,7 @@ header {
 .menu-toggle span {
   display: block;
   width: 60%;
-  height: 2px;
+  height: 4px;
   background-color: #0e0e0e;
   position: absolute;
   left: 0;
@@ -453,8 +478,8 @@ header {
   font-size: 14px;
   font-weight: bold;
   border-radius: 5px;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .featuredbox-container>.card>.image-box>img {
@@ -1055,20 +1080,27 @@ header {
   .nav-links2 {
     display: none;
   }
-
+  .sold-overlay{
+    margin-left: 2.5rem;
+  }
   .nav-links {
     display: none;
     flex-direction: column;
     background-color: #ffffff;
     position: absolute;
     color: #000;
-    top: 90px;
+    top: 95px;
     right: 10%;
     width: 80%;
     padding: 30px 0px;
     transform: translateX(100%);
-    border-radius: 8px;
+    border-radius: 5px;
     z-index: 10;
+  }
+
+  .logout {
+    margin-top: 10px;
+    margin-left: 0px;
   }
 
   .nav-links>li {
@@ -1095,6 +1127,8 @@ header {
   .menu-toggle {
     display: block;
   }
+
+
 
   .sale-container-flex {
     gap: 1rem;
@@ -1132,11 +1166,6 @@ header {
   .container>.details-container {
     width: 100%;
   }
-
-  .sold-overlay {
-    margin-left: 2.5rem;
-  }
-
 
   .container>.details-container>h1 {
     font-size: 25px;
@@ -1288,11 +1317,9 @@ header {
     width: 100%;
     /* Full width for smaller screens */
   }
-
-  .sold-overlay {
+  .sold-overlay{
     margin-left: 1.5rem;
   }
-
   .custom-select select {
     appearance: none;
     width: 100px;
@@ -1356,3 +1383,6 @@ header {
     gap: 30px;
   }
 }
+
+
+@media (max-width: 326px) {}

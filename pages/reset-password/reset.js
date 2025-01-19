@@ -201,6 +201,3 @@ async function fetchClientData(clientId, url) {
     }
   });
 }
-
-
-  

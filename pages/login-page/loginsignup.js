@@ -113,7 +113,7 @@ document
         submitButton.disabled = false;
         submitButton.textContent = "Login"; // Reset button text
       }
-    };
+    });
 
     // Clear previous error messages
     setError("email-error", "");
@@ -125,7 +125,7 @@ document
     //submitButton.classList.add("loading");  // Add loading class
 
     try {
-      const response = await fetch("https://ouragent.com.ng/signin.php", {
+      const response = fetch("https://ouragent.com.ng/signin.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -141,7 +141,7 @@ document
         throw new Error("Failed to connect to server.");
       }
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if (data.status === "success") {
         // Save login state

@@ -1081,6 +1081,10 @@ header {
     display: none;
   }
 
+  .sold-overlay{
+    margin-left: 4.5rem;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -1314,6 +1318,10 @@ header {
   .advance-filter-container {
     width: 100%;
     /* Full width for smaller screens */
+  }
+
+  .sold-overlay{
+    margin-left: 2.5rem;
   }
 
   .custom-select select {
