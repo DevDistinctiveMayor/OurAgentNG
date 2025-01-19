@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 });
 
+
 async function fetchClientData(clientId, url) {
   const greeting = document.getElementById("greeting");
   const greeting_mobile = document.getElementById("greeting_mobile");
@@ -126,7 +127,7 @@ async function fetchClientData(clientId, url) {
 
     // Parse the response JSON
     const data = await response.json();
-    console.log("Server Response:", data); // Debugging line
+   // console.log("Server Response:", data); // Debugging line
 
     if (data.status === "success" && data.client) {
       // Extract fullName from the nested client object

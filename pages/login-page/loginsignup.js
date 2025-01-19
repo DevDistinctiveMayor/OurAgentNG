@@ -155,7 +155,7 @@ document
   
       // Parse the response JSON
       const data = await response.json();
-      console.log("Server Response:", data); // Debugging line
+      //console.log("Server Response:", data); // Debugging line
   
       if (data.status === "success" && data.client) {
         // Extract fullName from the nested client object
