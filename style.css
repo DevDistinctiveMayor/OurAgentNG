@@ -105,10 +105,6 @@ main {
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
-  /* color: rgba(8, 97, 175, 1); */
-  /* font-weight: bolder; */
-  /* color: #333; */
-  /* cursor: pointer; */
 }
 
 .logout {
@@ -123,11 +119,10 @@ main {
   color: #333;
   font-size: 16px;
   margin-top: 10px;
-font-weight: 700;
+  font-weight: 700;
   padding-right: 1px;
   text-decoration: none;
   font-family: "poppins";
-  
 }
 
 .menu-toggle {

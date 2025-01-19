@@ -19,26 +19,30 @@
       <div class="logo">
 
         <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-
         <ul class="nav-links">
-          <li><a href="../buy-page/buy.html">Sale</a></li>
-          <li><a href="../rent-page/rent.html">Rent</a></li>
-          <li><a href="../land-page/land.html">Land</a></li>
+          <div class="access-box nav-links3">
+            <!-- <a href="#" id="post-property" class="post">Post A Property</a> -->
+            <i class='bx bx-user year-user'><span id="greeting_mobile" class="greeting_mobile"></span></i>
+          </div>
+          <li><a href="./pages/buy-page/buy.html">Sale</a></li>
+          <li><a href="./pages/rent-page/rent.html">Rent</a></li>
+          <li><a href="./pages/land-page/land.html">Land</a></li>
           <li><a href="#services">Saved properties</a></li>
           <li><a href="#contact">About us</a></li>
           <div class="nav-links3 ">
-            <div class="access-box">
-              <!-- <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a> -->
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+
+            <div>
+              <a href="#" id="logout-button_mobile" class="logout" style="display: none;">Log Out</a>
             </div>
           </div>
         </ul>
       </div>
 
-
       <div class="call_action">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+          <a href="../pages/agent-login-page/agent-login.html" id="post-property_mobile" style="display: none;"
+            class="post">Post A Property</a>
+          <a href="../pages/login-page/login.html" id="login-button_mobile" class="login">Sign up or Log in</a>
         </div>
         <label class="menu-toggle" onClick={onToggleMenu}>
           <span></span>
@@ -49,8 +53,11 @@
 
       <div class="nav-links2">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
-          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+          <a href="../agent-login-page/agent-login.html" id="post-property" style="display: none;" class="post">Post A
+            Property</a>
+          <a href="../login-page/login.html" id="login-button" class="login">Sign up or Log in</a>
+          <i class='bx bx-user year-user'><span id="greeting" class="greeting_mobile"></span></i>
+          <a href="#" id="logout-button" class="logout" style="display: none;">Log Out</a>
         </div>
       </div>
     </nav>
@@ -110,9 +117,8 @@
           <label>Select the account type that best describes you:</label>
           <div class="radio-group">
             <label><input type="radio" name="category" value="buyer"> Buyer</label>
-            <label><input type="radio" name="category" value="Client"> Client </label>
-            <label><input type="radio" name="category" value="Occupant"> Occupant</label>
-            <label><input type="radio" name="category" value="investor"> Investor</label>
+            <label><input type="radio" name="category" value="Rentage"> Rentage </label>
+            <label><input type="radio" name="category" value="Agent"> Agent</label>
             <label><input type="radio" name="category" value="others"> Others</label>
           </div>
           <span id="category-error" class="error-message"></span>
