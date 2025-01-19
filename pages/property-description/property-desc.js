@@ -69,7 +69,9 @@ fetch(
         property.propertyName;
 
       // Update the carousel images
-      const carouselContainer = document.getElementById("propertyDetailsContainer");
+      const carouselContainer = document.getElementById(
+        "propertyDetailsContainer"
+      );
       const propertyImagesBox = document.querySelector(".property-images-box");
 
       // Populate the carousel with property images
@@ -82,6 +84,28 @@ fetch(
           `
         )
         .join("");
+      initializeCarouselControls();
+
+      // init carousel
+      function initializeCarouselControls() {
+        const carouselItems = document.querySelectorAll(".carousel-item");
+        const prevButton = document.querySelector(".prev");
+        const nextButton = document.querySelector(".next");
+
+        let currentIndex = 0;
+
+        prevButton.addEventListener("click", () => {
+          currentIndex =
+            currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
+          updateCarousel();
+        });
+
+        nextButton.addEventListener("click", () => {
+          currentIndex =
+            currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
+          updateCarousel();
+        });
+      }
 
       // Populate the property-images-box with remaining property images
       propertyImagesBox.innerHTML = property.images
@@ -95,7 +119,7 @@ fetch(
         .join("");
 
       // Get the carousel inner and items
-      const carouselInner = document.querySelector(".carousel-inner");
+      // const carouselInner = document.querySelector(".carousel-inner");
       const carouselItems = document.querySelectorAll(".carousel-item");
       const prevButton = document.querySelector(".prev");
       const nextButton = document.querySelector(".next");
@@ -103,7 +127,10 @@ fetch(
       let currentIndex = 0;
 
       function updateCarousel() {
-        // Update the active class based on currentIndex
+        const offset = -currentIndex * 100;
+        const carouselInner = document.querySelector(".carousel-inner");
+        carouselInner.style.transform = `translateX(${offset}%)`; // Move the carousel
+        // Update active class
         carouselItems.forEach((item, index) => {
           item.classList.remove("active");
           if (index === currentIndex) {
@@ -113,40 +140,70 @@ fetch(
       }
 
       prevButton.addEventListener("click", () => {
-        currentIndex = currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
+        currentIndex =
+          currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
         updateCarousel();
       });
 
       nextButton.addEventListener("click", () => {
-        currentIndex = currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
+        currentIndex =
+          currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
         updateCarousel();
       });
 
       // Update property details
-      document.querySelector(".property-text-details h3").textContent = `₦${property.price}`;
-      document.querySelector(".address-details .location").innerHTML =
-        `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
-      document.querySelector(".address-details .last-updated").textContent = `Last updated: ${property.created_at}`;
+      document.querySelector(
+        ".property-text-details h3"
+      ).textContent = `₦${property.price}`;
+      document.querySelector(
+        ".address-details .location"
+      ).innerHTML = `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
+      document.querySelector(
+        ".address-details .last-updated"
+      ).textContent = `Last updated: ${property.created_at}`;
 
       // Update description
-      document.querySelector(".description-box p").textContent = property.description;
+      document.querySelector(".description-box p").textContent =
+        property.description;
 
       // Update agent details (Profile Image, Name, Address, Phone)
       document.querySelector(".agent-name").textContent = property.fullName;
-      document.querySelector(".agent-details .profile-pics img").src = `https://ouragent.com.ng/${property.ProfileImage}`;
-      document.querySelector(".text-box .description").textContent = property.agentAddress;
-      document.querySelector(".search-form-field .location").textContent = `${property.state}, ${property.lga}`;
-      document.querySelector(".text-box .telephone").textContent = `📞 ${property.phoneNumber}`;
-      document.querySelector(".text-box .year-user").textContent = `${property.created_at}`;
-      document.querySelector(".search-form-field .category").textContent = `${property.category}`;
-      document.querySelector(".search-form-field .type").textContent = `${property.propertyType}`;
-      document.querySelector(".search-form-field .bedroom").textContent = `${property.roomNo}`;
-      document.querySelector(".search-form-field .minprice").textContent = "\u20A6" + " " + property.price;
-      document.querySelector(".search-form-field .maxprice").textContent = "\u20A6" + " " + property.price;
-      document.querySelector(".search-form-field .bathroom").textContent = `${property.bathNo}`;
-      document.querySelector(".search-form-field .properRef").textContent = `${property.id}`;
-      document.querySelector(".text-box .website").href = `${property.socialMediaHandles}`;
-
+      document.querySelector(
+        ".agent-details .profile-pics img"
+      ).src = `https://ouragent.com.ng/${property.ProfileImage}`;
+      document.querySelector(".text-box .description").textContent =
+        property.agentAddress;
+      document.querySelector(
+        ".search-form-field .location"
+      ).textContent = `${property.state}, ${property.lga}`;
+      document.querySelector(
+        ".text-box .telephone"
+      ).textContent = `📞 ${property.phoneNumber}`;
+      document.querySelector(
+        ".text-box .year-user"
+      ).textContent = `${property.created_at}`;
+      document.querySelector(
+        ".search-form-field .category"
+      ).textContent = `${property.category}`;
+      document.querySelector(
+        ".search-form-field .type"
+      ).textContent = `${property.propertyType}`;
+      document.querySelector(
+        ".search-form-field .bedroom"
+      ).textContent = `${property.roomNo}`;
+      document.querySelector(".search-form-field .minprice").textContent =
+        "\u20A6" + " " + property.price;
+      document.querySelector(".search-form-field .maxprice").textContent =
+        "\u20A6" + " " + property.price;
+      document.querySelector(
+        ".search-form-field .bathroom"
+      ).textContent = `${property.bathNo}`;
+      document.querySelector(
+        ".search-form-field .properRef"
+      ).textContent = `${property.id}`;
+      document.querySelector(
+        ".text-box .website"
+      ).href = `${property.socialMediaHandles}`;
     } else {
       alert(data.message);
     }
