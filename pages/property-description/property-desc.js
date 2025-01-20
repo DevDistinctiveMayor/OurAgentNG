@@ -129,7 +129,7 @@ fetch(
       function updateCarousel() {
         const offset = -currentIndex * 100;
         const carouselInner = document.querySelector(".carousel-inner");
-        carouselInner.style.transform = `translateX(${offset}%)`; // Move the carousel
+       // carouselInner.style.transform = `translateX(${offset}%)`; // Move the carousel
         // Update active class
         carouselItems.forEach((item, index) => {
           item.classList.remove("active");
