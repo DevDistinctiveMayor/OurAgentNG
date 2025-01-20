@@ -7,18 +7,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
+
 /* General reset for margins and padding */
 body {
   font-family: "poppins";
-  width: 100%;
-  overflow-x: hidden;
+}
+
+/* Blur and disable background when menu is open */
+.content-blur {
+  filter: blur(3px);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* Optional: Disable scrolling when menu is open */
 .disable-scroll {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 /* Header Styling */
@@ -34,6 +40,7 @@ header {
 main {
   margin-top: 100px;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -53,11 +60,7 @@ main {
   display: flex;
   list-style: none;
   align-items: center;
-  font-size: 13px;
-}
-
-.nav-links li {
-  overflow-y: hidden;
+  font-size: 16px;
 }
 
 .nav-links li a {
@@ -71,7 +74,7 @@ main {
 .access-box {
   display: flex;
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .access-box > a {
@@ -97,7 +100,7 @@ main {
   display: none;
 }
 
-.greeting_mobile {
+.greeting {
   font-size: 15px;
   margin-top: -10rem;
   font-family: "poppins";
@@ -905,7 +908,11 @@ button:focus {
     border-radius: 5px;
     z-index: 10;
   }
-
+  .logout {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+  
   .nav-links > li {
     text-align: center;
     margin-top: 0.4rem;

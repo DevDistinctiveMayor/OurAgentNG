@@ -1,58 +1,74 @@
-// const carouselInner = document.querySelector(".carousel-inner");
-// const carouselItems = document.querySelectorAll(".carousel-item");
-// const prevButton = document.querySelector(".prev");
-// const nextButton = document.querySelector(".next");
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".nav-links");
+const content = document.querySelector(".content"); // Target content-wrapper
 
-// let currentIndex = 0;
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("open");
+  menu.classList.toggle("active");
+  content.classList.toggle("content-blur"); // Add blur effect to the content
+  document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
+});
 
-// function updateCarousel() {
-//   const offset = -currentIndex * 100;
-//   carouselInner.style.transform = `translateX(${offset}%)`;
-// }
 
-// prevButton.addEventListener("click", () => {
-//   currentIndex = currentIndex > 0 ? currentIndex - 1 : carouselItems.length - 1;
-//   updateCarousel();
-// });
 
-// nextButton.addEventListener("click", () => {
-//   currentIndex = currentIndex < carouselItems.length - 1 ? currentIndex + 1 : 0;
-//   updateCarousel();
-// });
+document.addEventListener("DOMContentLoaded", async () => {
+  const clientId = sessionStorage.getItem("client_id");
+  const greetings = document.querySelectorAll(".greeting");
+  const loginButtons = document.querySelectorAll(".login-btn");
+  const logoutButtons = document.querySelectorAll(".logout-btn");
+  const postPropertyButtons = document.querySelectorAll(".post-property-btn");
 
-// //Fetch all States
-// fetch('https://nga-states-lga.onrender.com/fetch')
-// 		.then((res) => res.json())
-// 		.then((data) => {
-// 		 var x = document.getElementById("state");
-// 			for (let index = 0; index < Object.keys(data).length; index++) {
-// 		        var option = document.createElement("option");
-// 				option.text = data[index];
-// 				option.value = data[index];
-// 				x.add(option);
-// 		       }
-// 	   		});
-// //Fetch Local Goverments based on selected state
-// function selectLGA(target) {
-// 	var state = target.value;
-// 		fetch('https://nga-states-lga.onrender.com/?state='+state)
-// 		   .then((res) => res.json())
-// 		   .then((data) => {
-// 		    var x = document.getElementById("lga");
+  if (!clientId) {
+    // Handle unauthenticated user
+    greetings.forEach((el) => (el.textContent = "Welcome, Guest!"));
+    loginButtons.forEach((el) => (el.style.display = "inline"));
+    logoutButtons.forEach((el) => (el.style.display = "none"));
+    postPropertyButtons.forEach((el) => (el.style.display = "none"));
+    return;
+  }
 
-// 		    var select = document.getElementById("lga");
-//               var length = select.options.length;
-//               for (i = length-1; i >= 0; i--) {
-//                 select.options[i] = null;
-//               }
-// 		    for (let index = 0; index < Object.keys(data).length; index++) {
-// 		    		var option = document.createElement("option");
-// 					option.text = data[index];
-// 					option.value = data[index];
-// 					x.add(option);
-// 		        }
-// 	   		});
-// 	}
+  try {
+    // Fetch client data
+    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_id: clientId }),
+    });
+
+    const data = await response.json();
+    if (data.status === "success" && data.client) {
+      const fullName = data.client.fullName;
+      greetings.forEach((el) => (el.textContent = `${fullName.substring(0, 8)}...`));
+      loginButtons.forEach((el) => (el.style.display = "none"));
+      logoutButtons.forEach((el) => (el.style.display = "inline"));
+      postPropertyButtons.forEach((el) => (el.style.display = "inline"));
+    } else {
+      throw new Error("Invalid session.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    greetings.forEach((el) => (el.textContent = "Error loading session."));
+  }
+
+  // Add logout functionality
+  logoutButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      try {
+        const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", { method: "POST" });
+        if (logoutResponse.ok) {
+          sessionStorage.clear();
+          window.location.reload();
+        } else {
+          console.error("Logout failed.");
+        }
+      } catch (error) {
+        console.error("Error during logout:", error);
+      }
+    });
+  });
+});
+
+
 const urlParams = new URLSearchParams(window.location.search);
 const propertyId = urlParams.get("propertyId");
 

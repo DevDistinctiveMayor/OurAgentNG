@@ -56,7 +56,7 @@ header {
   display: flex;
   list-style: none;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .nav-links li a {
@@ -96,8 +96,8 @@ header {
   display: none;
 }
 
-.greeting_mobile {
-  font-size: 15px;
+.greeting {
+  font-size: 16px;
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
@@ -397,7 +397,7 @@ header {
   border: 1px solid #0861AF;
   padding: 1rem 2rem;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .container>.details-container>.sort-container>div>select {
@@ -524,7 +524,7 @@ header {
 
 .featuredbox-container>.card>.text-box>.first-box>.details-link>a {
   color: #02182B;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
 }
 

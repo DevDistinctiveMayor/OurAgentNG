@@ -100,8 +100,8 @@ main {
   display: none;
 }
 
-.greeting_mobile {
-  font-size: 15px;
+.greeting {
+  font-size: 16px;
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
@@ -114,7 +114,6 @@ main {
   font-weight: 600;
   font-size: 14px;
 }
-
 
 .bx-user {
   color: #333;
