@@ -61,7 +61,7 @@
     display: flex;
     list-style: none;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
   }
   
   .nav-links li a {
@@ -97,11 +97,25 @@
     border-radius: 7px;
   }
   
+  .call_action{
+    display: none;
+  }
+  
+  .bx-user {
+    color: #333;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 700;
+    padding-right: 1px;
+    text-decoration: none;
+    font-family: "poppins";
+  }
+  
   .menu-toggle {
     position: relative;
     cursor: pointer;
-    width: 30px;
-    height: 14px;
+    width: 42px;
+    height: 19px;
     display: none;
     margin-top: 0.8rem;
   }
@@ -109,7 +123,7 @@
   .menu-toggle span {
     display: block;
     width: 60%;
-    height: 2px;
+    height: 4px;
     background-color: #0e0e0e;
     position: absolute;
     left: 0;
@@ -426,15 +440,16 @@
     .nav-links2 {
       display: none;
     }
-  
+    .sold-overlay{
+      margin-left: 2.5rem;
+    }
     .nav-links {
       display: none;
       flex-direction: column;
       background-color: #ffffff;
       position: absolute;
       color: #000;
-      box-shadow: 0px 0px 2px rgba(8, 97, 175, 1);
-      top: 90px;
+      top: 95px;
       right: 10%;
       width: 80%;
       padding: 30px 0px;
@@ -442,7 +457,7 @@
       border-radius: 5px;
       z-index: 10;
     }
-  
+
     .nav-links>li {
       text-align: center;
       margin-top: 0.4rem;
@@ -457,6 +472,11 @@
       display: flex;
       transform: translateX(0);
       opacity: 1;
+    }
+  
+    .call_action {
+      display: block;
+      display: flex;
     }
   
     .menu-toggle {

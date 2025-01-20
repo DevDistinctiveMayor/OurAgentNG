@@ -16,20 +16,24 @@
 <body>
   <!-- Navbar -->
   <header>
-    <nav class="navbar">
+    <nav class="navbar ">
       <div class="logo">
-
-        <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-
+        <a href="/index.html"><img src="/assets/logo.svg" alt="Logo"></a>
         <ul class="nav-links">
+          <!-- HTML -->
+          <div class="access-box nav-links3">
+            <i class="bx bx-user year-user">
+              <span class="greeting"></span>
+            </i>
+          </div>
           <li><a href="../buy-page/buy.html">Buy</a></li>
           <li><a href="../rent-page/rent.html">Rent</a></li>
           <li><a href="../land-page/land.html">Land</a></li>
           <li><a href="#services">Saved properties</a></li>
-          <li><a href="../otp-page/otp.html">About us</a></li>
-          <div class="nav-links3 ">
-            <div class="access-box">
-              <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3">
+            <div>
+              <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
             </div>
           </div>
         </ul>
@@ -37,20 +41,26 @@
 
       <div class="call_action">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
+            Property</a>
+          <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
         </div>
-        <label class="menu-toggle" onClick="{onToggleMenu}">
+        <label class="menu-toggle" onClick={onToggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </label>
       </div>
 
-
       <div class="nav-links2">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
-          <a href="../login-page/login.html" class="login">Sign up or Log in</a>
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
+            Property</a>
+          <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+          <i class="bx bx-user year-user">
+            <span class="greeting greeting_mobile"></span>
+          </i>
+          <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
         </div>
       </div>
     </nav>
@@ -62,11 +72,11 @@
     <div class="container_size">
       <div>
         <div class="notice">
-          Become an agent today and gain <br/> access to exclusive tools and features!<br/>
+          Become an agent today and gain <br /> access to exclusive tools and features!<br />
         </div>
       </div>
 
-      
+
       <h1>Sign-in as an Agent</h1>
       <p class="new_user">
         New to OurAgent? <br><br> <a href="../agent-register-page/agent.html" class="login-container_a">Create an

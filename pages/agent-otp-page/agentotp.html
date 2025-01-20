@@ -1,12 +1,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./agentotp.css">
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="./agentotp.css" />
     <title>Our AgentNG | Website</title>
 </head>
 
@@ -14,42 +14,55 @@
     <!-- Header Section -->
     <header>
         <nav class="navbar ">
-            <div class="logo">
-                <a href="../../index.html"><img src="../../assets/logo.svg" alt=""></a>
-                <ul class="nav-links">
-                    <li><a href="../buy-page/buy.html">Buy</a></li>
-                    <li><a href="../rent-page/rent.html">Rent</a></li>
-                    <li><a href="../land-page/land.html">Land</a></li>
-                    <li><a href="#services">Saved properties</a></li>
-                    <li><a href="#contact">About us</a></li>
-                    <div class="nav-links3 ">
-                        <div class="access-box">
-                            <a href="./../login-page/" class="login">Sign up or Log in</a>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-
+          <div class="logo">
+            <a href="../../index.html"><img src="/assets/logo.svg" alt="Logo"></a>
+            <ul class="nav-links">
+              <!-- HTML -->
+              <div class="access-box nav-links3">
+                <i class="bx bx-user year-user">
+                  <span class="greeting"></span>
+                </i>
+              </div>
+              <li><a href="../buy-page/buy.html">Buy</a></li>
+              <li><a href="../rent-page/rent.html">Rent</a></li>
+              <li><a href="../land-page/land.html">Land</a></li>
+              <li><a href="#services">Saved properties</a></li>
+              <li><a href="#contact">About us</a></li>
+              <div class="nav-links3">
+                <div>
+                  <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
+                </div>
+              </div>
+            </ul>
+          </div>
+    
             <div class="call_action">
-                <div class="access-box">
-                    <a href="../agent-login-page/agent-login.html" class="post">Post A Property</a>
-                </div>
-                <label class="menu-toggle" onClick="{onToggleMenu}">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
+              <div class="access-box">
+                <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
+                  Property</a>
+                <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+              </div>
+              <label class="menu-toggle" onClick={onToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
             </div>
-
-
+    
             <div class="nav-links2">
-                <div class="access-box">
-                    <a href="./../agent-register-page/agent.html" class="post">Post A Property</a>
-                    <a href="./../login-page/" class="login">Sign up or Log in</a>
-                </div>
+              <div class="access-box">
+                <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
+                  Property</a>
+                <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+                <i class="bx bx-user year-user">
+                  <span class="greeting greeting_mobile"></span>
+                </i>
+                <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
+              </div>
             </div>
         </nav>
-    </header>
+      </header>
+      
     <main class="otp_body content">
         <div class="login-container">
             <div class="mail1">
