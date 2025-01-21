@@ -42,8 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = sessionStorage.getItem("email"); // Retrieve email from sessionStorage
   
     if (!email) {
+      Swal.fire({
+        title: "Session Expired",
+        text: "Your session has expired. Redirecting to the registration page...",
+        icon: "warning",
+        confirmButtonText: "OK",
+      }).then(() => {
+        window.location.href = "../agent-register-page/agent.html";
+      });
+      return;
       // Redirect to registration page if no email is found in sessionStorage
-      window.location.href = "../agent-register-page/agent.html";
+  
       return;
     }
   
