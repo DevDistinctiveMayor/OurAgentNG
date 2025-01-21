@@ -90,12 +90,27 @@
     padding: 9px;
     border-radius: 7px;
   }
+
+  .call_action {
+    display: none;
+  }
+  
+  
+  .bx-user {
+    color: #333;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 700;
+    padding-right: 1px;
+    text-decoration: none;
+    font-family: "poppins";
+  }
   
   .menu-toggle {
     position: relative;
     cursor: pointer;
-    width: 30px;
-    height: 14px;
+    width: 42px;
+    height: 19px;
     display: none;
     margin-top: 0.8rem;
   }
@@ -103,7 +118,7 @@
   .menu-toggle span {
     display: block;
     width: 60%;
-    height: 2px;
+    height: 4px;
     background-color: #0e0e0e;
     position: absolute;
     left: 0;
@@ -400,7 +415,10 @@ label{
       transform: translateX(0);
       opacity: 1;
     }
-
+    .call_action {
+      display: block;
+      display: flex;
+    }
     .menu-toggle {
       display: block;
     }

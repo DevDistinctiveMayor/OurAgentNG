@@ -96,6 +96,20 @@ header {
   display: none;
 }
 
+.greeting {
+  font-size: 16px;
+  margin-top: -10rem;
+  font-family: "poppins";
+  margin-top: 10px;
+}
+
+.logout {
+  margin-top: 10px;
+  margin-left: 20px;
+  color: rgba(8, 97, 175, 1);
+  font-weight: 600;
+  font-size: 14px;
+}
 
 .bx-user {
   color: #333;
@@ -573,6 +587,10 @@ button:active {
 
 /* For mobile screens (up to 767px) */
 @media (max-width: 768px) {
+
+  /* .container_size{
+    width: 50%;
+  } */
   .nav-links3 {
     display: block;
     margin-top: 0.4rem;
@@ -596,6 +614,10 @@ button:active {
     transform: translateX(100%);
     border-radius: 5px;
     z-index: 10;
+  }
+  .logout {
+    margin-top: 10px;
+    margin-left: 0px;
   }
 
   .nav-links>li {
@@ -640,6 +662,13 @@ button:active {
   }
 }
 
+@media (max-width: 400px) {
+
+  /* .container_size{
+    width: 100%;
+  } */
+
+}
 @media (min-width: 768px) {
   .footer-top {
     flex-direction: row;
