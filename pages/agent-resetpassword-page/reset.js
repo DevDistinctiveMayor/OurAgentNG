@@ -64,6 +64,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
           text: "All fields are required.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
         });
         return;
       }
@@ -74,6 +75,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
           text: "Passwords do not match. Please try again.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
         });
         return;
       }
@@ -110,6 +112,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
             text: result.message || "Invalid OTP or reset failed. Please try again.",
             icon: "error",
             confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
           });
         }
       } catch (error) {

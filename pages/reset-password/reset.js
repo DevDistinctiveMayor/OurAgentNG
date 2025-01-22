@@ -115,6 +115,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
           text: "An error occurred. Please try again later.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
         });
       } finally {
         submitButton.disabled = false;
