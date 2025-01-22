@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  const resendBtn = document.getElementById("resendBtn");
   const otpForm = document.getElementById("otpForm");
   otpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -63,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const otp = Array.from(document.querySelectorAll(".otp-input"))
     .map((input) => input.value.trim())
     .join("");
-
 
     if (otp.length !== 6) {
       Swal.fire({

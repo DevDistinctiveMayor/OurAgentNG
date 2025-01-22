@@ -27,67 +27,93 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
     });
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("emailForm");
-    const submitButton = document.getElementById("submitButton");
-    const responseMessage = document.getElementById("responseMessage");
+  
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("resetPasswordForm");
+    const submitButton = document.getElementById("submitButton");
+  
+    // Retrieve the email from sessionStorage
+    const email = sessionStorage.getItem("resetEmail");
+  
+    if (!email) {
+      Swal.fire({
+        title: "Session Expired",
+        text: "Please start the password reset process again.",
+        icon: "error",
+        confirmButtonText: "Go Back",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
+      }).then(() => {
+        window.location.href = "../agent-forgot-page/agentforgot.html";
+      });
+      return;
+    }
+  
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
-      // Clear error messages
-      document.getElementById("email-error").textContent = "";
-      document.getElementById("otp-error").textContent = "";
-      document.getElementById("password-error").textContent = "";
-      responseMessage.textContent = "";
-
+  
       // Collect input data
-      const email = document.getElementById("email").value.trim();
       const otp = document.getElementById("otp").value.trim();
       const newPassword = document.getElementById("newPassword").value.trim();
       const confirmPassword = document.getElementById("confirmPassword").value.trim();
-
-      // Validate passwords match
-      if (newPassword !== confirmPassword) {
-        document.getElementById("password-error").textContent = "Passwords do not match.";
+  
+      // Validate fields
+      if (!otp || !newPassword || !confirmPassword) {
+        Swal.fire({
+          title: "Error",
+          text: "All fields are required.",
+          icon: "error",
+          confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
         return;
       }
-
+  
+      if (newPassword !== confirmPassword) {
+        Swal.fire({
+          title: "Error",
+          text: "Passwords do not match. Please try again.",
+          icon: "error",
+          confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
+        return;
+      }
+  
       // Disable the button and show loading state
       submitButton.disabled = true;
       submitButton.textContent = "Processing...";
-
+  
       try {
-        // Send data to backend
         const response = await fetch("https://ouragent.com.ng/agentreset_password.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, otp, new_password: newPassword }),
+          body: JSON.stringify({ otp, new_password: newPassword, email }),
         });
-
+  
+        // Parse JSON response
         const result = await response.json();
-
+  
+        // Handle server response
         if (result.status === "success") {
-       
           Swal.fire({
             title: "Reset Successful",
             text: result.message || "Password reset successfully.",
             icon: "success",
             confirmButtonText: "Login",
           }).then(() => {
-            // Redirect to OTP verification page, passing email and userId
             window.location.href = "../agent-login-page/agent-login.html";
           });
         } else {
           Swal.fire({
-            title: "Registration Failed",
-            text: result.message  || "Something went wrong. Please try again.",
+            title: "Error",
+            text: result.message || "Invalid OTP or reset failed. Please try again.",
             icon: "error",
             confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
           });
-        
         }
       } catch (error) {
         Swal.fire({
@@ -97,9 +123,10 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
           confirmButtonText: "Retry",
         });
       } finally {
-        // Re-enable button
+        // Re-enable the button
         submitButton.disabled = false;
         submitButton.textContent = "Reset Password";
       }
     });
   });
+  
