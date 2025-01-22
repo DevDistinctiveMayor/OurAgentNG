@@ -198,6 +198,7 @@ document.getElementById("toggle-password")
           text: "An error occurred. Please try again.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       } finally {
         // Re-enable button
