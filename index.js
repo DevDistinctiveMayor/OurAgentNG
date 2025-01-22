@@ -163,11 +163,10 @@ const fetchAndRenderProperties = (queryParams = "") => {
 
       if (data.status === "success" && data.data.length > 0) {
         data.data.forEach((property, index) => {
-
-          if(index < 4){
-          const propertyElement = document.createElement("div");
-          propertyElement.className = "property-card";
-          propertyElement.innerHTML = `
+          if (index < 4) {
+            const propertyElement = document.createElement("div");
+            propertyElement.className = "property-card";
+            propertyElement.innerHTML = `
           <div class="container">
           <div class="house-card">
             <div class="img"> <img src="https://ouragent.com.ng/${property.images[0]}" alt=""></div>
@@ -189,7 +188,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
           </div>
         </div>
                   `;
-          propertiesContainer.appendChild(propertyElement);
+            propertiesContainer.appendChild(propertyElement);
           }
         });
       } else {
