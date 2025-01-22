@@ -87,8 +87,6 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
   const clientId = sessionStorage.getItem("client_id");
   const greetings = document.querySelectorAll(".greeting");
@@ -107,16 +105,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch client data
-    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ client_id: clientId }),
-    });
+    const response = await fetch(
+      "https://ouragent.com.ng/get_user_session.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ client_id: clientId }),
+      }
+    );
 
     const data = await response.json();
     if (data.status === "success" && data.client) {
       const fullName = data.client.fullName;
-      greetings.forEach((el) => (el.textContent = `${fullName.substring(0, 8)}...`));
+      greetings.forEach(
+        (el) => (el.textContent = `${fullName.substring(0, 8)}...`)
+      );
       loginButtons.forEach((el) => (el.style.display = "none"));
       logoutButtons.forEach((el) => (el.style.display = "inline"));
       postPropertyButtons.forEach((el) => (el.style.display = "inline"));
@@ -132,7 +135,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   logoutButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       try {
-        const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", { method: "POST" });
+        const logoutResponse = await fetch(
+          "https://ouragent.com.ng/logout.php",
+          { method: "POST" }
+        );
         if (logoutResponse.ok) {
           sessionStorage.clear();
           window.location.reload();
@@ -145,3 +151,54 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
+
+const propertiesContainer = document.getElementById("properties");
+// const ContainerForProperties = querySelector("");
+//Fetching random poperties to the index page
+const fetchAndRenderProperties = (queryParams = "") => {
+  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
+    .then((response) => response.json())
+    .then((data) => {
+      propertiesContainer.innerHTML = ""; // Clear existing content
+
+      if (data.status === "success" && data.data.length > 0) {
+        data.data.forEach((property) => {
+          const propertyElement = document.createElement("div");
+          propertyElement.className = "property-card";
+          propertyElement.innerHTML = `
+          <div class="container">
+          <div class="house-card">
+            <div class="img"> <img src="https://ouragent.com.ng/${property.images[0]}" alt=""></div>
+            <div class="details">
+              <div class="description">${property.description}</div>
+              <div class="price">${property.price}</div>
+              <div class="location">
+                <div class="location-name">${property.state}, ${property.lga}</div>
+                <div class="view-icon">
+                  <span class="view">View</span>
+                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+                </div>
+              </div>
+            </div>
+            <div class="img-overlap">
+              <span class="status">${property.propertystatus}</span>
+              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
+            </div>
+          </div>
+        </div>
+                  `;
+          propertiesContainer.appendChild(propertyElement);
+        });
+      } else {
+        propertiesContainer.innerHTML = `<p>${
+          data.message || "No properties found."
+        }</p>`;
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
+    });
+};
+
+fetchAndRenderProperties();

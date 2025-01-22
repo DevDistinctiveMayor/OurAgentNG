@@ -83,6 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
 
 // Function to fetch and display properties
+/*
+Main
+Point
+*/
 const fetchAndRenderProperties = (queryParams = "") => {
   fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
       .then((response) => response.json())
