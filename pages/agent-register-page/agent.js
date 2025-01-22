@@ -178,7 +178,7 @@ document
   //   });
   // });
 
-  
+
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("signup-form");
     const submitButton = document.getElementById("submitButton");
@@ -200,6 +200,7 @@ document
           text: "Client information is missing. Please log in first.",
           icon: "error",
           confirmButtonText: "OK",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
         return;
       }
@@ -240,6 +241,7 @@ document
             text: data.message || "Registration successful! Check your email for OTP.",
             icon: "success",
             confirmButtonText: "OK",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           }).then(() => {
             // Redirect to OTP page
             window.location.href = "../agent-otp-page/agentotp.html";
@@ -250,6 +252,7 @@ document
             text: data.message || "Please check your inputs and try again.",
             icon: "warning",
             confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           });
         }
       } catch (error) {
@@ -259,6 +262,7 @@ document
           text: "An unexpected error occurred. Please try again later.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       } finally {
         // Re-enable the submit button
