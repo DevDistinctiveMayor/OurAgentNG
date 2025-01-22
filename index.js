@@ -162,7 +162,9 @@ const fetchAndRenderProperties = (queryParams = "") => {
       propertiesContainer.innerHTML = ""; // Clear existing content
 
       if (data.status === "success" && data.data.length > 0) {
-        data.data.forEach((property) => {
+        data.data.forEach((property, index) => {
+
+          if(index < 4){
           const propertyElement = document.createElement("div");
           propertyElement.className = "property-card";
           propertyElement.innerHTML = `
@@ -188,6 +190,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
         </div>
                   `;
           propertiesContainer.appendChild(propertyElement);
+          }
         });
       } else {
         propertiesContainer.innerHTML = `<p>${
