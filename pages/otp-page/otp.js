@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "Please enter a valid 6-digit OTP.",
         icon: "warning",
         confirmButtonText: "Retry",
+        confirmButtonColor: "rgba(8, 97, 175, 1)"
       });
       return;
     }
