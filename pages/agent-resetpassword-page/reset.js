@@ -103,6 +103,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
             text: result.message || "Password reset successfully.",
             icon: "success",
             confirmButtonText: "Login",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           }).then(() => {
             window.location.href = "../agent-login-page/agent-login.html";
           });
