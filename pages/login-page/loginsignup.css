@@ -96,8 +96,8 @@ header {
 .menu-toggle {
   position: relative;
   cursor: pointer;
-  width: 30px;
-  height: 14px;
+  width: 42px;
+  height: 19px;
   display: none;
   margin-top: 0.8rem;
 }
@@ -105,14 +105,13 @@ header {
 .menu-toggle span {
   display: block;
   width: 60%;
-  height: 2px;
+  height: 4px;
   background-color: #0e0e0e;
   position: absolute;
   left: 0;
   transition: all 0.2s ease;
   z-index: 30;
 }
-
 .menu-toggle span:nth-child(1) {
   top: 0;
 }
