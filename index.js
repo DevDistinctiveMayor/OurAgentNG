@@ -171,7 +171,10 @@ const fetchAndRenderProperties = (queryParams = "") => {
           <div class="house-card">
             <div class="img"> <img src="https://ouragent.com.ng/${property.images[0]}" alt=""></div>
             <div class="details">
-              <div class="description">${property.description}</div>
+              <div class="description">${property.description.substring(
+                      0,
+                      26
+                    )}</div>
               <div class="price">${property.price}</div>
               <div class="location">
                 <div class="location-name">${property.state}, ${property.lga}</div>

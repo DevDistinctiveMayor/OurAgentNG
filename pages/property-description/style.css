@@ -77,19 +77,19 @@ main {
   font-size: 14px;
 }
 
-.access-box > a {
+.access-box>a {
   text-decoration: none;
   margin-right: 15px;
 }
 
-.access-box > .post {
+.access-box>.post {
   padding: 9px;
   background-color: rgba(8, 97, 175, 1);
   color: #fff;
   border-radius: 7px;
 }
 
-.access-box > .login {
+.access-box>.login {
   color: rgba(8, 97, 175, 1);
   border: 1px solid rgba(8, 97, 175, 1);
   padding: 9px;
@@ -170,9 +170,11 @@ main {
 .menu-toggle.open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
+
 .nav-links3 {
   display: none;
 }
+
 .nav-links2 {
   display: block;
 }
@@ -187,6 +189,7 @@ main {
   flex-wrap: wrap;
   gap: 3rem;
 }
+
 .sale {
   border: 1pt solid rgba(8, 97, 175, 1);
   width: 10rem;
@@ -199,28 +202,29 @@ main {
   border-radius: 5px;
 }
 
-.sale > i {
+.sale>i {
   font-size: 1.3rem;
   padding-top: px;
 }
 
-.search-box > input {
+.search-box>input {
   font-family: inherit;
   width: 20em;
   font-size: 1rem;
   padding: 15px;
   outline: none;
   border: 1px solid rgba(8, 97, 175, 1);
-  transition: border 0.2s ease; /* Smooth border transition */
+  transition: border 0.2s ease;
+  /* Smooth border transition */
   border-radius: 5px;
   padding-left: 4rem;
 }
 
-.search-box > input:focus {
+.search-box>input:focus {
   border: 1px solid rgba(8, 97, 175, 1);
 }
 
-.search-box > input::placeholder {
+.search-box>input::placeholder {
   font-size: 14px;
   color: rgba(2, 24, 43, 0.46);
 }
@@ -241,14 +245,14 @@ main {
   border-radius: 5px;
 }
 
-.advance_filter > .filtericon {
+.advance_filter>.filtericon {
   width: 16px;
   height: 16px;
   display: inline;
   margin: 0 0.85rem 0 0;
 }
 
-.advance_filter > input {
+.advance_filter>input {
   border: none;
   height: 50px;
   margin: 0 0 0 1.2rem;
@@ -256,7 +260,7 @@ main {
   outline: none;
 }
 
-.btnn > .search {
+.btnn>.search {
   padding: 1.1rem 3rem;
   border: none;
   background-color: #0861af;
@@ -275,6 +279,7 @@ main {
   margin: 10px auto;
   gap: 1%;
 }
+
 .left-container {
   float: left;
   width: 55%;
@@ -313,7 +318,7 @@ main {
 .left-container .carousel .carousel-item img {
   width: 100%;
   height: 100%;
- 
+
   /* display: block; */
   border-radius: 8px;
 }
@@ -343,18 +348,21 @@ main {
 }
 
 .carousel-item {
-  display: none;  /* Hide items by default */
-overflow: hidden;
+  display: none;
+  /* Hide items by default */
+  overflow: hidden;
 }
 
 .carousel-item.active {
-display: block; /* Only the active item is visible */
-height: auto;
+  display: block;
+  /* Only the active item is visible */
+  height: auto;
 }
 
 
 
-button.prev, button.next {
+button.prev,
+button.next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -379,10 +387,11 @@ button:focus {
 }
 
 .left-container .property-images-box {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 0fr));
   margin-top: 15px;
-  gap: 5px;
+  gap: 10px;
+  /* Adjust the gap for spacing between items */
 }
 
 .left-container .property-images-box div img {
@@ -595,6 +604,7 @@ button:focus {
   gap: 10px;
   margin-bottom: 10px;
 }
+
 .right-container .sp div .select-box {
   display: flex;
   flex-direction: column;
@@ -698,40 +708,41 @@ button:focus {
       justify-content: space-between;
 
       .status {
-        font-size: 12px;
+        font-size: 13px;
         background: rgba(254, 133, 21, 1);
         color: #ffffff;
-        padding: 5px 15px;
+        padding: 3px 10px;
         border-radius: 3px;
       }
+    }
 
-      .icon {
-        color: #0861af;
-        background-color: #ffffff;
-        padding: 5px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 35px;
-        width: 35px;
-        overflow-y: hidden;
-        text-align: center;
-        cursor: pointer;
+    .icon {
+      color: #0861af;
+      background-color: #ffffff;
+      padding: 5px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      overflow-y: hidden;
+      text-align: center;
+      cursor: pointer;
 
+      i {
+        font-size: 20px;
+      }
+
+      &:active {
         i {
-          font-size: 20px;
-        }
-
-        &:active {
-          i {
-            font-size: 22px;
-          }
+          font-size: 22px;
         }
       }
     }
   }
 }
+
 
 .box-top {
   display: flex;
@@ -890,6 +901,7 @@ button:focus {
     display: block;
     margin-top: 0.4rem;
   }
+
   .nav-links2 {
     display: none;
   }
@@ -908,17 +920,18 @@ button:focus {
     border-radius: 5px;
     z-index: 10;
   }
+
   .logout {
     margin-top: 10px;
     margin-left: 0px;
   }
-  
-  .nav-links > li {
+
+  .nav-links>li {
     text-align: center;
     margin-top: 0.4rem;
   }
 
-  .nav-links > li:hover {
+  .nav-links>li:hover {
     /* transform: translate(15px); */
     text-decoration: underline;
   }
@@ -928,10 +941,12 @@ button:focus {
     transform: translateX(0);
     opacity: 1;
   }
+
   .call_action {
     display: block;
     display: flex;
   }
+
   .menu-toggle {
     display: block;
   }
@@ -941,11 +956,11 @@ button:focus {
     padding: 0 2em;
   }
 
-  .search-box > input {
+  .search-box>input {
     width: 98%;
   }
 
-  .advance_filter > input {
+  .advance_filter>input {
     width: 98%;
   }
 
@@ -1035,8 +1050,20 @@ button:focus {
   .left-container .property-text-details {
     margin-top: 20px;
   }
+
   .left-container .property-text-details h3 {
     font-size: 18px;
+  }
+
+  .left-container .property-images-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 0fr));
+  }
+
+  .left-container .property-images-box div img {
+    width: 130px;
+    height: 120px;
+    border-radius: 8px;
   }
 
   .left-container .property-text-details .address-details h4 {
@@ -1091,5 +1118,18 @@ button:focus {
   .box-top a {
     font-size: 12px;
     margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 316px) {
+  .left-container .property-images-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 0fr));
+  }
+
+  .left-container .property-images-box div img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
   }
 }

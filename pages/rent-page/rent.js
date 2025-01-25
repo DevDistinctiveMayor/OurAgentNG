@@ -293,9 +293,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                   0,
                                   100
                                 )}...</p>
-                                <p class="details-link">
-                                  <a href="#">Property Details &#10142;</a>
-                                </p>
+                                  <p class="details-link">
+                                          <a href="../property-description/index.html?propertyId=${
+                                            property.id
+                                          }">Property Details &#10142;</a>
+                                      </p>
                                 <p class="agent-profile">
                                   <p alt="Agent Name" class="agent-profile">Agent Name</p>
                                   <b class="agent-name">${property.fullName}</b>

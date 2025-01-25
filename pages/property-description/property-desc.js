@@ -254,7 +254,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
           <div class="details">
             <div class="description">${property.description.substring(
               0,
-              100
+              25
             )}...</div>
             <div class="price">&#8358;${property.price}</div>
             <div class="location">
@@ -316,7 +316,7 @@ const fetchSoldProperties = () => {
                 <div class="details">
                   <div class="description">${property.description.substring(
                     0,
-                    100
+                    25
                   )}...</div>
                   <div class="price">&#8358;${property.price}</div>
                   <div class="location">
