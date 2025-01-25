@@ -140,7 +140,9 @@ Point
                                   <div class="second-box">
                                       <div class="top-box">
                                           <div class="price">
-                                              <p>&#8358;${property.price}</p>
+                                               <p>&#8358;${property.price.substring(
+                                      0,
+                                      10)}</p>
                                               <i class="bx bx-bookmark i"></i>
                                           </div>
                                           <p class="availability">${
@@ -306,7 +308,9 @@ document.addEventListener("DOMContentLoaded", () => {
                               <div class="second-box">
                                 <div class="top-box">
                                   <div class="price">
-                                    <p>&#8358;${property.price}</p>
+                                    <p>&#8358;${property.price.substring(
+                                      0,
+                                      10)}</p>
                                     <i class="bx bx-bookmark i"></i>
                                   </div>
                                   <p class="availability">${

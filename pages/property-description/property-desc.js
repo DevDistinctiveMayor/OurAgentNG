@@ -262,7 +262,11 @@ const fetchAndRenderProperties = (queryParams = "") => {
             property.state
           }</div>
               <div class="view-icon">
-                <span class="view">View</span>
+                <span>
+                      <a href="../property-description/index.html?propertyId=${
+                        property.id
+                      }" class="view">View</a>
+                      </span>
                 <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
               </div>
             </div>
@@ -324,7 +328,11 @@ const fetchSoldProperties = () => {
             property.state
           }</div>
                     <div class="view-icon">
-                      <span class="view">View</span>
+                      <span>
+                      <a href="../property-description/index.html?propertyId=${
+                        property.id
+                      }" class="view">View</a>
+                      </span>
                       <span class="arrow-icon">
                         <i class="fa-solid fa-arrow-right-long"></i>
                       </span>

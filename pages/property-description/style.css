@@ -691,6 +691,7 @@ button:focus {
 
           .view {
             text-decoration: underline;
+            color: #000;
           }
         }
       }

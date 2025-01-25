@@ -152,58 +152,116 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-const propertiesContainer = document.getElementById("properties");
-// const ContainerForProperties = querySelector("");
-//Fetching random poperties to the index page
-const fetchAndRenderProperties = (queryParams = "") => {
-  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
-    .then((response) => response.json())
-    .then((data) => {
-      propertiesContainer.innerHTML = ""; // Clear existing content
 
-      if (data.status === "success" && data.data.length > 0) {
-        data.data.forEach((property, index) => {
-          if (index < 4) {
-            const propertyElement = document.createElement("div");
-            propertyElement.className = "property-card";
-            propertyElement.innerHTML = `
-          <div class="container">
-          <div class="house-card">
-            <div class="img"> <img src="https://ouragent.com.ng/${property.images[0]}" alt=""></div>
-            <div class="details">
-              <div class="description">${property.description.substring(
-                      0,
-                      26
-                    )}</div>
-              <div class="price">${property.price}</div>
-              <div class="location">
-                <div class="location-name">${property.state}, ${property.lga}</div>
-                <div class="view-icon">
-                  <span class="view">View</span>
-                  <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const propertiesContainer = document.getElementById("properties");
+
+  // Fetching random properties to the index page
+  const fetchAndRenderProperties = (queryParams = "") => {
+    fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
+      .then((response) => response.json())
+      .then((data) => {
+        propertiesContainer.innerHTML = ""; // Clear existing content
+
+        if (data.status === "success" && data.data.length > 0) {
+          data.data.forEach((property, index) => {
+            if (index < 4) {
+              const propertyElement = document.createElement("div");
+              propertyElement.className = "property-card";
+              propertyElement.innerHTML = `
+                <div class="container">
+                  <div class="house-card">
+                    <div class="img"> 
+                      <img src="https://ouragent.com.ng/${property.images[0]}" alt="">
+                    </div>
+                    <div class="details">
+                      <div class="description">${property.description.substring(0, 26)}</div>
+                      <div class="price">${property.price}</div>
+                      <div class="location">
+                        <div class="location-name">${property.state}, ${property.lga}</div>
+                        <div class="view-icon">
+                          <span>
+                            <a href="./pages/property-description/index.html?propertyId=${property.id}" class="view">View</a>
+                          </span>
+                          <span class="arrow-icon"> 
+                            <i class="fa-solid fa-arrow-right-long"></i> 
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="img-overlap">
+                      <span class="status">${property.propertystatus}</span>
+                      <span class="icon bookmark-btn" data-property-id="${property.id}"> 
+                        <i class="fa-regular fa-bookmark"></i> 
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="img-overlap">
-              <span class="status">${property.propertystatus}</span>
-              <span class="icon"> <i class="fa-regular fa-bookmark"></i> </span>
-            </div>
-          </div>
-        </div>
-                  `;
-            propertiesContainer.appendChild(propertyElement);
-          }
-        });
-      } else {
-        propertiesContainer.innerHTML = `<p>${
-          data.message || "No properties found."
-        }</p>`;
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
-    });
-};
+              `;
+              propertiesContainer.appendChild(propertyElement);
+            }
+          });
 
-fetchAndRenderProperties();
+          // Add event listeners to all bookmark buttons
+          document.querySelectorAll(".bookmark-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const propertyId = this.dataset.propertyId; // Get property ID
+              handleBookmark(propertyId);
+            });
+          });
+        } else {
+          propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
+      });
+  };
+
+  // Function to handle bookmark action
+  const handleBookmark = (propertyId) => {
+    const userIdInput = document.getElementById("user-id"); // Fetch user ID dynamically
+    if (!userIdInput) {
+      alert("User ID element not found!");
+      return;
+    }
+
+    const userId = userIdInput.value;
+
+    if (!userId || !propertyId) {
+      alert("User ID or Property ID is missing!");
+      return;
+    }
+
+    const payload = {
+      userId: userId,
+      propertyId: propertyId,
+      action: "add", // For now, it's hardcoded as "add". You can add toggling later.
+    };
+
+    fetch("https://ouragent.com.ng/bookmark.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Property bookmarked successfully!");
+        } else {
+          alert("Failed to bookmark the property.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred while bookmarking the property.");
+      });
+  };
+
+  // Dynamically fetch and render properties on page load
+  fetchAndRenderProperties();
+});
