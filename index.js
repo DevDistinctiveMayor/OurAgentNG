@@ -154,7 +154,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-
 // Dynamically fetch and render properties on page load
 const fetchAndRenderProperties = (queryParams = "") => {
   const propertiesContainer = document.getElementById("properties");
@@ -172,7 +171,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
             propertyElement.innerHTML = `
               <div class="container">
                 <div class="house-card">
-                  <div class="img"> 
+                  <div class="img">
                     <img src="https://ouragent.com.ng/${property.images[0]}" alt="">
                   </div>
                   <div class="details">
@@ -185,9 +184,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
                       <div class="location-name">${property.state}, ${property.lga}</div>
                       <div class="view-icon">
                         <span>
-                          <a href="./pages/property-description/index.html?propertyId=${
-                            property.id
-                          }" class="view">View</a>
+                          <a href="./pages/property-description/index.html?propertyId=${property.id}" class="view">View</a>
                         </span>
                         <span class="arrow-icon">
                           <i class="fa-solid fa-arrow-right-long"></i>
@@ -197,13 +194,13 @@ const fetchAndRenderProperties = (queryParams = "") => {
                   </div>
                   <div class="img-overlap">
                     <span class="status">${property.propertystatus}</span>
-                    // <span class="icon">
-                    //   <i class="fa-regular fa-bookmark" 
-                    //      onclick="handleBookmark(${property.id}, 'add')"></i>
-                    // </span>
-                    <button onclick="console.log('Property ID:', ${property.agent_id}, 'add')">Bookmark</button>
-<button onclick="console.log('Property ID:', ${property.id})">Test</button>
-
+                    <span class="icon">
+                      <i 
+                        class="fa-regular fa-bookmark bookmark-btn" 
+                        data-property-id="${property.id}" 
+                        data-agent-id="${property.agent_id}">
+                      </i>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -211,6 +208,9 @@ const fetchAndRenderProperties = (queryParams = "") => {
             propertiesContainer.appendChild(propertyElement);
           }
         });
+
+        // Attach event listeners to bookmark buttons
+        attachBookmarkListeners();
       } else {
         propertiesContainer.innerHTML = `<p>${
           data.message || "No properties found."
@@ -223,24 +223,27 @@ const fetchAndRenderProperties = (queryParams = "") => {
     });
 };
 
-
 // Function to handle bookmarking actions
-const handleBookmark = async (agentId, propertyId, action = "add") => {
-  if (!agentId || !propertyId) {
-    alert("Agent ID or Property ID is missing!");
+const handleBookmark = async (propertyId, action = "add") => {
+  const agentId = sessionStorage.getItem("agent_id"); // Retrieve agent ID from session storage
+
+
+  if (!agentId ) {
+    alert(agentId);
     return;
   }
-
-  const formData = new FormData();
-  formData.append("agent_id", agentId);
-  formData.append("property_id", propertyId);
-  formData.append("action", action);
 
   try {
     const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
-      body: formData,
-      body: JSON.stringify({ property_id: propertyId }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        agent_id: parseInt(agentId),
+        property_id: parseInt(propertyId),
+        action,
+      }),
     });
 
     const result = await response.json();
@@ -261,13 +264,11 @@ const attachBookmarkListeners = () => {
 
   bookmarkButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const propertyId = button.getAttribute("data-property-id");
-      const agentId = getAgentId(); // Fetch the agent ID dynamically
-      handleBookmark(agentId, propertyId);
+      const propertyId = button.getAttribute("data-property-id"); // Retrieve property ID
+      handleBookmark(propertyId); // Call the bookmark handler
     });
   });
 };
-
 
 // Initialize properties on page load
 fetchAndRenderProperties();
