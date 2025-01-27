@@ -152,8 +152,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-
-
 // Dynamically fetch and render properties on page load
 const fetchAndRenderProperties = (queryParams = "") => {
   const propertiesContainer = document.getElementById("properties");
@@ -172,13 +170,10 @@ const fetchAndRenderProperties = (queryParams = "") => {
               <div class="container">
                 <div class="house-card">
                   <div class="img">
-                    <img src="https://ouragent.com.ng/${property.images[0]}" alt="">
+                    <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
                   </div>
                   <div class="details">
-                    <div class="description">${property.description.substring(
-                      0,
-                      26
-                    )}</div>
+                    <div class="description">${property.description.substring(0, 26)}</div>
                     <div class="price">${property.price}</div>
                     <div class="location">
                       <div class="location-name">${property.state}, ${property.lga}</div>
@@ -194,23 +189,23 @@ const fetchAndRenderProperties = (queryParams = "") => {
                   </div>
                   <div class="img-overlap">
                     <span class="status">${property.propertystatus}</span>
-                      <span class="icon">
+                    <span class="icon">
                         <i 
-                          class="fa-solid fa-bookmark bookmark-btn ${
-                            property.bookmarked ? "bookmarked" : ""
+                          class="fa-bookmark bookmark-btn ${
+                            property.bookmarked ? "fa-solid bookmarked" : "fa-regular"
                           }" 
                           data-property-id="${property.id}" 
                           data-agent-id="${property.agent_id}">
                         </i>
                     </span>
-                  </div>
+                 </div>
                 </div>
               </div>
             `;
             propertiesContainer.appendChild(propertyElement);
           }
         });
-
+        
         // Attach event listeners to bookmark buttons
         attachBookmarkListeners();
       } else {
@@ -225,10 +220,8 @@ const fetchAndRenderProperties = (queryParams = "") => {
     });
 };
 
-// Function to handle bookmarking actions
-const handleBookmark = async (propertyId, action = "add") => {
-  const agentId = sessionStorage.getItem("agent_id");
-
+// Handle bookmark actions
+const handleBookmark = async (propertyId, action, agentId) => {
   if (!agentId) {
     alert("Please log in first.");
     return;
@@ -246,16 +239,22 @@ const handleBookmark = async (propertyId, action = "add") => {
     });
 
     const result = await response.json();
+
     if (result.status === "success") {
       const bookmarkIcon = document.querySelector(
         `.bookmark-btn[data-property-id="${propertyId}"]`
       );
 
       if (action === "add") {
-        bookmarkIcon.classList.add("filled"); // Add the filled style
+        bookmarkIcon.classList.add("fa-solid"); // Add solid style
+        bookmarkIcon.classList.remove("fa-regular"); // Remove regular style
+        bookmarkIcon.classList.add("bookmarked"); // Add bookmarked class
       } else {
-        bookmarkIcon.classList.remove("filled"); // Remove the filled style
+        bookmarkIcon.classList.add("fa-regular"); // Add regular style
+        bookmarkIcon.classList.remove("fa-solid"); // Remove solid style
+        bookmarkIcon.classList.remove("bookmarked"); // Remove bookmarked class
       }
+
       alert(result.message);
     } else {
       alert(`Error: ${result.message}`);
@@ -271,26 +270,29 @@ const attachBookmarkListeners = () => {
   const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
 
   bookmarkButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const propertyId = button.getAttribute("data-property-id"); // Retrieve property ID
-        const isBookmarked = button.classList.contains("bookmarked"); // Check if already bookmarked
-  
-        const action = isBookmarked ? "remove" : "add"; // Toggle action
-        handleBookmark(propertyId, action).then(() => {
-          button.classList.toggle("bookmarked"); // Toggle bookmark style
-        });
+    button.addEventListener("click", async () => {
+      const propertyId = button.getAttribute("data-property-id");
+      const agentId = button.getAttribute("data-agent-id");
+      const isBookmarked = button.classList.contains("bookmarked"); // Check if already bookmarked
+      const action = isBookmarked ? "remove" : "add"; // Toggle action
+
+      // Handle bookmark action
+      await handleBookmark(propertyId, action, agentId);
+
+      // Toggle bookmarked style after handling the action
+      button.classList.toggle("bookmarked");
+    });
   });
-});
 };
 
-const style = document.createElement("style");
-style.textContent = `
-  .bookmarked {
-    color: red; /* Set bookmarked icon to blue */
-  }
-`;
-document.head.appendChild(style);
+// // Bookmark styling
+// const style = document.createElement("style");
+// style.textContent = `
+//   .bookmarked {
+//     color: red; /* Highlight bookmarked icon */
+//   }
+// `;
+// document.head.appendChild(style);
 
 // Initialize properties on page load
 fetchAndRenderProperties();
-
