@@ -122,7 +122,11 @@ const renderBookmarks = (bookmarks) => {
                 <p class="bookmark-item-location">Location: ${bookmark.state, bookmark.lga}</p>
                 <p class="bookmark-item-price">Price: ${bookmark.price}</p>
                 <div class="bookmark-item-actions">
-                    <button class="bookmark-item-action">View</button>
+                      <span>
+                      <a href="../property-description/index.html?propertyId=${bookmark.property_id}" class="view">View</a>
+
+                        
+                  </span>
                     <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove</button>
                 </div>
             </div>

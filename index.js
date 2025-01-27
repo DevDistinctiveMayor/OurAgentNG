@@ -194,12 +194,14 @@ const fetchAndRenderProperties = (queryParams = "") => {
                   </div>
                   <div class="img-overlap">
                     <span class="status">${property.propertystatus}</span>
-                    <span class="icon">
-                      <i 
-                        class="fa-regular fa-bookmark bookmark-btn" 
-                        data-property-id="${property.id}" 
-                        data-agent-id="${property.agent_id}">
-                      </i>
+                      <span class="icon">
+                        <i 
+                          class="fa-solid fa-bookmark bookmark-btn ${
+                            property.bookmarked ? "bookmarked" : ""
+                          }" 
+                          data-property-id="${property.id}" 
+                          data-agent-id="${property.agent_id}">
+                        </i>
                     </span>
                   </div>
                 </div>
@@ -225,20 +227,17 @@ const fetchAndRenderProperties = (queryParams = "") => {
 
 // Function to handle bookmarking actions
 const handleBookmark = async (propertyId, action = "add") => {
-  const agentId = sessionStorage.getItem("agent_id"); // Retrieve agent ID from session storage
+  const agentId = sessionStorage.getItem("agent_id");
 
-
-  if (!agentId ) {
-    alert(agentId);
+  if (!agentId) {
+    alert("Please log in first.");
     return;
   }
 
   try {
     const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         agent_id: parseInt(agentId),
         property_id: parseInt(propertyId),
@@ -248,6 +247,15 @@ const handleBookmark = async (propertyId, action = "add") => {
 
     const result = await response.json();
     if (result.status === "success") {
+      const bookmarkIcon = document.querySelector(
+        `.bookmark-btn[data-property-id="${propertyId}"]`
+      );
+
+      if (action === "add") {
+        bookmarkIcon.classList.add("filled"); // Add the filled style
+      } else {
+        bookmarkIcon.classList.remove("filled"); // Remove the filled style
+      }
       alert(result.message);
     } else {
       alert(`Error: ${result.message}`);
@@ -263,12 +271,26 @@ const attachBookmarkListeners = () => {
   const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
 
   bookmarkButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const propertyId = button.getAttribute("data-property-id"); // Retrieve property ID
-      handleBookmark(propertyId); // Call the bookmark handler
-    });
+      button.addEventListener("click", () => {
+        const propertyId = button.getAttribute("data-property-id"); // Retrieve property ID
+        const isBookmarked = button.classList.contains("bookmarked"); // Check if already bookmarked
+  
+        const action = isBookmarked ? "remove" : "add"; // Toggle action
+        handleBookmark(propertyId, action).then(() => {
+          button.classList.toggle("bookmarked"); // Toggle bookmark style
+        });
   });
+});
 };
+
+const style = document.createElement("style");
+style.textContent = `
+  .bookmarked {
+    color: red; /* Set bookmarked icon to blue */
+  }
+`;
+document.head.appendChild(style);
 
 // Initialize properties on page load
 fetchAndRenderProperties();
+
