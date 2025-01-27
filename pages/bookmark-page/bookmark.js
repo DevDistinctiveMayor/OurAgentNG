@@ -68,73 +68,115 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-
 // Function to fetch and display bookmarks
 const fetchBookmarks = async () => {
     const agentId = sessionStorage.getItem("agent_id"); // Retrieve agent ID from session storage
-  
+
     if (!agentId) {
-      alert("Agent not logged in. Please log in to view bookmarks.");
-      return;
+        alert("Agent not logged in. Please log in to view bookmarks.");
+        return;
     }
-  
+
     try {
-      const response = await fetch("https://ouragent.com.ng/get_bookmarks.php", {
-        method: "POST", // Use POST if agent_id needs to be sent securely
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          agent_id: parseInt(agentId),
-        }),
-      });
-  
-      const result = await response.json();
-  
-      if (result.status === "success" && result.data.length > 0) {
-        // Call function to render bookmarks
-        renderBookmarks(result.data);
-      } else if (result.status === "success" && result.data.length === 0) {
-        alert("You have no bookmarks yet.");
-      } else {
-        alert(`Error: ${result.message}`);
-      }
+        const response = await fetch("https://ouragent.com.ng/get_bookmark.php", {
+            method: "POST", // Use POST if agent_id needs to be sent securely
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                agent_id: parseInt(agentId),
+            }),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success" && result.data.length > 0) {
+            // Call function to render bookmarks
+            renderBookmarks(result.data);
+        } else if (result.status === "success" && result.data.length === 0) {
+            alert("You have no bookmarks yet.");
+        } else {
+            alert(`Error: ${result.message}`);
+        }
     } catch (error) {
-      console.error("Error fetching bookmarks:", error);
-      alert("An error occurred while fetching bookmarks.");
+        console.error("Error fetching bookmarks:", error);
+        alert("An error occurred while fetching bookmarks.");
     }
-  };
-  
-  // Function to render bookmarks on the page
-  const renderBookmarks = (bookmarks) => {
-    const bookmarkContainer = document.getElementById("bookmark-container"); // Ensure this container exists on your page
+};
+
+// Function to render bookmarks on the page
+const renderBookmarks = (bookmarks) => {
+    const bookmarkContainer = document.querySelector(".bookmark-list"); // Ensure this container exists on your page
     bookmarkContainer.innerHTML = ""; // Clear existing bookmarks
-  
+
     bookmarks.forEach((bookmark) => {
-      // Create a card or list item for each bookmark
-      const bookmarkItem = document.createElement("div");
-      bookmarkItem.className = "bookmark-card"; // Add appropriate styling classes
-      bookmarkItem.innerHTML = `
-        <h3>${bookmark.property_name}</h3>
-        <p>Location: ${bookmark.location}</p>
-        <p>Price: ${bookmark.price}</p>
-        <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove Bookmark</button>
-      `;
-      bookmarkContainer.appendChild(bookmarkItem);
+        // Create a card or list item for each bookmark
+        const bookmarkItem = document.createElement("div");
+        bookmarkItem.className = "bookmark-card"; // Add appropriate styling classes
+        bookmarkItem.innerHTML = `
+            <div class="bookmark-card-img">
+                <img src="../../images/ibadan.png" alt="Property Image" />
+            </div>
+            <div class="bookmark-item-details">
+                <h3 class="bookmark-item-title">${bookmark.property_name}</h3>
+                <p class="bookmark-item-location">Location: ${bookmark.state, bookmark.lga}</p>
+                <p class="bookmark-item-price">Price: ${bookmark.price}</p>
+                <div class="bookmark-item-actions">
+                    <button class="bookmark-item-action">View</button>
+                    <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove</button>
+                </div>
+            </div>
+        `;
+        bookmarkContainer.appendChild(bookmarkItem);
     });
-  
+
     // Attach event listeners to "Remove Bookmark" buttons
     const removeButtons = document.querySelectorAll(".remove-bookmark-btn");
     removeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const propertyId = button.getAttribute("data-property-id");
-        handleBookmark(propertyId, "remove"); // Use your existing bookmark handler to remove
-      });
+        button.addEventListener("click", () => {
+            const propertyId = button.getAttribute("data-property-id");
+            handleBookmark(propertyId, "remove"); // Use your existing bookmark handler to remove
+        });
     });
-  };
-  
-  // Fetch bookmarks on page load
-  document.addEventListener("DOMContentLoaded", () => {
+};
+
+// Function to handle bookmark actions (add/remove)
+const handleBookmark = async (propertyId, action) => {
+    const agentId = sessionStorage.getItem("agent_id");
+
+    if (!agentId) {
+        alert("Agent not logged in. Please log in to manage bookmarks.");
+        return;
+    }
+
+    try {
+        const response = await fetch("https://ouragent.com.ng/handle_bookmark.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                agent_id: parseInt(agentId),
+                property_id: parseInt(propertyId),
+                action: action,
+            }),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert(`Bookmark ${action === "add" ? "added" : "removed"} successfully.`);
+            fetchBookmarks(); // Refresh the bookmarks list
+        } else {
+            alert(`Error: ${result.message}`);
+        }
+    } catch (error) {
+        console.error("Error handling bookmark:", error);
+        alert("An error occurred while managing the bookmark.");
+    }
+};
+
+// Fetch bookmarks on page load
+document.addEventListener("DOMContentLoaded", () => {
     fetchBookmarks();
-  });
-  
+});
