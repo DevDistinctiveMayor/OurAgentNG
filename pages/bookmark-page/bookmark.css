@@ -242,12 +242,11 @@ main {
 .bookmark-section .bookmark-list .bookmark-item-details p {
     font-size: 1em;
     color: #333;
+    top: 10px;
 }
 
 .bookmark-section .bookmark-list .bookmark-item-details .bookmark-item-actions {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
 }
 
@@ -257,6 +256,8 @@ main {
     background-color: rgba(8, 97, 175, 1);
     padding: 10px 20px;
     border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 .bookmark-section  .bookmark-item-details .bookmark-item-actions .bookmark-item-action:hover {
