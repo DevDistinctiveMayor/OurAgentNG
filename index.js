@@ -195,7 +195,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
                           property.bookmarked ? "fa-solid bookmarked" : "fa-regular"
                         }" 
                         data-property-id="${property.id}" 
-                        data-agent-id="${property.agent_id}">
+                        data-agent-id="${property.client_id}">
                       </i>
                     </span>
                   </div>
@@ -221,18 +221,25 @@ const fetchAndRenderProperties = (queryParams = "") => {
 
 // Handle bookmark actions
 
-const handleBookmark = async (propertyId, action, agentId) => {
-  if (!agentId) {
+const handleBookmark = async (propertyId, action) => {
+  const clientId = sessionStorage.getItem("client_id");
+
+  console.log("Client ID:", clientId); // Debugging clientId
+  console.log("Property ID:", propertyId); // Debugging propertyId
+  console.log("Action:", action); // Debugging action
+
+  if (!clientId) {
     alert("Please log in first.");
     return;
   }
 
+  // Continue with the rest of the function...
   try {
     const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        agent_id: parseInt(agentId),
+        client_id: parseInt(clientId),
         property_id: parseInt(propertyId),
         action,
       }),
@@ -265,7 +272,7 @@ const handleBookmark = async (propertyId, action, agentId) => {
   }
 };
 
-// Attach event listeners to bookmark buttons
+
 // Attach event listeners to bookmark buttons
 const attachBookmarkListeners = () => {
   const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
@@ -273,12 +280,12 @@ const attachBookmarkListeners = () => {
   bookmarkButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       const propertyId = button.getAttribute("data-property-id");
-      const agentId = button.getAttribute("data-agent-id");
+      const clientId = button.getAttribute("data-client-id");
       const isBookmarked = button.classList.contains("bookmarked");
       const action = isBookmarked ? "remove" : "add";
 
       // Handle bookmark action
-      await handleBookmark(propertyId, action, agentId);
+      await handleBookmark(propertyId, action, clientId);
 
       // Update UI based on the new state
       button.classList.toggle("bookmarked", action === "add");
