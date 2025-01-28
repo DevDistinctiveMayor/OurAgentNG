@@ -270,8 +270,7 @@ const handleBookmark = async (propertyId, action) => {
     console.error("Error during bookmark action:", error);
     alert("An error occurred while processing your request.");
   }
-};gg
-
+};
 
 // Attach event listeners to bookmark buttons
 const attachBookmarkListeners = () => {
