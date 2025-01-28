@@ -76,9 +76,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Function to fetch and display bookmarks
 const fetchBookmarks = async () => {
-  const agentId = sessionStorage.getItem("agent_id"); // Retrieve agent ID from session storage
+  const clientId = sessionStorage.getItem("client_id"); // Retrieve agent ID from session storage
 
-  if (!agentId) {
+  if (!clientId) {
     alert("Agent not logged in. Please log in to view bookmarks.");
     return;
   }
@@ -90,7 +90,7 @@ const fetchBookmarks = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        agent_id: parseInt(agentId),
+        client_id: parseInt(clientId),
       }),
     });
 
@@ -156,9 +156,9 @@ const renderBookmarks = (bookmarks) => {
 
 // Function to handle bookmark actions (add/remove)
 const handleBookmark = async (propertyId, action) => {
-  const agentId = sessionStorage.getItem("agent_id");
+  const clientId = sessionStorage.getItem("client_id");
 
-  if (!agentId) {
+  if (!clientId) {
     alert("Agent not logged in. Please log in to manage bookmarks.");
     return;
   }
@@ -172,7 +172,7 @@ const handleBookmark = async (propertyId, action) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          agent_id: parseInt(agentId),
+          agent_id: parseInt(clientId),
           property_id: parseInt(propertyId),
           action: action,
         }),
