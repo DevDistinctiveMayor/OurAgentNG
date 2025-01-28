@@ -224,16 +224,15 @@ const fetchAndRenderProperties = (queryParams = "") => {
 const handleBookmark = async (propertyId, action) => {
   const clientId = sessionStorage.getItem("client_id");
 
+  if (!clientId) {
+    alert("Please log in first.");
+    return false;
+  }
+
   console.log("Client ID:", clientId); // Debugging clientId
   console.log("Property ID:", propertyId); // Debugging propertyId
   console.log("Action:", action); // Debugging action
 
-  if (!clientId) {
-    alert("Please log in first.");
-    return;
-  }
-
-  // Continue with the rest of the function...
   try {
     const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
@@ -248,29 +247,20 @@ const handleBookmark = async (propertyId, action) => {
     const result = await response.json();
 
     if (result.status === "success") {
-      const bookmarkIcon = document.querySelector(
-        `.bookmark-btn[data-property-id="${propertyId}"]`
-      );
-
-      if (action === "add") {
-        bookmarkIcon.classList.add("fa-solid"); // Add solid style
-        bookmarkIcon.classList.remove("fa-regular"); // Remove regular style
-        bookmarkIcon.classList.add("bookmarked"); // Add bookmarked class
-      } else {
-        bookmarkIcon.classList.add("fa-regular"); // Add regular style
-        bookmarkIcon.classList.remove("fa-solid"); // Remove solid style
-        bookmarkIcon.classList.remove("bookmarked"); // Remove bookmarked class
-      }
-
-      alert(result.message);
+      alert(`Success: ${result.message}`); // Success message
+      return true;
     } else {
-      alert(`Error: ${result.message}`);
+      console.error(`Error: ${result.message}`); // Log error message
+      alert(result.message);
+      return false;
     }
   } catch (error) {
     console.error("Error during bookmark action:", error);
     alert("An error occurred while processing your request.");
+    return false;
   }
 };
+
 
 // Attach event listeners to bookmark buttons
 const attachBookmarkListeners = () => {
@@ -279,17 +269,18 @@ const attachBookmarkListeners = () => {
   bookmarkButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       const propertyId = button.getAttribute("data-property-id");
-      const clientId = button.getAttribute("data-client-id");
       const isBookmarked = button.classList.contains("bookmarked");
       const action = isBookmarked ? "remove" : "add";
 
       // Handle bookmark action
-      await handleBookmark(propertyId, action, clientId);
+      const success = await handleBookmark(propertyId, action);
 
-      // Update UI based on the new state
-      button.classList.toggle("bookmarked", action === "add");
-      button.classList.toggle("fa-solid", action === "add");
-      button.classList.toggle("fa-regular", action === "remove");
+      // Update UI only if the backend operation succeeded
+      if (success) {
+        button.classList.toggle("bookmarked", action === "add");
+        button.classList.toggle("fa-solid", action === "add");
+        button.classList.toggle("fa-regular", action === "remove");
+      }
     });
   });
 };
