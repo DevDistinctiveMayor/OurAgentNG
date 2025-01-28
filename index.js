@@ -174,7 +174,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
                   </div>
                   <div class="details">
                     <div class="description">${property.description.substring(0, 26)}</div>
-                    <div class="price">${property.price}</div>
+                    <div class="price">₦${property.price}</div>
                     <div class="location">
                       <div class="location-name">${property.state}, ${property.lga}</div>
                       <div class="view-icon">
@@ -190,28 +190,26 @@ const fetchAndRenderProperties = (queryParams = "") => {
                   <div class="img-overlap">
                     <span class="status">${property.propertystatus}</span>
                     <span class="icon">
-                        <i 
-                          class="fa-bookmark bookmark-btn ${
-                            property.bookmarked ? "fa-solid bookmarked" : "fa-regular"
-                          }" 
-                          data-property-id="${property.id}" 
-                          data-agent-id="${property.agent_id}">
-                        </i>
+                      <i 
+                        class="fa-bookmark bookmark-btn ${
+                          property.bookmarked ? "fa-solid bookmarked" : "fa-regular"
+                        }" 
+                        data-property-id="${property.id}" 
+                        data-agent-id="${property.agent_id}">
+                      </i>
                     </span>
-                 </div>
+                  </div>
                 </div>
               </div>
             `;
             propertiesContainer.appendChild(propertyElement);
           }
         });
-        
+
         // Attach event listeners to bookmark buttons
         attachBookmarkListeners();
       } else {
-        propertiesContainer.innerHTML = `<p>${
-          data.message || "No properties found."
-        }</p>`;
+        propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
       }
     })
     .catch((error) => {
@@ -220,7 +218,9 @@ const fetchAndRenderProperties = (queryParams = "") => {
     });
 };
 
+
 // Handle bookmark actions
+
 const handleBookmark = async (propertyId, action, agentId) => {
   if (!agentId) {
     alert("Please log in first.");
@@ -266,6 +266,7 @@ const handleBookmark = async (propertyId, action, agentId) => {
 };
 
 // Attach event listeners to bookmark buttons
+// Attach event listeners to bookmark buttons
 const attachBookmarkListeners = () => {
   const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
 
@@ -273,26 +274,19 @@ const attachBookmarkListeners = () => {
     button.addEventListener("click", async () => {
       const propertyId = button.getAttribute("data-property-id");
       const agentId = button.getAttribute("data-agent-id");
-      const isBookmarked = button.classList.contains("bookmarked"); // Check if already bookmarked
-      const action = isBookmarked ? "remove" : "add"; // Toggle action
+      const isBookmarked = button.classList.contains("bookmarked");
+      const action = isBookmarked ? "remove" : "add";
 
       // Handle bookmark action
       await handleBookmark(propertyId, action, agentId);
 
-      // Toggle bookmarked style after handling the action
-      button.classList.toggle("bookmarked");
+      // Update UI based on the new state
+      button.classList.toggle("bookmarked", action === "add");
+      button.classList.toggle("fa-solid", action === "add");
+      button.classList.toggle("fa-regular", action === "remove");
     });
   });
 };
-
-// // Bookmark styling
-// const style = document.createElement("style");
-// style.textContent = `
-//   .bookmarked {
-//     color: red; /* Highlight bookmarked icon */
-//   }
-// `;
-// document.head.appendChild(style);
 
 // Initialize properties on page load
 fetchAndRenderProperties();

@@ -410,8 +410,8 @@ async function fetchSoldProperties(agentId, containerId, url) {
                     <div class="price">₦${property.price}</div>
                     <div class="location">
                         <div class="location-name">${property.state}, ${
-        property.lga
-      }</div>
+                          property.lga
+                        }</div>
                     </div>
                     <button class="delete-btn" onclick="deleteProperty('${
                       property.id
