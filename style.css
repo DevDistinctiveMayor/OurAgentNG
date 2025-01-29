@@ -1152,7 +1152,7 @@ main {
           justify-content: space-around;
 
           .status {
-            font-size: 12px;
+            font-size: 13px;
             padding: 2px 6px;
           }
 
@@ -1162,7 +1162,7 @@ main {
             width: 28px;
 
             i {
-              font-size: 15px;
+              font-size: 17px;
             }
 
             &:active {
