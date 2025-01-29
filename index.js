@@ -1,3 +1,9 @@
+window.onload = function() {
+  document.getElementById("preloader").style.display = "none";
+  document.getElementById("content").style.display = "block";
+};
+
+
 const carouselTrack = document.querySelector(".carousel-track");
 const carouselItems = Array.from(document.querySelectorAll(".carousel-item"));
 let currentIndex = 0;
@@ -269,13 +275,14 @@ const attachBookmarkListeners = () => {
   bookmarkButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       const propertyId = button.getAttribute("data-property-id");
+      const clientId = sessionStorage.getItem("client_id"); // Use the logged-in client ID
       const isBookmarked = button.classList.contains("bookmarked");
       const action = isBookmarked ? "remove" : "add";
 
       // Handle bookmark action
       const success = await handleBookmark(propertyId, action);
 
-      // Update UI only if the backend operation succeeded
+      // Update UI based on the new state only if successful
       if (success) {
         button.classList.toggle("bookmarked", action === "add");
         button.classList.toggle("fa-solid", action === "add");
@@ -287,3 +294,34 @@ const attachBookmarkListeners = () => {
 
 // Initialize properties on page load
 fetchAndRenderProperties();
+
+
+
+const loadBookmarks = async () => {
+  const clientId = sessionStorage.getItem("client_id");
+  if (!clientId) return;
+  // alert(clientId);
+
+  try {
+    const response = await fetch(`https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`);
+    const result = await response.json();
+
+    if (result.status === "success") {
+      const bookmarkedProperties = result.bookmarked; // Array of bookmarked property IDs
+
+      // Update the DOM for bookmarked properties
+      bookmarkedProperties.forEach((propertyId) => {
+        const bookmarkIcon = document.querySelector(`.bookmark-btn[data-property-id="${propertyId}"]`);
+        if (bookmarkIcon) {
+          bookmarkIcon.classList.add("fa-solid", "bookmarked"); // Add solid style
+          bookmarkIcon.classList.remove("fa-regular"); // Remove regular style
+        }
+      });
+    }
+  } catch (error) {
+    console.error("Error loading bookmarks:", error);
+  }
+};
+
+// Call this function when the page loads
+loadBookmarks();
