@@ -158,105 +158,110 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-// Dynamically fetch and render properties on page load
-const fetchAndRenderProperties = (queryParams = "") => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetchAndRenderProperties();
+  await loadBookmarks();
+});
+
+// Fetch and Render Properties
+async function fetchAndRenderProperties(queryParams = "") {
   const propertiesContainer = document.getElementById("properties");
+  propertiesContainer.innerHTML = "Loading properties...";
 
-  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
-    .then((response) => response.json())
-    .then((data) => {
-      propertiesContainer.innerHTML = ""; // Clear existing content
+  try {
+    const response = await fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`);
+    const data = await response.json();
+    propertiesContainer.innerHTML = "";
 
-      if (data.status === "success" && data.data.length > 0) {
-        data.data.forEach((property, index) => {
-          if (index < 4) {
-            const propertyElement = document.createElement("div");
-            propertyElement.className = "property-card";
-            propertyElement.innerHTML = `
-              <div class="container">
-                <div class="house-card">
-                  <div class="img">
-                    <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
-                  </div>
-                  <div class="details">
-                    <div class="description">${property.description.substring(0, 26)}</div>
-                    <div class="price">₦${property.price}</div>
-                    <div class="location">
-                      <div class="location-name">${property.state}, ${property.lga}</div>
-                      <div class="view-icon">
-                        <span>
-                          <a href="./pages/property-description/index.html?propertyId=${property.id}" class="view">View</a>
-                        </span>
-                        <span class="arrow-icon">
-                          <i class="fa-solid fa-arrow-right-long"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="img-overlap">
-                    <span class="status">${property.propertystatus}</span>
-                    <span class="icon">
-                      <i 
-                        class="fa-bookmark bookmark-btn ${
-                          property.bookmarked ? "fa-solid bookmarked" : "fa-regular"
-                        }" 
-                        data-property-id="${property.id}" 
-                        data-agent-id="${property.client_id}">
-                      </i>
+    if (data.status === "success" && data.data.length > 0) {
+      data.data.slice(0, 4).forEach((property) => {
+        const propertyElement = document.createElement("div");
+        propertyElement.className = "property-card";
+        propertyElement.innerHTML = `
+          <div class="container">
+            <div class="house-card">
+              <div class="img">
+                <img src="https://ouragent.com.ng/${property.images[0]}" alt="Property Image">
+              </div>
+              <div class="details">
+                <div class="description">${property.description.substring(0, 26)}</div>
+                <div class="price">₦${property.price}</div>
+                <div class="location">
+                  <div class="location-name">${property.state}, ${property.lga}</div>
+                  <div class="view-icon">
+                    <span>
+                      <a href="./pages/property-description/index.html?propertyId=${property.id}" class="view">View</a>
+                    </span>
+                    <span class="arrow-icon">
+                      <i class="fa-solid fa-arrow-right-long"></i>
                     </span>
                   </div>
                 </div>
               </div>
-            `;
-            propertiesContainer.appendChild(propertyElement);
-          }
-        });
+              <div class="img-overlap">
+                <span class="status">${property.propertystatus}</span>
+                <span class="icon">
+                  <i class="fa-bookmark bookmark-btn ${property.bookmarked ? "fa-solid bookmarked" : "fa-regular"}"
+                     data-property-id="${property.id}" data-agent-id="${property.client_id}"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+        propertiesContainer.appendChild(propertyElement);
+      });
+      attachBookmarkListeners();
+    } else {
+      propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
+    }
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    propertiesContainer.innerHTML = "<p>An error occurred while fetching properties.</p>";
+  }
+}
 
-        // Attach event listeners to bookmark buttons
-        attachBookmarkListeners();
-      } else {
-        propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
-    });
-};
-
-
-// Handle bookmark actions
-
-const handleBookmark = async (propertyId, action) => {
+// Load Bookmarks
+async function loadBookmarks() {
   const clientId = sessionStorage.getItem("client_id");
+  if (!clientId) return;
 
+  try {
+    const response = await fetch(`https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`);
+    const result = await response.json();
+
+    if (result.status === "success") {
+      result.bookmarked.forEach((propertyId) => {
+        const bookmarkIcon = document.querySelector(`.bookmark-btn[data-property-id="${propertyId}"]`);
+        if (bookmarkIcon) {
+          bookmarkIcon.classList.add("fa-solid", "bookmarked");
+          bookmarkIcon.classList.remove("fa-regular");
+        }
+      });
+    }
+  } catch (error) {
+    console.error("Error loading bookmarks:", error);
+  }
+}
+
+// Handle Bookmark Action
+async function handleBookmark(propertyId, action) {
+  const clientId = sessionStorage.getItem("client_id");
   if (!clientId) {
     alert("Please log in first.");
     return false;
   }
 
-  console.log("Client ID:", clientId); // Debugging clientId
-  console.log("Property ID:", propertyId); // Debugging propertyId
-  console.log("Action:", action); // Debugging action
-
   try {
     const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        client_id: parseInt(clientId),
-        property_id: parseInt(propertyId),
-        action,
-      }),
+      body: JSON.stringify({ client_id: parseInt(clientId), property_id: parseInt(propertyId), action })
     });
-
+    
     const result = await response.json();
-
     if (result.status === "success") {
-      alert(`Success: ${result.message}`); // Success message
       return true;
     } else {
-      console.error(`Error: ${result.message}`); // Log error message
       alert(result.message);
       return false;
     }
@@ -265,63 +270,23 @@ const handleBookmark = async (propertyId, action) => {
     alert("An error occurred while processing your request.");
     return false;
   }
-};
+}
 
-
-// Attach event listeners to bookmark buttons
-const attachBookmarkListeners = () => {
-  const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
-
-  bookmarkButtons.forEach((button) => {
+// Attach Event Listeners to Bookmark Buttons
+function attachBookmarkListeners() {
+  document.querySelectorAll(".bookmark-btn").forEach((button) => {
     button.addEventListener("click", async () => {
       const propertyId = button.getAttribute("data-property-id");
-      const clientId = sessionStorage.getItem("client_id"); // Use the logged-in client ID
       const isBookmarked = button.classList.contains("bookmarked");
       const action = isBookmarked ? "remove" : "add";
 
-      // Handle bookmark action
-      const success = await handleBookmark(propertyId, action);
-
-      // Update UI based on the new state only if successful
-      if (success) {
+      if (await handleBookmark(propertyId, action)) {
         button.classList.toggle("bookmarked", action === "add");
         button.classList.toggle("fa-solid", action === "add");
         button.classList.toggle("fa-regular", action === "remove");
       }
     });
   });
-};
-
-// Initialize properties on page load
-fetchAndRenderProperties();
+}
 
 
-
-const loadBookmarks = async () => {
-  const clientId = sessionStorage.getItem("client_id");
-  if (!clientId) return;
-  // alert(clientId);
-
-  try {
-    const response = await fetch(`https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`);
-    const result = await response.json();
-
-    if (result.status === "success") {
-      const bookmarkedProperties = result.bookmarked; // Array of bookmarked property IDs
-
-      // Update the DOM for bookmarked properties
-      bookmarkedProperties.forEach((propertyId) => {
-        const bookmarkIcon = document.querySelector(`.bookmark-btn[data-property-id="${propertyId}"]`);
-        if (bookmarkIcon) {
-          bookmarkIcon.classList.add("fa-solid", "bookmarked"); // Add solid style
-          bookmarkIcon.classList.remove("fa-regular"); // Remove regular style
-        }
-      });
-    }
-  } catch (error) {
-    console.error("Error loading bookmarks:", error);
-  }
-};
-
-// Call this function when the page loads
-loadBookmarks();

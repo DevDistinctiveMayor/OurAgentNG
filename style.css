@@ -588,9 +588,9 @@ main {
 .grid-item:hover .overlay {
   opacity: 1;
 }
-.ekiti{
-  height: 46.7%;
-}
+/* .ekiti{
+  height: 100%;
+} */
 .overlay p {
   font-size: 1.2em;
   font-weight: bold;
@@ -1158,7 +1158,7 @@ main {
 
     .container {
       width: 174px;
-      min-height: 300px;
+      min-height: auto;
     }
 
   }
