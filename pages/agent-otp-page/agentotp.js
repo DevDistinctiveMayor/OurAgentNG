@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             text: "OTP verified successfully!",
             icon: "success",
             confirmButtonText: "Proceed",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           }).then(() => {
             // Redirect to login page
             window.location.href = "../agent-login-page/agent-login.html";
@@ -110,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
             text: result.message || "The OTP you entered is incorrect.",
             icon: "error",
             confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           });
         }
       } catch (error) {
@@ -119,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text: "An error occurred while verifying the OTP. Please try again later.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       } finally {
         submitButton.disabled = false;
@@ -148,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             text: "A new OTP has been sent to your email address.",
             icon: "success",
             confirmButtonText: "OK",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           });
         } else {
           Swal.fire({
@@ -155,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             text: result.message || "Failed to resend OTP. Please try again.",
             icon: "error",
             confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           });
         }
       } catch (error) {
@@ -164,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text: "An error occurred while resending the OTP. Please try again later.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       } finally {
         resendBtn.disabled = false;

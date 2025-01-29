@@ -167,6 +167,7 @@ document.getElementById("toggle-password")
             text: "Please check your email for OTP verification.",
             icon: "success",
             confirmButtonText: "Proceed",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
           }).then(() => {
             // Redirect to OTP verification page, passing email and userId
             sessionStorage.setItem("userId", data.userId);
@@ -189,6 +190,7 @@ document.getElementById("toggle-password")
               text: data.message || "Something went wrong. Please try again.",
               icon: "error",
               confirmButtonText: "Retry",
+              confirmButtonColor: "rgba(8, 97, 175, 1)"
             });
           }
         }

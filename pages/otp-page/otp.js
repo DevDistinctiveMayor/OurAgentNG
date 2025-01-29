@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "Please enter a valid 6-digit OTP.",
         icon: "warning",
         confirmButtonText: "Retry",
+        confirmButtonColor: "rgba(8, 97, 175, 1)"
       });
       return;
     }
@@ -98,6 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
           text: "Your OTP has been verified successfully!",
           icon: "success",
           confirmButtonText: "Proceed",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
+          
         }).then(() => {
           window.location.href = "../login-page/login.html";
         });
@@ -106,7 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
           title: "Verification Failed",
           text: result.message || "The OTP entered is incorrect. Please try again.",
           icon: "error",
-          confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+          confirmButtonText: "Retry"
         });
       }
     } catch (error) {
@@ -116,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "An error occurred while verifying the OTP. Please try again later.",
         icon: "error",
         confirmButtonText: "Retry",
+        confirmButtonColor: "rgba(8, 97, 175, 1)"
       });
     } finally {
       submitButton.disabled = false;
@@ -144,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text: "OTP has been resent.",
           icon: "success",
           confirmButtonText: "Proceed",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
     
         });
       } else {
@@ -152,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text: result.message || "Failed to resend OTP.",
           icon: "error",
           confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       }
     } catch (error) {
@@ -161,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "An error occurred while verifying the OTP. Please try again later.",
         icon: "error",
         confirmButtonText: "Retry",
+        confirmButtonColor: "rgba(8, 97, 175, 1)"
       });
     } finally {
       submitButton.disabled = false;

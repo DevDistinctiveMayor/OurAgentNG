@@ -9,8 +9,6 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
 });
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
   const clientId = sessionStorage.getItem("client_id");
   const greetings = document.querySelectorAll(".greeting");
@@ -29,16 +27,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch client data
-    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ client_id: clientId }),
-    });
+    const response = await fetch(
+      "https://ouragent.com.ng/get_user_session.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ client_id: clientId }),
+      }
+    );
 
     const data = await response.json();
     if (data.status === "success" && data.client) {
       const fullName = data.client.fullName;
-      greetings.forEach((el) => (el.textContent = `${fullName.substring(0, 8)}...`));
+      greetings.forEach(
+        (el) => (el.textContent = `${fullName.substring(0, 8)}...`)
+      );
       loginButtons.forEach((el) => (el.style.display = "none"));
       logoutButtons.forEach((el) => (el.style.display = "inline"));
       postPropertyButtons.forEach((el) => (el.style.display = "inline"));
@@ -54,7 +57,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   logoutButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       try {
-        const logoutResponse = await fetch("https://ouragent.com.ng/logout.php", { method: "POST" });
+        const logoutResponse = await fetch(
+          "https://ouragent.com.ng/logout.php",
+          { method: "POST" }
+        );
         if (logoutResponse.ok) {
           sessionStorage.clear();
           window.location.reload();
@@ -67,7 +73,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
-
 
 const urlParams = new URLSearchParams(window.location.search);
 const propertyId = urlParams.get("propertyId");
@@ -145,7 +150,7 @@ fetch(
       function updateCarousel() {
         const offset = -currentIndex * 100;
         const carouselInner = document.querySelector(".carousel-inner");
-       // carouselInner.style.transform = `translateX(${offset}%)`; // Move the carousel
+        // carouselInner.style.transform = `translateX(${offset}%)`; // Move the carousel
         // Update active class
         carouselItems.forEach((item, index) => {
           item.classList.remove("active");
@@ -249,7 +254,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
           <div class="details">
             <div class="description">${property.description.substring(
               0,
-              100
+              25
             )}...</div>
             <div class="price">&#8358;${property.price}</div>
             <div class="location">
@@ -257,7 +262,11 @@ const fetchAndRenderProperties = (queryParams = "") => {
             property.state
           }</div>
               <div class="view-icon">
-                <span class="view">View</span>
+                <span>
+                      <a href="../property-description/index.html?propertyId=${
+                        property.id
+                      }" class="view">View</a>
+                      </span>
                 <span class="arrow-icon"> <i class="fa-solid fa-arrow-right-long"></i> </span>
               </div>
             </div>
@@ -286,3 +295,71 @@ const fetchAndRenderProperties = (queryParams = "") => {
 
 // Fetch all properties initially
 fetchAndRenderProperties();
+
+const fetchSoldProperties = () => {
+  fetch("https://ouragent.com.ng/sold_property.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const propertiesContainer = document.getElementById("propertiesSold");
+      propertiesContainer.innerHTML = ""; // Clear existing content
+
+      if (data.status === "success" && data.properties.length > 0) {
+        data.properties.forEach((property) => {
+          const propertyElement = document.createElement("div");
+          propertyElement.className = "house-card";
+          propertyElement.innerHTML = `
+            <div class="featured-container">
+              <div class="house-card">
+                <img class="img" src="${
+                  property.images[0] ||
+                  "https://ouragent.com.ng/images/featured_image.png"
+                }" alt="Property Image">
+                <div class="details">
+                  <div class="description">${property.description.substring(
+                    0,
+                    25
+                  )}...</div>
+                  <div class="price">&#8358;${property.price}</div>
+                  <div class="location">
+                    <div class="location-name">${property.lga}, ${
+            property.state
+          }</div>
+                    <div class="view-icon">
+                      <span>
+                      <a href="../property-description/index.html?propertyId=${
+                        property.id
+                      }" class="view">View</a>
+                      </span>
+                      <span class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="img-overlap">
+                  <span class="status">${property.propertystatus}</span>
+                  <span class="icon"><i class="bx bx-bookmark"></i></span>
+                </div>
+              </div>
+            </div>
+          `;
+          propertiesContainer.appendChild(propertyElement);
+        });
+      } else {
+        propertiesContainer.innerHTML = `<p>${
+          data.message || "No sold properties found."
+        }</p>`;
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      const propertiesContainer = document.getElementById("propertiesSold");
+      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
+    });
+};
+
+// Call the function when the D
+document.addEventListener("DOMContentLoaded", fetchSoldProperties);

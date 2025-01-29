@@ -218,10 +218,11 @@ main {
   border-radius: 5px;
 }
 
-.filter>a {
+.filter>p {
   text-decoration: none;
   color: #ffffffcb;
-  font: 12px;
+  font: 14px;
+  font-weight: 500;
   text-decoration: underline;
 }
 
@@ -388,7 +389,7 @@ main {
     justify-content: center;
     width: 270px;
     min-height: 372px;
-    padding: 20px 10px;
+    padding: 8px 0px;
     border: 1px solid #0861af;
     border-radius: 7px;
     cursor: pointer;
@@ -399,11 +400,11 @@ main {
 
       .img {
         width: 100%;
-        height: 142px;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 7px;
+        border-radius: 8px;
         overflow: hidden;
 
         img {
@@ -412,6 +413,7 @@ main {
           max-width: 100%;
           object-fit: cover;
           width: 100%;
+          border-radius: 8px;
         }
       }
 
@@ -450,6 +452,7 @@ main {
 
             .view {
               text-decoration: underline;
+              color: #000;
             }
           }
         }
@@ -458,7 +461,7 @@ main {
       .img-overlap {
         position: absolute;
         z-index: 2;
-        top: 20px;
+        top: 4px;
         left: 10px;
         right: 10px;
         width: 90%;
@@ -467,11 +470,11 @@ main {
         justify-content: space-between;
 
         .status {
-          font-size: 12px;
-          background: rgba(254, 133, 21, 1);
-          color: #ffffff;
-          padding: 2px 15px;
-          border-radius: 3px;
+            font-size: 14px;
+            background: rgba(254, 133, 21, 1);
+            color: #ffffff;
+            padding: 6px 5px;
+            border-radius: 3px;
         }
 
         .icon {
@@ -573,7 +576,9 @@ main {
 .grid-item:hover .overlay {
   opacity: 1;
 }
-
+.ekiti{
+  height: 46.7%;
+}
 .overlay p {
   font-size: 1.2em;
   font-weight: bold;
@@ -1080,7 +1085,7 @@ main {
           justify-content: space-around;
 
           .status {
-            font-size: 11px;
+            font-size: 12px;
             padding: 2px 6px;
           }
 
