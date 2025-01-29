@@ -163,14 +163,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
-  document.body.style.display = "none"; // Ensure body is hidden initially
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("content");
 
-  await fetchAndRenderProperties(); // Fetch properties
-  await loadBookmarks(); // Load bookmarks
-
-  document.body.style.display = "block"; // Show body when JS is ready
+  try {
+      await fetchAndRenderProperties(); // Fetch properties
+      await loadBookmarks(); // Load bookmarks
+  } catch (error) {
+      console.error("Error loading data:", error);
+  } finally {
+      loader.style.display = "none"; // Hide loader
+      content.style.display = "block"; // Show content
+  }
 });
-
 // Fetch and Render Properties
 async function fetchAndRenderProperties(queryParams = "") {
   const propertiesContainer = document.getElementById("properties");

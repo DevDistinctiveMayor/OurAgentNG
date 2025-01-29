@@ -17,18 +17,38 @@ body {
 
 
 
-/* #content {
-  display: none;
-} */
-/* #preloader {
+#loader {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+  z-index: 9999;
+}
+
+/* Scanner loading animation */
+.scanner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #007bff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide properties until fully loaded */
+#content {
+  display: none;
+}
 /* Blur and disable background when menu is open */
 .content-blur {
   filter: blur(3px);
@@ -950,7 +970,7 @@ main {
     .container {
       padding: 11px 0px;
       width: 197px;
-      min-height: 300px;
+      min-height: auto;
 
       .house-card {
         width: 230px;
@@ -1060,7 +1080,7 @@ main {
 
     .container {
       width: 179px;
-      min-height: 300px;
+      min-height: auto;
 
       .house-card {
         width: 230px;
@@ -1187,7 +1207,7 @@ main {
 
     .container {
       width: 271px;
-      min-height: 300px;
+      min-height: auto;
 
       .house-card {
         width: 230px;
