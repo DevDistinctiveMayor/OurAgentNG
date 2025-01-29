@@ -273,6 +273,9 @@ async function handleBookmark(propertyId, action) {
 
       const result = await response.json();
       if (result.status === "success") {
+          // Add "remove" message to the toast if action is success
+          const actionMessage = action === "add" ? "Property bookmarked successfully!" : "Property removed from bookmarks!";
+          showToast(actionMessage, "success");
           return true;
       } else {
           alert(result.message);
@@ -280,10 +283,23 @@ async function handleBookmark(propertyId, action) {
       }
   } catch (error) {
       console.error("Error during bookmark action:", error);
-      alert("An error occurred while processing your request.");
+      // Display error toast
+      showToast("An error occurred while processing your request.", "error");
       return false;
   }
 }
+
+function showToast(message, type) {
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.innerText = message;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+      toast.remove();
+  }, 3000); // Remove toast after 3 seconds
+}
+
 
 // Attach Event Listeners to Bookmark Buttons
 function attachBookmarkListeners() {

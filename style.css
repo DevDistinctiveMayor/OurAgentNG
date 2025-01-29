@@ -409,6 +409,38 @@ main {
   font-size: 16px;
 }
 
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeInOut 3s ease-out forwards;
+}
+
+.toast.success {
+  background-color: #0861af;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
 .house-card-container {
   margin-top: 4rem;
   display: flex;
