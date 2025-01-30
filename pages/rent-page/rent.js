@@ -87,24 +87,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
 
-  loader.style.display = "block"; // Ensure the loader is visible initially
-  content.style.display = "none"; // Hide content until ready
-
   try {
-      await fetchAndRenderProperties(); // Fetch properties
+      await propertiesContainer(); // Fetch properties
+      await clientId(); // Load greetings
   } catch (error) {
       console.error("Error loading data:", error);
-      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
   } finally {
-      loader.style.display = "none"; // Hide loader after data loads
+    // alert("Finally");
+      loader.style.display = "none"; // Hide loader
       content.style.display = "block"; // Show content
   }
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -121,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedPropertyType = "";
 
   // Function to fetch and render properties
-  const fetchAndRenderProperties = async (queryParams = "") => {
+  async function fetchAndRenderProperties (queryParams = "") {
     propertiesContainer.innerHTML = "Loading properties...";
     try {
       const response = await fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`);
@@ -304,8 +302,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-
-// window.onload = () => {
-//   document.getElementById("loader").style.display = "block";
-// };
