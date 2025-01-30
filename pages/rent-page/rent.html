@@ -1,99 +1,72 @@
 <html lang="en">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link
-      rel="shortcut icon"
-      href="../../assets/logo.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
-    />
-    <link rel="stylesheet" href="./rent.css" />
-    <title>Our AgentNG | Website</title>
-  </head>
 
-  <body>
-    <!-- Header Section -->
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-          <a href="/index.html"><img src="/assets/logo.svg" alt="Logo" /></a>
-          <ul class="nav-links">
-            <!-- HTML -->
-            <div class="access-box nav-links3">
-              <i class="bx bx-user year-user">
-                <span class="greeting"></span>
-              </i>
-            </div>
-            <li><a href="../buy-page/buy.html">Buy</a></li>
-            <li><a href="../rent-page/rent.html">Rent</a></li>
-            <li><a href="../land-page/land.html">Land</a></li>
-            <li><a href="../bookmark-page/bookmark.html">Saved properties</a></li>
-            <li><a href="#contact">About us</a></li>
-            <div class="nav-links3">
-              <div>
-                <a href="#" class="logout-btn logout" style="display: none"
-                  >Log Out</a
-                >
-              </div>
-            </div>
-          </ul>
-        </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+  <link rel="stylesheet" href="./rent.css" />
+  <title>Our AgentNG | Website</title>
+</head>
 
-        <div class="call_action">
-          <div class="access-box">
-            <a
-              href="../agent-login-page/agent-login.html"
-              class="post-property-btn post"
-              style="display: none"
-              >Post A Property</a
-            >
-            <a href="../login-page/login.html" class="login-btn login"
-              >Sign up or Log in</a
-            >
-          </div>
-          <label class="menu-toggle" onClick="{onToggleMenu}">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
-
-        <div class="nav-links2">
-          <div class="access-box">
-            <a
-              href="../agent-login-page/agent-login.html"
-              class="post-property-btn post"
-              style="display: none"
-              >Post A Property</a
-            >
-            <a href="../login-page/login.html" class="login-btn login"
-              >Sign up or Log in</a
-            >
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/index.html"><img src="/assets/logo.svg" alt="Logo" /></a>
+        <ul class="nav-links">
+          <!-- HTML -->
+          <div class="access-box nav-links3">
             <i class="bx bx-user year-user">
-              <span class="greeting greeting_mobile"></span>
+              <span class="greeting"></span>
             </i>
-            <a href="#" class="logout-btn logout" style="display: none"
-              >Log Out</a
-            >
           </div>
-        </div>
-      </nav>
-    </header>
+          <li><a href="../buy-page/buy.html">Buy</a></li>
+          <li><a href="../rent-page/rent.html">Rent</a></li>
+          <li><a href="../land-page/land.html">Land</a></li>
+          <li><a href="../bookmark-page/bookmark.html">Saved properties</a></li>
+          <li><a href="#contact">About us</a></li>
+          <div class="nav-links3">
+            <div>
+              <a href="#" class="logout-btn logout" style="display: none">Log Out</a>
+            </div>
+          </div>
+        </ul>
+      </div>
 
-    <div id="loader">
-      <div class="scanner"></div>
-    </div>
-    <main id="content">
+      <div class="call_action">
+        <div class="access-box">
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">Post A
+            Property</a>
+          <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+        </div>
+        <label class="menu-toggle" onClick="{onToggleMenu}">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links2">
+        <div class="access-box">
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">Post A
+            Property</a>
+          <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+          <i class="bx bx-user year-user">
+            <span class="greeting greeting_mobile"></span>
+          </i>
+          <a href="#" class="logout-btn logout" style="display: none">Log Out</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="loader">
+    <div class="scanner"></div>
+  </div>
+
+  <main id="content">
     <main class="content">
       <div class="sale-container">
         <div class="sale-container-flex">
@@ -199,11 +172,7 @@
                     <a href="">Propery Details &#10142;</a>
                   </p>
                   <p class="agent-profile">
-                    <img
-                      src="../../images/profile-image.png"
-                      alt=""
-                      class="agent-profile"
-                    />
+                    <img src="../../images/profile-image.png" alt="" class="agent-profile" />
                     <b class="agent-name">Adebayo's Realty</b>
                   </p>
                 </div>
@@ -219,12 +188,8 @@
                   </div>
 
                   <div class="bottom-box">
-                    <a href="" class="call-link"
-                      ><i class="bx bxs-phone"></i>call</a
-                    >
-                    <a href="" class="whatsapp-link"
-                      ><i class="bx bxl-whatsapp"></i
-                    ></a>
+                    <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
+                    <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
                   </div>
                 </div>
               </div>
@@ -247,11 +212,7 @@
                     <a href="">Propery Details &#10142;</a>
                   </p>
                   <p class="agent-profile">
-                    <img
-                      src="../../images/profile-image.png"
-                      alt=""
-                      class="agent-profile"
-                    />
+                    <img src="../../images/profile-image.png" alt="" class="agent-profile" />
                     <b class="agent-name">Adebayo's Realty</b>
                   </p>
                 </div>
@@ -267,12 +228,8 @@
                   </div>
 
                   <div class="bottom-box">
-                    <a href="" class="call-link"
-                      ><i class="bx bxs-phone"></i>call</a
-                    >
-                    <a href="" class="whatsapp-link"
-                      ><i class="bx bxl-whatsapp"></i
-                    ></a>
+                    <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
+                    <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
                   </div>
                 </div>
               </div>
@@ -320,7 +277,7 @@
         <section class="advance-filter-container">
           <button class="cancel-btn" id="cancelFilter">Cancel</button>
           <h2>Choose Category</h2>
-    
+
           <!-- Category Selection -->
           <div class="select-box">
             <p>Rent</p>
@@ -395,7 +352,7 @@
               <!-- Add more bedroom options as needed -->
             </div>
           </div>
-    
+
 
           <!-- Property Types -->
           <div class="property-type-container">
@@ -407,9 +364,7 @@
               <a href="#" data-type="Office Spaces">Office Spaces</a>
               <a href="#" data-type="Lands">Lands</a>
               <a href="#" data-type="Apartments">Apartments</a>
-              <a href="#" data-type="Commercial Properties"
-                >Commercial Properties</a
-              >
+              <a href="#" data-type="Commercial Properties">Commercial Properties</a>
               <a href="#" data-type="Shops">Shops</a>
               <a href="#" data-type="Mini Flat">Mini Flat</a>
               <a href="#" data-type="Detached Duplex">Detached Duplex</a>
@@ -419,10 +374,10 @@
           </div>
 
           <!-- Filter Buttons -->
-      <div class="selectedControl-box">
-        <button class="reset-btn" id="resetFilter">Reset</button>
-        <button class="apply-btn" id="applyFilter">Apply Filters</button>
-      </div>
+          <div class="selectedControl-box">
+            <button class="reset-btn" id="resetFilter">Reset</button>
+            <button class="apply-btn" id="applyFilter">Apply Filters</button>
+          </div>
         </section>
       </div>
     </main>
@@ -452,11 +407,7 @@
         <div class="footer-top">
           <!-- Logo and Links -->
           <div class="footer-logo">
-            <img
-              style="width: 200px"
-              src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png"
-              alt="Our Agent NG Logo"
-            />
+            <img style="width: 200px" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo" />
           </div>
           <ul class="footer-links">
             <li><a href="#">Property Listings</a></li>
@@ -467,36 +418,16 @@
           </ul>
           <!-- Social Media Icons -->
           <div class="social-icons">
-            <a href="#"
-              ><img
-                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-                alt="Facebook"
-                width="20"
-            /></a>
-            <a href="#"
-              ><img
-                src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
-                alt="Instagram"
-                width="20"
-            /></a>
-            <a href="#"
-              ><img
-                src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"
-                alt="Twitter"
-                width="20"
-            /></a>
-            <a href="#"
-              ><img
-                src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-                alt="LinkedIn"
-                width="20"
-            /></a>
-            <a href="#"
-              ><img
-                src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png"
-                alt="YouTube"
-                width="20"
-            /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                width="20" /></a>
           </div>
         </div>
         <hr class="line" />
@@ -511,9 +442,9 @@
         </div>
       </footer>
     </div>
-    </main>
-    
+  </main>
 
-    <script src="./rent.js"></script>
-  </body>
+
+  <script src="./rent.js"></script>
+</body>
 </html>
