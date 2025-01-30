@@ -80,22 +80,28 @@ async function loadUserSession() {
 
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
 
-  try {
-      await propertiesContainer(); // Fetch properties
-      await loadUserSession(); // Load greetings
-  } catch (error) {
-      console.error("Error loading data:", error);
-  } finally {
-    // alert("Finally");
-      loader.style.display = "none"; // Hide loader
-      content.style.display = "block"; // Show content
-  }
-});
+  // Show loader immediately
+  loader.style.display = "flex";
+  content.style.display = "none";
 
+  // Delay the execution of heavy JavaScript
+  setTimeout(async () => {
+    try {
+      await fetchAndRenderProperties(); // Fetch properties
+      await greetings(); // Load user session
+    } catch (error) {
+      console.error("Error loading data:", error);
+    } finally {
+      // Hide loader and show content
+      loader.style.display = "none";
+      content.style.display = "block";
+    }
+  }, 100); // 100ms delay to ensure the loader is rendered
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
