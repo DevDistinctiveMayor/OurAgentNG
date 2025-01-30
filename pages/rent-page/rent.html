@@ -90,8 +90,12 @@
       </nav>
     </header>
 
+    <div id="loader">
+      <div class="scanner"></div>
+    </div>
+    <main id="content">
     <main class="content">
-      <  <div class="sale-container">
+      <div class="sale-container">
         <div class="sale-container-flex">
           <div class="sale" id="category">
             <p value="rent">Rent</p>
@@ -375,19 +379,6 @@
             </div>
           </div>
 
-          <!-- <div class="ad_search">
-          Location Search
-          <div class="search_box">
-            <i class="bx bx-search" style="color: #0873d2"></i>
-            <input type="search" name="state" id="state" class="state" placeholder="Search state..." />
-          </div>
-
-          Location Search
-          <div class="lga_search">
-            <i class='bx bx-current-location location-icon2'></i>
-            <input type="search" name="lga" id="lga" class="lg" placeholder="Search LG..." />
-          </div> -->
-
           <!-- Bedrooms Selection -->
           <div class="bedrooms-selection">
             <h3>Bedrooms</h3>
@@ -428,10 +419,10 @@
           </div>
 
           <!-- Filter Buttons -->
-          <div class="selectedControl-box">
-            <button class="reset-btn" id="resetFilter">Reset</button>
-            <button class="apply-btn" id="applyFilter">Apply Filters</button>
-          </div>
+      <div class="selectedControl-box">
+        <button class="reset-btn" id="resetFilter">Reset</button>
+        <button class="apply-btn" id="applyFilter">Apply Filters</button>
+      </div>
         </section>
       </div>
     </main>
@@ -520,6 +511,8 @@
         </div>
       </footer>
     </div>
+    </main>
+    
 
     <script src="./rent.js"></script>
   </body>
