@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(async () => {
     try {
       await fetchAndRenderProperties(); // Fetch properties
-      await greetings(); // Load user session
+      await loadUserSession(); // Load user session
     } catch (error) {
       console.error("Error loading data:", error);
     } finally {
