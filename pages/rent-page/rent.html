@@ -91,19 +91,14 @@
     </header>
 
     <main class="content">
-      <div class="sale-container">
+      <  <div class="sale-container">
         <div class="sale-container-flex">
           <div class="sale" id="category">
             <p value="rent">Rent</p>
           </div>
           <div class="search_box">
             <div class="custom-select">
-              <select
-                onchange="toggleLGA(this);"
-                name="stateSearch"
-                id="stateSearch"
-                class=""
-              >
+              <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch">
                 <option value="" selected="selected">- Select -</option>
                 <option value="Abia">Abia</option>
                 <option value="Adamawa">Adamawa</option>
@@ -149,24 +144,14 @@
 
           <div class="lga_search">
             <div class="custom-select">
-              <select
-                name="lga"
-                id="lgaSearch"
-                class="select-lga"
-                required
-              ></select>
+              <select name="lga" id="lgaSearch" class="select-lga" required></select>
               <span class="arrow">&#9662;</span>
             </div>
           </div>
 
           <div class="advance_filter" id="toggleFilter">
-            <span type="text" placeholder="Filters" class="toggle-filter-btn"
-              >Filter</span
-            >
-            <img
-              src=" ../../assets/icon/advanced_filter.png"
-              class="filtericon"
-            />
+            <span class="toggle-filter-btn">Filter</span>
+            <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
           </div>
 
           <div class="btnn">
@@ -331,20 +316,15 @@
         <section class="advance-filter-container">
           <button class="cancel-btn" id="cancelFilter">Cancel</button>
           <h2>Choose Category</h2>
-
+    
           <!-- Category Selection -->
           <div class="select-box">
-            <p>Buy</p>
+            <p>Rent</p>
           </div>
 
           <div class="search_box">
             <div class="custom-select2">
-              <select
-                onchange="toggleLGA(this);"
-                name="state"
-                id="state"
-                class=""
-              >
+              <select onchange="toggleLGA(this);" name="state" id="state" class="">
                 <option value="" selected="selected">- Select state -</option>
                 <option value="Abia">Abia</option>
                 <option value="Adamawa">Adamawa</option>
@@ -390,13 +370,7 @@
 
           <div class="lga_search">
             <div class="custom-select2">
-              <select
-                name="lga"
-                id="lga"
-                class="form-control select-lga"
-                required
-              ></select>
-
+              <select name="lga" id="lga" class="form-control select-lga" required></select>
               <span class="arrow">&#9662;</span>
             </div>
           </div>
@@ -418,7 +392,6 @@
           <div class="bedrooms-selection">
             <h3>Bedrooms</h3>
             <div class="row-select-box">
-              <!-- Using data-bedroom to dynamically fetch bedroom count -->
               <a href="#" data-bedroom="1">1</a>
               <a href="#" data-bedroom="2">2</a>
               <a href="#" data-bedroom="3">3</a>
@@ -428,15 +401,15 @@
               <a href="#" data-bedroom="7">7</a>
               <a href="#" data-bedroom="8">8</a>
               <a href="#" data-bedroom="9">9</a>
-              <a href="#" data-bedroom="10">10</a>
+              <!-- Add more bedroom options as needed -->
             </div>
           </div>
+    
 
           <!-- Property Types -->
           <div class="property-type-container">
             <h3>Property Types</h3>
             <div class="row-display-container">
-              <!-- Using data-type for dynamic property type selection -->
               <a data-type="">All</a>
               <a href="#" data-type="Warehouse">Warehouse</a>
               <a href="#" data-type="Detached Bungalow">Detached Bungalow</a>
