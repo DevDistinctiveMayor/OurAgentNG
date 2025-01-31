@@ -70,7 +70,7 @@ function scrollCarousel(direction = "right") {
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     scrollCarousel("right");
-  }, 3000); // Every 3 seconds
+  }, 1000); // Every 3 seconds
 }
 
 // Stop auto-slide function
