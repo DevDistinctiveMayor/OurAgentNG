@@ -12,6 +12,45 @@
 /* General reset for margins and padding */
 body {
   font-family: "poppins";
+  display: none;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Scanner loading animation */
+.scanner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #007bff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide properties until fully loaded */
+#content {
+  display: none;
 }
 
 /* Blur and disable background when menu is open */
@@ -97,7 +136,7 @@ header {
 }
 
 .greeting {
-  font-size: 15px;
+  font-size: 16px;
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
@@ -397,7 +436,7 @@ header {
   border: 1px solid #0861AF;
   padding: 1rem 2rem;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .container>.details-container>.sort-container>div>select {
@@ -472,13 +511,13 @@ header {
   /* filter: grayscale(100%); */
   /* opacity: 0.7; */
   position: absolute;
-  background-color: #34A853;
+  background: rgba(254, 133, 21, 1);
   color: white;
   padding: 4px 8px;
   font-size: 14px;
   font-weight: bold;
   border-radius: 5px;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   margin-top: 1.2rem;
 }
 
@@ -560,7 +599,7 @@ header {
   font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* .featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
@@ -572,19 +611,65 @@ header {
   font-size: 10px;
 
 } */
-.i {
-  color: #0861AF;
-  padding: 5px;
-  background-color: #D9D9D9;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 18px;
-  position: absolute;
-  margin-left: 6rem;
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeInOut 3s ease-out forwards;
 }
 
-.i:active {
-  font-size: 21px;
+.toast.success {
+  background-color: #0861af;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.icon {
+  color: #0861af;
+  background-color: #ededed;
+  padding: 15px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.icon:active {
+  font-size: 20px;
 }
 
 .availability {
@@ -1080,9 +1165,11 @@ header {
   .nav-links2 {
     display: none;
   }
-  .sold-overlay{
-    margin-left: 2.5rem;
+
+  .sold-overlay {
+    margin-left: 4.5rem;
   }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -1214,7 +1301,7 @@ header {
     flex-direction: column;
     width: 95%;
     margin: 10px auto;
-    margin-top: -3rem;
+    margin-top: 4rem;
   }
 
   .featuredbox-container .card .image-box {
@@ -1317,9 +1404,26 @@ header {
     width: 100%;
     /* Full width for smaller screens */
   }
-  .sold-overlay{
-    margin-left: 1.5rem;
+
+  .featuredbox-container .card .text-box .second-box .bottom-box {
+    text-align: left;
+    display: grid;
   }
+
+  .featuredbox-container>.card>.text-box>.second-box>.bottom-box>.whatsapp-link {
+    background-color: #2CD411;
+    padding: 4px 6px;
+    width: 34px;
+  }
+
+  .price {
+    gap: 1rem;
+  }
+
+  .sold-overlay {
+    margin-left: 2.5rem;
+  }
+
   .custom-select select {
     appearance: none;
     width: 100px;
