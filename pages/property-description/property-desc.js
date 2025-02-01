@@ -392,7 +392,6 @@ const fetchSoldProperties = () => {
                 </div>
                 <div class="img-overlap">
                   <span class="status">${property.propertystatus}</span>
-                  <span class="icon"><i class="bx bx-bookmark"></i></span>
                 </div>
               </div>
             </div>

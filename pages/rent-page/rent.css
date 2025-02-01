@@ -52,6 +52,7 @@ body {
 #content {
   display: none;
 }
+
 /* Blur and disable background when menu is open */
 .content-blur {
   filter: blur(3px);
@@ -598,7 +599,7 @@ header {
   font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* .featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
@@ -638,12 +639,15 @@ header {
   0% {
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -1162,7 +1166,7 @@ header {
     display: none;
   }
 
-  .sold-overlay{
+  .sold-overlay {
     margin-left: 4.5rem;
   }
 
@@ -1297,7 +1301,7 @@ header {
     flex-direction: column;
     width: 95%;
     margin: 10px auto;
-    margin-top: -3rem;
+    margin-top: 4rem;
   }
 
   .featuredbox-container .card .image-box {
@@ -1401,7 +1405,22 @@ header {
     /* Full width for smaller screens */
   }
 
-  .sold-overlay{
+  .featuredbox-container .card .text-box .second-box .bottom-box {
+    text-align: left;
+    display: grid;
+  }
+
+  .featuredbox-container>.card>.text-box>.second-box>.bottom-box>.whatsapp-link {
+    background-color: #2CD411;
+    padding: 4px 6px;
+    width: 34px;
+  }
+
+  .price {
+    gap: 1rem;
+  }
+
+  .sold-overlay {
     margin-left: 2.5rem;
   }
 
