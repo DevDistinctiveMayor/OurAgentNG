@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     data-agent-id="${property.client_id}"></i>
                   </span>
                 </div>
-                <p class="availability">${property.roomNo} Beds | ${property.bathNo} Baths</p>
+            
               </div>
               <div class="bottom-box">
                 <a href="tel:${property.phoneNumber}" class="call-link"><i class='bx bxs-phone'></i> Call</a>
@@ -289,23 +289,9 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove("overlay-active");
   });
 
-  // Event listener for bedroom selection
-  document.querySelectorAll(".row-select-box a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      selectedBedrooms = e.target.dataset.bedroom || 0;
-      updateSelection(".row-select-box a", e.target);
-    });
-  });
 
-  // Event listener for property type selection
-  document.querySelectorAll(".row-display-container a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      selectedPropertyType = e.target.dataset.type || "";
-      updateSelection(".row-display-container a", e.target);
-    });
-  });
+
+  
 
 
   // Helper function to update the selection and toggle "selected" class

@@ -67,406 +67,384 @@
   </div>
 
   <main id="content">
-  <main class="content">
-    <div class="sale-container">
-      <div class="sale-container-flex">
-        <div class="sale" id="propertyType">
-          <p value="land">land</p>
-        </div>
-
-        <div class="search_box">
-          <div class="custom-select">
-            <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch" class="">
-              <option value="" selected="selected">- Select -</option>
-              <option value="Abia">Abia</option>
-              <option value="Adamawa">Adamawa</option>
-              <option value="AkwaIbom">AkwaIbom</option>
-              <option value="Anambra">Anambra</option>
-              <option value="Bauchi">Bauchi</option>
-              <option value="Bayelsa">Bayelsa</option>
-              <option value="Benue">Benue</option>
-              <option value="Borno">Borno</option>
-              <option value="Cross River">Cross River</option>
-              <option value="Delta">Delta</option>
-              <option value="Ebonyi">Ebonyi</option>
-              <option value="Edo">Edo</option>
-              <option value="Ekiti">Ekiti</option>
-              <option value="Enugu">Enugu</option>
-              <option value="FCT">FCT</option>
-              <option value="Gombe">Gombe</option>
-              <option value="Imo">Imo</option>
-              <option value="Jigawa">Jigawa</option>
-              <option value="Kaduna">Kaduna</option>
-              <option value="Kano">Kano</option>
-              <option value="Katsina">Katsina</option>
-              <option value="Kebbi">Kebbi</option>
-              <option value="Kogi">Kogi</option>
-              <option value="Kwara">Kwara</option>
-              <option value="Lagos">Lagos</option>
-              <option value="Nasarawa">Nasarawa</option>
-              <option value="Niger">Niger</option>
-              <option value="Ogun">Ogun</option>
-              <option value="Ondo">Ondo</option>
-              <option value="Osun">Osun</option>
-              <option value="Oyo">Oyo</option>
-              <option value="Plateau">Plateau</option>
-              <option value="Rivers">Rivers</option>
-              <option value="Sokoto">Sokoto</option>
-              <option value="Taraba">Taraba</option>
-              <option value="Yobe">Yobe</option>
-              <option value="Zamfara">Zamafara</option>
-            </select>
-            <span class="arrow">&#9662;</span>
+    <main class="content">
+      <div class="sale-container">
+        <div class="sale-container-flex">
+          <div class="sale" id="category">
+            <p value="rent">Land</p>
           </div>
-        </div>
-
-        <div class="lga_search">
-          <div class="custom-select">
-            <select name="lga" id="lgaSearch" class="select-lga" required>
-            </select>
-            <span class="arrow">&#9662;</span>
+          <div class="search_box">
+            <div class="custom-select">
+              <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch">
+                <option value="" selected="selected">- Select -</option>
+                <option value="Abia">Abia</option>
+                <option value="Adamawa">Adamawa</option>
+                <option value="AkwaIbom">AkwaIbom</option>
+                <option value="Anambra">Anambra</option>
+                <option value="Bauchi">Bauchi</option>
+                <option value="Bayelsa">Bayelsa</option>
+                <option value="Benue">Benue</option>
+                <option value="Borno">Borno</option>
+                <option value="Cross River">Cross River</option>
+                <option value="Delta">Delta</option>
+                <option value="Ebonyi">Ebonyi</option>
+                <option value="Edo">Edo</option>
+                <option value="Ekiti">Ekiti</option>
+                <option value="Enugu">Enugu</option>
+                <option value="FCT">FCT</option>
+                <option value="Gombe">Gombe</option>
+                <option value="Imo">Imo</option>
+                <option value="Jigawa">Jigawa</option>
+                <option value="Kaduna">Kaduna</option>
+                <option value="Kano">Kano</option>
+                <option value="Katsina">Katsina</option>
+                <option value="Kebbi">Kebbi</option>
+                <option value="Kogi">Kogi</option>
+                <option value="Kwara">Kwara</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Nasarawa">Nasarawa</option>
+                <option value="Niger">Niger</option>
+                <option value="Ogun">Ogun</option>
+                <option value="Ondo">Ondo</option>
+                <option value="Osun">Osun</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Plateau">Plateau</option>
+                <option value="Rivers">Rivers</option>
+                <option value="Sokoto">Sokoto</option>
+                <option value="Taraba">Taraba</option>
+                <option value="Yobe">Yobe</option>
+                <option value="Zamfara">Zamafara</option>
+              </select>
+              <span class="arrow">&#9662;</span>
+            </div>
           </div>
-        </div>
 
+          <div class="lga_search">
+            <div class="custom-select">
+              <select name="lga" id="lgaSearch" class="select-lga" required></select>
+              <span class="arrow">&#9662;</span>
+            </div>
+          </div>
 
-        <div class="advance_filter" id="toggleFilter">
-          <span type="text" placeholder="Filters" class="toggle-filter-btn">Filter</span>
-          <img src=" ../../assets/icon/advanced_filter.png" class="filtericon" />
-        </div>
+          <div class="advance_filter" id="toggleFilter">
+            <span class="toggle-filter-btn">Filter</span>
+            <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
+          </div>
 
-        <div class="btnn">
-          <button class="search" id="searchButton">Search</button>
+          <div class="btnn">
+            <button class="search" id="searchButton">Search</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="details-container">
-        <h1>Lands available in Nigeria</h1>
-        <p class="intro">
-          There are 75,446 available flats, houses, land and commercial
-          property for buy in Nigeria. The property have been listed by estate
-          agents who can be contacted using the contact information provided
-          for each property listing. The list can be filtered by price,
-          furnishing and recency.
-        </p>
-        <p class="down-p">Content from Our Agent</p>
-        <p>Read more at: <a href="#" class="blog-link">Blog Link</a></p>
+      <div class="container">
+        <div class="details-container">
+          <h1>Property for Land in Nigeria</h1>
+          <p class="intro">
+            There are 75,446 available flats, houses, land and commercial
+            property for rent in Nigeria. The property have been listed by
+            estate agents who can be contacted using the contact information
+            provided for each property listing. The list can be filtered by
+            price, furnishing and recency.
+          </p>
+          <p class="down-p">Content from Our Agent</p>
+          <p>Read more at: <a href="#" class="blog-link">Blog Link</a></p>
 
-        <div class="sort-container">
-          <p>Result 1-20 of 75,000</p>
-        </div>
+          <div class="sort-container">
+            <p>Result 1-20 of 75,000</p>
+          </div>
 
-        <div class="featuredbox-container" id="properties">
-          <div class="card">
-            <div class="image-box">
-              <img src="../../images/featured_image.png" alt="card image" />
-            </div>
-
-            <div class="text-box">
-              <div class="first-box">
-                <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                <p class="location">Ipaja Lagos</p>
-                <p class="description">
-                  Newly Built 1 Bedroom Apartment for sale, safe and secure
-                  environment, easy road networks....
-                </p>
-                <p href="" class="details-link">
-                  <a href="">Propery Details &#10142;</a>
-                </p>
-                <p class="agent-profile">
-                  <img src="../../images/profile-image.png" alt="" class="agent-profile" />
-                  <b class="agent-name">Adebayo's Realty</b>
-                </p>
+          <div class="featuredbox-container" id="properties">
+            <div class="card">
+              <div class="image-box">
+                <img src="../../images/featured_image.png" alt="card image" />
               </div>
 
-              <div class="second-box">
-                <div class="top-box">
-                  <div>
-                    <p class="price">70,000,000</p>
-                    <i class="bx bx-bookmark i"></i>
+              <div class="text-box">
+                <div class="first-box">
+                  <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                  <p class="location">Ipaja Lagos</p>
+                  <p class="description">
+                    Newly Built 1 Bedroom Apartment for sale, safe and secure
+                    environment, easy road networks....
+                  </p>
+                  <p href="" class="details-link">
+                    <a href="">Propery Details &#10142;</a>
+                  </p>
+                  <p class="agent-profile">
+                    <img src="../../images/profile-image.png" alt="" class="agent-profile" />
+                    <b class="agent-name">Adebayo's Realty</b>
+                  </p>
+                </div>
+
+                <div class="second-box">
+                  <div class="top-box">
+                    <div>
+                      <p class="price">70,000,000</p>
+                      <i class="bx bx-bookmark i"></i>
+                    </div>
+
+                    <p class="availablity">1 Bed 1 Baths</p>
                   </div>
 
-                  <p class="availablity">1 Bed 1 Baths</p>
-                </div>
-
-                <div class="bottom-box">
-                  <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
-                  <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
+                  <div class="bottom-box">
+                    <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
+                    <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="card">
-            <div class="image-box">
-              <img src="../../images/featured_image.png" alt="card image" />
-            </div>
-
-            <div class="text-box">
-              <div class="first-box">
-                <p class="heading">Newly Built 1 Bedroom Apartment</p>
-                <p class="location">Ipaja Lagos</p>
-                <p class="description">
-                  Newly Built 1 Bedroom Apartment for sale, safe and secure
-                  environment, easy road networks....
-                </p>
-                <p href="" class="details-link">
-                  <a href="">Propery Details &#10142;</a>
-                </p>
-                <p class="agent-profile">
-                  <img src="../../images/profile-image.png" alt="" class="agent-profile" />
-                  <b class="agent-name">Adebayo's Realty</b>
-                </p>
+            <div class="card">
+              <div class="image-box">
+                <img src="../../images/featured_image.png" alt="card image" />
               </div>
 
-              <div class="second-box">
-                <div class="top-box">
-                  <p class="price">
-                    70,000,000
-                    <i class="bx bx-bookmark"></i>
+              <div class="text-box">
+                <div class="first-box">
+                  <p class="heading">Newly Built 1 Bedroom Apartment</p>
+                  <p class="location">Ipaja Lagos</p>
+                  <p class="description">
+                    Newly Built 1 Bedroom Apartment for sale, safe and secure
+                    environment, easy road networks....
                   </p>
-
-                  <p class="availablity">1 Bed 1 Baths</p>
+                  <p href="" class="details-link">
+                    <a href="">Propery Details &#10142;</a>
+                  </p>
+                  <p class="agent-profile">
+                    <img src="../../images/profile-image.png" alt="" class="agent-profile" />
+                    <b class="agent-name">Adebayo's Realty</b>
+                  </p>
                 </div>
 
-                <div class="bottom-box">
-                  <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
-                  <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
+                <div class="second-box">
+                  <div class="top-box">
+                    <p class="price">
+                      70,000,000
+                      <i class="bx bx-bookmark"></i>
+                    </p>
+
+                    <p class="availablity">1 Bed 1 Baths</p>
+                  </div>
+
+                  <div class="bottom-box">
+                    <a href="" class="call-link"><i class="bx bxs-phone"></i>call</a>
+                    <a href="" class="whatsapp-link"><i class="bx bxl-whatsapp"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="available-container">
+          <h3>available property</h3>
+
+          <div class="content">
+            <p class="heading">currently available for rent in nigeria</p>
+
+            <div class="heading">
+              <p>Property Type</p>
+              <p>Property Count</p>
+            </div>
+            <div>
+              <p>Co-working place</p>
+              <p>100</p>
+            </div>
+            <div>
+              <p>Flat/Apartment</p>
+              <p>7542</p>
+            </div>
+            <div>
+              <p>Commercial Properties</p>
+              <p>8000</p>
+            </div>
+            <div>
+              <p>Land</p>
+              <p>1000</p>
+            </div>
+            <div>
+              <p>House</p>
+              <p>9999</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </main>
 
-      <div class="available-container">
-        <h3>available property</h3>
+    <main>
+      <div class="main_container" id="searchForm">
+        <section class="advance-filter-container">
+          <button class="cancel-btn" id="cancelFilter">Cancel</button>
+          <h2>Choose Category</h2>
 
-        <div class="content">
-          <p class="heading">currently available for rent in nigeria</p>
-
-          <div class="heading">
-            <p>Property Type</p>
-            <p>Property Count</p>
-          </div>
-          <div>
-            <p>Co-working place</p>
-            <p>100</p>
-          </div>
-          <div>
-            <p>Flat/Apartment</p>
-            <p>7542</p>
-          </div>
-          <div>
-            <p>Commercial Properties</p>
-            <p>8000</p>
-          </div>
-          <div>
+          <!-- Category Selection -->
+          <div class="select-box">
             <p>Land</p>
-            <p>1000</p>
           </div>
-          <div>
-            <p>House</p>
-            <p>9999</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
-  <main>
-    <div class="main_container" id="searchForm">
-      <section class="advance-filter-container">
-        <button class="cancel-btn" id="cancelFilter">Cancel</button>
-        <h2>Choose Category</h2>
-
-        <!-- Category Selection -->
-        <div class="select-box">
-          <p>Land</p>
-        </div>
-
-
-
-
-
-        <div class="search_box">
-          <div class="custom-select2">
-            <select onchange="toggleLGA(this);" name="state" id="state" class="">
-              <option value="" selected="selected">- Select state -</option>
-              <option value="Abia">Abia</option>
-              <option value="Adamawa">Adamawa</option>
-              <option value="AkwaIbom">AkwaIbom</option>
-              <option value="Anambra">Anambra</option>
-              <option value="Bauchi">Bauchi</option>
-              <option value="Bayelsa">Bayelsa</option>
-              <option value="Benue">Benue</option>
-              <option value="Borno">Borno</option>
-              <option value="Cross River">Cross River</option>
-              <option value="Delta">Delta</option>
-              <option value="Ebonyi">Ebonyi</option>
-              <option value="Edo">Edo</option>
-              <option value="Ekiti">Ekiti</option>
-              <option value="Enugu">Enugu</option>
-              <option value="FCT">FCT</option>
-              <option value="Gombe">Gombe</option>
-              <option value="Imo">Imo</option>
-              <option value="Jigawa">Jigawa</option>
-              <option value="Kaduna">Kaduna</option>
-              <option value="Kano">Kano</option>
-              <option value="Katsina">Katsina</option>
-              <option value="Kebbi">Kebbi</option>
-              <option value="Kogi">Kogi</option>
-              <option value="Kwara">Kwara</option>
-              <option value="Lagos">Lagos</option>
-              <option value="Nasarawa">Nasarawa</option>
-              <option value="Niger">Niger</option>
-              <option value="Ogun">Ogun</option>
-              <option value="Ondo">Ondo</option>
-              <option value="Osun">Osun</option>
-              <option value="Oyo">Oyo</option>
-              <option value="Plateau">Plateau</option>
-              <option value="Rivers">Rivers</option>
-              <option value="Sokoto">Sokoto</option>
-              <option value="Taraba">Taraba</option>
-              <option value="Yobe">Yobe</option>
-              <option value="Zamfara">Zamafara</option>
-            </select>
-            <span class="arrow">&#9662;</span>
-          </div>
-        </div>
-
-        <div class="lga_search">
-          <div class="custom-select2">
-            <select name="lga" id="lga" class="form-control select-lga" required>
-            </select>
-
-            <span class="arrow">&#9662;</span>
-          </div>
-        </div>
-
-        <!-- <div class="ad_search">
-          Location Search
           <div class="search_box">
-            <i class="bx bx-search" style="color: #0873d2"></i>
-            <input type="search" name="state" id="state" class="state" placeholder="Search state..." />
+            <div class="custom-select2">
+              <select onchange="toggleLGA(this);" name="state" id="state" class="">
+                <option value="" selected="selected">- Select state -</option>
+                <option value="Abia">Abia</option>
+                <option value="Adamawa">Adamawa</option>
+                <option value="AkwaIbom">AkwaIbom</option>
+                <option value="Anambra">Anambra</option>
+                <option value="Bauchi">Bauchi</option>
+                <option value="Bayelsa">Bayelsa</option>
+                <option value="Benue">Benue</option>
+                <option value="Borno">Borno</option>
+                <option value="Cross River">Cross River</option>
+                <option value="Delta">Delta</option>
+                <option value="Ebonyi">Ebonyi</option>
+                <option value="Edo">Edo</option>
+                <option value="Ekiti">Ekiti</option>
+                <option value="Enugu">Enugu</option>
+                <option value="FCT">FCT</option>
+                <option value="Gombe">Gombe</option>
+                <option value="Imo">Imo</option>
+                <option value="Jigawa">Jigawa</option>
+                <option value="Kaduna">Kaduna</option>
+                <option value="Kano">Kano</option>
+                <option value="Katsina">Katsina</option>
+                <option value="Kebbi">Kebbi</option>
+                <option value="Kogi">Kogi</option>
+                <option value="Kwara">Kwara</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Nasarawa">Nasarawa</option>
+                <option value="Niger">Niger</option>
+                <option value="Ogun">Ogun</option>
+                <option value="Ondo">Ondo</option>
+                <option value="Osun">Osun</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Plateau">Plateau</option>
+                <option value="Rivers">Rivers</option>
+                <option value="Sokoto">Sokoto</option>
+                <option value="Taraba">Taraba</option>
+                <option value="Yobe">Yobe</option>
+                <option value="Zamfara">Zamafara</option>
+              </select>
+              <span class="arrow">&#9662;</span>
+            </div>
           </div>
 
-          Location Search
           <div class="lga_search">
-            <i class='bx bx-current-location location-icon2'></i>
-            <input type="search" name="lga" id="lga" class="lg" placeholder="Search LG..." />
-          </div> -->
-
-
-
-
-        <!-- Bedrooms Selection -->
-        <div class="bedrooms-selection">
-          <h3>Bedrooms</h3>
-          <div class="row-select-box">
-            <!-- Using data-bedroom to dynamically fetch bedroom count -->
-            <a href="#" data-bedroom="1">1</a>
-            <a href="#" data-bedroom="2">2</a>
-            <a href="#" data-bedroom="3">3</a>
-            <a href="#" data-bedroom="4">4</a>
-            <a href="#" data-bedroom="5">5</a>
-            <a href="#" data-bedroom="6">6</a>
-            <a href="#" data-bedroom="7">7</a>
-            <a href="#" data-bedroom="8">8</a>
-            <a href="#" data-bedroom="9">9</a>
-            <a href="#" data-bedroom="10">10</a>
+            <div class="custom-select2">
+              <select name="lga" id="lga" class="form-control select-lga" required></select>
+              <span class="arrow">&#9662;</span>
+            </div>
           </div>
-        </div>
 
-        <!-- Property Types -->
-        <div class="property-type-container">
-          <h3>Property Types</h3>
-          <div class="row-display-container">
-            <!-- Using data-type for dynamic property type selection -->
-            <a data-type="">All</a>
-            <a href="#" data-type="Warehouse">Warehouse</a>
-            <a href="#" data-type="Detached Bungalow">Detached Bungalow</a>
-            <a href="#" data-type="Office Spaces">Office Spaces</a>
-            <a href="#" data-type="Lands">Lands</a>
-            <a href="#" data-type="Apartments">Apartments</a>
-            <a href="#" data-type="Commercial Properties">Commercial Properties</a>
-            <a href="#" data-type="Shops">Shops</a>
-            <a href="#" data-type="Mini Flat">Mini Flat</a>
-            <a href="#" data-type="Detached Duplex">Detached Duplex</a>
-            <a href="#" data-type="Co-working Spaces">Co-working Spaces</a>
-            <a href="#" data-type="Self-contained">Self-contained</a>
+          <!-- Bedrooms Selection -->
+          <div class="bedrooms-selection">
+            <h3>Bedrooms</h3>
+            <div class="row-select-box">
+              <a href="#" data-bedroom="1">1</a>
+              <a href="#" data-bedroom="2">2</a>
+              <a href="#" data-bedroom="3">3</a>
+              <a href="#" data-bedroom="4">4</a>
+              <a href="#" data-bedroom="5">5</a>
+              <a href="#" data-bedroom="6">6</a>
+              <a href="#" data-bedroom="7">7</a>
+              <a href="#" data-bedroom="8">8</a>
+              <a href="#" data-bedroom="9">9</a>
+              <!-- Add more bedroom options as needed -->
+            </div>
           </div>
-        </div>
 
-        <!-- Filter Buttons -->
-        <div class="selectedControl-box">
-          <button class="reset-btn" id="resetFilter">Reset</button>
-          <button class="apply-btn" id="applyFilter">Apply Filters</button>
-        </div>
-      </section>
-    </div>
-  </main>
 
-  <section id="properties-container">
-    <h2>Properties</h2>
-    <div id="properties" class="properties-grid">
-      <!-- Dynamic property cards will be displayed here -->
-    </div>
-  </section>
-  <div class="footer-div">
-    <section class="download-section">
-      <div class="first-section">
-        <p>Download our app today to access more features</p>
+          <!-- Property Types -->
+          <div class="property-type-container">
+            <h3>Property Types</h3>
+            <div class="row-display-container">
+              <a data-type="">All</a>
+              <a href="#" data-type="Warehouse">Warehouse</a>
+              <a href="#" data-type="Detached Bungalow">Detached Bungalow</a>
+              <a href="#" data-type="Office Spaces">Office Spaces</a>
+              <a href="#" data-type="Lands">Lands</a>
+              <a href="#" data-type="Apartments">Apartments</a>
+              <a href="#" data-type="Commercial Properties">Commercial Properties</a>
+              <a href="#" data-type="Shops">Shops</a>
+              <a href="#" data-type="Mini Flat">Mini Flat</a>
+              <a href="#" data-type="Detached Duplex">Detached Duplex</a>
+              <a href="#" data-type="Co-working Spaces">Co-working Spaces</a>
+              <a href="#" data-type="Self-contained">Self-contained</a>
+            </div>
+          </div>
+
+          <!-- Filter Buttons -->
+          <div class="selectedControl-box">
+            <button class="reset-btn" id="resetFilter">Reset</button>
+            <button class="apply-btn" id="applyFilter">Apply Filters</button>
+          </div>
+        </section>
       </div>
-      <div class="second-section">
-        <p>
-          Unlock the potential of your property journey with us. Download the
-          app today to connect with agents and find your dream home!
-        </p>
+    </main>
 
-        <a href="">Click here to download</a>
+    <section id="properties-container">
+      <h2>Properties</h2>
+      <div id="properties" class="properties-grid">
+        <!-- Dynamic property cards will be displayed here -->
       </div>
     </section>
+    <div class="footer-div">
+      <section class="download-section">
+        <div class="first-section">
+          <p>Download our app today to access more features</p>
+        </div>
+        <div class="second-section">
+          <p>
+            Unlock the potential of your property journey with us. Download the
+            app today to connect with agents and find your dream home!
+          </p>
 
-    <footer class="footer">
-      <div class="footer-top">
-        <!-- Logo and Links -->
-        <div class="footer-logo">
-          <img style="width: 200px" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo" />
+          <a href="">Click here to download</a>
         </div>
-        <ul class="footer-links">
-          <li><a href="#">Property Listings</a></li>
-          <li><a href="#">Agent Resources</a></li>
-          <li><a href="#">Home Buyers</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-        <!-- Social Media Icons -->
-        <div class="social-icons">
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="20" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" width="20" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter" width="20" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
-              width="20" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube" width="20" /></a>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-top">
+          <!-- Logo and Links -->
+          <div class="footer-logo">
+            <img style="width: 200px" src="../../images/OURAGENT LOGO HORIZONTAL BLUE 1.png" alt="Our Agent NG Logo" />
+          </div>
+          <ul class="footer-links">
+            <li><a href="#">Property Listings</a></li>
+            <li><a href="#">Agent Resources</a></li>
+            <li><a href="#">Home Buyers</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Twitter"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn"
+                width="20" /></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384061.png" alt="YouTube"
+                width="20" /></a>
+          </div>
         </div>
-      </div>
-      <hr class="line" />
-      <!-- Footer Bottom Text -->
-      <div class="footer-bottom">
-        <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
-        <ul class="footer-bottom-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookies Settings</a></li>
-        </ul>
-      </div>
-    </footer>
-  </div>
+        <hr class="line" />
+        <!-- Footer Bottom Text -->
+        <div class="footer-bottom">
+          <p>&copy; 2024 OurAgentNG. All rights reserved.</p>
+          <ul class="footer-bottom-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookies Settings</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
   </main>
+
 
   <script src="./land.js"></script>
 </body>
-
 </html>
