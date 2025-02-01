@@ -7,6 +7,7 @@
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="dashboard.css" />
     <title>Our Agent | Admin Dashboard</title>
   </head>
@@ -200,14 +201,14 @@
             <div class="review-box">
               <div class="user-details">
                 <div class="user-initials"><p>JL</p></div>
-                <div class="name-and-ratin">
+                <div class="name-and-rating">
                   <p>Joseph Lamidi</p>
-                  <img src="" alt="user-rating" />
+                  <img src="../../images/rating-star.jpg" alt="user-rating" />
                 </div>
               </div>
-              <div class="propertyName-and-time">
-                <p>Property name</p>
-                <p>2 hours ago</p>
+              <div class="property-details">
+                <p class="property-name">Property name</p>
+                <p class="time">2 hours ago</p>
               </div>
               <p class="review-message">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -219,7 +220,12 @@
           </div>
         </aside>
       </section>
+
+      <canvas id="chart"></canvas>
     </main>
     <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./dashboard.js"></script>
   </body>
 </html>
