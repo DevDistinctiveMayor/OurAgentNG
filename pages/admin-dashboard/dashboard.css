@@ -270,3 +270,20 @@ body {
   padding: 3px;
   border: 1px #fff solid;
 }
+
+/*.user-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+*/
+
+.user-initials p {
+  background: #ffc0cb;
+  padding: 15px 20x;
+  font-weight: bold;
+  font-size: 17px;
+  text-transform: uppercase;
+  width: fit-content;
+  border-radius: 50%;
+}
