@@ -12,6 +12,45 @@
 /* General reset for margins and padding */
 body {
   font-family: "poppins";
+  display: none;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Scanner loading animation */
+.scanner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #007bff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide properties until fully loaded */
+#content {
+  display: none;
 }
 
 /* Blur and disable background when menu is open */
@@ -96,9 +135,8 @@ header {
   display: none;
 }
 
-
 .greeting {
-  font-size: 15px;
+  font-size: 16px;
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
@@ -141,6 +179,7 @@ header {
   transition: all 0.2s ease;
   z-index: 30;
 }
+
 .menu-toggle span:nth-child(1) {
   top: 0;
 }
@@ -397,7 +436,7 @@ header {
   border: 1px solid #0861AF;
   padding: 1rem 2rem;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .container>.details-container>.sort-container>div>select {
@@ -466,6 +505,20 @@ header {
   padding: 10px;
   border-radius: 7px;
   box-shadow: 5px 5px 5px 5px hsla(0, 2%, 82%, 0.76);
+}
+
+.sold-overlay {
+  /* filter: grayscale(100%); */
+  /* opacity: 0.7; */
+  position: absolute;
+  background: rgba(254, 133, 21, 1);
+  color: white;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .featuredbox-container>.card>.image-box>img {
@@ -546,7 +599,7 @@ header {
   font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* .featuredbox-container>.card>.text-box>.second-box>.top-box>.price>i {
@@ -558,19 +611,65 @@ header {
   font-size: 10px;
 
 } */
-.i {
-  color: #0861AF;
-  padding: 5px;
-  background-color: #D9D9D9;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 18px;
-  position: absolute;
-  margin-left: 6rem;
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeInOut 3s ease-out forwards;
 }
 
-.i:active {
-  font-size: 21px;
+.toast.success {
+  background-color: #0861af;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.icon {
+  color: #0861af;
+  background-color: #ededed;
+  padding: 15px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.icon:active {
+  font-size: 20px;
 }
 
 .availability {
@@ -830,20 +929,6 @@ header {
   margin-top: 1rem;
 }
 
-.sold-overlay {
-  /* filter: grayscale(100%); */
-  /* opacity: 0.7; */
-  position: absolute;
-  background-color: #34A853;
-  color: white;
-  padding: 4px 8px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-}
-
 /* Bedrooms Selection */
 .bedrooms-selection .row-select-box a {
   color: #0861AF;
@@ -1081,6 +1166,10 @@ header {
     display: none;
   }
 
+  .sold-overlay {
+    margin-left: 4.5rem;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -1125,6 +1214,8 @@ header {
   .menu-toggle {
     display: block;
   }
+
+
 
   .sale-container-flex {
     gap: 1rem;
@@ -1204,16 +1295,13 @@ header {
     width: 100%;
   }
 
-  .sold-overlay {
-    margin-left: 2.5rem;
-  }
 
   .featuredbox-container .card {
     display: flex;
     flex-direction: column;
     width: 95%;
     margin: 10px auto;
-    margin-top: -3rem;
+    margin-top: 4rem;
   }
 
   .featuredbox-container .card .image-box {
@@ -1317,8 +1405,23 @@ header {
     /* Full width for smaller screens */
   }
 
+  .featuredbox-container .card .text-box .second-box .bottom-box {
+    text-align: left;
+    display: grid;
+  }
+
+  .featuredbox-container>.card>.text-box>.second-box>.bottom-box>.whatsapp-link {
+    background-color: #2CD411;
+    padding: 4px 6px;
+    width: 34px;
+  }
+
+  .price {
+    gap: 1rem;
+  }
+
   .sold-overlay {
-    margin-left: 1.5rem;
+    margin-left: 2.5rem;
   }
 
   .custom-select select {
@@ -1384,3 +1487,6 @@ header {
     gap: 30px;
   }
 }
+
+
+@media (max-width: 326px) {}

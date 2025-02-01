@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.display = "block"; // Show body when JS is ready
+});
+
+
 const phoneIcon = document.querySelector(".phone-icon");
 const favoriteIcon = document.querySelector(".heart-icon");
 const messageIcon = document.querySelector(".message-icon");
@@ -42,7 +47,23 @@ nums.forEach((num, index) => {
 });
 
 
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".nav-links");
+const content = document.querySelector(".content"); // Target content-wrapper
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("open");
+  menu.classList.toggle("active");
+  content.classList.toggle("content-blur"); // Add blur effect to the content
+  document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
+});
+
+
 document.addEventListener("DOMContentLoaded", async () => {
+  await loadUserSession(); // Ensure the session loads after the page is fully loaded
+});
+
+async function loadUserSession() {
   const clientId = sessionStorage.getItem("client_id");
   const greetings = document.querySelectorAll(".greeting");
   const loginButtons = document.querySelectorAll(".login-btn");
@@ -50,7 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const postPropertyButtons = document.querySelectorAll(".post-property-btn");
 
   if (!clientId) {
-    // Handle unauthenticated user
     greetings.forEach((el) => (el.textContent = "Welcome, Guest!"));
     loginButtons.forEach((el) => (el.style.display = "inline"));
     logoutButtons.forEach((el) => (el.style.display = "none"));
@@ -59,7 +79,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    // Fetch client data
     const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -68,8 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const data = await response.json();
     if (data.status === "success" && data.client) {
-      const fullName = data.client.fullName;
-      greetings.forEach((el) => (el.textContent = `${fullName.substring(0, 8)}...`));
+      greetings.forEach((el) => (el.textContent = `${data.client.fullName.substring(0, 8)}...`));
       loginButtons.forEach((el) => (el.style.display = "none"));
       logoutButtons.forEach((el) => (el.style.display = "inline"));
       postPropertyButtons.forEach((el) => (el.style.display = "inline"));
@@ -77,11 +95,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       throw new Error("Invalid session.");
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error loading session:", error);
     greetings.forEach((el) => (el.textContent = "Error loading session."));
   }
 
-  // Add logout functionality
   logoutButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       try {
@@ -97,21 +114,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   });
-});
+}
 
-
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".nav-links");
-const content = document.querySelector(".content"); // Target content-wrapper
-
-menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("open");
-  menu.classList.toggle("active");
-  content.classList.toggle("content-blur"); // Add blur effect to the content
-  document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
-});
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("content");
+
+  // Show loader immediately
+  loader.style.display = "flex";
+  content.style.display = "none";
+
   const agentId = sessionStorage.getItem("agent_id"); // Get agent_id from sessionStorage
 
   // Check if agent_id exists in session storage
@@ -128,19 +141,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    // Fetch user data from the server using agent_id
+    await fetchAndRenderDashboard(agentId); // Fetch and display agent dashboard data
+  } catch (error) {
+    console.error("Error loading data:", error);
+  } finally {
+    // Hide loader and show content
+    loader.style.display = "none";
+    content.style.display = "block";
+  }
+});
+
+// Function to fetch and render agent dashboard data
+async function fetchAndRenderDashboard(agentId) {
+  try {
     const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ agent_id: agentId }), // Send agent_id instead of email
+      body: JSON.stringify({ agent_id: agentId }), // Send agent_id
     });
 
     if (!response.ok) {
-      throw new Error(
-        `HTTP Error: ${response.status} - ${response.statusText}`
-      );
+      throw new Error(`HTTP Error: ${response.status} - ${response.statusText}`);
     }
 
     const data = await response.json();
@@ -148,21 +171,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       const user = data.data;
       document.getElementById("fullName").textContent = user.fullName || "N/A";
       document.getElementById("agentName").textContent = user.fullName || "N/A";
-      document.getElementById("companyName").textContent =
-        user.companyName || "N/A";
+      document.getElementById("companyName").textContent = user.companyName || "N/A";
       document.getElementById("address").textContent = user.address || "N/A";
       document.getElementById("bio").textContent = user.userInfo || "N/A";
       document.getElementById("email").href = `mailto:${user.email || ""}`;
-      document.getElementById("socialMediaHandles").href = `${
-        user.socialMediaHandles || ""
-      }`;
+      document.getElementById("socialMediaHandles").href = user.socialMediaHandles || "#";
 
       const profileImage = document.getElementById("profileImage");
-      profileImage.src =
-        user.profileImage || "../../images/agent-profile-img.png";
-      document.getElementById("phoneNumber").href = `tel:${
-        user.phoneNumber || ""
-      }`;
+      profileImage.src = user.profileImage || "../../images/agent-profile-img.png";
+      document.getElementById("phoneNumber").href = `tel:${user.phoneNumber || ""}`;
     } else {
       Swal.fire("Error", data.message || "Failed to load user data.", "error");
     }
@@ -170,60 +187,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Fetch error:", error);
     Swal.fire("Error", "An error occurred while fetching data.", "error");
   }
-});
+}
 
 // Handle image upload
 document.getElementById("uploadButton").addEventListener("click", () => {
   document.getElementById("imageUpload").click();
 });
 
-document
-  .getElementById("imageUpload")
-  .addEventListener("change", async (event) => {
-    const file = event.target.files[0];
+document.getElementById("imageUpload").addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  const uploadButton = document.getElementById("uploadButton");
 
-    if (file) {
-      const formData = new FormData();
-      formData.append("profileImage", file);
-      formData.append("agent_id", sessionStorage.getItem("agent_id")); // Send agent_id instead of email
+  if (file) {
+    const formData = new FormData();
+    formData.append("profileImage", file);
+    formData.append("agent_id", sessionStorage.getItem("agent_id")); // Send agent_id
 
-      // Disable the button and show loading state
-      uploadButton.disabled = true;
-      uploadButton.textContent = "Processing...";
+    // Disable the button and show loading state
+    uploadButton.disabled = true;
+    uploadButton.textContent = "Processing...";
 
-      try {
-        const response = await fetch(
-          "https://ouragent.com.ng/uploadProfileImage.php",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+    try {
+      const response = await fetch("https://ouragent.com.ng/uploadProfileImage.php", {
+        method: "POST",
+        body: formData,
+      });
 
-        const result = await response.json();
-        if (result.status === "success") {
-          Swal.fire(
-            "Success",
-            "Profile image updated successfully!",
-            "success"
-          );
-          document.getElementById("profileImage").src =
-            result.imageUrl + "?" + new Date().getTime();
-        } else {
-          Swal.fire("Error", result.message || "Image upload failed.", "error");
-        }
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Fetch Error!",
-          text: "An error occurred while uploading the image. Please try again later.",
-        });
-      } finally {
-        uploadButton.disabled = false;
-        uploadButton.textContent = "Change Image";
+      const result = await response.json();
+      if (result.status === "success") {
+        Swal.fire("Success", "Profile image updated successfully!", "success");
+        document.getElementById("profileImage").src = result.imageUrl + "?" + new Date().getTime();
+      } else {
+        Swal.fire("Error", result.message || "Image upload failed.", "error");
       }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Fetch Error!",
+        text: "An error occurred while uploading the image. Please try again later.",
+      });
+    } finally {
+      uploadButton.disabled = false;
+      uploadButton.textContent = "Change Image";
     }
-  });
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const bioDiv = document.getElementById("bio");
