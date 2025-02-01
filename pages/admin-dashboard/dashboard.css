@@ -107,3 +107,166 @@ body {
   color: #a1a1a1;
   font-size: 12px;
 }
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.new-messages {
+  width: 60%;
+  border: 1pt #000 solid;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.top-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.messages-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-line p:nth-child(1) {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.arrow-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#arrow-up-icon {
+  rotate: -35deg;
+  background-color: rgba(8, 97, 175, 1);
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.view {
+  font-size: 12px;
+}
+
+.message-label {
+  background: #16d6d64d;
+  width: fit-content;
+  padding: 7px 15px;
+  font-size: 15px;
+  border-radius: 20px;
+}
+
+.user-name {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.property-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.property-name {
+  font-size: 15px;
+}
+
+.time {
+  font-size: 13px;
+}
+
+.review-message {
+  font-size: 16px;
+}
+
+.right-aside {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.project-list-container {
+  border: 1pt #000 solid;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.top-line-second {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list-box {
+  display: flex;
+
+  flex-direction: column;
+  gap: 7px;
+  width: 65%;
+  float: right;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-and-location p:nth-child(2) {
+  display: flex;
+  font-size: 15px;
+  color: #a1a1a1;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.rating-star {
+  width: 30px;
+}
+
+.get-reviews a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(8, 97, 175, 1);
+  padding: 10px 15px;
+  border-radius: 50px;
+  gap: 50px;
+  width: fit-content;
+}
+
+#get-reviews-icon {
+  border-radius: 50%;
+  padding: 3px;
+  border: 1px #fff solid;
+}
