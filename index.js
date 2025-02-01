@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
       await fetchAndRenderProperties(); // Fetch properties
       await loadBookmarks(); // Load bookmarks
-      await greetings(); // Load greetings
+     // await greetings(); // Load greetings
   } catch (error) {
       console.error("Error loading data:", error);
   } finally {
@@ -177,6 +177,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       content.style.display = "block"; // Show content
   }
 });
+
+
 // Fetch and Render Properties
 async function fetchAndRenderProperties(queryParams = "") {
   const propertiesContainer = document.getElementById("properties");
@@ -233,6 +235,7 @@ async function fetchAndRenderProperties(queryParams = "") {
       propertiesContainer.innerHTML = "<p>An error occurred while fetching properties.</p>";
   }
 }
+
 
 // Load Bookmarks
 async function loadBookmarks() {

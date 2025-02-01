@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedBedrooms = 0;
   let selectedPropertyType = "";
 
-  // Function to fetch and render properties
-  async function fetchAndRenderProperties (queryParams = "") {
+   // Function to fetch and render properties
+   async function fetchAndRenderProperties(queryParams = "") {
     propertiesContainer.innerHTML = "Loading properties...";
     try {
       const response = await fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`);
@@ -133,6 +133,13 @@ document.addEventListener("DOMContentLoaded", () => {
           propertyElement.innerHTML = generatePropertyHTML(property);
           propertiesContainer.appendChild(propertyElement);
         });
+
+        // Load bookmarks after rendering properties
+        loadBookmarks();
+
+        // Attach event listeners to bookmark buttons
+        attachBookmarkListeners();
+
       } else {
         propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
       }
@@ -140,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error:", error);
       propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
     }
-  };
+  }
 
   // Generate HTML content for each property
   const generatePropertyHTML = (property) => {
@@ -169,7 +176,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="top-box">
                 <div class="price">
                   <p>&#8358;${property.price.substring(0, 10)}</p>
-                  <i class="bx bx-bookmark i"></i>
+                    <span class="icon">
+                    <i class="fa-bookmark bookmark-btn fa-regular"
+                    data-property-id="${property.id}" 
+                    data-agent-id="${property.client_id}"></i>
+                  </span>
                 </div>
                 <p class="availability">${property.roomNo} Beds | ${property.bathNo} Baths</p>
               </div>
@@ -183,6 +194,89 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
   };
+
+  // Load Bookmarks
+  async function loadBookmarks() {
+    const clientId = sessionStorage.getItem("client_id");
+    if (!clientId) return;
+
+    try {
+      const response = await fetch(`https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`);
+      const result = await response.json();
+
+      if (result.status === "success") {
+        result.bookmarked.forEach((propertyId) => {
+          const bookmarkIcon = document.querySelector(`.bookmark-btn[data-property-id="${propertyId}"]`);
+          if (bookmarkIcon) {
+            bookmarkIcon.classList.add("fa-solid", "bookmarked");
+            bookmarkIcon.classList.remove("fa-regular");
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Error loading bookmarks:", error);
+    }
+  }
+
+  // Handle Bookmark Action
+  async function handleBookmark(propertyId, action) {
+    const clientId = sessionStorage.getItem("client_id");
+    if (!clientId) {
+      alert("Please log in first.");
+      return false;
+    }
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/bookmark.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ client_id: parseInt(clientId), property_id: parseInt(propertyId), action })
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        const actionMessage = action === "add" ? "Property bookmarked successfully!" : "Property removed from bookmarks!";
+        showToast(actionMessage, "success");
+        return true;
+      } else {
+        alert(result.message);
+        return false;
+      }
+    } catch (error) {
+      console.error("Error during bookmark action:", error);
+      showToast("An error occurred while processing your request.", "error");
+      return false;
+    }
+  }
+
+  // Show Toast Notification
+  function showToast(message, type) {
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.remove();
+    }, 3000); // Remove toast after 3 seconds
+  }
+
+  // Attach Event Listeners to Bookmark Buttons
+  function attachBookmarkListeners() {
+    document.querySelectorAll(".bookmark-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const propertyId = button.getAttribute("data-property-id");
+        const isBookmarked = button.classList.contains("bookmarked");
+        const action = isBookmarked ? "remove" : "add";
+
+        if (await handleBookmark(propertyId, action)) {
+          button.classList.toggle("bookmarked", action === "add");
+          button.classList.toggle("fa-solid", action === "add");
+          button.classList.toggle("fa-regular", action === "remove");
+        }
+      });
+    });
+  }
 
   // Event listener for toggle filter button
   toggleButton.addEventListener("click", () => {
