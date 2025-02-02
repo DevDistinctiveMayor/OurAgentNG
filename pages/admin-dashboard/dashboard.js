@@ -1,34 +1,22 @@
-// Get the canvas element
-const ctx = document.getElementById("chart").getContext("2d");
+const container = document.querySelector(".chart-container");
+const data = [180, 120, 160, 100, 140, 80, 130, 90, 150, 110, 170, 140];
 
-// Create a Chart
-new Chart(ctx, {
-  type: "bar", // Base type (can be 'bar' or 'line')
-  data: {
-    labels: ["January", "February", "March", "April"],
-    datasets: [
-      {
-        label: "Sales (Bar)",
-        data: [10, 20, 30, 40],
-        backgroundColor: "rgba(54, 162, 235, 0.5)", // Blue color
-        borderColor: "rgba(54, 162, 235, 1)",
-        borderWidth: 1,
-      },
-      {
-        label: "Growth (Line)",
-        data: [5, 15, 25, 35],
-        type: "line", // Line dataset on top of bar chart
-        borderColor: "red",
-        backgroundColor: "transparent",
-        borderWidth: 2,
-        pointRadius: 5,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: true },
-    },
-  },
+data.forEach((value) => {
+  const line = document.createElement("div");
+  line.className = "line";
+  line.style.height = `${value}px`;
+  container.appendChild(line);
+});
+
+// Add hover effect
+const lines = document.querySelectorAll(".line");
+lines.forEach((line) => {
+  line.addEventListener("mouseenter", () => {
+    lines.forEach((l) => (l.style.opacity = "0.5"));
+    line.style.opacity = "1";
+  });
+
+  line.addEventListener("mouseleave", () => {
+    lines.forEach((l) => (l.style.opacity = "1"));
+  });
 });
