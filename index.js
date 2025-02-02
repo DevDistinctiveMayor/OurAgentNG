@@ -162,6 +162,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
