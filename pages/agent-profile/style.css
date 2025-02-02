@@ -143,6 +143,14 @@ main {
     font-weight: 600;
     font-size: 14px;
   }
+
+  .edit_btn {
+    margin-top: 10px;
+    margin-left: 20px;
+    color: rgba(8, 97, 175, 1);
+    font-weight: 600;
+    font-size: 14px;
+  }
   
 .bx-user {
     color: #333;
@@ -1012,7 +1020,15 @@ button {
         border-radius: 5px;
         z-index: 10;
     }
+    .logout {
+        margin-top: 10px;
+        margin-left: 0px;
+      }
 
+      .edit_btn {
+        margin-top: 10px;
+        margin-left: 0px;
+      }
     .nav-links>li {
         text-align: center;
         margin-top: 0.4rem;
