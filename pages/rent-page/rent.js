@@ -104,51 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const propertiesContainer = document.getElementById("properties");
-  const stateSearch = document.getElementById("stateSearch");
-  const lgaSearch = document.getElementById("lgaSearch");
-  const cancelButton = document.getElementById("cancelFilter");
-  const toggleButton = document.getElementById("toggleFilter");
-  const filterContainer = document.querySelector(".advance-filter-container");
-  const body = document.body;
-
-  
-  let selectedBedrooms = 0;
-  let selectedPropertyType = "";
-
-   // Function to fetch and render properties
-   async function fetchAndRenderProperties(queryParams = "") {
-    propertiesContainer.innerHTML = "Loading properties...";
-    try {
-      const response = await fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`);
-      const data = await response.json();
-      
-      propertiesContainer.innerHTML = ""; // Clear existing content
-
-      if (data.status === "success" && data.data.length > 0) {
-        data.data.forEach((property) => {
-          const propertyElement = document.createElement("div");
-          propertyElement.className = "property-card";
-          propertyElement.innerHTML = generatePropertyHTML(property);
-          propertiesContainer.appendChild(propertyElement);
-        });
-
-        // Load bookmarks after rendering properties
-        loadBookmarks();
-
-        // Attach event listeners to bookmark buttons
-        attachBookmarkListeners();
-
-      } else {
-        propertiesContainer.innerHTML = `<p>${data.message || "No properties found."}</p>`;
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      propertiesContainer.innerHTML = `<p>An error occurred while fetching properties.</p>`;
-    }
-  }
-
+ 
   // Generate HTML content for each property
   const generatePropertyHTML = (property) => {
     return `

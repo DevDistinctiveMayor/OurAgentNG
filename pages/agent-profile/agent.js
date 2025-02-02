@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const agentId = sessionStorage.getItem("agent_id"); // Get agent_id from sessionStorage
 
+
   // Check if agent_id exists in session storage
   if (!agentId) {
     Swal.fire({
@@ -142,6 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     await fetchAndRenderDashboard(agentId); // Fetch and display agent dashboard data
+    fetchSoldProperties();
   } catch (error) {
     console.error("Error loading data:", error);
   } finally {
@@ -354,6 +356,8 @@ document.addEventListener("DOMContentLoaded", () => {
     charCountDisplay.style.color = remainingChars === 0 ? "red" : "black";
   });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const agentId = sessionStorage.getItem("agent_id");
