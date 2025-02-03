@@ -658,8 +658,9 @@ button {
 
 .properties .heading {
     color: #02182B;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 600;
+    margin-left: 1rem;
 }
 
 .properties .btn-container {
@@ -669,7 +670,7 @@ button {
     overflow: hidden;
     min-width: 300px;
     width: 40%;
-    margin: 2rem 0;
+    margin: 2rem 10px;
 }
 
 .properties .btn-container button {
@@ -1123,7 +1124,7 @@ button {
     }
 
     .recently-sold .heading {
-        font-size: 24px;
+        font-size: 21px;
     }
 
     .recently-sold .house-card-container {
