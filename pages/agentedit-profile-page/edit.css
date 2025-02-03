@@ -258,6 +258,16 @@ main {
     border-radius: 50%;
     object-fit: cover;
 }
+.change_image {
+    background-color: #0861AF;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    font-size: 14px;
+    border: none;
+    width: 120px;
+}
 
 button {
     width: 100%;

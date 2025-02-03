@@ -86,3 +86,125 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 100); // 100ms delay to ensure the loader is rendered
   });
   
+
+// Function to fetch and render agent dashboard data
+async function fetchAndRenderDashboard(agentId) {
+  try {
+    const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ agent_id: agentId }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    if (data.status === "success") {
+      const user = data.data;
+
+      // Populate form fields with user data
+      document.getElementById("profileImage").src = user.profileImage || "../../images/agent-profile-img.png";
+      document.getElementById("fullName").value = user.fullName || "";
+      document.getElementById("address").value = user.address || "";
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("phone").value = user.phone || "";
+    } else {
+      Swal.fire("Error", data.message || "Failed to load user data.", "error");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    Swal.fire("Error", "An error occurred while fetching data.", "error");
+  }
+}
+
+// Handle image upload
+document.getElementById("uploadButton").addEventListener("click", () => {
+  document.getElementById("imageUpload").click();
+});
+
+document.getElementById("imageUpload").addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  const uploadButton = document.getElementById("uploadButton");
+  const agentId = sessionStorage.getItem("agent_id");
+
+  if (file && agentId) {
+    const formData = new FormData();
+    formData.append("profileImage", file);
+    formData.append("agent_id", agentId);
+
+    uploadButton.disabled = true;
+    uploadButton.textContent = "Processing...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/uploadProfileImage.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        Swal.fire("Success", "Profile image updated successfully!", "success");
+        document.getElementById("profileImage").src = result.imageUrl + "?" + new Date().getTime();
+      } else {
+        Swal.fire("Error", result.message || "Image upload failed.", "error");
+      }
+    } catch (error) {
+      Swal.fire("Error", "An error occurred while uploading the image.", "error");
+    } finally {
+      uploadButton.disabled = false;
+      uploadButton.textContent = "Change Image";
+    }
+  }
+});
+
+// Handle form submission
+document.getElementById("editProfileForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const agentId = sessionStorage.getItem("agent_id");
+  if (!agentId) {
+    alert("Error", "Agent ID not found. Please log in again.", "error");
+    return;
+  }
+
+  const formData = {
+    agent_id: agentId,
+    fullName: document.getElementById("fullName").value,
+    address: document.getElementById("address").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+  };
+
+  try {
+    const response = await fetch("https://ouragent.com.ng/updateProfile.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+    if (result.status === "success") {
+      Swal.fire("Success", "Profile updated successfully!", "success");
+    } else {
+      Swal.fire("Error", result.message || "Profile update failed.", "error");
+    }
+  } catch (error) {
+    Swal.fire("Error", "An error occurred while updating profile.", "error");
+  }
+});
+
+// Fetch and render agent data on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const agentId = sessionStorage.getItem("agent_id");
+  if (agentId) {
+    fetchAndRenderDashboard(agentId);
+  } else {
+    Swal.fire("Error", "Agent ID not found. Please log in again.", "error");
+  }
+});
