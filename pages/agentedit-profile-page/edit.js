@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(async () => {
     try {
       await loadUserSession(); // Load user session
+     // await fetchAndRenderDashboard(); // Fetch and render agent data on page load
     } catch (error) {
       console.error("Error loading data:", error);
     } finally {
@@ -139,10 +140,10 @@ document
       } finally {
         uploadButton.disabled = false;
         uploadButton.textContent = "Change Image";
+    
       }
     }
   });
-
 // Handle form submission for profile details (without affecting image upload)
 document
   .getElementById("editProfileForm")
@@ -152,7 +153,12 @@ document
     // Retrieve agent_id from sessionStorage
     const agentId = sessionStorage.getItem("agent_id");
     if (!agentId) {
-      Swal.fire("Error", "Agent ID not found. Please log in again.", "error");
+      Swal.fire({
+        title: "Error",
+        text: "Agent ID not found. Please log in again.",
+        icon: "error",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
+      });
       return;
     }
 
@@ -162,7 +168,7 @@ document
       fullName: document.getElementById("fullName").value,
       address: document.getElementById("address").value,
       email: document.getElementById("email").value,
-      phoneNumber: document.getElementById("phone").value, // Make sure it's phoneNumber in formData
+      phoneNumber: document.getElementById("phone").value, // Ensure it's phoneNumber in formData
     };
 
     try {
@@ -183,20 +189,27 @@ document
 
       // Handle success or error response
       if (result.status === "success") {
-        Swal.fire(
-          "Success",
-          "Profile updated successfully! Awaiting admin approval.",
-          "success"
-        );
+        Swal.fire({
+          title: "Success",
+          text: "Profile updated successfully! Awaiting admin approval.",
+          icon: "success",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
       } else {
-        Swal.fire(
-          "Error",
-          result.message || "Profile update failed. Please try again later.",
-          "error"
-        );
+        Swal.fire({
+          title: "Error",
+          text: result.message || "Profile update failed. Please try again later.",
+          icon: "error",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
       }
     } catch (error) {
-      Swal.fire("Error", "An error occurred while updating profile.", "error");
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while updating profile.",
+        icon: "error",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
+      });
     }
   });
 
@@ -207,7 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Call the function to fetch agent dashboard data
     fetchAndRenderDashboard(agentId);
   } else {
-    Swal.fire("Error", "Agent ID not found. Please log in again.", "error");
+    Swal.fire({
+      title: "Error",
+      text: "Agent ID not found. Please log in again.",
+      icon: "error",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
+    });
   }
 });
 
@@ -243,10 +261,20 @@ async function fetchAndRenderDashboard(agentId) {
       document.getElementById("phone").value = user.phoneNumber || "";
       document.getElementById("address").value = user.address || "";
     } else {
-      Swal.fire("Error", data.message || "Failed to load user data.", "error");
+      Swal.fire({
+        title: "Error",
+        text: data.message || "Failed to load user data.",
+        icon: "error",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
+      });
     }
   } catch (error) {
     console.error("Fetch error:", error);
-    Swal.fire("Error", "An error occurred while fetching data.", "error");
+    Swal.fire({
+      title: "Error",
+      text: "An error occurred while fetching data.",
+      icon: "error",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
+    });
   }
 }
