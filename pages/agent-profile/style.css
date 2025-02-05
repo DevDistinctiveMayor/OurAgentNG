@@ -14,16 +14,16 @@ body {
     font-family: "poppins";
     scroll-behavior: smooth;
     position: relative;
-    
+
 }
 
 /* General reset for margins and padding */
 body {
     font-family: "poppins";
     display: none;
-  }
-  
-  #loader {
+}
+
+#loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -34,28 +34,28 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-  }
-  
-  /* Scanner loading animation */
-  .scanner {
+}
+
+/* Scanner loading animation */
+.scanner {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     border: 5px solid transparent;
     border-top: 5px solid #007bff;
     animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-  
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
+
 
 /* Header Styling */
 header {
@@ -66,6 +66,7 @@ header {
     width: 100%;
     z-index: 999;
 }
+
 /* 
 main {
     margin-top: 100px;
@@ -126,24 +127,33 @@ main {
     border-radius: 7px;
 }
 
-.call_action{
+.call_action {
     display: none;
 }
+
 .greeting {
     font-size: 16px;
     margin-top: -10rem;
     font-family: "poppins";
     margin-top: 10px;
-  }
-  
-  .logout {
+}
+
+.logout {
     margin-top: 10px;
     margin-left: 20px;
     color: rgba(8, 97, 175, 1);
     font-weight: 600;
     font-size: 14px;
-  }
-  
+}
+
+.edit_btn {
+    margin-top: 10px;
+    margin-left: 20px;
+    color: rgba(8, 97, 175, 1);
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .bx-user {
     color: #333;
     font-size: 16px;
@@ -152,18 +162,18 @@ main {
     padding-right: 1px;
     text-decoration: none;
     font-family: "poppins";
-  }
-  
-  .menu-toggle {
+}
+
+.menu-toggle {
     position: relative;
     cursor: pointer;
     width: 42px;
     height: 19px;
     display: none;
     margin-top: 0.8rem;
-  }
-  
-  .menu-toggle span {
+}
+
+.menu-toggle span {
     display: block;
     width: 60%;
     height: 4px;
@@ -172,7 +182,7 @@ main {
     left: 0;
     transition: all 0.2s ease;
     z-index: 30;
-  }
+}
 
 .menu-toggle span:nth-child(1) {
     top: 0;
@@ -555,7 +565,8 @@ main .hero .profile-card .contact-icons span:active .bx {
     border-radius: 5px;
     cursor: pointer;
 }
-.delete-btn{
+
+.delete-btn {
     padding: 10px;
     margin-top: 10px;
     border: none;
@@ -564,6 +575,7 @@ main .hero .profile-card .contact-icons span:active .bx {
     background: rgba(197, 0, 0, 0.766);
     color: white;
 }
+
 .mark-sold-btn:disabled {
     background: gray;
     cursor: not-allowed;
@@ -582,6 +594,7 @@ main .hero .profile-card .contact-icons span:active .bx {
     font-weight: 600;
     color: #02182B;
 }
+
 .editable-bio {
     height: max-content;
     margin-top: 1rem;
@@ -591,16 +604,19 @@ main .hero .profile-card .contact-icons span:active .bx {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-      font-family: "poppins";
-    }
+    font-family: "poppins";
+}
 
 .editable-bio:empty {
-    color: #888; /* Placeholder color */  
+    color: #888;
+    /* Placeholder color */
 }
-#charCountDisplay{
+
+#charCountDisplay {
     margin-top: 1rem;
     font-size: 14px;
 }
+
 button {
     padding: 9px 13px;
     cursor: pointer;
@@ -615,12 +631,13 @@ button {
     border: none;
     border-radius: 8px;
 }
-.submit_bio{
-    background-color:#34A853;
+
+.submit_bio {
+    background-color: #34A853;
     color: white;
     margin-right: 10px;
     border: none;
-    border-radius: 8px; 
+    border-radius: 8px;
 }
 
 
@@ -634,14 +651,16 @@ button {
     color: #0861AF;
     margin-top: 2rem;
 }
+
 .properties {
     margin: 6rem 0;
 }
 
 .properties .heading {
     color: #02182B;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 600;
+    margin-left: 1rem;
 }
 
 .properties .btn-container {
@@ -651,7 +670,7 @@ button {
     overflow: hidden;
     min-width: 300px;
     width: 40%;
-    margin: 2rem 0;
+    margin: 2rem 10px;
 }
 
 .properties .btn-container button {
@@ -689,11 +708,13 @@ button {
     border-radius: 7px;
     cursor: pointer;
 }
+
 .btn-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    gap: 10px; /* Space between buttons */
+    gap: 10px;
+    /* Space between buttons */
     margin-bottom: 20px;
 }
 
@@ -711,11 +732,12 @@ button {
     background-color: #0861AF;
     color: white;
     font-weight: bold;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 
-#propertiesContainer, #propertiesContainer_2 {
+#propertiesContainer,
+#propertiesContainer_2 {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -725,12 +747,13 @@ button {
 
 /* Individual property card styling */
 .house-card {
-    width: calc(33.33% - 16px); /* Desktop view: 3 cards per row */
+    width: calc(33.33% - 16px);
+    /* Desktop view: 3 cards per row */
     max-width: 300px;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
 
@@ -907,7 +930,7 @@ button {
     gap: 17px;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
 .footer-links li {
     list-style: none;
@@ -982,6 +1005,7 @@ button {
     .logo {
         gap: 0.5rem;
     }
+
     .nav-links li a {
         padding: 5px 7px;
     }
@@ -1013,6 +1037,16 @@ button {
         z-index: 10;
     }
 
+    .logout {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    .edit_btn {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
     .nav-links>li {
         text-align: center;
         margin-top: 0.4rem;
@@ -1029,7 +1063,7 @@ button {
         opacity: 1;
     }
 
-    .call_action{
+    .call_action {
         display: block;
         display: flex;
     }
@@ -1056,9 +1090,11 @@ button {
     main .hero .profile-card .img1 {
         margin-top: 4rem;
     }
+
     .company-name {
         margin-top: 2rem;
     }
+
     .properties {
         margin: 1rem 0;
     }
@@ -1066,9 +1102,10 @@ button {
     .editable-bio {
         width: 100%;
     }
+
     .properties .heading {
         color: #02182B;
-        font-size: 21px;
+        font-size: 17px;
         font-weight: 600;
     }
 
@@ -1080,11 +1117,14 @@ button {
         width: 100%;
         margin-top: 2rem;
     }
+
     .house-card {
-        width: calc(50% - 16px); /* Mobile view: 2 cards per row */
+        width: calc(50% - 16px);
+        /* Mobile view: 2 cards per row */
     }
+
     .recently-sold .heading {
-        font-size: 24px;
+        font-size: 17px;
     }
 
     .recently-sold .house-card-container {
@@ -1101,9 +1141,10 @@ button {
         position: unset;
         margin-top: 10px;
     }
+
     .about-agent .heading {
         font-size: 20px;
-       
+
     }
 
     .about-agent {
@@ -1183,6 +1224,7 @@ button {
         gap: 10px;
         position: relative;
     }
+
     .properties .btn-container button {
         padding: 15px 8px;
         border: 1px solid #EEEEEE;
@@ -1193,6 +1235,7 @@ button {
         font-size: 18px;
         font-weight: 600;
     }
+
     .properties .house-card-container .container .house-card {
         width: 270px;
         position: relative;
@@ -1203,13 +1246,16 @@ button {
     main .hero {
         padding: 2rem 0rem;
     }
-    
+
     .properties {
         margin: 1rem 14px;
     }
+
     .house-card {
-        width: 100%; /* Small screens: 1 card per row */
+        width: 100%;
+        /* Small screens: 1 card per row */
     }
+
     .next-prev-page {
         gap: 0;
     }
@@ -1237,10 +1283,12 @@ button {
         width: 24%;
         margin: 2rem 0;
     }
+
     .properties .house-card-container .container .house-card {
         width: 250px;
         position: relative;
     }
+
     .footer {
         background-color: #f9f9f9;
         padding: 20px;
@@ -1254,11 +1302,13 @@ button {
     .properties .btn-container {
         min-width: 230px;
     }
+
     .properties .house-card-container .container .house-card {
         width: 230px;
         position: relative;
     }
 }
+
 @media (min-width: 768px) {
     .for_sale {
         gap: 3rem;

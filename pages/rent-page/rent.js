@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const propertiesContainer = document.getElementById("properties");
   const stateSearch = document.getElementById("stateSearch");

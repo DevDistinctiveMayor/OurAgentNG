@@ -155,7 +155,7 @@ function redirectToLogin(message) {
         confirmButtonText: "OK",
         confirmButtonColor: "rgba(8, 97, 175, 1)"
     }).then(() => {
-        window.location.href = "../agent-login-page/agent-login.html";
+        window.location.href = "../login-page/login.html";
     });
 }
 

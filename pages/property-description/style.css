@@ -878,7 +878,7 @@ button:focus {
 .subscription form button {
   font-family: inherit;
   font-size: 1rem;
-  padding: 10px 25px;
+  padding: 9px 9px;
   border-radius: 0 5px 5px 0;
   border: none;
   background-color: #0861af;
@@ -1069,6 +1069,16 @@ button:focus {
     gap: 30px;
     position: relative;
   }
+  .box-top h3 {
+    font-size: 18px;
+    margin-left: 11px;
+  }
+
+  .box-top a {
+    color: #000000;
+    font-size: 16px;
+    margin-right: 26px;
+}
 
   .subscription {
     flex-direction: column;
@@ -1190,7 +1200,7 @@ button:focus {
   }
 
   .box-top h3 {
-    font-size: 22px;
+    font-size: 18px;
     margin-left: 20px;
   }
 
