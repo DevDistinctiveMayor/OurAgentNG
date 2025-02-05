@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-lg mx-auto mt-10 p-5 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-center">Email Verification</h2>
+        <p class="text-center mt-4" id="status-message">Verifying your email...</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the token from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            if (token) {
+                // Call the backend to verify the token
+                verifyEmail(token);
+            } else {
+                document.getElementById('status-message').textContent = 'Invalid or missing verification token.';
+            }
+        });
+
+        function verifyEmail(token) {
+            // Prepare the data to send
+            const data = { token: token };
+
+            fetch('https://yourdomain.com/verify_changed_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success') {
+                    document.getElementById('status-message').textContent = 'Email successfully verified! You can now log in.';
+                } else {
+                    document.getElementById('status-message').textContent = `Error: ${result.message}`;
+                }
+            })
+            .catch(error => {
+                document.getElementById('status-message').textContent = 'An error occurred while verifying your email.';
+            });
+        }
+    </script>
+</body>
+</html>

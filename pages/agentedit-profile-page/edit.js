@@ -144,74 +144,100 @@ document
       }
     }
   });
-// Handle form submission for profile details (without affecting image upload)
-document
-  .getElementById("editProfileForm")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
 
-    // Retrieve agent_id from sessionStorage
-    const agentId = sessionStorage.getItem("agent_id");
-    if (!agentId) {
+
+  // Handle profile update form submission
+document.getElementById("editProfileForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  // Get agent ID from sessionStorage
+  const agentId = sessionStorage.getItem("agent_id");
+  if (!agentId) {
       Swal.fire({
-        title: "Error",
-        text: "Agent ID not found. Please log in again.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
-      });
-      return;
-    }
-
-    // Gather form data
-    const formData = {
-      agent_id: agentId,
-      fullName: document.getElementById("fullName").value,
-      address: document.getElementById("address").value,
-      email: document.getElementById("email").value,
-      phoneNumber: document.getElementById("phone").value, // Ensure it's phoneNumber in formData
-    };
-
-    try {
-      // Send data to the PHP API for processing
-      const response = await fetch(
-        "https://ouragent.com.ng/agentupdateProfile.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      // Parse the response
-      const result = await response.json();
-
-      // Handle success or error response
-      if (result.status === "success") {
-        Swal.fire({
-          title: "Success",
-          text: "Profile updated successfully! Awaiting admin approval.",
-          icon: "success",
-          confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
-      } else {
-        Swal.fire({
           title: "Error",
-          text: result.message || "Profile update failed. Please try again later.",
+          text: "Agent ID not found. Please log in again.",
           icon: "error",
           confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: "An error occurred while updating profile.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
       });
-    }
-  });
+      return;
+  }
+
+  // Gather form data
+  const formData = {
+      agent_id: agentId,
+      fullName: document.getElementById("fullName").value,
+      email: document.getElementById("email").value,
+      phoneNumber: document.getElementById("phone").value,
+      address: document.getElementById("address").value
+  };
+
+  try {
+      // Send request to update profile
+      const response = await fetch("https://ouragent.com.ng/agentupdateProfile.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+          Swal.fire({
+              title: "Success",
+              text: "Profile update submitted! Awaiting admin approval.",
+              icon: "success",
+              confirmButtonColor: "rgba(8, 97, 175, 1)",
+          });
+
+          // Start checking approval status
+          checkApprovalStatus(agentId);
+      } else {
+          Swal.fire({
+              title: "Error",
+              text: result.message || "Profile update failed. Try again later.",
+              icon: "error",
+              confirmButtonColor: "rgba(8, 97, 175, 1)",
+          });
+      }
+  } catch (error) {
+      Swal.fire({
+          title: "Error",
+          text: "An error occurred while updating profile.",
+          icon: "error",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+      });
+  }
+});
+
+// Function to check approval status
+async function checkApprovalStatus(agentId) {
+  const interval = setInterval(async () => {
+      try {
+          const response = await fetch("https://ouragent.com.ng/adminApproval.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ agent_id: agentId })
+          });
+
+          const data = await response.json();
+
+          if (data.status === "approved") {
+              clearInterval(interval); // Stop checking
+
+              Swal.fire({
+                  title: "Approved!",
+                  text: "Your profile update has been approved.",
+                  icon: "success",
+                  confirmButtonColor: "rgba(8, 97, 175, 1)",
+              }).then(() => {
+                  window.location.href = "../agent-profile/agent-profile.html"; // Redirect to profile page
+              });
+          }
+      } catch (error) {
+          console.error("Approval check failed:", error);
+      }
+  }, 1000); // Check every 5 seconds
+}
 
 // Fetch and render agent data on page load
 document.addEventListener("DOMContentLoaded", () => {
