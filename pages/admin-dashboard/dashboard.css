@@ -57,23 +57,25 @@ body {
   border-radius: 50%;
 }
 
-.admin-summary {
+section.admin-summary {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
   flex-wrap: wrap;
+  row-gap: 30px;
+  column-gap: 10px;
+  justify-content: flex-start;
+  padding: 30px;
 }
 
 .summary-item-box {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   border: 1pt #d4d4d4 solid;
+  flex-wrap: wrap;
   border-radius: 15px;
   padding: 15px 10px;
-  width: 15%;
+  width: 200px;
+  max-width: 250px;
 }
 
 .summary-item-box-top-content {
@@ -459,4 +461,69 @@ body {
 
 .tproperties-rating p img {
   width: 25px;
+}
+
+@media screen and (max-width: 765px) {
+  .reviews {
+    flex-direction: column;
+  }
+
+  .new-messages {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .message-label {
+    font-size: 14px;
+  }
+
+  .user-name {
+    font-size: 15px;
+  }
+
+  .property-name {
+    font-size: 14px;
+  }
+
+  .time {
+    font-size: 12px;
+  }
+
+  .review-message {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section.admin-summary {
+    width: 100%;
+  }
+
+  .summary-item-box {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .item-text {
+    font-size: 20px;
+  }
+
+  .item-icon {
+    width: 25px;
+    padding: 3px;
+  }
+
+  .summary-item-box-bottom-content p:first-child {
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .summary-item-box-bottom-content p:nth-child(2) {
+    font-size: 11px;
+  }
+
+  .top-line p:first-child {
+    font-size: 16px;
+  }
 }
