@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Email Verification</h1>
+        <p id="statusMessage">Processing your request...</p>
+    </div>
+
+    <script>
+        // Get the token from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        const statusMessage = document.getElementById('statusMessage');
+
+        if (token) {
+            fetch(`https://ouragent.com.ng/verify_changed_email.php?token=${token}`)
+                .then(response => response.text()) // Change this if your PHP returns JSON
+                .then(data => {
+                    if (data.includes("successfully")) {
+                        statusMessage.innerHTML = "✅ Your email has been successfully verified! Kindly close the page";
+                        statusMessage.classList.add("status", "success");
+                    } else {
+                        statusMessage.innerHTML = "❌ " + data;
+                        statusMessage.classList.add("status", "error");
+                    }
+                })
+                .catch(error => {
+                    statusMessage.innerHTML = "⚠️ An error occurred. Please try again.";
+                    statusMessage.classList.add("status", "error");
+                });
+        } else {
+            statusMessage.innerHTML = "⚠️ Invalid request. No token found.";
+            statusMessage.classList.add("status", "error");
+        }
+    </script>
+
+</body>
+</html>
