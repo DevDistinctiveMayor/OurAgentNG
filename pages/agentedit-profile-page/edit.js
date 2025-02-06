@@ -145,129 +145,113 @@ document
     }
   });
 
-
-  // Handle profile update form submission
-  document.getElementById("editProfileForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    // Get agent ID from sessionStorage
+  document.addEventListener("DOMContentLoaded", () => {
     const agentId = sessionStorage.getItem("agent_id");
     if (!agentId) {
-        Swal.fire({
-            title: "Error",
-            text: "Agent ID not found. Please log in again.",
-            icon: "error",
-            confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
-        return;
+        return showError("Agent ID not found. Please log in again.");
     }
 
-    // Gather form data
+    fetchAndRenderDashboard(agentId); // Load agent details on page load
+
+    document.getElementById("editProfileForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        updateProfile(agentId);
+    });
+
+    document.getElementById("editEmailForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        updateEmail(agentId);
+    });
+});
+
+// Function to update agent profile
+async function updateProfile(agentId) {
     const formData = {
         agent_id: agentId,
-        fullName: document.getElementById("fullName").value,
-        new_email: document.getElementById("email").value,
-        phoneNumber: document.getElementById("phone").value,
-        address: document.getElementById("address").value
+        fullName: getValue("fullName"),
+        phoneNumber: getValue("phone"),
+        address: getValue("address"),
     };
 
+    if (!formData.fullName || !formData.phoneNumber || !formData.address) {
+        return showError("All fields are required.");
+    }
+
+    await sendRequest("https://ouragent.com.ng/agentupdateProfile.php", formData, "Profile updated successfully!", () => {
+        window.location.reload();
+    });
+}
+
+// Function to update email
+async function updateEmail(agentId) {
+    const formData = {
+        agent_id: agentId,
+        new_email: getValue("email"),
+    };
+
+    if (!formData.new_email) {
+        return showError("Please enter a valid email.");
+    }
+
+    await sendRequest("https://ouragent.com.ng/change_email.php", formData, "A verification link has been sent to your new email.");
+}
+
+// Function to send API requests
+async function sendRequest(url, data, successMessage, callback) {
     try {
-        // Send request to update profile with email verification
-        const response = await fetch("https://ouragent.com.ng/change_email.php", {
+        const response = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(data),
         });
 
         const result = await response.json();
-
         if (result.status === "success") {
-            Swal.fire({
-                title: "Verify Your Email",
-                text: "A verification link has been sent to your new email. Click the link to confirm the change.",
-                icon: "info",
-                confirmButtonColor: "rgba(8, 97, 175, 1)",
-            });
+            Swal.fire({ title: "Success", text: successMessage, icon: "success" }).then(callback || (() => {}));
         } else {
-            Swal.fire({
-                title: "Error",
-                text: result.message || "Profile update failed. Try again later.",
-                icon: "error",
-                confirmButtonColor: "rgba(8, 97, 175, 1)",
-            });
+            showError(result.message || "An error occurred.");
         }
     } catch (error) {
-        Swal.fire({
-            title: "Error",
-            text: "An error occurred while updating profile.",
-            icon: "error",
-            confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
+        showError("An error occurred. Please try again.");
+        console.error(error);
     }
-});
-
-// Fetch and render agent data on page load
-document.addEventListener("DOMContentLoaded", () => {
-  const agentId = sessionStorage.getItem("agent_id");
-  if (agentId) {
-    // Call the function to fetch agent dashboard data
-    fetchAndRenderDashboard(agentId);
-  } else {
-    Swal.fire({
-      title: "Error",
-      text: "Agent ID not found. Please log in again.",
-      icon: "error",
-      confirmButtonColor: "rgba(8, 97, 175, 1)",
-    });
-  }
-});
+}
 
 // Function to fetch and render agent dashboard data
 async function fetchAndRenderDashboard(agentId) {
-  try {
-    const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ agent_id: agentId }), // Send agent_id
-    });
+    try {
+        const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ agent_id: agentId }),
+        });
 
-    if (!response.ok) {
-      throw new Error(
-        `HTTP Error: ${response.status} - ${response.statusText}`
-      );
+        const data = await response.json();
+        if (data.status === "success") {
+            const user = data.data;
+            setValue("fullName", user.fullName);
+            setValue("email", user.email);
+            setValue("phone", user.phoneNumber);
+            setValue("address", user.address);
+            document.getElementById("profileImage").src = user.profileImage || "../../images/agent-profile-img.png";
+        } else {
+            showError("Failed to load user data.");
+        }
+    } catch (error) {
+        showError("An error occurred while fetching data.");
+        console.error(error);
     }
+}
 
-    const data = await response.json();
-    if (data.status === "success") {
-      const user = data.data;
+// Utility functions
+function getValue(id) {
+    return document.getElementById(id).value.trim();
+}
 
-      // Render profile image
-      const profileImage = document.getElementById("profileImage");
-      profileImage.src =
-        user.profileImage || "../../images/agent-profile-img.png";
+function setValue(id, value) {
+    document.getElementById(id).value = value || "";
+}
 
-      // Populate the form with existing data
-      document.getElementById("fullName").value = user.fullName || "";
-      document.getElementById("email").value = user.email || "";
-      document.getElementById("phone").value = user.phoneNumber || "";
-      document.getElementById("address").value = user.address || "";
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: data.message || "Failed to load user data.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
-      });
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-    Swal.fire({
-      title: "Error",
-      text: "An error occurred while fetching data.",
-      icon: "error",
-      confirmButtonColor: "rgba(8, 97, 175, 1)",
-    });
-  }
+function showError(message) {
+    Swal.fire({ title: "Error", text: message, icon: "error" });
 }
