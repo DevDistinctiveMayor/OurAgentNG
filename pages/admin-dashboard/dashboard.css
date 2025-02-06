@@ -464,8 +464,13 @@ section.admin-summary {
 }
 
 @media screen and (max-width: 765px) {
+  .welcoming-text {
+    font-size: 22px;
+  }
+
   .reviews {
     flex-direction: column;
+    gap: 20px;
   }
 
   .new-messages {
@@ -492,9 +497,33 @@ section.admin-summary {
   .review-message {
     font-size: 14px;
   }
+
+  .right-aside {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .chart-and-tproperties {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .chart-wrapper {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .top-properties {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 486px) {
+  .welcoming-text {
+    font-size: 18.5px;
+  }
   section.admin-summary {
     width: 100%;
   }
