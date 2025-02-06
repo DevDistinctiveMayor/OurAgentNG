@@ -178,7 +178,7 @@ async function updateProfile(agentId) {
     }
 
     await sendRequest("https://ouragent.com.ng/agentupdateProfile.php", formData, "Profile updated initiated successfully! Please wait for admin approval", () => {
-      window.location.href = "../admin-dashboard/admin-approval.html"; 
+      window.location.href = "../agent-profile/agent-profile.html"; 
 
     });
 }
