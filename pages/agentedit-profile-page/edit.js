@@ -144,74 +144,67 @@ document
       }
     }
   });
-// Handle form submission for profile details (without affecting image upload)
-document
-  .getElementById("editProfileForm")
-  .addEventListener("submit", async (event) => {
+
+
+  // Handle profile update form submission
+  document.getElementById("editProfileForm").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Retrieve agent_id from sessionStorage
+    // Get agent ID from sessionStorage
     const agentId = sessionStorage.getItem("agent_id");
     if (!agentId) {
-      Swal.fire({
-        title: "Error",
-        text: "Agent ID not found. Please log in again.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
-      });
-      return;
+        Swal.fire({
+            title: "Error",
+            text: "Agent ID not found. Please log in again.",
+            icon: "error",
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
+        return;
     }
 
     // Gather form data
     const formData = {
-      agent_id: agentId,
-      fullName: document.getElementById("fullName").value,
-      address: document.getElementById("address").value,
-      email: document.getElementById("email").value,
-      phoneNumber: document.getElementById("phone").value, // Ensure it's phoneNumber in formData
+        agent_id: agentId,
+        fullName: document.getElementById("fullName").value,
+        new_email: document.getElementById("email").value,
+        phoneNumber: document.getElementById("phone").value,
+        address: document.getElementById("address").value
     };
 
     try {
-      // Send data to the PHP API for processing
-      const response = await fetch(
-        "https://ouragent.com.ng/agentupdateProfile.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+        // Send request to update profile with email verification
+        const response = await fetch("https://ouragent.com.ng/change_email.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            Swal.fire({
+                title: "Verify Your Email",
+                text: "A verification link has been sent to your new email. Click the link to confirm the change.",
+                icon: "info",
+                confirmButtonColor: "rgba(8, 97, 175, 1)",
+            });
+        } else {
+            Swal.fire({
+                title: "Error",
+                text: result.message || "Profile update failed. Try again later.",
+                icon: "error",
+                confirmButtonColor: "rgba(8, 97, 175, 1)",
+            });
         }
-      );
-
-      // Parse the response
-      const result = await response.json();
-
-      // Handle success or error response
-      if (result.status === "success") {
-        Swal.fire({
-          title: "Success",
-          text: "Profile updated successfully! Awaiting admin approval.",
-          icon: "success",
-          confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
-      } else {
-        Swal.fire({
-          title: "Error",
-          text: result.message || "Profile update failed. Please try again later.",
-          icon: "error",
-          confirmButtonColor: "rgba(8, 97, 175, 1)",
-        });
-      }
     } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: "An error occurred while updating profile.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
-      });
+        Swal.fire({
+            title: "Error",
+            text: "An error occurred while updating profile.",
+            icon: "error",
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
     }
-  });
+});
 
 // Fetch and render agent data on page load
 document.addEventListener("DOMContentLoaded", () => {
