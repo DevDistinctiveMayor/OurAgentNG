@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     await fetchAndRenderDashboard(agentId); // Fetch and display agent dashboard data
-    fetchSoldProperties();
+    fetchSoldProperties(agentId);
   } catch (error) {
     console.error("Error loading data:", error);
   } finally {
@@ -191,49 +191,7 @@ async function fetchAndRenderDashboard(agentId) {
   }
 }
 
-// Handle image upload
-document.getElementById("uploadButton").addEventListener("click", () => {
-  document.getElementById("imageUpload").click();
-});
 
-document.getElementById("imageUpload").addEventListener("change", async (event) => {
-  const file = event.target.files[0];
-  const uploadButton = document.getElementById("uploadButton");
-
-  if (file) {
-    const formData = new FormData();
-    formData.append("profileImage", file);
-    formData.append("agent_id", sessionStorage.getItem("agent_id")); // Send agent_id
-
-    // Disable the button and show loading state
-    uploadButton.disabled = true;
-    uploadButton.textContent = "Processing...";
-
-    try {
-      const response = await fetch("https://ouragent.com.ng/uploadProfileImage.php", {
-        method: "POST",
-        body: formData,
-      });
-
-      const result = await response.json();
-      if (result.status === "success") {
-        Swal.fire("Success", "Profile image updated successfully!", "success");
-        document.getElementById("profileImage").src = result.imageUrl + "?" + new Date().getTime();
-      } else {
-        Swal.fire("Error", result.message || "Image upload failed.", "error");
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Fetch Error!",
-        text: "An error occurred while uploading the image. Please try again later.",
-      });
-    } finally {
-      uploadButton.disabled = false;
-      uploadButton.textContent = "Change Image";
-    }
-  }
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const bioDiv = document.getElementById("bio");
