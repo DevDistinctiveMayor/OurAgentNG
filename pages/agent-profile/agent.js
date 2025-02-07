@@ -117,18 +117,19 @@ async function loadUserSession() {
 }
 
 
+//modify the script to hide the container initially and show it after fetching.
 document.addEventListener("DOMContentLoaded", async () => {
   const loader = document.getElementById("loader");
   const content = document.getElementById("content");
+  const propertiesSoldContainer = document.getElementById("propertiesSold");
 
-  // Show loader immediately
+  // Hide content initially
   loader.style.display = "flex";
   content.style.display = "none";
+  propertiesSoldContainer.style.display = "none"; // Hide properties section initially
 
-  const agentId = sessionStorage.getItem("agent_id"); // Get agent_id from sessionStorage
+  const agentId = sessionStorage.getItem("agent_id");
 
-
-  // Check if agent_id exists in session storage
   if (!agentId) {
     Swal.fire({
       title: "Session Expired",
@@ -142,16 +143,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    await fetchAndRenderDashboard(agentId); // Fetch and display agent dashboard data
-    fetchSoldProperties(agentId);
+    await fetchAndRenderDashboard(agentId); // Fetch agent dashboard data
+    await fetchSoldProperties(
+      agentId,
+      "propertiesSold",
+      "https://ouragent.com.ng/agent_sold_property.php"
+    );
   } catch (error) {
     console.error("Error loading data:", error);
   } finally {
-    // Hide loader and show content
+    // Show content and properties section after data loads
     loader.style.display = "none";
     content.style.display = "block";
+    propertiesSoldContainer.style.display = ""; // Show only after fetching
   }
 });
+
+
+
+
 
 // Function to fetch and render agent dashboard data
 async function fetchAndRenderDashboard(agentId) {
@@ -331,8 +341,10 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-async function fetchSoldProperties(agentId, containerId, url) {
-  const container = document.getElementById(containerId);
+  async function fetchSoldProperties(agentId, containerId, url) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ""; // Clear any dummy content
+  
 
   try {
     const response = await fetch(url, {
