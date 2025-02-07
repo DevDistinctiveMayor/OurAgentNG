@@ -208,10 +208,15 @@ async function sendRequest(url, data, successMessage, callback) {
 
         const result = await response.json();
         if (result.status === "success") {
-            Swal.fire({ title: "Success", text: successMessage, icon: "success" }).then(callback || (() => {}));
-        } else {
-            showError(result.message || "An error occurred.");
-        }
+          Swal.fire({
+              title: "Success",
+              text: successMessage,
+              icon: "success",
+              confirmButtonColor: "rgba(8, 97, 175, 1)" // Correct placement
+          }).then(callback || (() => {}));
+      } else {
+          showError(result.message || "An error occurred.");
+      }
     } catch (error) {
         showError("An error occurred. Please try again.");
         console.error(error);
@@ -254,5 +259,10 @@ function setValue(id, value) {
 }
 
 function showError(message) {
-    Swal.fire({ title: "Error", text: message, icon: "error" });
+  Swal.fire({
+      title: "Error",
+      text: message,
+      icon: "error",
+      confirmButtonColor: "rgba(8, 97, 175, 1)" // Added confirm button color
+  });
 }

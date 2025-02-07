@@ -39,6 +39,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
           text: "A password reset OTP has been sent to your email. Please check your inbox.",
           icon: "success",
           confirmButtonText: "Proceed",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
         }).then(() => {
           window.location.href = "../reset-password/reset.html"; // Redirect to reset password page
         });
@@ -58,6 +59,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
         text: "An error occurred while sending the OTP. Please try again later.",
         icon: "error",
         confirmButtonText: "Retry",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
       });
     } finally {
       // Re-enable the button and remove loading state
