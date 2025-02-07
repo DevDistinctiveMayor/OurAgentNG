@@ -248,6 +248,11 @@ main {
     width: 400px;
 }
 
+.log{
+    display: flex;
+    justify-content: space-between;
+}
+
 .profile-picture {
     text-align: center;
 }
@@ -292,6 +297,11 @@ input {
     border-radius: 5px;
     font-size: 16px;
 }
+
+#editEmailForm{
+    margin-top: 1%;
+}
+
 
 /* Footer Bottom Section */
 
