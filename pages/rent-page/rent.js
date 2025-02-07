@@ -224,8 +224,16 @@ document.addEventListener("DOMContentLoaded", () => {
   async function handleBookmark(propertyId, action) {
     const clientId = sessionStorage.getItem("client_id");
     if (!clientId) {
-      alert("Please log in first.");
-      return false;
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "warning",
+        title: "Please log in first.",
+        showConfirmButton: false,
+        timer: 4000, // Auto close after 3 seconds
+        timerProgressBar: true,
+      });
+      return;
     }
 
     try {

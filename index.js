@@ -63,7 +63,7 @@ function scrollCarousel(direction = "right") {
         currentIndex * itemWidth
       }px)`;
     }
-  }, 500);
+  }, 3000);
 }
 
 // Auto-slide function
@@ -264,10 +264,19 @@ async function loadBookmarks() {
 // Handle Bookmark Action
 async function handleBookmark(propertyId, action) {
   const clientId = sessionStorage.getItem("client_id");
-  if (!clientId) {
-      alert("Please log in first.");
-      return false;
-  }
+if (!clientId) {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    icon: "warning",
+    title: "Please log in first.",
+    showConfirmButton: false,
+    timer: 4000, // Auto close after 3 seconds
+    timerProgressBar: true,
+  });
+  return false;
+}
+
 
   try {
       const response = await fetch("https://ouragent.com.ng/bookmark.php", {

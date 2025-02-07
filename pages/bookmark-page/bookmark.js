@@ -79,9 +79,18 @@ const fetchBookmarks = async () => {
   const clientId = sessionStorage.getItem("client_id"); // Retrieve agent ID from session storage
 
   if (!clientId) {
-    alert("Agent not logged in. Please log in to view bookmarks.");
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "warning",
+      title: "Please log in first.",
+      showConfirmButton: false,
+      timer: 4000, // Auto close after 3 seconds
+      timerProgressBar: true,
+    });
     return;
   }
+  
 
   try {
     const response = await fetch("https://ouragent.com.ng/get_bookmark.php", {

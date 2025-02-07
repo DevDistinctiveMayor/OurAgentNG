@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       text: "Your session has expired. Redirecting to the registration page...",
       icon: "warning",
       confirmButtonText: "OK",
+      confirmButtonColor: "rgba(8, 97, 175, 1)"
     }).then(() => {
       window.location.href = "../registered-page/register.html";
     });
@@ -125,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = "Verify";
+      
     }
   });
 
