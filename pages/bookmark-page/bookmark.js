@@ -137,7 +137,7 @@ const renderBookmarks = (bookmarks) => {
 
     bookmarkItem.innerHTML = `
       <div class="bookmark-card-img">
-          <img src="${propertyImage}" alt="Property Image" />
+          <img src="https://ouragent.com.ng/${propertyImage}" alt="Property Image" />
       </div>
       <div class="bookmark-item-details">
           <h3 class="bookmark-item-title">${bookmark.property_name}</h3>

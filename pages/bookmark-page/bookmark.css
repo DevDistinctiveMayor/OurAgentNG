@@ -234,7 +234,7 @@ main {
 }
 
 .bookmark-section .bookmark-list .bookmark-item-details h3 {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #333;
 }
 
@@ -242,7 +242,7 @@ main {
     font-size: 1em;
     color: #333;
     margin: 5px 0;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .bookmark-section .bookmark-list .bookmark-item-details .bookmark-item-actions {
