@@ -263,11 +263,12 @@ main {
 
 .bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action a {
     text-decoration: none;
-    /* color: #fff; */
+    color:black;
 }
 
 .bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action:hover {
-    background-color: rgba(8, 97, 175, 0.8);
+    /* background-color: rgba(8, 97, 175, 0.8); */
+    text-decoration: overline;
 }
 
 .remove-bookmark-btn {
