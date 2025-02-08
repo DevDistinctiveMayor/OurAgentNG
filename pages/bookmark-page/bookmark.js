@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
-
 // Function to fetch and display bookmarks
 const fetchBookmarks = async () => {
   const clientId = sessionStorage.getItem("client_id"); // Retrieve agent ID from session storage
@@ -85,80 +84,86 @@ const fetchBookmarks = async () => {
       icon: "warning",
       title: "Please log in first.",
       showConfirmButton: false,
-      timer: 4000, // Auto close after 3 seconds
+      timer: 4000,
       timerProgressBar: true,
     });
     return;
   }
-  
 
   try {
     const response = await fetch("https://ouragent.com.ng/get_bookmark.php", {
-      method: "POST", // Use POST if agent_id needs to be sent securely
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        client_id: parseInt(clientId),
-      }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_id: parseInt(clientId) }),
     });
 
     const result = await response.json();
 
     if (result.status === "success" && result.data.length > 0) {
-      // Call function to render bookmarks
       renderBookmarks(result.data);
-    } else if (result.status === "success" && result.data.length === 0) {
-      alert("You have no bookmarks yet.");
     } else {
-      alert(`Error: ${result.message}`);
+      Swal.fire({
+        icon: "info",
+        title: "No bookmarks found",
+        text: "You haven't bookmarked any properties yet.",
+        confirmButtonColor: "#3085d6",
+      });
     }
   } catch (error) {
     console.error("Error fetching bookmarks:", error);
-    alert("An error occurred while fetching bookmarks.");
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "An error occurred while fetching bookmarks.",
+      confirmButtonColor: "#d33",
+    });
   }
 };
 
 // Function to render bookmarks on the page
 const renderBookmarks = (bookmarks) => {
-  const bookmarkContainer = document.querySelector(".bookmark-list"); // Ensure this container exists on your page
-  bookmarkContainer.innerHTML = ""; // Clear existing bookmarks
+  const bookmarkContainer = document.querySelector(".bookmark-list");
+  bookmarkContainer.innerHTML = ""; // Clear previous bookmarks
 
   bookmarks.forEach((bookmark) => {
-    // Create a card or list item for each bookmark
     const bookmarkItem = document.createElement("div");
-    bookmarkItem.className = "bookmark-card"; // Add appropriate styling classes
+    bookmarkItem.className = "bookmark-card";
+
+    // Check if images exist, otherwise use a default image
+    const propertyImage =
+      bookmark.images && bookmark.images.length > 0
+        ? bookmark.images[0] // Use first image
+        : "../../images/default-property.png"; // Default fallback image
+
     bookmarkItem.innerHTML = `
-            <div class="bookmark-card-img">
-                <img src="../../images/ibadan.png" alt="Property Image" />
-            </div>
-            <div class="bookmark-item-details">
-                <h3 class="bookmark-item-title">${bookmark.property_name}</h3>
-                <p class="bookmark-item-location">Location: ${
-                  (bookmark.state, bookmark.lga)
-                }</p>
-                <p class="bookmark-item-price">Price:₦${bookmark.price}</p>
-                <div  class="bookmark-item-actions">
-                      <button class="bookmark-item-action">
-                      <a href="../property-description/index.html?propertyId=${
-                        bookmark.property_id
-                      }" class="view">View</a>
-                  </button>
-                    <button class="remove-bookmark-btn" data-property-id="${
-                      bookmark.property_id
-                    }">Remove</button>
-                </div>
-            </div>
-        `;
+      <div class="bookmark-card-img">
+          <img src="${propertyImage}" alt="Property Image" />
+      </div>
+      <div class="bookmark-item-details">
+          <h3 class="bookmark-item-title">${bookmark.property_name}</h3>
+          <p class="bookmark-item-location">Location: ${bookmark.state}, ${bookmark.lga}</p>
+          <p class="bookmark-item-price">Price: ₦${bookmark.price}</p>
+          <div class="bookmark-item-actions">
+              <button class="bookmark-item-action">
+                  <a href="../property-description/index.html?propertyId=${bookmark.property_id}" class="view">View</a>
+              </button>
+              <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove</button>
+          </div>
+      </div>
+    `;
+
     bookmarkContainer.appendChild(bookmarkItem);
   });
 
-  // Attach event listeners to "Remove Bookmark" buttons
-  const removeButtons = document.querySelectorAll(".remove-bookmark-btn");
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const propertyId = button.getAttribute("data-property-id");
-      handleBookmark(propertyId, "remove"); // Use your existing bookmark handler to remove
+  attachRemoveBookmarkListeners();
+};
+
+// Function to attach event listeners to "Remove Bookmark" buttons
+const attachRemoveBookmarkListeners = () => {
+  document.querySelectorAll(".remove-bookmark-btn").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const propertyId = event.target.getAttribute("data-property-id");
+      handleBookmark(propertyId, "remove");
     });
   });
 };
@@ -168,41 +173,55 @@ const handleBookmark = async (propertyId, action) => {
   const clientId = sessionStorage.getItem("client_id");
 
   if (!clientId) {
-    alert("Agent not logged in. Please log in to manage bookmarks.");
+    Swal.fire({
+      icon: "warning",
+      title: "Agent not logged in",
+      text: "Please log in to manage bookmarks.",
+      confirmButtonColor: "#3085d6",
+    });
     return;
   }
 
   try {
-    const response = await fetch(
-      "https://ouragent.com.ng/handle_bookmark.php",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          agent_id: parseInt(clientId),
-          property_id: parseInt(propertyId),
-          action: action,
-        }),
-      }
-    );
+    const response = await fetch("https://ouragent.com.ng/handle_bookmark.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        client_id: parseInt(clientId),
+        property_id: parseInt(propertyId),
+        action: action,
+      }),
+    });
 
     const result = await response.json();
 
     if (result.status === "success") {
-      alert(`Bookmark ${action === "add" ? "added" : "removed"} successfully.`);
-      fetchBookmarks(); // Refresh the bookmarks list
+      Swal.fire({
+        icon: "success",
+        title: `Bookmark ${action === "add" ? "added" : "removed"} successfully`,
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
+      fetchBookmarks(); // Refresh bookmarks list
     } else {
-      alert(`Error: ${result.message}`);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: result.message,
+        confirmButtonColor: "#d33",
+      });
     }
   } catch (error) {
     console.error("Error handling bookmark:", error);
-    alert("An error occurred while managing the bookmark.");
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "An error occurred while managing the bookmark.",
+      confirmButtonColor: "#d33",
+    });
   }
 };
 
 // Fetch bookmarks on page load
-document.addEventListener("DOMContentLoaded", () => {
-  fetchBookmarks();
-});
+document.addEventListener("DOMContentLoaded", fetchBookmarks);
