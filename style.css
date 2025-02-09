@@ -314,6 +314,7 @@ main {
 .carousel-track_flex {
   display: flex;
   justify-content: center;
+  height: 53%;
 }
 
 .carousel {
@@ -1059,7 +1060,7 @@ main {
 
 @media screen and (max-width: 500px) {
   .carousel-item {
-    min-width: 100%;
+    min-width: 88%;
   }
 
   .access-box {
