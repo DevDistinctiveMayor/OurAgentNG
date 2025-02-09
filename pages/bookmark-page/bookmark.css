@@ -182,22 +182,34 @@ main {
 }
 
 /* Main Content Styling */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 50px 0;
-}
-/* Bookmark Section */
-.bookmark-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.container {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: auto;
     padding: 20px;
 }
 
+/* Center Section */
+.bookmark-section { 
+    margin-bottom: 20px;
+}
+
+/* Apply Grid to Bookmark List */
+.bookmark-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    width: 100%;
+}
+
+/* Bookmark Card Styling */
+.bookmark-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
 .bookmark-section h1 {
     font-size: 1.5em;
     color: #333;
@@ -208,6 +220,13 @@ main {
     color: #333;
 }
 
+.bookmark-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+
+}
 .bookmark-section .bookmark-list {
     display: flex;
     flex-wrap: wrap;
@@ -253,17 +272,16 @@ main {
 
 .bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action  {
     text-decoration: none;
-    color:black;
-    border-color:1pt solid rgba(8, 97, 175, 1);
+    color: rgba(8, 97, 175, 1);
+    border:1pt solid rgba(8, 97, 175, 1);;
     padding: 10px 20px;
     border-radius: 5px;
-    /* border: none; */
+    background-color: #fff;
     cursor: pointer;
 }
 
 .bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action a {
-    text-decoration: none;
-    color:black;
+    color: rgba(8, 97, 175, 1);
 }
 
 .bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action:hover {
@@ -272,7 +290,7 @@ main {
 }
 
 .remove-bookmark-btn {
-    background-color: #ff4d4d;
+    background-color:#ec0000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -282,6 +300,10 @@ main {
 
 .remove-bookmark-btn:hover {
     background-color: #cc0000;
+}
+
+.bookmark-card:hover {
+    transform: translateY(-5px);
 }
 
 
@@ -425,6 +447,11 @@ main {
         opacity: 1;
     }
 
+    .logout {
+   
+        margin-left: 0px;
+  
+    }
     .call_action {
         display: block;
         display: flex;
