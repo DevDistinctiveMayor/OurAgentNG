@@ -70,7 +70,7 @@ function scrollCarousel(direction = "right") {
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     scrollCarousel("right");
-  }, 1000); // Every 3 seconds
+  }, 5000); // Every 3 seconds
 }
 
 // Stop auto-slide function
@@ -271,7 +271,7 @@ if (!clientId) {
     icon: "warning",
     title: "Please log in first.",
     showConfirmButton: false,
-    timer: 4000, // Auto close after 3 seconds
+    timer: 3000, // Auto close after 3 seconds
     timerProgressBar: true,
   });
   return false;
