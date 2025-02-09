@@ -73,9 +73,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
+
 // Function to fetch and display bookmarks
 const fetchBookmarks = async () => {
-  const clientId = sessionStorage.getItem("client_id"); // Retrieve agent ID from session storage
+  const clientId = sessionStorage.getItem("client_id");
 
   if (!clientId) {
     Swal.fire({
@@ -99,18 +100,12 @@ const fetchBookmarks = async () => {
     });
 
     const result = await response.json();
+    console.log("API Response:", result);
 
-    if (result.status === "success" && result.data.length > 0) {
+    if (result.status === "success") {
       renderBookmarks(result.data);
     } else {
-      Swal.fire({
-        toast: true,
-        icon: "info",
-        title: "No bookmarks found",
-        iconColor: "#3085d6",
-        text: "You haven't bookmarked any properties yet.",
-        confirmButtonColor: "#3085d6",
-      });
+      document.querySelector(".bookmark-list").innerHTML = `<p class='no-bookmarks'>No bookmarks found.</p>`;
     }
   } catch (error) {
     console.error("Error fetching bookmarks:", error);
@@ -123,35 +118,38 @@ const fetchBookmarks = async () => {
   }
 };
 
-// Function to render bookmarks on the page
+// Function to render bookmarks
 const renderBookmarks = (bookmarks) => {
   const bookmarkContainer = document.querySelector(".bookmark-list");
-  bookmarkContainer.innerHTML = ""; // Clear previous bookmarks
+  bookmarkContainer.innerHTML = "";
+
+  if (!bookmarks || bookmarks.length === 0) {
+    bookmarkContainer.innerHTML = `<p class='no-bookmarks'>You have no bookmarks yet.</p>`;
+    return;
+  }
 
   bookmarks.forEach((bookmark) => {
     const bookmarkItem = document.createElement("div");
     bookmarkItem.className = "bookmark-card";
 
-    // Check if images exist, otherwise use a default image
-    const propertyImage =
-      bookmark.images && bookmark.images.length > 0
-        ? bookmark.images[0] // Use first image
-        : "../../images/default-property.png"; // Default fallback image
+    const propertyImage = bookmark.images?.length > 0 
+      ? `https://ouragent.com.ng/${bookmark.images[0]}`
+      : "../../images/default-property.png";
 
     bookmarkItem.innerHTML = `
       <div class="bookmark-card-img">
-          <img src="https://ouragent.com.ng/${propertyImage}" alt="Property Image" />
+        <img src="${propertyImage}" alt="Property Image" />
       </div>
       <div class="bookmark-item-details">
-          <h3 class="bookmark-item-title">${bookmark.property_name}</h3>
-          <p class="bookmark-item-location">Location: ${bookmark.state}, ${bookmark.lga}</p>
-          <p class="bookmark-item-price">Price: ₦${bookmark.price}</p>
-          <div class="bookmark-item-actions">
-              <button class="bookmark-item-action">
-                  <a href="../property-description/index.html?propertyId=${bookmark.property_id}" class="view">View</a>
-              </button>
-              <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove</button>
-          </div>
+        <h3 class="bookmark-item-title">${bookmark.property_name}</h3>
+        <p class="bookmark-item-location">Location: ${bookmark.state}, ${bookmark.lga}</p>
+        <p class="bookmark-item-price">Price: ₦${bookmark.price}</p>
+        <div class="bookmark-item-actions">
+          <button class="bookmark-item-action">
+            <a href="../property-description/index.html?propertyId=${bookmark.property_id}" class="view">View</a>
+          </button>
+          <button class="remove-bookmark-btn" data-property-id="${bookmark.property_id}">Remove</button>
+        </div>
       </div>
     `;
 
@@ -164,9 +162,9 @@ const renderBookmarks = (bookmarks) => {
 // Function to attach event listeners to "Remove Bookmark" buttons
 const attachRemoveBookmarkListeners = () => {
   document.querySelectorAll(".remove-bookmark-btn").forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
       const propertyId = event.target.getAttribute("data-property-id");
-      handleBookmark(propertyId, "remove");
+      await handleBookmark(propertyId, "remove");
     });
   });
 };
@@ -198,6 +196,7 @@ const handleBookmark = async (propertyId, action) => {
     });
 
     const result = await response.json();
+    console.log("API Response:", result); // Debugging to see what the API returns
 
     if (result.status === "success") {
       Swal.fire({
@@ -213,15 +212,14 @@ const handleBookmark = async (propertyId, action) => {
 
       fetchBookmarks(); // Refresh bookmarks list
     } else {
+      // Display actual message returned by the API instead of a generic error
       Swal.fire({
         toast: true,
         icon: "error",
         title: "Error",
         iconColor: "#3085d6",
-        text: result.message,
+        text: result.message || "Something went wrong",
         confirmButtonColor: "#3085d6"
-      }).then(() => {
-        window.location.reload()
       });
     }
   } catch (error) {
@@ -231,11 +229,11 @@ const handleBookmark = async (propertyId, action) => {
       icon: "error",
       title: "Error",
       iconColor: "#3085d6",
-      text: "An error occurred while managing the bookmark.",
+      text: "Network error or API is unreachable.",
       confirmButtonColor: "#d33",
     });
   }
 };
 
 // Fetch bookmarks on page load
-document.addEventListener("DOMContentLoaded", fetchBookmarks);
+document.addEventListener("DOMContentLoaded", () => fetchBookmarks());
