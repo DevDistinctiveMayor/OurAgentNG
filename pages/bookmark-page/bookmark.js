@@ -219,7 +219,9 @@ const handleBookmark = async (propertyId, action) => {
         title: "Error",
         iconColor: "#3085d6",
         text: result.message,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#3085d6"
+      }).then(() => {
+        window.location.reload()
       });
     }
   } catch (error) {
