@@ -314,7 +314,6 @@ main {
 .carousel-track_flex {
   display: flex;
   justify-content: center;
-  height: 50%;
 }
 
 .carousel {
@@ -340,7 +339,7 @@ main {
 .carousel-item img {
   width: 100%;
   border-radius: 8px;
-  height: 60%;
+  height: 67%;
 }
 
 .carousel_p {
