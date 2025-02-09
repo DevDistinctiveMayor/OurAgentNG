@@ -321,7 +321,6 @@ main {
   overflow: hidden;
   width: 92%;
   height: 25rem;
-  background-color: red;
 }
 
 .carousel-track {
@@ -340,7 +339,7 @@ main {
 
 .carousel-item img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   height: 70%;
 }
 
