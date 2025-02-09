@@ -146,11 +146,12 @@ main {
 }
 
 .edit_btn {
-    margin-top: 10px;
-    margin-left: 20px;
     color: rgba(8, 97, 175, 1);
-    font-weight: 600;
+    border: 1px solid rgba(8, 97, 175, 1);
+    padding: 9px;
+    border-radius: 7px;
     font-size: 14px;
+    
 }
 
 .bx-user {
@@ -1042,13 +1043,12 @@ button {
     }
 
     .edit_btn {
-        margin-top: 10px;
-        margin-left: 0px;
+        text-decoration: none;  
     }
 
     .nav-links>li {
         text-align: center;
-        margin-top: 0.4rem;
+        margin-bottom: 0.4rem;
     }
 
     .nav-links>li:hover {
