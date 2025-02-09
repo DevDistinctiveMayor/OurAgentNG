@@ -85,6 +85,7 @@ const fetchBookmarks = async () => {
       title: "Please log in first.",
       showConfirmButton: false,
       timer: 4000,
+      iconColor: "#3085d6",
       timerProgressBar: true,
     });
     return;
@@ -103,8 +104,10 @@ const fetchBookmarks = async () => {
       renderBookmarks(result.data);
     } else {
       Swal.fire({
+        toast: true,
         icon: "info",
         title: "No bookmarks found",
+        iconColor: "#3085d6",
         text: "You haven't bookmarked any properties yet.",
         confirmButtonColor: "#3085d6",
       });
@@ -174,6 +177,7 @@ const handleBookmark = async (propertyId, action) => {
 
   if (!clientId) {
     Swal.fire({
+      toast: true,
       icon: "warning",
       title: "Agent not logged in",
       text: "Please log in to manage bookmarks.",
@@ -183,7 +187,7 @@ const handleBookmark = async (propertyId, action) => {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/handle_bookmark.php", {
+    const response = await fetch("https://ouragent.com.ng/bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -197,26 +201,34 @@ const handleBookmark = async (propertyId, action) => {
 
     if (result.status === "success") {
       Swal.fire({
+        toast: true,
+        position: "top-end",
         icon: "success",
         title: `Bookmark ${action === "add" ? "added" : "removed"} successfully`,
         showConfirmButton: false,
+        iconColor: "#3085d6",
         timer: 2000,
+        timerProgressBar: true,
       });
 
       fetchBookmarks(); // Refresh bookmarks list
     } else {
       Swal.fire({
+        toast: true,
         icon: "error",
         title: "Error",
+        iconColor: "#3085d6",
         text: result.message,
-        confirmButtonColor: "#d33",
+        confirmButtonColor: "#3085d6",
       });
     }
   } catch (error) {
     console.error("Error handling bookmark:", error);
     Swal.fire({
+      toast: true,
       icon: "error",
       title: "Error",
+      iconColor: "#3085d6",
       text: "An error occurred while managing the bookmark.",
       confirmButtonColor: "#d33",
     });
