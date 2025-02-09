@@ -9,8 +9,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html{
     font-family: "poppins";
     scroll-behavior: smooth;
     position: relative;
@@ -29,6 +28,51 @@ header {
 main {
     margin-top: 100px;
 }
+
+/* General reset for margins and padding */
+body {
+    font-family: "poppins";
+    display: none;
+  }
+  
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  /* Scanner loading animation */
+  .scanner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top: 5px solid #007bff;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Hide properties until fully loaded */
+  #content {
+    display: none;
+  }
+  
 
 .navbar {
     display: flex;
@@ -190,7 +234,7 @@ main {
 }
 
 /* Center Section */
-.bookmark-section { 
+.bookmark-section {
     margin-bottom: 20px;
 }
 
@@ -198,7 +242,8 @@ main {
 .bookmark-list {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Responsive grid */
     width: 100%;
 }
 
@@ -210,6 +255,7 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
+
 .bookmark-section h1 {
     font-size: 1.5em;
     color: #333;
@@ -220,13 +266,14 @@ main {
     color: #333;
 }
 
-.bookmark-title{
+.bookmark-title {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
 
 
 }
+
 .bookmark-section .bookmark-list {
     display: flex;
     flex-wrap: wrap;
@@ -270,10 +317,11 @@ main {
     margin-top: 10px;
 }
 
-.bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action  {
+.bookmark-section .bookmark-item-details .bookmark-item-actions .bookmark-item-action {
     text-decoration: none;
     color: rgba(8, 97, 175, 1);
-    border:1pt solid rgba(8, 97, 175, 1);;
+    border: 1pt solid rgba(8, 97, 175, 1);
+    ;
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #fff;
@@ -291,7 +339,7 @@ main {
 }
 
 .remove-bookmark-btn {
-    background-color:#ec0000;
+    background-color: #ec0000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -333,7 +381,7 @@ main {
     gap: 17px;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
 .footer-links li {
     list-style: none;
@@ -450,10 +498,11 @@ main {
     }
 
     .logout {
-   
+
         margin-left: 0px;
-  
+
     }
+
     .call_action {
         display: block;
         display: flex;
@@ -494,6 +543,3 @@ main {
         gap: 30px;
     }
 }
-
-
-
