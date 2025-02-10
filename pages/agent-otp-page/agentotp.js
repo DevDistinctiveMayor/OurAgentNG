@@ -42,19 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = sessionStorage.getItem("email"); // Retrieve email from sessionStorage
   
     if (!email) {
-      Swal.fire({
-        title: "Session Expired",
-        text: "Your session has expired. Redirecting to the registration page...",
-        icon: "warning",
-        confirmButtonText: "OK",
-      }).then(() => {
-        window.location.href = "../agent-register-page/agent.html";
-      });
-      return;
-      // Redirect to registration page if no email is found in sessionStorage
-  
-      return;
-    }
+    Swal.fire({
+      toast: true,
+      title: "Session Expired",
+      text: "Your session has expired. Redirecting to the registration page...",
+      icon: "warning",
+      iconColor: "rgba(8, 97, 175, 1)",
+      confirmButtonText: "OK",
+      confirmButtonColor: "rgba(8, 97, 175, 1)"
+    }).then(() => {
+      window.location.href = "../agent-register-page/agent.html";
+    });
+    return;
+  }
+
   
     const otpForm = document.getElementById("otpForm");
     const resendBtn = document.getElementById("resendBtn");
@@ -68,16 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const otp = Array.from(document.querySelectorAll(".otp-input"))
         .map((input) => input.value.trim())
         .join("");
-  
-      if (otp.length !== 6) {
-        Swal.fire({
-          title: "Invalid OTP",
-          text: "Please enter a valid 6-digit OTP.",
-          icon: "warning",
-          confirmButtonText: "Retry",
-        });
-        return;
-      }
+
+
+        if (otp.length !== 6) {
+          Swal.fire({
+            toast: true, 
+            title: "Invalid OTP",
+            text: "Please enter a valid 6-digit OTP.",
+            icon: "warning",
+            confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
+          });
+          return;
+        }
+    
   
       const submitButton = otpForm.querySelector("button[type='submit']");
       submitButton.disabled = true;
@@ -93,30 +98,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
   
         const result = await response.json();
-  
         if (result.status === "success") {
           Swal.fire({
-            title: "Success",
-            text: "OTP verified successfully!",
+            toast: true,
+            title: "OTP Verified",
+            text: "Your OTP has been verified successfully!",
             icon: "success",
-            confirmButtonText: "Proceed",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
+            iconColor: "rgba(8, 97, 175, 1)",
+            showConfirmButton: false,
+            timer: 2000,
+            position: "top-end",
+            timerProgressBar: true,
+            
           }).then(() => {
-            // Redirect to login page
-            window.location.href = "../agent-login-page/agent-login.html";
+            window.location.href = "../login-page/login.html";
           });
         } else {
           Swal.fire({
+            toast: true,
             title: "Verification Failed",
-            text: result.message || "The OTP you entered is incorrect.",
+            text: result.message || "The OTP entered is incorrect. Please try again.",
             icon: "error",
-            confirmButtonText: "Retry",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
+            confirmButtonText: "Retry"
           });
         }
       } catch (error) {
         console.error("Error verifying OTP:", error);
         Swal.fire({
+          toast: true,
           title: "Error",
           text: "An error occurred while verifying the OTP. Please try again later.",
           icon: "error",
@@ -126,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Verify";
+        
       }
     });
   
@@ -143,38 +154,46 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ email }),
         });
   
+
         const result = await response.json();
-  
+
         if (result.status === "success") {
           Swal.fire({
-            title: "OTP Sent",
-            text: "A new OTP has been sent to your email address.",
+            toast: true,
+            title: "OTP Verified",
+            text: "OTP has been resent.",
             icon: "success",
-            confirmButtonText: "OK",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
+            position: "top-end",
+            iconColor: "rgba(8, 97, 175, 1)",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
           });
         } else {
           Swal.fire({
-            title: "Resend Failed",
-            text: result.message || "Failed to resend OTP. Please try again.",
+            toast: true,
+            title: "Verification Failed",
+            text: result.message || "Failed to resend OTP.",
             icon: "error",
             confirmButtonText: "Retry",
             confirmButtonColor: "rgba(8, 97, 175, 1)"
           });
         }
       } catch (error) {
-        console.error("Error resending OTP:", error);
+        console.error("Error verifying OTP:", error);
         Swal.fire({
+          toast: true,
           title: "Error",
-          text: "An error occurred while resending the OTP. Please try again later.",
+          text: "An error occurred while verifying the OTP. Please try again later.",
           icon: "error",
           confirmButtonText: "Retry",
           confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       } finally {
-        resendBtn.disabled = false;
-        resendBtn.textContent = "Resend OTP";
+        submitButton.disabled = false;
+        submitButton.textContent = "Resend OTP";
       }
     });
   });
+  
   

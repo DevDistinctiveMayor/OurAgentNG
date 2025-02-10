@@ -253,7 +253,7 @@ const handleBookmark = async (propertyId, action) => {
       icon: "error",
       title: "Error",
       text: "Network error.",
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "rgba(8, 97, 175, 1)"
     });
   }
 };

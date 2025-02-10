@@ -228,9 +228,10 @@ document.addEventListener("DOMContentLoaded", () => {
         toast: true,
         position: "top-end",
         icon: "warning",
-        title: "Please log in first.",
+        title: "Please log in first",
         showConfirmButton: false,
-        timer: 4000, // Auto close after 3 seconds
+        iconColor: "rgba(8, 97, 175, 1)",
+        timer: 3000,
         timerProgressBar: true,
       });
       return;

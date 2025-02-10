@@ -44,9 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!email) {
     Swal.fire({
+      toast: true,
       title: "Session Expired",
       text: "Your session has expired. Redirecting to the registration page...",
       icon: "warning",
+      iconColor: "rgba(8, 97, 175, 1)",
       confirmButtonText: "OK",
       confirmButtonColor: "rgba(8, 97, 175, 1)"
     }).then(() => {
@@ -68,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (otp.length !== 6) {
       Swal.fire({
+        toast: true, 
         title: "Invalid OTP",
         text: "Please enter a valid 6-digit OTP.",
         icon: "warning",
@@ -96,17 +99,21 @@ document.addEventListener("DOMContentLoaded", () => {
      
       if (result.status === "success") {
         Swal.fire({
+          toast: true,
           title: "OTP Verified",
           text: "Your OTP has been verified successfully!",
           icon: "success",
-          confirmButtonText: "Proceed",
-          confirmButtonColor: "rgba(8, 97, 175, 1)"
+          iconColor: "rgba(8, 97, 175, 1)",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
           
         }).then(() => {
           window.location.href = "../login-page/login.html";
         });
       } else {
         Swal.fire({
+          toast: true,
           title: "Verification Failed",
           text: result.message || "The OTP entered is incorrect. Please try again.",
           icon: "error",
@@ -117,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error verifying OTP:", error);
       Swal.fire({
+        toast: true,
         title: "Error",
         text: "An error occurred while verifying the OTP. Please try again later.",
         icon: "error",
@@ -147,15 +155,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (result.status === "success") {
         Swal.fire({
+          toast: true,
           title: "OTP Verified",
           text: "OTP has been resent.",
           icon: "success",
-          confirmButtonText: "Proceed",
-          confirmButtonColor: "rgba(8, 97, 175, 1)"
-    
+          iconColor: "rgba(8, 97, 175, 1)",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
         });
       } else {
         Swal.fire({
+          toast: true,
           title: "Verification Failed",
           text: result.message || "Failed to resend OTP.",
           icon: "error",
@@ -166,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error verifying OTP:", error);
       Swal.fire({
+        toast: true,
         title: "Error",
         text: "An error occurred while verifying the OTP. Please try again later.",
         icon: "error",

@@ -267,103 +267,217 @@ document
     });
     
   
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("signup-form");
-    const submitButton = document.getElementById("submitButton");
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("signup-form");
+      const submitButton = document.getElementById("submitButton");
   
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+      const phoneNumberInput = document.getElementById("phoneNumber");
+      const ninNumberInput = document.getElementById("ninNumber");
+      const cacNumberInput = document.getElementById("cacNumber");
   
-      // Fetch client ID and email from sessionStorage
-      const clientId = sessionStorage.getItem("client_id");
-      const email = sessionStorage.getItem("email");
-  
-      // Debugging: Log the retrieved client ID and email
-    console.log("Client ID from sessionStorage:", clientId);
-     console.log("Email from sessionStorage:", email);
-  
-      if (!clientId || !email) {
-        Swal.fire({
-          title: "Error",
-          text: "Client information is missing. Please log in first.",
-          icon: "error",
-          confirmButtonText: "OK",
-          confirmButtonColor: "rgba(8, 97, 175, 1)"
-        });
-        return;
+      // Function to set error message
+      function setError(elementId, message) {
+          const errorElement = document.getElementById(elementId);
+          if (errorElement) {
+              errorElement.textContent = message;
+              errorElement.style.color = "red";
+          }
       }
   
-      // Continue with form submission logic...
-      const companyName = document.getElementById("companyName").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const ninNumber = document.getElementById("ninNumber").value.trim();
-      const phoneNumber = document.getElementById("phoneNumber").value.trim();
-      const cacNumber = document.getElementById("cacNumber").value.trim();
-      const socialMediaHandles = document.getElementById("socialMediaHandles").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-          // Disable the submit button to prevent multiple submissions
-      submitButton.disabled = true;
-      submitButton.textContent = "Submitting...";
-  
-  
-      try {
-        const response = await fetch("https://ouragent.com.ng/agentsignup.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            client_id: clientId,
-            fullName: clientId, // Assuming clientId is used as fullName
-            email,
-            companyName,
-            address,
-            ninNumber,
-            phoneNumber,
-            cacNumber,
-            socialMediaHandles,
-            password,
-          }),
-        });
-  
-        const data = await response.json();
-  
-        if (response.ok && data.status === "success") {
-          Swal.fire({
-            title: "Success!",
-            text: data.message || "Registration successful! Check your email for OTP.",
-            icon: "success",
-            confirmButtonText: "OK",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
-          }).then(() => {
-            // Redirect to OTP page
-            window.location.href = "../agent-otp-page/agentotp.html";
-          });
-        } else {
-          Swal.fire({
-            title: "Validation Error",
-            text: data.message || "Please check your inputs and try again.",
-            icon: "warning",
-            confirmButtonText: "Retry",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
-          });
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        Swal.fire({
-          title: "Error",
-          text: "An unexpected error occurred. Please try again later.",
-          icon: "error",
-          confirmButtonText: "Retry",
-          confirmButtonColor: "rgba(8, 97, 175, 1)"
-        });
-      } finally {
-        // Re-enable the submit button
-        submitButton.disabled = false;
-        submitButton.textContent = "Register";
+      // Function to clear error message
+      function clearError(elementId) {
+          const errorElement = document.getElementById(elementId);
+          if (errorElement) {
+              errorElement.textContent = "";
+          }
       }
-    });
+  
+      // Realtime input validation
+      phoneNumberInput.addEventListener("input", function () {
+          const phoneRegex = /^(?:\+234|0)[789][01]\d{8}$/;
+          if (!phoneRegex.test(phoneNumberInput.value.trim())) {
+              setError("phoneNumber-error", "Invalid phone number format.");
+          } else {
+              clearError("phoneNumber-error");
+          }
+      });
+  
+      ninNumberInput.addEventListener("input", function () {
+          const ninRegex = /^\d{11}$/;
+          if (!ninRegex.test(ninNumberInput.value.trim())) {
+              setError("ninNumber-error", "NIN must be exactly 11 digits.");
+          } else {
+              clearError("ninNumber-error");
+          }
+      });
+  
+      cacNumberInput.addEventListener("input", function () {
+          const cacRegex = /^(RC|BN|IT)\d{6,7}$/i;
+          if (!cacRegex.test(cacNumberInput.value.trim())) {
+              setError("cacNumber-error", "Invalid CAC Number (e.g., RC1234567, BN1234567, IT123456).");
+          } else {
+              clearError("cacNumber-error");
+          }
+      });
+  
+      form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+  
+          // Fetch client ID and email from sessionStorage
+          const clientId = sessionStorage.getItem("client_id");
+          const email = sessionStorage.getItem("email");
+  
+          if (!clientId || !email) {
+              Swal.fire({
+                toast: true,
+                position: "top-end",
+                  title: "Error",
+                  text: "Client information is missing. Please log in first.",
+                  icon: "error",
+                  showConfirmButton: false,
+                  iconColor: "#3085d6",
+                  timer: 3000,
+                  timerProgressBar: true,
+              });
+              return;
+          }
+  
+          // Get form values
+          const companyName = document.getElementById("companyName").value.trim();
+          const address = document.getElementById("address").value.trim();
+          const ninNumber = ninNumberInput.value.trim();
+          const phoneNumber = phoneNumberInput.value.trim();
+          const cacNumber = cacNumberInput.value.trim();
+          const socialMediaHandles = document.getElementById("socialMediaHandles").value.trim();
+          const password = document.getElementById("password").value.trim();
+  
+          // Disable submit button to prevent multiple submissions
+          submitButton.disabled = true;
+          submitButton.textContent = "Submitting...";
+  
+          // Frontend validation
+          let hasError = false;
+  
+          // Validate phone number
+          const phoneRegex = /^(?:\+234|0)[789][01]\d{8}$/;
+          if (!phoneRegex.test(phoneNumber)) {
+              setError("phoneNumber-error", "Invalid phone number format.");
+              hasError = true;
+          } else {
+              clearError("phoneNumber-error");
+          }
+  
+          // Validate NIN (11 digits)
+          const ninRegex = /^\d{11}$/;
+          if (!ninRegex.test(ninNumber)) {
+              setError("ninNumber-error", "NIN must be exactly 11 digits.");
+              hasError = true;
+          } else {
+              clearError("ninNumber-error");
+          }
+  
+          // Validate CAC number
+          const cacRegex = /^(RC|BN|IT)\d{6,7}$/i;
+          if (!cacRegex.test(cacNumber)) {
+              setError("cacNumber-error", "Invalid CAC Number (e.g., RC1234567, BN1234567, IT123456).");
+              hasError = true;
+          } else {
+              clearError("cacNumber-error");
+          }
+  
+          // Ensure all required fields are filled
+          if (!companyName) {
+              setError("companyName-error", "Company Name is required.");
+              hasError = true;
+          } else {
+              clearError("companyName-error");
+          }
+  
+          if (!address) {
+              setError("address-error", "Address is required.");
+              hasError = true;
+          } else {
+              clearError("address-error");
+          }
+  
+          if (!password || password.length < 8) {
+              setError("password-error", "Password must be at least 8 characters.");
+              hasError = true;
+          } else {
+              clearError("password-error");
+          }
+  
+          // Stop submission if errors exist
+          if (hasError) {
+              submitButton.disabled = false;
+              submitButton.textContent = "Register";
+              return;
+          }
+  
+          try {
+              const response = await fetch("https://ouragent.com.ng/agentsignup.php", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                      client_id: clientId,
+                      fullName: clientId, // Assuming clientId is used as fullName
+                      email,
+                      companyName,
+                      address,
+                      ninNumber,
+                      phoneNumber,
+                      cacNumber,
+                      socialMediaHandles,
+                      password,
+                  }),
+              });
+  
+              const data = await response.json();
+  
+              if (response.ok && data.status === "success") {
+                  Swal.fire({
+                      title: "Success!",
+                      text: data.message || "Registration successful! Check your email for OTP.",
+                      icon: "success",
+                      toast: true,
+                      position: "top-end",
+                      showConfirmButton: false,
+                      timer: 3000,
+                      iconColor: "#3085d6",
+                      timerProgressBar: true,
+                  });
+  
+                  setTimeout(() => {
+                      window.location.href = "../agent-otp-page/agentotp.html"; // Redirect to OTP page
+                  }, 3000);
+              } else {
+                  Swal.fire({
+                    toast: true,
+                      title: "Validation Error",
+                      text: data.message || "Please check your inputs and try again.",
+                      icon: "warning",
+                      showConfirmButton: false,
+                      timer: 3000,
+                      iconColor: "#3085d6",
+                      position: "top-end",
+                      timerProgressBar: true,
+                  });
+              }
+          } catch (error) {
+              console.error("Error:", error);
+              Swal.fire({
+                 toast: true,
+                  title: "Error",
+                  text: "An unexpected error occurred. Please try again later.",
+                  icon: "error",
+                  confirmButtonText: "Retry",
+                  confirmButtonColor: "rgba(8, 97, 175, 1)"
+              });
+          } finally {
+              // Re-enable submit button
+              submitButton.disabled = false;
+              submitButton.textContent = "Register";
+          }
+      });
   });
   
