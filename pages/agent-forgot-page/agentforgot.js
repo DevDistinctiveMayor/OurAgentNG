@@ -41,30 +41,39 @@ document
 
         // Success: Notify OTP sent and redirect to the reset password page
         Swal.fire({
+          toast: true,
           title: "OTP Sent",
           text: "A password reset OTP has been sent to your email.",
           icon: "success",
-          confirmButtonText: "Proceed",
-          confirmButtonColor: "rgba(8, 97, 175, 1)", // Green confirm button
+          iconColor: "rgba(8, 97, 175, 1)",
+          showConfirmButton: false,
+          timer: 3000,
+          position: "top-end",
+          timerProgressBar: true,
         }).then(() => {
           window.location.href = "../agent-resetpassword-page/reset.html"; // Redirect to reset password page
         });
       } else {
         // Display error message using SweetAlert
         Swal.fire({
+          toast: true,
           title: "Error",
           text: result.message || "Failed to send OTP. Please try again.",
           icon: "error",
           confirmButtonText: "Retry",
+      confirmButtonColor: "rgba(8, 97, 175, 1)"
         });
       }
     } catch (error) {
       // Handle unexpected errors
       Swal.fire({
+        toast: true,
         title: "Unexpected Error",
         text: "An error occurred while sending the OTP. Please try again later.",
         icon: "error",
         confirmButtonText: "Retry",
+              confirmButtonColor: "rgba(8, 97, 175, 1)"
+        
       });
     } finally {
       // Re-enable the button and remove loading state
@@ -72,3 +81,5 @@ document
       submitButton.textContent = "Get OTP";
     }
   });
+
+  

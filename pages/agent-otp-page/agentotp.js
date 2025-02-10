@@ -102,11 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
           icon: "success",
           iconColor: "rgba(8, 97, 175, 1)",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 3000,
           position: "top-end",
           timerProgressBar: true,
         }).then(() => {
-          window.location.href = "../login-page/login.html";
+          window.location.href = "../agent-login-page/agent-login.html";
         });
       } else {
         Swal.fire({
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
           position: "top-end",
           iconColor: "rgba(8, 97, 175, 1)",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 3000,
           timerProgressBar: true,
         });
       } else {
