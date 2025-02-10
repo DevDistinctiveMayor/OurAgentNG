@@ -163,11 +163,14 @@ document.getElementById("toggle-password")
   
         if (data.status === "success") {
           Swal.fire({
+            toast: true,
             title: "Registration Successful",
             text: "Please check your email for OTP verification.",
             icon: "success",
-            confirmButtonText: "Proceed",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
+            iconColor: "rgba(8, 97, 175, 1)",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
           }).then(() => {
             // Redirect to OTP verification page, passing email and userId
             sessionStorage.setItem("userId", data.userId);
@@ -186,6 +189,7 @@ document.getElementById("toggle-password")
             if (data.errors.pass) setError("password-error", data.errors.pass);
           } else {
             Swal.fire({
+              toast: true,
               title: "Registration Failed",
               text: data.message || "Something went wrong. Please try again.",
               icon: "error",
@@ -196,6 +200,7 @@ document.getElementById("toggle-password")
         }
       } catch (error) {
         Swal.fire({
+          toast: true,
           title: "Error",
           text: "An error occurred. Please try again.",
           icon: "error",

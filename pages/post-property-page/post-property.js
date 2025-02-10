@@ -187,9 +187,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Redirect if session expires
 function redirectToLogin(message) {
     Swal.fire({
+        toast: true,
         title: "Session Expired",
         text: message,
         icon: "warning",
+        iconColor: "rgba(8, 97, 175, 1)",
         confirmButtonText: "OK",
         confirmButtonColor: "rgba(8, 97, 175, 1)"
     }).then(() => {
@@ -209,11 +211,12 @@ async function verifyAgentProfile(agentId) {
 
         if (result.status === "incomplete") {
             Swal.fire({
+                toast: true,
                 title: "Profile Incomplete",
                 text: result.message,
                 icon: "info",
-                confirmButtonText: "Update Profile",
-                confirmButtonColor: "rgba(8, 97, 175, 1)"
+                iconColor: "rgba(8, 97, 175, 1)",
+                showConfirmButton: false,
             }).then(() => {
                 window.location.href = "../agent-profile/agent-profile.html";
             });
@@ -244,11 +247,26 @@ async function handleFormSubmission(form, agentId) {
 
         const result = await response.json();
 
-        Swal.fire(result.status === "success" ? "Success" : "Error", 
-                  result.message, 
-                  result.status === "success" ? "success" : "error");
+        if (result.status === "success") {
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: result.message,
+                toast: true,
+                iconColor: "rgba(8, 97, 175, 1)",
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000
+            });
 
-        if (result.status === "success") form.reset();
+            form.reset();
+
+            setTimeout(() => {
+                window.location.href = "../agent-profile/agent-profile.html"; // Change to the actual admin page URL
+            }, 3000);
+        } else {
+            Swal.fire("Error", result.message, "error");
+        }
     } catch (error) {
         Swal.fire("Error", "An unexpected error occurred. Please try again.", "error");
         console.error("Submission Error:", error);

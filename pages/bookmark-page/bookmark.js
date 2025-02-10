@@ -138,7 +138,7 @@ const fetchBookmarks = async () => {
       icon: "error",
       title: "Error",
       text: "An error occurred while fetching bookmarks.",
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
     });
   }
 };
@@ -242,7 +242,6 @@ const handleBookmark = async (propertyId, action) => {
         toast: true,
         icon: "error",
         title: "Error",
-        iconColor: "#3085d6",
         text: result.message || "Something went wrong",
         confirmButtonColor: "#3085d6"
       });
@@ -253,8 +252,7 @@ const handleBookmark = async (propertyId, action) => {
       toast: true,
       icon: "error",
       title: "Error",
-      iconColor: "#3085d6",
-      text: "Network error or API is unreachable.",
+      text: "Network error.",
       confirmButtonColor: "#d33",
     });
   }
