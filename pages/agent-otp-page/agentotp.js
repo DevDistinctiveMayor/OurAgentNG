@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
           toast: true,
           title: "Verification Failed",
           text:
-            result.message || "The OTP entered is incorrect. Please try again.",
+          result.message || "The OTP entered is incorrect. Please try again.",
           icon: "error",
           confirmButtonColor: "rgba(8, 97, 175, 1)",
           confirmButtonText: "Retry",
