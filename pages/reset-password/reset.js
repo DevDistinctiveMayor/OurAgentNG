@@ -100,7 +100,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
           Swal.fire({
             toast: true,
             title: "Reset Successful",
-            text: "Your password has been reset successfully.",
+            text: "Password reset successfully.",
             icon: "success",
             showConfirmButton: false,
             timer: 3000,

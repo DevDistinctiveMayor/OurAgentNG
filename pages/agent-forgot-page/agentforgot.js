@@ -72,7 +72,7 @@ document
         text: "An error occurred while sending the OTP. Please try again later.",
         icon: "error",
         confirmButtonText: "Retry",
-              confirmButtonColor: "rgba(8, 97, 175, 1)"
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
         
       });
     } finally {

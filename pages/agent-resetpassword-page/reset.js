@@ -38,6 +38,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
   
     if (!email) {
       Swal.fire({
+        toast: true,
         title: "Session Expired",
         text: "Please start the password reset process again.",
         icon: "error",
@@ -60,6 +61,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
       // Validate fields
       if (!otp || !newPassword || !confirmPassword) {
         Swal.fire({
+          toast: true,
           title: "Error",
           text: "All fields are required.",
           icon: "error",
@@ -71,6 +73,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
   
       if (newPassword !== confirmPassword) {
         Swal.fire({
+          toast: true,
           title: "Error",
           text: "Passwords do not match. Please try again.",
           icon: "error",
@@ -99,18 +102,22 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
         // Handle server response
         if (result.status === "success") {
           Swal.fire({
+            toast: true,
             title: "Reset Successful",
-            text: result.message || "Password reset successfully.",
+            text: "Password reset successfully.",
             icon: "success",
-            confirmButtonText: "Login",
-            confirmButtonColor: "rgba(8, 97, 175, 1)"
+            showConfirmButton: false,
+            timer: 3000,
+            position: "top-end",
+            timerProgressBar: true,
           }).then(() => {
             window.location.href = "../agent-login-page/agent-login.html";
           });
         } else {
           Swal.fire({
+            toast: true,
             title: "Error",
-            text: result.message || "Invalid OTP or reset failed. Please try again.",
+            text: result.message || "Invalid O TP or reset failed. Please try again.",
             icon: "error",
             confirmButtonText: "Retry",
             confirmButtonColor: "rgba(8, 97, 175, 1)",
@@ -118,7 +125,8 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
         }
       } catch (error) {
         Swal.fire({
-          title: "Error",
+          toast: true,
+          title: "Unexpected Error",
           text: error.message || "An error occurred. Please try again.",
           icon: "error",
           confirmButtonText: "Retry",
