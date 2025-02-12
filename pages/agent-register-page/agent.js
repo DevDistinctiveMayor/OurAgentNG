@@ -452,7 +452,7 @@ document
                   }, 3000);
               } else {
                   Swal.fire({
-                    toast: true,
+                      toast: true,
                       title: "Validation Error",
                       text: data.message || "Please check your inputs and try again.",
                       icon: "warning",
@@ -466,7 +466,7 @@ document
           } catch (error) {
               console.error("Error:", error);
               Swal.fire({
-                 toast: true,
+                  toast: true,
                   title: "Error",
                   text: "An unexpected error occurred. Please try again later.",
                   icon: "error",

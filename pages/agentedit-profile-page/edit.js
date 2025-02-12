@@ -106,6 +106,7 @@ document
     if (!file) return;
     if (!agentId) {
       Swal.fire({
+        toast: true,
         title: "Error",
         text: "Agent ID not found. Please log in again.",
         icon: "error",
@@ -149,10 +150,15 @@ document
 
       if (result.status === "success") {
         Swal.fire({
+          toast: true,
           title: "Success",
           text: "Profile image updated successfully!",
           icon: "success",
-          confirmButtonColor: "rgba(8, 97, 175, 1)",
+          iconColor: "rgba(8, 97, 175, 1)",
+          showConfirmButton: false,
+          timer: 3000,
+          position: "top-end",
+          timerProgressBar: true,
         });
 
         // **Update profile image with cache-busting**
@@ -166,6 +172,7 @@ document
       }
     } catch (error) {
       Swal.fire({
+        toast: true,
         title: "Error",
         text: error.message || "An error occurred while uploading the image.",
         icon: "error",
@@ -250,10 +257,15 @@ async function sendRequest(url, data, successMessage, callback) {
     const result = await response.json();
     if (result.status === "success") {
       Swal.fire({
+        toast: true,
         title: "Success",
         text: successMessage,
         icon: "success",
-        confirmButtonColor: "rgba(8, 97, 175, 1)", // Correct placement
+        iconColor: "rgba(8, 97, 175, 1)",
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
+        timerProgressBar: true,
       }).then(callback || (() => {}));
     } else {
       showError(result.message || "An error occurred.");
@@ -302,6 +314,7 @@ function setValue(id, value) {
 
 function showError(message) {
   Swal.fire({
+    toast: true,
     title: "Error",
     text: message,
     icon: "error",

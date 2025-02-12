@@ -103,9 +103,11 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
             text: "Password reset successfully.",
             icon: "success",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             position: "top-end",
             timerProgressBar: true,
+            iconColor: "rgba(8, 97, 175, 1)"
+
           }).then(() => {
             window.location.href = "../login-page/login.html";
           });
