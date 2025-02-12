@@ -635,11 +635,19 @@ async function deleteProperty(propertyId) {
     );
 
     const result = await response.json();
-    await Swal.fire(
-      result.status === "success" ? "Deleted!" : "Error!",
-      result.message,
-      result.status === "success" ? "success" : "error"
-    );
+
+    Swal.fire({
+      toast: true,
+      title: result.status === "success" ? "Deleted!" : "Error!",
+      text: result.message,
+      icon: result.status === "success" ? "success" : "error",
+      position: "top-end",
+      timer: 3000, // Display for 3 seconds
+      timerProgressBar: true,
+      showConfirmButton: false,
+            iconColor: "rgba(8, 97, 175, 1)"
+    });
+    
 
     if (result.status === "success") {
       location.reload();
@@ -767,7 +775,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
     console.error("Error:", error);
     Swal.fire({
       toast: true,
-      title: "Error!",
+      title: "Error!",  
       text: "An error occurred while updating the property status.",
       icon: "error",
     });
