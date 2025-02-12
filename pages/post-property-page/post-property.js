@@ -215,8 +215,9 @@ async function verifyAgentProfile(agentId) {
                 title: "Profile Incomplete",
                 text: result.message,
                 icon: "info",
+                confirmButtonText: "Back",
                 iconColor: "rgba(8, 97, 175, 1)",
-                showConfirmButton: false,
+                confirmButtonColor: "rgba(8, 97, 175, 1)"
             }).then(() => {
                 window.location.href = "../agent-profile/agent-profile.html";
             });
@@ -255,21 +256,36 @@ async function handleFormSubmission(form, agentId) {
                 toast: true,
                 iconColor: "rgba(8, 97, 175, 1)",
                 position: "top-end",
+                timerProgressBar: true,
                 showConfirmButton: false,
-                timer: 3000
+                timer: 2000
             });
 
             form.reset();
 
             setTimeout(() => {
                 window.location.href = "../agent-profile/agent-profile.html"; // Change to the actual admin page URL
-            }, 3000);
-        } else {
-            Swal.fire("Error", result.message, "error");
+            }, 2000);
+          } else {
+          Swal.fire({
+            toast: true,
+            title: "Error",
+            text: result.message || "Please try again later.",
+            icon: "error",
+            confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)"
+          });
         }
     } catch (error) {
-        Swal.fire("Error", "An unexpected error occurred. Please try again.", "error");
-        console.error("Submission Error:", error);
+        Swal.fire({
+          toast: true,
+          title: "Unexpected Error",
+          text: "An error occurred. Please try again later.",
+          icon: "error",
+          confirmButtonText: "Retry",
+          confirmButtonColor: "rgba(8, 97, 175, 1)",
+        });
+       // console.error("Submission Error:", error);
     } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Submit Property";
