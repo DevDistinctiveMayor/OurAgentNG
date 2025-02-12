@@ -41,13 +41,15 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
         title: "Session Expired",
         text: "Please start the password reset process again.",
         icon: "error",
-        confirmButtonText: "Go Back",
+        confirmButtonText: "Ok",
         confirmButtonColor: "rgba(8, 97, 175, 1)",
       }).then(() => {
         window.location.href = "../forgot-page/forgot.html";
       });
       return;
     }
+
+
   
     form.addEventListener("submit", async (event) => {
       event.preventDefault();

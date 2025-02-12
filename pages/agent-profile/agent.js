@@ -132,10 +132,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!agentId) {
     Swal.fire({
+      toast: true,
       title: "Session Expired",
       text: "Your session has expired. Redirecting to the login page...",
-      icon: "warning",
-      confirmButtonText: "OK",
+      icon: "error",
+      confirmButtonText: "Ok",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
     }).then(() => {
       window.location.href = "../agent-login-page/agent-login.html";
     });
@@ -196,8 +198,14 @@ async function fetchAndRenderDashboard(agentId) {
       Swal.fire("Error", data.message || "Failed to load user data.", "error");
     }
   } catch (error) {
-    console.error("Fetch error:", error);
-    Swal.fire("Error", "An error occurred while fetching data.", "error");
+    Swal.fire({
+      toast: true,
+      title: "Unexpected Error",
+      text: "An error occurred. Please try again later.",
+      icon: "error",
+      confirmButtonText: "Retry",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
+    });
   }
 }
 
@@ -248,15 +256,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (charCount > charCountLimit) {
         Swal.fire({
+          toast: true,
           icon: "warning",
-          title: "Character Limit Exceeded",
           text: `Your bio exceeds the ${charCountLimit}-character limit. Please reduce it before submitting.`,
+          showConfirmButton: "okay",
+          iconColor: "rgba(8, 97, 175, 1)",
+          title: "Character Limit Exceeded",
+          confirmButtonColor: "rgba(8, 97, 175, 1)"
+         
         });
         return;
       }
 
       if (!userInfo) {
         Swal.fire({
+          toast: true,
           icon: "warning",
           title: "Oops...",
           text: "Please fill out the bio field.",
@@ -297,12 +311,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         Swal.fire({
+          toast: true,
           icon: "success",
           title: "Success!",
           text: "Bio updated successfully!",
+          showConfirmButton: false,
+          timer: 2000,
+          position: "top-end",
+          timerProgressBar: true,
+          iconColor: "rgba(8, 97, 175, 1)"
         });
       } else {
         Swal.fire({
+          toast: true,
           icon: "error",
           title: "Error!",
           text: "Error updating bio: " + result.message,
@@ -310,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       Swal.fire({
+        toast: true,
         icon: "error",
         title: "Fetch Error!",
         text: "An error occurred while updating the bio. Please try again later.",
@@ -585,6 +607,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
 
 async function deleteProperty(propertyId) {
   const result = await Swal.fire({
+    toast: true,
     title: "Are you sure?",
     text: "You won't be able to revert this!",
     icon: "warning",
@@ -592,6 +615,7 @@ async function deleteProperty(propertyId) {
     confirmButtonColor: "rgba(8, 97, 175, 1)",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
+    iconColor: "rgba(8, 97, 175, 1)"
   });
 
   if (!result.isConfirmed) {
@@ -661,6 +685,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
 
   // Use SweetAlert for confirmation
   const confirmation = await Swal.fire({
+    toast: true,
     title: `Are you sure?`,
     text: `Do you want to mark this property as ${
       propertystatus === "Sell" ? "Sold" : "Rent Out"
@@ -669,6 +694,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
+    iconColor: "rgba(8, 97, 175, 1)",
     confirmButtonText: `Yes, mark as ${
       propertystatus === "Sell" ? "Sold" : "Rent Out"
     }`,
@@ -713,15 +739,22 @@ async function markPropertyStatus(propertyId, propertystatus) {
 
     if (result.status === "success") {
       Swal.fire({
-        title: "Success!",
-        text: `Property successfully marked as ${
-          newStatus === "sold" ? "Sold" : "Rented Out"
-        }.`,
+        toast: true,
+        title: "success!",
+        text: `Property successfully marked as ${newStatus === "sold" ? "Sold" : "Rented Out"}.`,
         icon: "success",
+        position: "top-end",
+        timer: 3000, // Display for 3 seconds
+        timerProgressBar: true,
+        iconColor: "rgba(8, 97, 175, 1)",
+        showConfirmButton: false, // Needed for toast mode
       });
-      location.reload(); // Refresh the page to reflect changes
+    
+      // Delay reload slightly so the user sees the message
+      setTimeout(() => location.reload(), 3000);
     } else {
       Swal.fire({
+        toast: true,
         title: "Error!",
         text: result.message,
         icon: "error",
@@ -733,6 +766,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
   } catch (error) {
     console.error("Error:", error);
     Swal.fire({
+      toast: true,
       title: "Error!",
       text: "An error occurred while updating the property status.",
       icon: "error",
