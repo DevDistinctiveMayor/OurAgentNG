@@ -225,8 +225,15 @@ async function verifyAgentProfile(agentId) {
         }
         return true;
     } catch (error) {
-        Swal.fire("Error", "An error occurred during profile verification.", "error");
-        console.error("Verification Error:", error);
+        Swal.fire({
+            toast: true,
+            title: "Unexpected Error",
+            text: "An error occurred during profile verification. Please try again later.",
+            icon: "error",
+            confirmButtonText: "Retry",
+            confirmButtonColor: "rgba(8, 97, 175, 1)",
+          });
+       // console.error("Verification Error:", error);
         return false;
     }
 }
