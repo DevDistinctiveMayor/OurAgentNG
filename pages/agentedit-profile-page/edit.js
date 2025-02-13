@@ -102,20 +102,25 @@ document
     const uploadButton = document.getElementById("uploadButton");
     const agentId = sessionStorage.getItem("agent_id");
 
-    // **Exit early if no file is selected or agentId is missing**
-    if (!file) return;
-    if (!agentId) {
-      Swal.fire({
-        toast: true,
-        title: "Error",
-        text: "Agent ID not found. Please log in again.",
-        icon: "error",
-        confirmButtonColor: "rgba(8, 97, 175, 1)",
-      });
-      return;
-    }
+// Exit early if no file is selected
+if (!file) return;
 
-    
+// Check if agentId is missing
+if (!agentId) {
+  Swal.fire({
+    toast: true,
+    title: "Error",
+    text: "Agent ID not found. Please log in again.",
+    icon: "error",
+    confirmButtonColor: "rgba(8, 97, 175, 1)",
+    allowOutsideClick: false, // Prevents users from clicking outside to dismiss
+  }).then(() => {
+    window.location.replace("../login-page/login.html"); // Ensures proper redirection
+  });
+
+  return;
+}
+
     // **Validate file type (only allow images)**
     const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
@@ -188,10 +193,22 @@ document
 
 document.addEventListener("DOMContentLoaded", () => {
   const agentId = sessionStorage.getItem("agent_id");
-  if (!agentId) {
-    return showError("Agent ID not found. Please log in again.");
-  }
 
+  if (!agentId) {
+    Swal.fire({
+      toast: true,
+      title: "Error",
+      text: "Agent ID not found. Please log in again.",
+      icon: "error",
+      confirmButtonColor: "rgba(8, 97, 175, 1)",
+      allowOutsideClick: false, // Prevent dismissing by clicking outside
+    }).then(() => {
+      window.location.replace("../login-page/login.html"); // Redirects to login page
+    });
+  
+    return;
+  }
+  
   fetchAndRenderDashboard(agentId); // Load agent details on page load
 
   document.getElementById("editProfileForm").addEventListener("submit", (e) => {
