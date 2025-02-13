@@ -115,6 +115,7 @@ document
       return;
     }
 
+    
     // **Validate file type (only allow images)**
     const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
@@ -228,7 +229,10 @@ async function updateProfile(agentId) {
 }
 
 // Function to update email
+// Function to update email
 async function updateEmail(agentId) {
+  const submitButton = document.querySelector("button[type='emailSubmit']");
+// async function updateEmail(agentId) {
   const formData = {
     agent_id: agentId,
     new_email: getValue("email"),
@@ -238,12 +242,22 @@ async function updateEmail(agentId) {
     return showError("Please enter a valid email.");
   }
 
+    // Change button text to indicate processing
+    submitButton.disabled = true;
+    submitButton.textContent = "Updating...";
+
+
   await sendRequest(
     "https://ouragent.com.ng/change_email.php",
     formData,
-    "A verification link has been sent to your new email."
+    "A verification link has been sent to your new email.",
+    () => {
+      submitButton.disabled = false;
+      submitButton.textContent = "Update Email";
+    }
   );
 }
+
 
 // Function to send API requests
 async function sendRequest(url, data, successMessage, callback) {
@@ -263,7 +277,7 @@ async function sendRequest(url, data, successMessage, callback) {
         icon: "success",
         iconColor: "rgba(8, 97, 175, 1)",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         position: "top-end",
         timerProgressBar: true,
       }).then(callback || (() => {}));
@@ -273,8 +287,10 @@ async function sendRequest(url, data, successMessage, callback) {
   } catch (error) {
     showError("An error occurred. Please try again.");
     console.error(error);
+    if (callback) callback(); // Re-enable button if there's an error
   }
 }
+
 
 // Function to fetch and render agent dashboard data
 async function fetchAndRenderDashboard(agentId) {
