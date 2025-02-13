@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="dashboard.css" />
     <title>Our Agent | Admin Dashboard</title>
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6H70ZWC8QP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6H70ZWC8QP');
+</script>
   <body>
     <header></header>
     <main>
@@ -32,7 +41,7 @@
       <section class="admin-summary">
         <div class="summary-item-box">
           <div class="summary-item-box-top-content">
-            <p class="item-text">111</p>
+            <p id="totalUsers" class="item-text">Loading...</p>
             <img
               src="../../images/star.svg"
               alt="Star Icon"
@@ -40,8 +49,9 @@
             />
           </div>
           <div class="summary-item-box-bottom-content">
-            <p>Total Review</p>
+            <p>Total User</p>
             <p>10% increase from last week</p>
+      
           </div>
         </div>
         <div class="summary-item-box">
@@ -74,7 +84,7 @@
         </div>
         <div class="summary-item-box">
           <div class="summary-item-box-top-content">
-            <p class="item-text">20</p>
+            <p class="item-text" id="totalProperties">Loading...</p>
             <img
               src="../../images/building.svg"
               alt="Star Icon"
@@ -113,7 +123,22 @@
             </p>
           </div>
 
-          <div class="messages-container">
+          <div class="messages-container container">
+            <h2>Pending Profile Update Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="pendingRequests">
+                    <!-- Requests will be dynamically inserted here -->
+                </tbody>
+            </table>
             <div class="message-box">
               <p class="message-label">Feedback</p>
 
@@ -291,7 +316,7 @@
       </section>
     </main>
     <footer></footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./dashboard.js"></script>
   </body>

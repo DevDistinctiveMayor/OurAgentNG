@@ -294,7 +294,7 @@ async function sendRequest(url, data, successMessage, callback) {
         icon: "success",
         iconColor: "rgba(8, 97, 175, 1)",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 3000,
         position: "top-end",
         timerProgressBar: true,
       }).then(callback || (() => {}));
