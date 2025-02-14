@@ -117,7 +117,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
         // Disable the button and show loading state
         submitButton.disabled = true;
-        submitButton.textContent = "sending...";
+        submitButton.textContent = "Sending...";
 
     try {
         const response = await fetch("https://ouragent.com.ng/contact_us.php", {
@@ -155,6 +155,6 @@ document.getElementById("contactForm").addEventListener("submit", async function
     } finally {
         // Re-enable the button and remove loading state
         submitButton.disabled = false;
-        submitButton.textContent = "sent";
+        submitButton.textContent = "Success!";
       }
 });

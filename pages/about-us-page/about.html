@@ -1,52 +1,72 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - OurAgentNG</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1, h2, h3 {
-            color: #085FAF;
-        }
-        p {
-            line-height: 1.6;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            background: #085FAF;
-            color: white;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        a {
-            color: #085FAF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="./about.css" />
+    <title>Our AgentNG | Website</title>
 </head>
+
 <body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/index.html"><img src="/assets/logo.svg" alt="Logo" /></a>
+                <ul class="nav-links">
+                    <li class="access-box nav-links3">
+                        <i class="bx bx-user year-user">
+                            <span class="greeting"></span>
+                        </i>
+                    </li>
+                    <li><a href="../buy-page/buy.html">Buy</a></li>
+                    <li><a href="../rent-page/rent.html">Rent</a></li>
+                    <li><a href="../land-page/land.html">Land</a></li>
+                    <li><a href="../bookmark-page/bookmark.html">Saved properties</a></li>
+                    <li><a href="./about.html">About us</a></li>
+                    <li class="nav-links3">
+                        <a href="#" class="logout-btn logout" style="display: none" onclick="logoutUser()">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="call_action">
+                <div class="access-box">
+                    <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">
+                        Post A Property
+                    </a>
+                    <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+                </div>
+                <label class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+
+            <div class="nav-links2">
+                <div class="access-box">
+                    <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">
+                        Post A Property
+                    </a>
+                    <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
+                    <i class="bx bx-user year-user">
+                        <span class="greeting greeting_mobile"></span>
+                    </i>
+                    <a href="#" class="logout-btn logout" style="display: none" onclick="logoutUser()">Log Out</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="loader">
+        <div class="scanner"></div>
+    </div>
+
+    <main id="content">
     <div class="container">
         <h1>Welcome to OurAgentNG – Your Trusted Property Marketplace</h1>
         <p>At <strong>OurAgentNG</strong>, we are committed to revolutionizing the way property transactions happen. Our platform connects property seekers with verified agents, making house hunting and real estate management stress-free, secure, and efficient.</p>
@@ -58,7 +78,7 @@
         <p>To create a reliable and user-friendly platform where individuals and businesses can easily find and list properties while ensuring transparency, security, and efficiency in real estate transactions.</p>
         
         <h2>What We Offer</h2>
-        <ul>
+        <ul class="ul">
             <li>Verified Agents - Ensuring trust between buyers and sellers.</li>
             <li>Seamless Property Search - Browse thousands of listings with filters.</li>
             <li>Secure Transactions - Tools and resources for smooth dealings.</li>
@@ -76,8 +96,11 @@
         <h2>Join OurAgentNG Today!</h2>
         <p>Whether you are a home buyer, an agent, or a property owner, <strong>OurAgentNG</strong> is your one-stop solution for all real estate needs. Start exploring properties, listing your properties, or becoming a verified agent today!</p>
         
-        <p>For inquiries, partnerships, or support, feel free to <a href="#">Contact Us</a>.</p>
+        <p>For inquiries, partnerships, or support, feel free to <a href="../contact-page/contact.html">Contact Us</a>.</p>
     </div>
+    </main>
+
+    <script src="./about.js"></script>
 </body>
 </html>
 
