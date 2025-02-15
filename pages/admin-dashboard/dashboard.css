@@ -21,6 +21,7 @@ body {
   gap: 5px;
 }
 
+
 .welcoming-text {
   font-size: 1.8rem;
 }
@@ -123,6 +124,8 @@ section.admin-summary {
   border: 1pt #000 solid;
   padding: 15px;
   border-radius: 10px;
+overflow-y: scroll;
+height: 40rem;
 }
 
 .top-line {
@@ -218,36 +221,61 @@ button:hover {
   opacity: 0.8;
 }
 
+.feedback-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+h2 {
+  color: #0861AF;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.message-box {
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 4px solid #0861AF;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  text-align: left;
+}
 
 .message-label {
-  background: #16d6d64d;
-  width: fit-content;
-  padding: 7px 15px;
-  font-size: 15px;
-  border-radius: 20px;
+  font-weight: bold;
+  color: #0861AF;
+  margin-bottom: 5px;
 }
 
 .user-name {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
+  color: #333;
 }
 
 .property-details {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-}
-
-.property-name {
-  font-size: 15px;
-}
-
-.time {
-  font-size: 13px;
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
 }
 
 .review-message {
-  font-size: 16px;
+  font-size: 14px;
+  color: #444;
+  margin-top: 10px;
+}
+
+.no-feedback, .error-message {
+  color: red;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .right-aside {

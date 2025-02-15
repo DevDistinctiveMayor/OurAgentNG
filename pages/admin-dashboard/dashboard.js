@@ -115,3 +115,57 @@ async function handleAction(update_id, action) {
         Swal.fire("Error", "An error occurred while processing the request.", "error");
     }
 }
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const feedbackList = document.getElementById("feedbackList");
+
+  async function fetchFeedback() {
+    try {
+      const response = await fetch("https://ouragent.com.ng/retrieve_feedback.php");
+      const data = await response.json();
+
+      if (data.status === "success" && data.feedback.length > 0) {
+        displayFeedback(data.feedback);
+      } else {
+        feedbackList.innerHTML = "<p class='no-feedback'>No feedback available yet.</p>";
+      }
+    } catch (error) {
+      console.error("Error fetching feedback:", error);
+      feedbackList.innerHTML = "<p class='error-message'>Failed to load feedback.</p>";
+    }
+  }
+
+  function displayFeedback(feedbackArray) {
+    feedbackList.innerHTML = feedbackArray
+      .map((item) => {
+        return `
+          <div class="message-box">
+            <p class="message-label">Feedback</p>
+            <p class="user-name">${item.agent_id}</p>  <!-- Agent ID as Name -->
+            <div class="property-details">
+              <p class="property-name">Property name</p>
+              <p class="time">${formatTime(item.created_at)}</p>
+            </div>
+            <p class="review-message">${item.feedback}</p>
+          </div>
+        `;
+      })
+      .join("");
+  }
+
+  function formatTime(dateString) {
+    const timeAgo = new Date(dateString);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - timeAgo) / 1000);
+    
+    if (diffInSeconds < 60) return `${diffInSeconds} secs ago`;
+    const diffInMinutes = Math.floor(diffInSeconds / 60);
+    if (diffInMinutes < 60) return `${diffInMinutes} mins ago`;
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) return `${diffInHours} hours ago`;
+    const diffInDays = Math.floor(diffInHours / 24);
+    return `${diffInDays} days ago`;
+  }
+
+  fetchFeedback();
+});

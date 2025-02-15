@@ -315,6 +315,22 @@
         </div>
       </section>
 
+
+      <div id="exitPopup" class="exit-popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h3>Leaving so soon? 😟</h3>
+            <p>We’d love to know why. Your feedback helps us improve!</p>
+            <textarea id="feedbackText" placeholder="Tell us why you're leaving..." rows="4"></textarea>
+    
+            <button onclick="submitFeedback()" class="submitFeedback">Submit Feedback</button>
+        </div>
+    </div>
+    
+    <!-- Message Box for Success/Error Notifications -->
+    <div id="messageBox" class="message-box"></div>
+    
+
       <div class="footer-div">
         <section class="download-section">
           <div class="first-section">
@@ -328,6 +344,7 @@
             <a href="">Click here to download</a>
           </div>
         </section>
+
 
 
 
