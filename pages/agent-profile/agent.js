@@ -784,3 +784,89 @@ async function markPropertyStatus(propertyId, propertystatus) {
     statusButton.classList.remove("processing");
   }
 }
+
+
+
+document.getElementById("feedbackForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const feedbackMessage = document.getElementById("feedbackMessage").value.trim();
+  if (!feedbackMessage) return alert("Please enter your feedback.");
+
+  const agentId = sessionStorage.getItem("agent_id") || "guest"; // If agent is logged in
+  const formData = { agent_id: agentId, feedback: feedbackMessage };
+
+  const response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  const result = await response.json();
+  document.getElementById("feedbackResponse").textContent = result.message;
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const feedbackForm = document.getElementById("feedbackForm");
+  const feedbackMessage = document.getElementById("feedbackMessage");
+  const feedbackResponse = document.getElementById("feedbackResponse");
+  const submitButton = document.getElementById("submitFeedback");
+
+  feedbackForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent form reload
+
+    const agentId = sessionStorage.getItem("agent_id") || "guest"; // Use stored agent ID or 'guest'
+    const feedbackText = feedbackMessage.value.trim();
+
+    if (!feedbackText) {
+      return showMessage("Please enter your feedback.", "error");
+    }
+
+    // Prepare data for API
+    const formData = {
+      agent_id: agentId,
+      feedback: feedbackText,
+    };
+
+    // Disable button to prevent multiple clicks
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        showMessage(result.message, "success");
+        feedbackMessage.value = ""; // Clear textarea
+      } else {
+        showMessage(result.message, "error");
+      }
+    } catch (error) {
+      showMessage("An error occurred. Please try again.", "error");
+      console.error(error);
+    }
+
+    // Re-enable button after response
+    submitButton.disabled = false;
+    submitButton.textContent = "Submit Feedback";
+  });
+
+  // Function to show messages
+  function showMessage(message, type) {
+    feedbackResponse.textContent = message;
+    feedbackResponse.style.color = type === "success" ? "green" : "red";
+    feedbackResponse.style.display = "block";
+
+    setTimeout(() => {
+      feedbackResponse.style.display = "none";
+    }, 4000);
+  }
+});
+

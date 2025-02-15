@@ -202,7 +202,7 @@ const fetchAndRenderProperties = (queryParams = "") => {
       propertiesContainer.innerHTML = ""; // Clear existing content
 
       if (data.status === "success" && data.data.length > 0) {
-        data.data.forEach((property) => {
+        data.data.slice(0, 4).forEach((property) => {
           const propertyElement = document.createElement("div");
           propertyElement.className = "house-card";
           propertyElement.innerHTML = `
@@ -358,7 +358,7 @@ const fetchSoldProperties = () => {
       propertiesContainer.innerHTML = ""; // Clear existing content
 
       if (data.status === "success" && data.properties.length > 0) {
-        data.properties.forEach((property) => {
+        data.properties.slice(0, 4).forEach((property) => {
           const propertyElement = document.createElement("div");
           propertyElement.className = "house-card";
           propertyElement.innerHTML = `
@@ -413,3 +413,69 @@ const fetchSoldProperties = () => {
 
 // Call the function when the D
 document.addEventListener("DOMContentLoaded", fetchSoldProperties);
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const feedbackForm = document.getElementById("feedbackForm");
+  const feedbackMessage = document.getElementById("feedbackMessage");
+  const feedbackResponse = document.getElementById("feedbackResponse");
+  const submitButton = document.getElementById("submitFeedback");
+
+  feedbackForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent form reload
+
+    const agentId = sessionStorage.getItem("agent_id") || "guest"; // Use stored agent ID or 'guest'
+    const feedbackText = feedbackMessage.value.trim();
+
+    if (!feedbackText) {
+      return showMessage("Please enter your feedback.", "error");
+    }
+
+    // Prepare data for API
+    const formData = {
+      agent_id: agentId,
+      feedback: feedbackText,
+    };
+
+    // Disable button to prevent multiple clicks
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    try {
+      const response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        showMessage(result.message, "success");
+        feedbackMessage.value = ""; // Clear textarea
+      } else {
+        showMessage(result.message, "error");
+      }
+    } catch (error) {
+      showMessage("An error occurred. Please try again.", "error");
+      console.error(error);
+    }
+
+    // Re-enable button after response
+    submitButton.disabled = false;
+    submitButton.textContent = "Submit Feedback";
+  });
+
+  // Function to show messages
+  function showMessage(message, type) {
+    feedbackResponse.textContent = message;
+    feedbackResponse.style.color = type === "success" ? "green" : "red";
+    feedbackResponse.style.display = "block";
+
+    setTimeout(() => {
+      feedbackResponse.style.display = "none";
+    }, 4000);
+  }
+});
+

@@ -652,10 +652,6 @@ button {
     margin-top: 2rem;
 }
 
-.properties {
-    margin: 6rem 0;
-}
-
 .properties .heading {
     color: #02182B;
     font-size: 20px;
@@ -906,6 +902,79 @@ button {
 }
 
 
+/* Feedback Form Container */
+.feedback-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Feedback Title */
+  .feedback-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #0861AF; /* Custom theme color */
+    margin-bottom: 15px;
+  }
+  
+  /* Textarea Styling */
+  .feedback-container textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .feedback-container textarea:focus {
+    border-color: #0861AF;
+    box-shadow: 0px 0px 5px rgba(8, 97, 175, 0.3);
+  }
+  
+  /* Submit Button */
+  .feedback-container button {
+    width: 100%;
+    background: #0861AF;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .feedback-container button:hover {
+    background: #065a9c;
+  }
+  
+  /* Feedback Response Message */
+  .feedback-response {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+    display: none; /* Initially hidden */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .feedback-container {
+      width: 90%;
+    }
+  }
+  
+
+
 /* Footer Top Section */
 .footer-top {
     display: flex;
@@ -1094,10 +1163,6 @@ button {
         margin-top: 2rem;
     }
 
-    .properties {
-        margin: 1rem 0;
-    }
-
     .editable-bio {
         width: 100%;
     }
@@ -1244,10 +1309,6 @@ button {
 @media screen and (max-width: 410px) {
     main .hero {
         padding: 2rem 0rem;
-    }
-
-    .properties {
-        margin: 1rem 14px;
     }
 
     .house-card {

@@ -823,6 +823,71 @@ button:focus {
 }
 
 
+
+/* Feedback Form Container */
+.feedback-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Feedback Title */
+.feedback-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #0861AF; /* Custom theme color */
+  margin-bottom: 15px;
+}
+
+/* Textarea Styling */
+.feedback-container textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.feedback-container textarea:focus {
+  border-color: #0861AF;
+  box-shadow: 0px 0px 5px rgba(8, 97, 175, 0.3);
+}
+
+/* Submit Button */
+.feedback-container button {
+  width: 100%;
+  background: #0861AF;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.feedback-container button:hover {
+  background: #065a9c;
+}
+
+/* Feedback Response Message */
+.feedback-response {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: green;
+  display: none; /* Initially hidden */
+}
+
 .box-top {
   display: flex;
   padding: 0 5%;
@@ -1220,5 +1285,24 @@ button:focus {
     width: 100px;
     height: 100px;
     border-radius: 8px;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  .for_sale {
+      gap: 3rem;
+  }
+
+  .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+
+      margin: 50px auto;
+  }
+
+  .footer-links {
+      gap: 30px;
   }
 }
