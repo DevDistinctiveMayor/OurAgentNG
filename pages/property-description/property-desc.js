@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ).innerHTML = `<img src="../../assets/icon/location-icon.png" alt="location icon"> ${property.state}, ${property.lga}`;
     document.querySelector(
       ".address-details .last-updated"
-    ).textContent = `Last updated: ${property.created_at}`;
+    ).textContent = `Last updated: ${formatTime(property.created_at)}`;
     document.querySelector(".description-box p").textContent =
       property.description;
 
@@ -154,8 +154,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       ".text-box .telephone"
     ).textContent = `📞 ${property.phoneNumber}`;
     document.querySelector(
-      ".text-box .year-user"
-    ).textContent = `${property.created_at}`;
+      ".text-box .year-usec"
+    ).textContent = `${formatTime(property.created_at)}`;
     document.querySelector(
       ".search-form-field .category"
     ).textContent = `${property.category}`;
@@ -191,6 +191,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     loader.innerHTML = "Failed to load property details. Please try again.";
   }
 });
+
+
+function formatTime(dateString) {
+  const timeAgo = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - timeAgo) / 1000);
+  
+  if (diffInSeconds < 60) return `${diffInSeconds} secs ago`;
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes} mins ago`;
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours} hours ago`;
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays} days ago`;
+}
+
+
 
 // Initialize carousel controls
 function initializeCarouselControls() {
