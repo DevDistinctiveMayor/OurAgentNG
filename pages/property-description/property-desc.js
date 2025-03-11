@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const response = await fetch(
-      `https://ouragent.com.ng/get_property_by_id.php?property_id=${propertyId}`
+      `https://ouragent.com.ng/fetch_properties/get_property_by_id.php?property_id=${propertyId}`
     );
     const data = await response.json();
 
@@ -243,7 +243,7 @@ function initializeCarouselControls() {
 
 // Function to fetch and display properties
 const fetchAndRenderProperties = (queryParams = "") => {
-  fetch(`https://ouragent.com.ng/advance_search.php?${queryParams}`)
+  fetch(`https://ouragent.com.ng/search_property/advance_search.php?${queryParams}`)
     .then((response) => response.json())
     .then((data) => {
       propertiesContainer.innerHTML = ""; // Clear existing content
