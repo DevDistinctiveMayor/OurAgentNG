@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.textContent = "Verifying...";
 
     try {
-      const response = await fetch("https://ouragent.com.ng/otp.php", {
+      const response = await fetch("https://ouragent.com.ng/client_otp/otp.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resendBtn.textContent = "Resending...";
 
     try {
-      const response = await fetch("https://ouragent.com.ng/resendotp.php", {
+      const response = await fetch("https://ouragent.com.ng/client_otp/resendotp.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
