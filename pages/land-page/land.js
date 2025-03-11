@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     propertiesContainer.innerHTML = "Loading properties...";
     try {
       
-      const response = await fetch(`https://ouragent.com.ng/advance_searchland.php?${queryParams}`);
+      const response = await fetch(`https://ouragent.com.ng/search_property/advance_searchland.php?${queryParams}`);
       const data = await response.json();
 
       propertiesContainer.innerHTML = ""; // Clear existing content
