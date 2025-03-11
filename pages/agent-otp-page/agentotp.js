@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } catch (error) {
-      console.error("Error verifying OTP:", error);
+      // console.error("Error verifying OTP:", error);
       Swal.fire({
         toast: true,
         title: "Error",
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } catch (error) {
-      console.error("Error verifying OTP:", error);
+      // console.error("Error verifying OTP:", error);
       Swal.fire({
         toast: true,
         title: "Error",
