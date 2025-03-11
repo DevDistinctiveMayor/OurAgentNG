@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         await loadUserSession(); // Load user session
       } catch (error) {
-        console.error("Error loading data:", error);
+        // console.error("Error loading data:", error);
       } finally {
         // Hide loader and show content
         loader.style.display = "none";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Invalid session.");
       }
     } catch (error) {
-      console.error("Error loading session:", error);
+      // console.error("Error loading session:", error);
       greetings.forEach((el) => (el.textContent = "Error loading session."));
     }
   
@@ -90,10 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
             sessionStorage.clear();
             window.location.reload();
           } else {
-            console.error("Logout failed.");
+            // console.error("Logout failed.");
           }
         } catch (error) {
-          console.error("Error during logout:", error);
+          // console.error("Error during logout:", error);
         }
       });
     });
