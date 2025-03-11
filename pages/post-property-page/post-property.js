@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     try {
-      const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
+      const response = await fetch("https://ouragent.com.ng/user_session/get_user_session.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ client_id: clientId }),
@@ -202,7 +202,7 @@ function redirectToLogin(message) {
 // Verify agent profile
 async function verifyAgentProfile(agentId) {
     try {
-        const response = await fetch("https://ouragent.com.ng/agent_profile_verification.php", {
+        const response = await fetch("https://ouragent.com.ng/agent_profile/agent_profile_verification.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ agent_id: agentId })
@@ -248,7 +248,7 @@ async function handleFormSubmission(form, agentId) {
     formData.append("agent_id", agentId);
 
     try {
-        const response = await fetch("https://ouragent.com.ng/addproperty.php", {
+        const response = await fetch("https://ouragent.com.ng/post_property/addproperty.php", {
             method: "POST",
             body: formData
         });

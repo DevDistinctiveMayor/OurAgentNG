@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     // Fetch client data
     const response = await fetch(
-      "https://ouragent.com.ng/get_user_session.php",
+      "https://ouragent.com.ng/user_session/get_user_session.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

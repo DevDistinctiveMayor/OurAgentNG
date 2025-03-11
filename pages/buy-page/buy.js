@@ -40,7 +40,7 @@ async function loadUserSession() {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
+    const response = await fetch("https://ouragent.com.ng/user_session/get_user_session.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ client_id: clientId }),

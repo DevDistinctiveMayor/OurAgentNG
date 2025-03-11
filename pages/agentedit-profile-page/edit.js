@@ -23,7 +23,7 @@ async function loadUserSession() {
 
   try {
     const response = await fetch(
-      "https://ouragent.com.ng/get_user_session.php",
+      "https://ouragent.com.ng/user_session/get_user_session.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -145,7 +145,7 @@ if (!agentId) {
     try {
       // **Send the request**
       const response = await fetch(
-        "https://ouragent.com.ng/uploadProfileImage.php",
+        "https://ouragent.com.ng/agent_profile/uploadProfileImage.php",
         {
           method: "POST",
           body: formData,
@@ -236,7 +236,7 @@ async function updateProfile(agentId) {
   }
 
   await sendRequest(
-    "https://ouragent.com.ng/agentupdateProfile.php",
+    "https://ouragent.com.ng/agent_profile/agentupdateProfile.php",
     formData,
     "Profile updated initiated successfully! Please wait for admin approval",
     () => {
@@ -312,7 +312,7 @@ async function sendRequest(url, data, successMessage, callback) {
 // Function to fetch and render agent dashboard data
 async function fetchAndRenderDashboard(agentId) {
   try {
-    const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
+    const response = await fetch("https://ouragent.com.ng/agent_profile/agentdashboard.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ agent_id: agentId }),

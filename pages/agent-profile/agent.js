@@ -79,7 +79,7 @@ async function loadUserSession() {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/get_user_session.php", {
+    const response = await fetch("https://ouragent.com.ng/user_session/get_user_session.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ client_id: clientId }),
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await fetchSoldProperties(
       agentId,
       "propertiesSold",
-      "https://ouragent.com.ng/agent_sold_property.php"
+      "https://ouragent.com.ng/agent_profile/agent_sold_property.php"
     );
   } catch (error) {
     // console.error("Error loading data:", error);
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Function to fetch and render agent dashboard data
 async function fetchAndRenderDashboard(agentId) {
   try {
-    const response = await fetch("https://ouragent.com.ng/agentdashboard.php", {
+    const response = await fetch("https://ouragent.com.ng/agent_profile/agentdashboard.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchSoldProperties(
     agentId,
     "propertiesSold",
-    "https://ouragent.com.ng/agent_sold_property.php"
+    "https://ouragent.com.ng/agent_profile/agent_sold_property.php"
   );
 });
 
@@ -624,7 +624,7 @@ async function deleteProperty(propertyId) {
 
   try {
     const response = await fetch(
-      "https://ouragent.com.ng/agentdelete_property.php",
+      "https://ouragent.com.ng/agent_profile/agentdelete_property.php",
       {
         method: "POST",
         headers: {
