@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.textContent = "Processing...";
 
         try {
-            const response = await fetch("https://ouragent.com.ng/agent/agentsignin.php", {
+            const response = await fetch("https://ouragent.com.ng/agent_enrollment/agentsignin.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
