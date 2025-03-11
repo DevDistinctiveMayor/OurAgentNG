@@ -184,7 +184,7 @@ async function fetchAndRenderProperties(queryParams = "") {
 
   try {
     const response = await fetch(
-      `https://ouragent.com.ng/advance_search.php?${queryParams}`
+      `https://ouragent.com.ng/search_property/advance_search.php?${queryParams}`
     );
     const data = await response.json();
     propertiesContainer.innerHTML = ""; // Clear placeholder text
