@@ -49,7 +49,7 @@ async function loadUserSession() {
       throw new Error("Invalid session.");
     }
   } catch (error) {
-    console.error("Error loading session:", error);
+    // console.error("Error loading session:", error);
     greetings.forEach((el) => (el.textContent = "Error loading session."));
   }
 
@@ -61,10 +61,10 @@ async function loadUserSession() {
           sessionStorage.clear();
           window.location.reload();
         } else {
-          console.error("Logout failed.");
+          // console.error("Logout failed.");
         }
       } catch (error) {
-        console.error("Error during logout:", error);
+        // console.error("Error during logout:", error);
       }
     });
   });
@@ -91,7 +91,7 @@ async function loadUserSession() {
       try {
         await loadUserSession(); // Load user session
       } catch (error) {
-        console.error("Error loading data:", error);
+        // console.error("Error loading data:", error);
       } finally {
         // Hide loader and show content
         loader.style.display = "none";
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         } catch (error) {
-            console.error("Fetch Error:", error.message);
+            // console.error("Fetch Error:", error.message);
             setError("email-error", "An error occurred. Please try again.");
         } finally {
             // Re-enable the button and reset text
