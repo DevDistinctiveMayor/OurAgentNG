@@ -415,7 +415,7 @@ document
           }
   
           try {
-              const response = await fetch("https://ouragent.com.ng/agentsignup.php", {
+              const response = await fetch("https://ouragent.com.ng/agent/agentsignup.php", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
