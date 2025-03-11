@@ -163,7 +163,7 @@ document
   //         }
   //       }
   //     } catch (error) {
-  //       console.error("Error:", error);
+        console.error("Error:", error);
   //       Swal.fire({
   //         title: "Error",
   //         text: "An unexpected error occurred. Please try again later.",
@@ -215,7 +215,7 @@ document
         throw new Error("Invalid session.");
       }
     } catch (error) {
-      console.error("Error loading session:", error);
+      // console.error("Error loading session:", error);
       greetings.forEach((el) => (el.textContent = "Error loading session."));
     }
   
@@ -227,10 +227,10 @@ document
             sessionStorage.clear();
             window.location.reload();
           } else {
-            console.error("Logout failed.");
+            // console.error("Logout failed.");
           }
         } catch (error) {
-          console.error("Error during logout:", error);
+          // console.error("Error during logout:", error);
         }
       });
     });
@@ -257,7 +257,7 @@ document
         try {
           await loadUserSession(); // Load user session
         } catch (error) {
-          console.error("Error loading data:", error);
+          // console.error("Error loading data:", error);
         } finally {
           // Hide loader and show content
           loader.style.display = "none";
@@ -464,7 +464,7 @@ document
                   });
               }
           } catch (error) {
-              console.error("Error:", error);
+              // console.error("Error:", error);
               Swal.fire({
                   toast: true,
                   title: "Error",
