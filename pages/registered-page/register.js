@@ -141,7 +141,7 @@ document.getElementById("toggle-password")
       submitButton.textContent = "Submitting...";
   
       try {
-        const response = await fetch("https://ouragent.com.ng/signup.php", {
+        const response = await fetch("https://ouragent.com.ng/client_enrollment/signup.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

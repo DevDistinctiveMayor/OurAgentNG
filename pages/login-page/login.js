@@ -59,7 +59,7 @@ document
       submitButton.textContent = "Processing...";
   
       try {
-        const response = await fetch("https://ouragent.com.ng/signin.php", {
+        const response = await fetch("https://ouragent.com.ng/client_enrollment/signin.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
