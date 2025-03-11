@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Delay the execution of heavy JavaScript
   setTimeout(async () => {
     try {
-      await fetchAndRenderProperties(); // Fetch properties
       await loadUserSession(); // Load user session
+      await fetchAndRenderProperties(); // Fetch properties
     } catch (error) {
       console.error("Error loading data:", error);
     } finally {
