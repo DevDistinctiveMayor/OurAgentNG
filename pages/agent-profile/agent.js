@@ -95,7 +95,7 @@ async function loadUserSession() {
       throw new Error("Invalid session.");
     }
   } catch (error) {
-    console.error("Error loading session:", error);
+    // console.error("Error loading session:", error);
     greetings.forEach((el) => (el.textContent = "Error loading session."));
   }
 
@@ -107,10 +107,10 @@ async function loadUserSession() {
           sessionStorage.clear();
           window.location.reload();
         } else {
-          console.error("Logout failed.");
+          // console.error("Logout failed.");
         }
       } catch (error) {
-        console.error("Error during logout:", error);
+        // console.error("Error during logout:", error);
       }
     });
   });
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       "https://ouragent.com.ng/agent_sold_property.php"
     );
   } catch (error) {
-    console.error("Error loading data:", error);
+    // console.error("Error loading data:", error);
   } finally {
     // Show content and properties section after data loads
     loader.style.display = "none";
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(containerDiv);
     });
   } catch (error) {
-    console.error("Error fetching properties:", error);
+    // console.error("Error fetching properties:", error);
     container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
   }
 }
@@ -600,7 +600,7 @@ async function fetchAgentProperties(agentId, containerId, url, propertystatus) {
     // Initial call to display properties
     displayProperties(currentPage);
   } catch (error) {
-    console.error("Error fetching properties:", error);
+    // console.error("Error fetching properties:", error);
     container.innerHTML = `<p>Error loading properties. Please try again later.</p>`;
   }
 }
@@ -653,7 +653,7 @@ async function deleteProperty(propertyId) {
       location.reload();
     }
   } catch (error) {
-    console.error("Error deleting property:", error);
+    // console.error("Error deleting property:", error);
   }
 }
 
@@ -772,7 +772,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
       statusButton.classList.remove("processing");
     }
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
     Swal.fire({
       toast: true,
       title: "Error!",  
@@ -850,7 +850,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       showMessage("An error occurred. Please try again.", "error");
-      console.error(error);
+      // console.error(error);
     }
 
     // Re-enable button after response
