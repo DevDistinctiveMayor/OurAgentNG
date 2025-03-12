@@ -796,7 +796,7 @@ document.getElementById("feedbackForm").addEventListener("submit", async functio
   const agentId = sessionStorage.getItem("agent_id") || "guest"; // If agent is logged in
   const formData = { agent_id: agentId, feedback: feedbackMessage };
 
-  const response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+  const response = await fetch("https://ouragent.com.ng/feedback/submit_feedback.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),

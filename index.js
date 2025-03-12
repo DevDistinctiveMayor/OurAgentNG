@@ -389,7 +389,7 @@ async function submitFeedback() {
   submitBtn.disabled = true;
 
   try {
-    let response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+    let response = await fetch("https://ouragent.com.ng/feedback/submit_feedback.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

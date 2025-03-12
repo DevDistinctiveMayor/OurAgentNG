@@ -120,7 +120,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
         submitButton.textContent = "Sending...";
 
     try {
-        const response = await fetch("https://ouragent.com.ng/contact_us.php", {
+        const response = await fetch("https://ouragent.com.ng/contact/contact_us.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
