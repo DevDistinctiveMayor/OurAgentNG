@@ -19,7 +19,7 @@ document.getElementById("resetForm").addEventListener("submit", async function (
     submitButton.disabled = true;
     submitButton.textContent = "Processing...";
     try {
-      const response = await fetch("https://ouragent.com.ng/forgot_password.php", {
+      const response = await fetch("https://ouragent.com.ng/client_otp/forgot_password.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
