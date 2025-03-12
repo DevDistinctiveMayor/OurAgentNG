@@ -447,14 +447,14 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAgentProperties(
     agentId,
     "propertiesContainer",
-    "https://ouragent.com.ng/agentrent_property_ondash.php",
+    "https://ouragent.com.ng/agent_profile/agentrent_property_ondash.php",
     "Rent"
   );
 
   fetchAgentProperties(
     agentId,
     "propertiesContainer_2",
-    "https://ouragent.com.ng/agentsell_property_dashboard.php",
+    "https://ouragent.com.ng/agent_profile/agentsell_property_dashboard.php",
     "Sell"
   );
 
@@ -729,7 +729,7 @@ async function markPropertyStatus(propertyId, propertystatus) {
 
   try {
     const response = await fetch(
-      "https://ouragent.com.ng/agentmark_property_sold.php",
+      "https://ouragent.com.ng/agent_profile/agentmark_property_sold.php",
       {
         method: "POST",
         headers: {
