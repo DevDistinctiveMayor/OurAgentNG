@@ -265,7 +265,7 @@ async function updateEmail(agentId) {
 
 
   await sendRequest(
-    "https://ouragent.com.ng/change_email.php",
+    "https://ouragent.com.ng/agent_profile/change_email.php",
     formData,
     "A verification link has been sent to your new email.",
     () => {

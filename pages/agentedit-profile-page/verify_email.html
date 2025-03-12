@@ -70,7 +70,7 @@
         const statusMessage = document.getElementById('statusMessage');
 
         if (token) {
-            fetch(`https://ouragent.com.ng/verify_changed_email.php?token=${token}`)
+            fetch(`https://ouragent.com.ng/agent_profile/verify_changed_email.php?token=${token}`)
                 .then(response => response.text()) // Change this if your PHP returns JSON
                 .then(data => {
                     if (data.includes("successfully")) {
