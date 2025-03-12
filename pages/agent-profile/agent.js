@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   async function updateUserInfo(agentId, userInfo) {
-    const url = "https://ouragent.com.ng/userInfo.php";
+    const url = "https://ouragent.com.ng/agent_profile/userInfo.php";
 
     try {
       const response = await fetch(url, {
