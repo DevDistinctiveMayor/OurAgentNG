@@ -118,7 +118,7 @@ const fetchBookmarks = async () => {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/get_bookmark.php", {
+    const response = await fetch("https://ouragent.com.ng/bookmark/get_bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ client_id: parseInt(clientId) }),
@@ -210,7 +210,7 @@ const handleBookmark = async (propertyId, action) => {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/bookmark.php", {
+    const response = await fetch("https://ouragent.com.ng/bookmark/bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

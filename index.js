@@ -265,7 +265,7 @@ async function loadBookmarks() {
 
   try {
     const response = await fetch(
-      `https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`
+      `https://ouragent.com.ng/bookmark/get_bookmark_button.php?client_id=${clientId}`
     );
     const result = await response.json();
 
@@ -302,7 +302,7 @@ async function handleBookmark(propertyId, action) {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/bookmark.php", {
+    const response = await fetch("https://ouragent.com.ng/bookmark/bookmark.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

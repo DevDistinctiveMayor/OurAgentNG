@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!clientId) return;
 
     try {
-      const response = await fetch(`https://ouragent.com.ng/get_bookmark_button.php?client_id=${clientId}`);
+      const response = await fetch(`https://ouragent.com.ng/bookmark/get_bookmark_button.php?client_id=${clientId}`);
       const result = await response.json();
 
       if (result.status === "success") {
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("https://ouragent.com.ng/bookmark.php", {
+      const response = await fetch("https://ouragent.com.ng/bookmark/bookmark.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ client_id: parseInt(clientId), property_id: parseInt(propertyId), action })
