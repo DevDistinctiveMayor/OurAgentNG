@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.textContent = "Verifying...";
 
     try {
-      const response = await fetch("https://ouragent.com.ng/agent-otp.php", {
+      const response = await fetch("https://ouragent.com.ng/agent_otp/agent-otp.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://ouragent.com.ng/agent_resendotp.php",
+        "https://ouragent.com.ng/agent_otp/agent_resendotp.php",
         {
           method: "POST",
           headers: {

@@ -23,7 +23,7 @@ document
     submitButton.textContent = "Processing...";
     try {
       const response = await fetch(
-        "https://ouragent.com.ng/agentforgot_password.php",
+        "https://ouragent.com.ng/agent_otp/agentforgot_password.php",
         {
           method: "POST",
           headers: {

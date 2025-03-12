@@ -88,7 +88,7 @@ document.querySelectorAll(".toggle-password").forEach((toggle) => {
       submitButton.textContent = "Processing...";
   
       try {
-        const response = await fetch("https://ouragent.com.ng/agentreset_password.php", {
+        const response = await fetch("https://ouragent.com.ng/agent_otp/agentreset_password.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
