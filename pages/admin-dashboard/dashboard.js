@@ -25,7 +25,7 @@ lines.forEach((line) => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://ouragent.com.ng/get_total_user.php")
+  fetch("https://ouragent.com.ng/admin_dashboard/get_total_user.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://ouragent.com.ng/get_total_properties.php")
+  fetch("https://ouragent.com.ng/admin_dashboard/get_total_properties.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", fetchPendingRequests);
 // Function to fetch pending profile updates
 async function fetchPendingRequests() {
     try {
-        const response = await fetch("https://ouragent.com.ng/agent_fetchPending_request.php");
+        const response = await fetch("https://ouragent.com.ng/admin_dashboard/agent_fetchPending_request.php");
         const data = await response.json();
 
         if (data.status === "success") {
@@ -94,7 +94,7 @@ async function handleAction(update_id, action) {
     try {
         console.log(`Sending Request: ID=${update_id}, Action=${action}`);
 
-        const response = await fetch("https://ouragent.com.ng/adminApproval.php", {
+        const response = await fetch("https://ouragent.com.ng/admin_dashboard/adminApproval.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `update_id=${update_id}&action=${action}`
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   async function fetchFeedback() {
     try {
-      const response = await fetch("https://ouragent.com.ng/retrieve_feedback.php");
+      const response = await fetch("https://ouragent.com.ng/admin_dashboard/retrieve_feedback.php");
       const data = await response.json();
 
       if (data.status === "success" && data.feedback.length > 0) {
