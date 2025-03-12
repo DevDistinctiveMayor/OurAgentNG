@@ -834,7 +834,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.textContent = "Submitting...";
 
     try {
-      const response = await fetch("https://ouragent.com.ng/submit_feedback.php", {
+      const response = await fetch("https://ouragent.com.ng/feedback/submit_feedback.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
