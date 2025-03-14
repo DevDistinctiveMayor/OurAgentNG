@@ -1,13 +1,34 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".nav-links");
-const content = document.querySelector(".content"); // Target content-wrapper
 
-menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("open");
-  menu.classList.toggle("active");
-  content.classList.toggle("content-blur"); // Add blur effect to the content
-  document.body.classList.toggle("disable-scroll"); // Prevent scrolling on the whole page
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.display = "block"; // Show body when JS is ready
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("content");
+
+  // Show loader immediately
+  loader.style.display = "flex";
+  content.style.display = "none";
+
+  // Delay the execution of heavy JavaScript
+  setTimeout(async () => {
+    try {
+      await loadUserSession(); // Load user session
+      await fetchAndRenderProperties(); // Fetch properties
+    } catch (error) {
+      console.error("Error loading data:", error);
+    } finally {
+      // Hide loader and show content
+      loader.style.display = "none";
+      content.style.display = "block";
+    }
+  }, 100); // 100ms delay to ensure the loader is rendered
+});
+
+
 
 document
   .getElementById("toggle-password")
@@ -163,7 +184,7 @@ document
   //         }
   //       }
   //     } catch (error) {
-        console.error("Error:", error);
+        // console.error("Error:", error);
   //       Swal.fire({
   //         title: "Error",
   //         text: "An unexpected error occurred. Please try again later.",
@@ -215,7 +236,7 @@ document
         throw new Error("Invalid session.");
       }
     } catch (error) {
-      // console.error("Error loading session:", error);
+     // console.error("Error loading session:", error);
       greetings.forEach((el) => (el.textContent = "Error loading session."));
     }
   
@@ -227,10 +248,10 @@ document
             sessionStorage.clear();
             window.location.reload();
           } else {
-            // console.error("Logout failed.");
+            console.error("Logout failed.");
           }
         } catch (error) {
-          // console.error("Error during logout:", error);
+        //  console.error("Error during logout:", error);
         }
       });
     });
@@ -257,7 +278,7 @@ document
         try {
           await loadUserSession(); // Load user session
         } catch (error) {
-          // console.error("Error loading data:", error);
+        //  console.error("Error loading data:", error);
         } finally {
           // Hide loader and show content
           loader.style.display = "none";
@@ -336,7 +357,7 @@ document
                   icon: "error",
                   showConfirmButton: false,
                   iconColor: "#3085d6",
-                  timer: 3000,
+                  timer: 2000,
                   timerProgressBar: true,
               });
               return;
@@ -442,14 +463,14 @@ document
                       toast: true,
                       position: "top-end",
                       showConfirmButton: false,
-                      timer: 3000,
+                      timer: 2000,
                       iconColor: "#3085d6",
                       timerProgressBar: true,
                   });
   
                   setTimeout(() => {
                       window.location.href = "../agent-otp-page/agentotp.html"; // Redirect to OTP page
-                  }, 3000);
+                  }, 2000);
               } else {
                   Swal.fire({
                       toast: true,
@@ -457,14 +478,14 @@ document
                       text: data.message || "Please check your inputs and try again.",
                       icon: "warning",
                       showConfirmButton: false,
-                      timer: 3000,
+                      timer: 2000,
                       iconColor: "#3085d6",
                       position: "top-end",
                       timerProgressBar: true,
                   });
               }
           } catch (error) {
-              // console.error("Error:", error);
+              console.error("Error:", error);
               Swal.fire({
                   toast: true,
                   title: "Error",
