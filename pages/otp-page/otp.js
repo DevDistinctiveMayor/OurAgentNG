@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
           icon: "success",
           iconColor: "rgba(8, 97, 175, 1)",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
           timerProgressBar: true,
           
         }).then(() => {
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
           icon: "success",
           iconColor: "rgba(8, 97, 175, 1)",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
           timerProgressBar: true,
         });
       } else {
