@@ -867,6 +867,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       feedbackResponse.style.display = "none";
     }, 4000);
-  }
+  
 });
 
