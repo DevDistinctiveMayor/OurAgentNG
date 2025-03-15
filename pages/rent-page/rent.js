@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
         title: "Please log in first",
         showConfirmButton: false,
         iconColor: "rgba(8, 97, 175, 1)",
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
       });
       return;
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     setTimeout(() => {
       toast.remove();
-    }, 3000); // Remove toast after 3 seconds
+    }, 2000); // Remove toast after 3 seconds
   }
 
   // Attach Event Listeners to Bookmark Buttons
