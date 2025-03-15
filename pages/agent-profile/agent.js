@@ -642,7 +642,7 @@ async function deleteProperty(propertyId) {
       text: result.message,
       icon: result.status === "success" ? "success" : "error",
       position: "top-end",
-      timer: 3000, // Display for 3 seconds
+      timer: 2000, // Display for 3 seconds
       timerProgressBar: true,
       showConfirmButton: false,
             iconColor: "rgba(8, 97, 175, 1)"
@@ -752,14 +752,14 @@ async function markPropertyStatus(propertyId, propertystatus) {
         text: `Property successfully marked as ${newStatus === "sold" ? "Sold" : "Rented Out"}.`,
         icon: "success",
         position: "top-end",
-        timer: 3000, // Display for 3 seconds
+        timer: 2000, // Display for 3 seconds
         timerProgressBar: true,
         iconColor: "rgba(8, 97, 175, 1)",
         showConfirmButton: false, // Needed for toast mode
       });
     
       // Delay reload slightly so the user sees the message
-      setTimeout(() => location.reload(), 3000);
+      setTimeout(() => location.reload(), 2000);
     } else {
       Swal.fire({
         toast: true,
@@ -866,7 +866,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       feedbackResponse.style.display = "none";
-    }, 4000);
+    }, 2000);
   }
 });
 
