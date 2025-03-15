@@ -162,7 +162,7 @@ if (!agentId) {
           icon: "success",
           iconColor: "rgba(8, 97, 175, 1)",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
           position: "top-end",
           timerProgressBar: true,
         });
@@ -294,7 +294,7 @@ async function sendRequest(url, data, successMessage, callback) {
         icon: "success",
         iconColor: "rgba(8, 97, 175, 1)",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         position: "top-end",
         timerProgressBar: true,
       }).then(callback || (() => {}));
