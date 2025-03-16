@@ -406,7 +406,7 @@ function attachBookmarkListeners() {
 }
 
 const fetchSoldProperties = () => {
-  fetch("https://ouragent.com.ng/sold_property.php", {
+  fetch("https://ouragent.com.ng/fetch_properties/sold_property.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   })
