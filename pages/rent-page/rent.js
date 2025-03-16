@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
    async function fetchAndRenderProperties(queryParams = "") {
     propertiesContainer.innerHTML = "Loading properties...";
     try {
-      const response = await fetch(`https://ouragent.com.ng/search_property/advance_serch.php?${queryParams}`);
+      const response = await fetch(`https://ouragent.com.ng/search_property/advance_search.php?${queryParams}`);
       const data = await response.json();
       
       propertiesContainer.innerHTML = ""; // Clear existing content
