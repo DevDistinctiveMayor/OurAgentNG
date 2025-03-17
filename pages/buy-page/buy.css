@@ -494,6 +494,10 @@ header {
   padding: 10px;
 }
 
+.p_type{
+  text-transform: capitalize;
+}
+
 .featuredbox-container {
   margin-top: 70px;
 }
