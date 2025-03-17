@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (const [type, count] of Object.entries(data)) {
             const row = document.createElement("div");
-            row.innerHTML = `<p>${type}</p><p>${count}</p>`;
+            row.innerHTML = `<p class="p_type">${type}</p><p>${count}</p>`;
             propertyContainer.appendChild(row);
         }
     })
