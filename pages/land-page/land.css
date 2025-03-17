@@ -493,7 +493,9 @@ header {
   border-bottom: 1px solid #0861AF9C;
   padding: 10px;
 }
-
+.p_type{
+  text-transform: capitalize;
+}
 .featuredbox-container {
   margin-top: 70px;
 }
