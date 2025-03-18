@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "poppins";
-  src: url(./assets/font/Poppins-Regular.woff2);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 * {
   margin: 0;
@@ -11,7 +8,7 @@
 
 /* General reset for margins and padding */
 body {
-  font-family: "poppins";
+  font-family: "Poppins";
   /* display: none; */
 }
 
