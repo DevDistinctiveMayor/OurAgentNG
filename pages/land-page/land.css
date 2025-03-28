@@ -493,7 +493,21 @@ header {
   border-bottom: 1px solid #0861AF9C;
   padding: 10px;
 }
-.p_type{
+
+#availableProperty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds space between items */
+}
+
+.property-row {
+  display: flex;
+  flex-direction: column; /* Ensures text stacks vertically */
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #ccc; /* Optional: Adds a separator */
+}
+.p_type {
   text-transform: capitalize;
 }
 .featuredbox-container {
