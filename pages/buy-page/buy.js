@@ -409,18 +409,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Fetch property count from the PHP script
+fetch("https://ouragent.com.ng/total_properties/get_total_apertment.php")
+    .then(response => response.json())
+    .then(data => {
+        const propertyContainer = document.getElementById("availableProperty");
+        propertyContainer.innerHTML = ""; // Clear existing property listings
 
-  // Fetch property count from the PHP script
-  fetch("https://ouragent.com.ng/total_properties/get_total_apertment.php") // Change to your actual backend file path
-  .then(response => response.json())
-  .then(data => {
-      const propertyContainer = document.getElementById("availableProperty");
-      propertyContainer.innerHTML = ""; // Clear existing property listings
-
-      for (const [type, count] of Object.entries(data)) {
-          const row = document.createElement("div");
-          row.innerHTML = `<p class="p_type">${type}</p><p>${count}</p>`;
-          propertyContainer.appendChild(row);
-      }
-  })
-  .catch(error => console.error("Error fetching data:", error));
+        for (const [type, count] of Object.entries(data)) {
+            const row = document.createElement("div");
+            row.classList.add("property-row"); // Added a class for styling
+            row.innerHTML = `
+                <p class="p_type">${type}</p>
+                <p class="p_count">${count}</p>
+            `;
+            propertyContainer.appendChild(row);
+        }
+    })
+    .catch(error => console.error("Error fetching data:", error));
