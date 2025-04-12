@@ -1,49 +1,46 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="shortcut icon" href="../../assets/logo.svg" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  <link rel="stylesheet" href="./buy.css" />
+  <link rel="stylesheet" href="./shortlet.css" />
   <title>Our AgentNG | Website</title>
 </head>
 
 <body>
   <!-- Header Section -->
   <header>
-    <nav class="navbar ">
+    <nav class="navbar">
       <div class="logo">
-        <a href="/index.html"><img src="/assets/logo.svg" alt="Logo"></a>
+        <a href="/index.html"><img src="/assets/logo.svg" alt="Logo" /></a>
         <ul class="nav-links">
-          <!-- HTML -->
-          <div class="access-box nav-links3">
+          <li class="access-box nav-links3">
             <i class="bx bx-user year-user">
               <span class="greeting"></span>
             </i>
-          </div>
+          </li>
           <li><a href="../buy-page/buy.html">Buy</a></li>
           <li><a href="../rent-page/rent.html">Rent</a></li>
           <li><a href="../land-page/land.html">Land</a></li>
           <li><a href="../shortlet/shortlet.html">Shortlet</a></li>
           <li><a href="../bookmark-page/bookmark.html">Saved properties</a></li>
           <li><a href="../about-us-page/about.html">About us</a></li>
-          <div class="nav-links3">
-            <div>
-              <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
-            </div>
-          </div>
+          <li class="nav-links3">
+            <a href="#" class="logout-btn logout" style="display: none" onclick="logoutUser()">Log Out</a>
+          </li>
         </ul>
       </div>
 
       <div class="call_action">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
-            Property</a>
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">
+            Post A Property
+          </a>
           <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
         </div>
-        <label class="menu-toggle" onClick={onToggleMenu}>
+        <label class="menu-toggle" onclick="toggleMenu()">
           <span></span>
           <span></span>
           <span></span>
@@ -52,18 +49,18 @@
 
       <div class="nav-links2">
         <div class="access-box">
-          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none;">Post A
-            Property</a>
+          <a href="../agent-login-page/agent-login.html" class="post-property-btn post" style="display: none">
+            Post A Property
+          </a>
           <a href="../login-page/login.html" class="login-btn login">Sign up or Log in</a>
           <i class="bx bx-user year-user">
             <span class="greeting greeting_mobile"></span>
           </i>
-          <a href="#" class="logout-btn logout" style="display: none;">Log Out</a>
+          <a href="#" class="logout-btn logout" style="display: none" onclick="logoutUser()">Log Out</a>
         </div>
       </div>
     </nav>
   </header>
-
 
   <div id="loader">
     <div class="scanner"></div>
@@ -74,12 +71,11 @@
       <div class="sale-container">
         <div class="sale-container-flex">
           <div class="sale" id="category">
-            <p value="sell">Buy</p>
+            <p value="shortlet">Shortlet</p>
           </div>
-
           <div class="search_box">
             <div class="custom-select">
-              <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch" class="">
+              <select onchange="toggleLGA(this);" name="stateSearch" id="stateSearch">
                 <option value="" selected="selected">- Select -</option>
                 <option value="Abia">Abia</option>
                 <option value="Adamawa">Adamawa</option>
@@ -125,16 +121,14 @@
 
           <div class="lga_search">
             <div class="custom-select">
-              <select name="lga" id="lgaSearch" class="select-lga" required>
-              </select>
+              <select name="lga" id="lgaSearch" class="select-lga" required></select>
               <span class="arrow">&#9662;</span>
             </div>
           </div>
 
-
           <div class="advance_filter" id="toggleFilter">
-            <span type="text" placeholder="Filters" class="toggle-filter-btn">Filter</span>
-            <img src=" ../../assets/icon/advanced_filter.png" class="filtericon" />
+            <span class="toggle-filter-btn">Filter</span>
+            <img src="../../assets/icon/advanced_filter.png" class="filtericon" />
           </div>
 
           <div class="btnn">
@@ -145,18 +139,18 @@
 
       <div class="container">
         <div class="details-container">
-          <h1>Property for buy in Nigeria</h1>
+          <h1>Property for Rent in Nigeria</h1>
           <p class="intro">
             There are 75,446 available flats, houses, land and commercial
-            property for buy in Nigeria. The property have been listed by estate
-            agents who can be contacted using the contact information provided
-            for each property listing. The list can be filtered by price,
-            furnishing and recency.
+            property for rent in Nigeria. The property have been listed by
+            estate agents who can be contacted using the contact information
+            provided for each property listing. The list can be filtered by
+            price, furnishing and recency.
           </p>
           <p class="down-p">Content from Our Agent</p>
           <p>Read more at: <a href="#" class="blog-link">Blog Link</a></p>
-<!-- 
-          <div class="sort-container">
+
+          <!-- <div class="sort-container">
             <p>Result 1-20 of 75,000</p>
           </div> -->
 
@@ -246,35 +240,36 @@
         <div class="available-container">
           <h3>available property</h3>
 
-          <div class="content">
+          <div class="content" >
             <p class="heading">currently available for rent in nigeria</p>
 
             <div class="heading">
               <p>Property Type</p>
               <p>Property Count</p>
             </div>
+
             <div id="availableProperty">
-            <!-- <div>
-              <p>Co-working place</p>
-              <p>100</p>
+              <!-- <div>
+                <p>Co-working place</p>
+                <p>100</p>
+              </div>
+              <div>
+                <p>Flat/Apartment</p>
+                <p>7542</p>
+              </div>
+              <div>
+                <p>Commercial Properties</p>
+                <p>8000</p>
+              </div>
+              <div>
+                <p>Land</p>
+                <p>1000</p>
+              </div>
+              <div>
+                <p>House</p>
+                <p>9999</p>
+              </div> -->
             </div>
-            <div>
-              <p>Flat/Apartment</p>
-              <p>7542</p>
-            </div>
-            <div>
-              <p>Commercial Properties</p>
-              <p>8000</p>
-            </div>
-            <div>
-              <p>Land</p>
-              <p>1000</p>
-            </div>
-            <div>
-              <p>House</p>
-              <p>9999</p>
-            </div> -->
-          </div>
           </div>
         </div>
       </div>
@@ -288,12 +283,8 @@
 
           <!-- Category Selection -->
           <div class="select-box">
-            <p>Buy</p>
+            <p>Rent</p>
           </div>
-
-
-
-
 
           <div class="search_box">
             <div class="custom-select2">
@@ -343,34 +334,15 @@
 
           <div class="lga_search">
             <div class="custom-select2">
-              <select name="lga" id="lga" class="form-control select-lga" required>
-              </select>
-
+              <select name="lga" id="lga" class="form-control select-lga" required></select>
               <span class="arrow">&#9662;</span>
             </div>
           </div>
-
-          <!-- <div class="ad_search">
-          Location Search
-          <div class="search_box">
-            <i class="bx bx-search" style="color: #0873d2"></i>
-            <input type="search" name="state" id="state" class="state" placeholder="Search state..." />
-          </div>
-
-          Location Search
-          <div class="lga_search">
-            <i class='bx bx-current-location location-icon2'></i>
-            <input type="search" name="lga" id="lga" class="lg" placeholder="Search LG..." />
-          </div> -->
-
-
-
 
           <!-- Bedrooms Selection -->
           <div class="bedrooms-selection">
             <h3>Bedrooms</h3>
             <div class="row-select-box">
-              <!-- Using data-bedroom to dynamically fetch bedroom count -->
               <a href="#" data-bedroom="1">1</a>
               <a href="#" data-bedroom="2">2</a>
               <a href="#" data-bedroom="3">3</a>
@@ -380,20 +352,21 @@
               <a href="#" data-bedroom="7">7</a>
               <a href="#" data-bedroom="8">8</a>
               <a href="#" data-bedroom="9">9</a>
-              <a href="#" data-bedroom="10">10</a>
+              <!-- Add more bedroom options as needed -->
             </div>
           </div>
+
 
           <!-- Property Types -->
           <div class="property-type-container">
             <h3>Property Types</h3>
             <div class="row-display-container">
-              <!-- Using data-type for dynamic property type selection -->
               <a data-type="">All</a>
               <a href="#" data-type="Warehouse">Warehouse</a>
               <a href="#" data-type="Detached Bungalow">Detached Bungalow</a>
               <a href="#" data-type="Office Spaces">Office Spaces</a>
               <a href="#" data-type="Lands">Lands</a>
+              <a href="#" data-type="Shortlet">Shortlet</a>
               <a href="#" data-type="Apartments">Apartments</a>
               <a href="#" data-type="Commercial Properties">Commercial Properties</a>
               <a href="#" data-type="Shops">Shops</a>
@@ -474,7 +447,8 @@
     </div>
   </main>
 
-  <script src="./buy.js"></script>
+
+  <script src="./shortlet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
