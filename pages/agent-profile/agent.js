@@ -195,7 +195,15 @@ async function fetchAndRenderDashboard(agentId) {
       profileImage.src = user.profileImage || "../../images/agent-profile-img.png";
       document.getElementById("phoneNumber").href = `tel:${user.phoneNumber || ""}`;
     } else {
-      Swal.fire("Error", data.message || "Failed to load user data.", "error");
+      Swal.fire({
+        toast: true,
+        title: "Error",
+        text: data.message || "Failed to load user data.",
+        icon: "error",
+        confirmButtonColor: "rgba(8, 97, 175, 1)",
+        confirmButtonText: "OK"
+      });
+      
     }
   } catch (error) {
     Swal.fire({
