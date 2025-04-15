@@ -219,7 +219,7 @@ function initializeCarouselControls() {
 
   function updateCarousel() {
     const offset = -currentIndex * 100;
-    const carouselInner = document.querySelector(".carousel-track");
+    const carouselInner = document.querySelector(".carousel-inner");
     carouselInner.style.transform = `translateX(${offset}%)`;
 
     carouselItems.forEach((item, index) => {
