@@ -169,3 +169,48 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   fetchFeedback();
 });
+
+
+fetch('https://ouragent.com.ng/admin_dashboard/get_client.php')
+  .then(res => res.json())
+  .then(data => {
+    if (data.status !== 'success') {
+      console.error('Error fetching clients:', data.message);
+      return;
+    }
+
+    const container = document.getElementById('clientTableContainer');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'scrollable-wrapper';
+
+    const table = document.createElement('table');
+    table.className = 'client-table';
+
+    // Header HTML (with # column)
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.clients.map((client, index) => `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${client.fullName}</td>
+            <td>${client.email}</td>
+            <td>${client.phone}</td>
+            <td>${client.category}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+
+    wrapper.appendChild(table);
+    container.appendChild(wrapper);
+  })
+  .catch(err => console.error('Fetch error:', err));

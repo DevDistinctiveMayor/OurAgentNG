@@ -636,3 +636,33 @@ h2 {
     font-size: 16px;
   }
 }
+
+
+.client_list{
+text-align: center;
+font-size: 20px;
+}
+/* Scrollable wrapper */
+.scrollable-wrapper {
+  overflow-x: auto;
+  
+  height: 1000px;
+}
+
+/* Table styling */
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.client-table th,
+.client-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.client-table th {
+  background: rgba(8, 97, 175, 1);
+}
