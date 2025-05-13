@@ -214,3 +214,84 @@ fetch('https://ouragent.com.ng/admin_dashboard/get_client.php')
     container.appendChild(wrapper);
   })
   .catch(err => console.error('Fetch error:', err));
+
+
+  fetch('https://ouragent.com.ng/admin_dashboard/get_agent.php')
+  .then(res => res.json())
+  .then(data => {
+    if (data.status !== 'success') {
+      console.error('Error fetching agents:', data.message);
+      return;
+    }
+
+    const container = document.getElementById('agentTableContainer');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'scrollable-wrapper';
+
+    const table = document.createElement('table');
+    table.className = 'client-table';
+
+    // Table headers
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Company</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>NIN</th>
+          <th>CAC</th>
+          <th>Last Login</th>
+          <th>Total Properties</th>
+          <th>Verification Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.clients.map((agent, index) => `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${agent.fullName}</td>
+            <td>${agent.email}</td>
+            <td>${agent.companyName}</td>
+            <td>${agent.phoneNumber}</td>
+            <td>${agent.address}</td>
+            <td>${agent.ninNumber}</td>
+            <td>${agent.cacNumber}</td>
+            <td>${agent.lastLoginAt}</td>
+            <td>${agent.totalPropertiesPosted}</td>
+            <td>${agent.verificationStatus}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+
+    wrapper.appendChild(table);
+    container.appendChild(wrapper);
+  })
+  .catch(err => console.error('Fetch error:', err));
+
+  google.charts.load('current', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawActivityTrendChart);
+
+function drawActivityTrendChart() {
+  fetch('https://ouragent.com.ng/admin_dashboard/get_trends.php')
+    .then(res => res.json())
+    .then(data => {
+      const chartData = google.visualization.arrayToDataTable(data);
+
+      const options = {
+        title: 'Activity Trends Over Time',
+        hAxis: { title: 'Date' },
+        vAxis: { title: 'Count' },
+        curveType: 'function',
+        legend: { position: 'top' },
+        colors: ['#1E88E5', '#F4511E', '#43A047']
+      };
+
+      const chart = new google.visualization.LineChart(document.getElementById('activityTrendChart'));
+      chart.draw(chartData, options);
+    })
+    .catch(err => console.error('Trend chart error:', err));
+}

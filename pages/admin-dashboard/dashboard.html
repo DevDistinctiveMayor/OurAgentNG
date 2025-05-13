@@ -94,7 +94,7 @@
     <section class="reviews">
       <aside class="new-messages">
         <div class="top-line">
-          <p>New messages received</p>
+        //  <p>New messages received</p>
           <p>
             <span class="arrow-icon-wrapper"><i class="bx bx-right-arrow-alt" id="arrow-up-icon"></i></span><span
               class="view">View all</span>
@@ -118,10 +118,6 @@
             </tbody>
           </table>
 
-          <div class="feedback-container">
-            <h2>Agent Feedback</h2>
-            <div id="feedbackList"></div>
-          </div>
           
          
         </div>
@@ -154,25 +150,25 @@
         </div>
         <div class="latest-review-container">
           <div class="top-line-second">
-            <p>Your latest review</p>
+            <p>Your latest Feedback</p>
             <i class="bx bx-right-arrow-alt" id="arrow-up-icon"></i>
           </div>
 
-          <div class="review-box">
+          <div class="review-box feedback-container">
             <div class="user-details">
               <div class="user-initials">
                 <p>JL</p>
               </div>
               <div class="name-and-rating">
-                <p>Joseph Lamidi</p>
+                <p></p>
                 <img src="../../frontend_images/rating-star.jpg" alt="user-rating" />
               </div>
             </div>
             <div class="property-details">
-              <p class="property-name">Property name</p>
-              <p class="time">2 hours ago</p>
+              <!-- <p class="property-name">Property name</p>
+              <p class="time">2 hours ago</p> -->
             </div>
-            <p class="review-message">
+            <p class="review-message" id="feedbackList">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Perspiciatis blanditiis possimus cumque natus, autem nam.
               Tempora aliquid facere hic quod? Repellat fugit repellendus
@@ -255,14 +251,24 @@
       <div>
         <h4 class="client_list">Client List</h4>
         <div id="clientTableContainer">
-
         </div>
-
       </div>
 
-    </section>
+      <section>
+        <div>
+          <h4 class="client_list">Agent List</h4>
+          <div id="agentTableContainer"></div>
+        </div>
+      </section>
+      
+      <div id="activityTrendChart" style="width: 100%; height: 500px;"></div>
+
+          </section>
   </main>
   <footer></footer>
+ 
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./dashboard.js"></script>
