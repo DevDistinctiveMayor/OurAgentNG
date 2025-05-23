@@ -337,7 +337,7 @@ main {
 .left-container .carousel {
   position: relative;
   width: 100%;
-  /* : 40%; */
+  /* height: 40%; */
   overflow: hidden;
   border: 2px solid #0861af;
   border-radius: 10px;
