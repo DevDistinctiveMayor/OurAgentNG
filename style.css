@@ -470,9 +470,9 @@ main {
   align-items: center;
   justify-content: center;
   width: 280px;
-  /* min-height: 33px; */
+  height: 355px;
   padding: 8px 0px;
-  border: 1px solid #0861af;
+  border: 1px solid #0861af2d;
   border-radius: 7px;
   cursor: pointer;
 }
@@ -489,8 +489,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius:0px;
   overflow: hidden;
+
 }
 
 .house-card-container .container .house-card .img img {
@@ -499,12 +500,12 @@ main {
   max-width: 100%;
   object-fit: cover;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 8px 8px 0% 0%;
 }
 
 .house-card-container .container .house-card .details {
-  background-color: rgba(147, 182, 210, 0.29);
   padding: 10px;
+  box-shadow: 0 5px 5px rgba(73, 73, 73, 0.1)  ;
 }
 
 .house-card-container .container .house-card .details .description {
