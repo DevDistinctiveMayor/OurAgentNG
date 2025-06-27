@@ -1035,16 +1035,6 @@ main {
     margin: 10px 0px;
   }
 
-  .house-card-container {
-    margin-top: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    position: relative;
-  }
-
   .download-section {
     margin-top: 0rem;
   }
@@ -1093,72 +1083,27 @@ main {
     gap: 30px;
   }
 }
-
-@media screen and (max-width: 570px) {
-  .house-card-container {
-    margin-top: 2rem;
-    display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
-    gap: 30px 0px;
-    justify-items: center;
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-
+@media screen and (max-width: 600px) {
   .house-card-container .container {
-    padding: 11px 0px;
-    min-height: 300px;
+         width: 398px;
+        height: 457px;
+            gap: 34px;
   }
 
   .house-card-container .container .house-card {
-    width: 230px;
-    position: relative;
+    width: 100%;
   }
 
   .house-card-container .container .house-card .img {
+    height: 300px; /* Increased image height on small screens */
+  }
+
+  .house-card-container .container .house-card .img img {
+    height: 100%;
     width: 100%;
-    height: 142px;
-  }
-
-
-  .house-card-container .container .house-card .details {
-    padding: 10px;
-  }
-
-  .house-card-container .container .house-card .details .description {
-    font-size: 14px;
-  }
-
-  .house-card-container .container .house-card .details .price {
-    font-size: 18px;
-  }
-
-  .house-card-container .container .house-card .details .location {
-    font-size: 13px;
-  }
-
-  
-
-  .house-card-container .container .house-card .img-overlap .status {
-    font-size: 11px;
-    padding: 2px 6px;
-  }
-
-  .house-card-container .container .house-card .img-overlap .icon {
-    padding: 15px;
-    height: 28px;
-    width: 28px;
-  }
-
-  .house-card-container .container .house-card .img-overlap .icon i {
-    font-size: 15px;
-  }
-
-  .house-card-container .container .house-card .img-overlap .icon:active i {
-    font-size: 22px;
+    object-fit: cover;
   }
 }
-
 @media screen and (max-width: 500px) {
   .carousel-item {
     min-width: 100%;
