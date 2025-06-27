@@ -232,8 +232,8 @@ main {
   border-radius: 5px;
 }
 
-.hero-section > .container > h1,
-.hero-section > .container > h2 {
+.hero-section>.container>h1,
+.hero-section>.container>h2 {
   color: #fff;
   text-decoration: underline;
   font-weight: 700;
@@ -469,7 +469,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 260px;
+  width: 280px;
   /* min-height: 33px; */
   padding: 8px 0px;
   border: 1px solid #0861af;
@@ -478,14 +478,14 @@ main {
 }
 
 .house-card-container .container .house-card {
-  width: 250px;
+  width: 100%;
   position: relative;
-  
+
 }
 
 .house-card-container .container .house-card .img {
   width: 100%;
-  height: 220px;
+  height: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -503,13 +503,14 @@ main {
 }
 
 .house-card-container .container .house-card .details {
+  background-color: rgba(147, 182, 210, 0.29);
   padding: 10px;
 }
 
 .house-card-container .container .house-card .details .description {
   color: #0861af;
   padding: 5px 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .house-card-container .container .house-card .details .price {
@@ -524,11 +525,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
 }
 
 .house-card-container .container .house-card .details .location .location-name {
   color: #0861af;
+  font-size: 16px;
 }
 
 .house-card-container .container .house-card .details .location .view-icon {
@@ -541,6 +542,7 @@ main {
 .house-card-container .container .house-card .details .location .view-icon .view {
   text-decoration: underline;
   color: #000;
+  font-size: 16px;
 }
 
 .house-card-container .container .house-card .img-overlap {
@@ -612,7 +614,7 @@ main {
 }
 
 .neighborhood-highlights p {
-  font-size: 1em;
+  font-size: 18px;
   color: #666;
   margin-bottom: 20px;
   text-decoration: underline;
@@ -815,7 +817,8 @@ main {
 
 /* Exit Popup Styling */
 .exit-popup {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   position: fixed;
   top: 0;
   left: 0;
@@ -1083,15 +1086,17 @@ main {
     gap: 30px;
   }
 }
+
 @media screen and (max-width: 600px) {
 
   .house-card-container {
     gap: 35px;
-}
+  }
+
   .house-card-container .container {
-         width: 398px;
-        height: 457px;
-            gap: 34px;
+    width: 365px;
+    /* height: 457px; */
+    gap: 34px;
   }
 
   .house-card-container .container .house-card {
@@ -1099,7 +1104,8 @@ main {
   }
 
   .house-card-container .container .house-card .img {
-    height: 300px; /* Increased image height on small screens */
+    height: 190px;
+    /* Increased image height on small screens */
   }
 
   .house-card-container .container .house-card .img img {
@@ -1107,7 +1113,13 @@ main {
     width: 100%;
     object-fit: cover;
   }
+
+  .house-card-container .container .house-card .details .price {
+    font-size: 26px;
+
+  }
 }
+
 @media screen and (max-width: 500px) {
   .carousel-item {
     min-width: 100%;
@@ -1143,16 +1155,25 @@ main {
 }
 
 @media screen and (max-width: 462px) {
- 
-  
+
+
   .grid_item_margin {
     margin-bottom: 14px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  
-  
+
+  .house-card-container .container {
+    width: 335px;
+    /* height: 400px; */
+    gap: 34px;
+  }
+
+  .house-card-container .container .house-card .details .price {
+     padding: 0.3rem 4px 0;
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(109px, 2fr));
@@ -1163,7 +1184,7 @@ main {
 }
 
 @media screen and (max-width: 359px) {
-  
+
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(113px, 2fr));
     gap: 9px;
