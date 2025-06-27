@@ -544,8 +544,8 @@ main {
   position: absolute;
   z-index: 2;
   top: 4px;
-  left: 10px;
-  right: 10px;
+  left: 5px;
+  right: 5px;
   width: 90%;
   display: flex;
   align-items: center;
@@ -1095,7 +1095,7 @@ main {
   .house-card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 2fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
     gap: 30px 0px;
     justify-items: center;
     margin-left: 2rem;
@@ -1104,7 +1104,6 @@ main {
 
   .house-card-container .container {
     padding: 11px 0px;
-    width: 197px;
     min-height: 300px;
   }
 
@@ -1118,9 +1117,6 @@ main {
     height: 142px;
   }
 
-  .house-card-container .container .house-card .img img {
-    width: 87%;
-  }
 
   .house-card-container .container .house-card .details {
     padding: 10px;
@@ -1138,9 +1134,7 @@ main {
     font-size: 13px;
   }
 
-  .house-card-container .container .house-card .img-overlap {
-    justify-content: space-around;
-  }
+  
 
   .house-card-container .container .house-card .img-overlap .status {
     font-size: 11px;
@@ -1200,7 +1194,7 @@ main {
   .house-card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 2fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
     gap: 30px 0px;
     justify-items: center;
     margin-left: 2rem;
@@ -1208,7 +1202,6 @@ main {
   }
 
   .house-card-container .container {
-    width: 179px;
     min-height: 280px;
   }
 
@@ -1223,7 +1216,7 @@ main {
   }
 
   .house-card-container .container .house-card .img img {
-    width: 87%;
+    width: 100%;
   }
 
   .house-card-container .container .house-card .details {
@@ -1243,10 +1236,6 @@ main {
   .house-card-container .container .house-card .details .location {
     font-size: 13px;
     margin-top: -1rem;
-  }
-
-  .house-card-container .container .house-card .img-overlap {
-    justify-content: space-around;
   }
 
   .house-card-container .container .house-card .img-overlap .status {
@@ -1277,7 +1266,7 @@ main {
   .house-card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 2fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
     gap: 30px 0px;
     padding: 0;
     justify-items: center;
@@ -1295,7 +1284,7 @@ main {
   .house-card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 2fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
     gap: 30px 0px;
     justify-items: center;
     margin-left: 0rem;
@@ -1303,7 +1292,7 @@ main {
   }
 
   .house-card-container .container {
-    width: 174px;
+
     min-height: 280px;
   }
 
@@ -1320,7 +1309,7 @@ main {
   .house-card-container {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 2fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(180px, 2fr)); */
     gap: 30px 0px;
     justify-items: center;
     margin-left: 0rem;
@@ -1365,9 +1354,6 @@ main {
     margin-top: -1rem;
   }
 
-  .house-card-container .container .house-card .img-overlap {
-    justify-content: space-around;
-  }
 
   .house-card-container .container .house-card .img-overlap .status {
     font-size: 11px;
