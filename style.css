@@ -457,10 +457,10 @@ main {
   margin-top: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   /* justify-content: center; */
   flex-wrap: wrap;
-  gap: 0px;
+  gap: 18px;
   /* background-color: red; */
   position: relative;
 }
@@ -471,7 +471,7 @@ main {
   justify-content: center;
   width: 280px;
   height: 355px;
-  padding: 8px 0px;
+  /* padding: 8px 0px; */
   border: 1px solid #0861af2d;
   border-radius: 8px;
   cursor: pointer;
@@ -1099,7 +1099,7 @@ main {
 
   .house-card-container .container {
     width: 350px;
-    /* height: 457px; */
+          height: 382px;
     gap: 34px;
   }
 
@@ -1170,7 +1170,7 @@ main {
 
   .house-card-container .container {
     width: 335px;
-    /* height: 400px; */
+          height: 355px;
     gap: 34px;
   }
 
