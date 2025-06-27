@@ -457,9 +457,11 @@ main {
   margin-top: 4rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  /* justify-content: center; */
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 0px;
+  /* background-color: red; */
   position: relative;
 }
 
@@ -467,8 +469,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 270px;
-  min-height: 372px;
+  width: 260px;
+  /* min-height: 33px; */
   padding: 8px 0px;
   border: 1px solid #0861af;
   border-radius: 7px;
@@ -476,13 +478,14 @@ main {
 }
 
 .house-card-container .container .house-card {
-  width: 230px;
+  width: 250px;
   position: relative;
+  
 }
 
 .house-card-container .container .house-card .img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -544,8 +547,8 @@ main {
   position: absolute;
   z-index: 2;
   top: 4px;
-  left: 5px;
-  right: 5px;
+  left: 10px;
+  right: 10px;
   width: 90%;
   display: flex;
   align-items: center;
@@ -1317,12 +1320,12 @@ main {
   }
 
   .house-card-container .container {
-    width: 271px;
+
     min-height: 280px;
   }
 
   .house-card-container .container .house-card {
-    width: 230px;
+
     position: relative;
   }
 
@@ -1331,9 +1334,7 @@ main {
     height: 142px;
   }
 
-  .house-card-container .container .house-card .img img {
-    width: 87%;
-  }
+
 
   .house-card-container .container .house-card .details {
     padding: 10px;
