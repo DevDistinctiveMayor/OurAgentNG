@@ -195,6 +195,7 @@ async function fetchAndRenderProperties(queryParams = "") {
         propertyElement.className = "property-card";
         propertyElement.innerHTML = `
                   <div class="container">
+                  
                       <div class="house-card">
                           <div class="img">
                               <img src="https://ouragent.com.ng/${
@@ -302,15 +303,18 @@ async function handleBookmark(propertyId, action) {
   }
 
   try {
-    const response = await fetch("https://ouragent.com.ng/bookmark/bookmark.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        client_id: parseInt(clientId),
-        property_id: parseInt(propertyId),
-        action,
-      }),
-    });
+    const response = await fetch(
+      "https://ouragent.com.ng/bookmark/bookmark.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: parseInt(clientId),
+          property_id: parseInt(propertyId),
+          action,
+        }),
+      }
+    );
 
     const result = await response.json();
     if (result.status === "success") {
@@ -389,13 +393,16 @@ async function submitFeedback() {
   submitBtn.disabled = true;
 
   try {
-    let response = await fetch("https://ouragent.com.ng/feedback/submit_feedback.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ agent_id, feedback }),
-    });
+    let response = await fetch(
+      "https://ouragent.com.ng/feedback/submit_feedback.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ agent_id, feedback }),
+      }
+    );
 
     let result = await response.json();
 

@@ -97,7 +97,7 @@ main {
   display: flex;
   list-style: none;
   align-items: center;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .nav-links li a {
@@ -138,7 +138,7 @@ main {
 }
 
 .greeting {
-  font-size: 16px;
+  font-size: 15px;
   margin-top: -10rem;
   font-family: "poppins";
   margin-top: 10px;
@@ -154,7 +154,7 @@ main {
 
 .bx-user {
   color: #333;
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 10px;
   font-weight: 700;
   padding-right: 1px;
@@ -409,7 +409,7 @@ main {
 .featured-section>.top>.view {
   color: #000;
   font-weight: lighter;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .toast {
@@ -420,7 +420,7 @@ main {
   padding: 10px 20px;
   border-radius: 5px;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   display: inline-block;
   z-index: 9999;
   opacity: 0;
@@ -464,6 +464,12 @@ main {
   /* background-color: red; */
   position: relative;
 }
+.house-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 .house-card-container .container {
   display: flex;
@@ -512,7 +518,7 @@ main {
 .house-card-container .container .house-card .details .description {
   color: #0861af;
   padding: 5px 0;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .house-card-container .container .house-card .details .price {
@@ -533,7 +539,7 @@ main {
 
 .house-card-container .container .house-card .details .location .location-name {
   color: #0861af;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .house-card-container .container .house-card .details .location .view-icon {
@@ -546,7 +552,7 @@ main {
 .house-card-container .container .house-card .details .location .view-icon .view {
   text-decoration: underline;
   color: #000;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .house-card-container .container .house-card .img-overlap {
@@ -607,7 +613,7 @@ main {
 
 .neighborhood-highlights {
   text-align: center;
-  padding: 40px 20px;
+  padding: 81px 20px;
 }
 
 .neighborhood-highlights h2 {
@@ -716,7 +722,7 @@ main {
 
 .download-section .second-section p {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   color: #ffffff;
 }
 
@@ -870,7 +876,7 @@ main {
 #feedbackText {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-top: 10px;
@@ -890,7 +896,7 @@ main {
   color: white;
   border: none;
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
@@ -908,7 +914,7 @@ main {
   right: 20px;
   padding: 10px 15px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
   display: none;
   z-index: 10000;
 }
@@ -1119,7 +1125,7 @@ main {
   }
 
   .house-card-container .container .house-card .details .price {
-    font-size: 26px;
+    font-size: 25px;
 
   }
 }
