@@ -485,7 +485,7 @@ main {
 
 .house-card-container .container .house-card .img {
   width: 100%;
-  height: 190px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1094,7 +1094,7 @@ main {
   }
 
   .house-card-container .container {
-    width: 365px;
+    width: 350px;
     /* height: 457px; */
     gap: 34px;
   }
@@ -1104,7 +1104,7 @@ main {
   }
 
   .house-card-container .container .house-card .img {
-    height: 190px;
+    height: 220px;
     /* Increased image height on small screens */
   }
 
