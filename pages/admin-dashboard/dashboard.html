@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="dashboard.css" />
+  <title>Our Agent | Admin Dashboard</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6H70ZWC8QP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-6H70ZWC8QP');
+</script>
+
+<body>
+  <header></header>
+  <main>
+    <div class="welcoming">
+      <img src="../../assets/logo.svg" alt="Our Agnet_NG Logo" />
+      <p class="welcoming-text">Welcome to your dashboard, Mayowa!</p>
+    </div>
+
+    <div class="add-new-project">
+      <a href="#">
+        <span class="add-project-text">Add a new project</span>
+        <span class="add-project-icon">
+          <i class="bx bx-plus"></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- Admin Summary -->
+    <section class="admin-summary">
+      <div class="summary-item-box">
+        <div class="summary-item-box-top-content">
+          <p id="totalUsers" class="item-text">Loading...</p>
+          <img src="../../frontend_images/star.svg" alt="Star Icon" class="item-icon" />
+        </div>
+        <div class="summary-item-box-bottom-content">
+          <p>Total User</p>
+          <p>10% increase from last week</p>
+
+        </div>
+      </div>
+      <div class="summary-item-box">
+        <div class="summary-item-box-top-content">
+          <p class="item-text">00</p>
+          <img src="../../frontend_images/link.svg" alt="Star Icon" class="item-icon" />
+        </div>
+        <div class="summary-item-box-bottom-content">
+          <p>Reviews collected</p>
+          <p>10% increase from last week</p>
+        </div>
+      </div>
+      <div class="summary-item-box">
+        <div class="summary-item-box-top-content">
+          <p class="item-text">00</p>
+          <img src="../../frontend_images/link.svg" alt="Star Icon" class="item-icon" />
+        </div>
+        <div class="summary-item-box-bottom-content">
+          <p>Review request sent</p>
+          <p>10% increase from last week</p>
+        </div>
+      </div>
+      <div class="summary-item-box">
+        <div class="summary-item-box-top-content">
+          <p class="item-text" id="totalProperties">Loading...</p>
+          <img src="../../frontend_images/building.svg" alt="Star Icon" class="item-icon" />
+        </div>
+        <div class="summary-item-box-bottom-content">
+          <p>Project Listed</p>
+          <p>1 new listing in this week</p>
+        </div>
+      </div>
+      <div class="summary-item-box">
+        <div class="summary-item-box-top-content">
+          <p class="item-text">00</p>
+          <img src="../../frontend_images/phone-call 9.svg" alt="Star Icon" class="item-icon" />
+        </div>
+        <div class="summary-item-box-bottom-content">
+          <p>Review Average</p>
+          <p>10% increase from last week</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="activityTrendChart" style="width: 100%; height: 500px;"></div>
+
+    <section class="reviews">
+
+      <aside class="new-messages">
+        <!-- <div class="top-line">
+          <p>New messages received</p>
+          <p>
+            <span class="arrow-icon-wrapper"><i class="bx bx-right-arrow-alt" id="arrow-up-icon"></i></span><span
+              class="view">View all</span>
+          </p>
+        </div> -->
+
+        <div class="messages-container container">
+          <h2>Pending Profile Update Requests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="pendingRequests">
+              <!-- Requests will be dynamically inserted here -->
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </aside>
+      <aside class="right-aside">
+        <div class="project-list-container">
+          <div class="top-line-second">
+            <p>Project list and review opportunities</p>
+            <i class="bx bx-right-arrow-alt" id="arrow-up-icon"></i>
+          </div>
+          <div class="list-box">
+            <div class="project-details">
+              <span class="name-and-location">
+                <p>Project name</p>
+                <p>
+                  <i class="bx bxs-map"></i>
+                  Location
+                </p>
+              </span>
+              <span class="star-rating">18
+                <img src="../../frontend_images/rating-star.jpg" alt="rating-image" class="rating-star" /></span>
+            </div>
+            <div class="get-reviews">
+              <a href="#">
+                <p>Get reviews</p>
+                <i class="bx bx-bar-chart-alt" id="get-reviews-icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="latest-review-container">
+          <div class="top-line-second">
+            <p>Your latest Feedback</p>
+            <i class="bx bx-right-arrow-alt" id="arrow-up-icon"></i>
+          </div>
+
+          <div class="review-box feedback-container">
+            <div class="user-details">
+              <div class="user-initials">
+                <p>JL</p>
+              </div>
+              <div class="name-and-rating">
+                <p></p>
+                <img src="../../frontend_images/rating-star.jpg" alt="user-rating" />
+              </div>
+            </div>
+            <div class="property-details">
+              <!-- <p class="property-name">Property name</p>
+              <p class="time">2 hours ago</p> -->
+            </div>
+            <p class="review-message" id="feedbackList">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Perspiciatis blanditiis possimus cumque natus, autem nam.
+              Tempora aliquid facere hic quod? Repellat fugit repellendus
+              alias cupiditate dolorum illum autem eligendi perferendis!
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+    <section class="chart-and-tproperties">
+      <div class="chart-wrapper">
+        <h2>Reviews over time</h2>
+        <div class="rising-details">
+          <span class="rise-icon"><i class="bx bx-up-arrow-alt"></i></span><span class="rise-percent">
+            <p>0.8%</p>
+            <p>Than last Day</p>
+          </span>
+        </div>
+        <div class="chart-container">
+          <div class="background"></div>
+        </div>
+      </div>
+
+
+
+      <div class="top-properties">
+        <h2>Top Properties</h2>
+        <div class="tproperties-box">
+          <div class="tproperties-list">
+            <div class="image">
+              <img src="../../frontend_images/ibadan.png" alt="" />
+              <p class="tproperty-name">Property name</p>
+            </div>
+            <div class="tproperties-rating">
+              <p>
+                32
+                <img src="../../frontend_images/rating-star.jpg" alt="" />
+              </p>
+            </div>
+          </div>
+          <div class="tproperties-list">
+            <div class="image">
+              <img src="../../frontend_images/ibadan.png" alt="" />
+              <p class="tproperty-name">Property name</p>
+            </div>
+            <div class="tproperties-rating">
+              <p>
+                28
+                <img src="../../frontend_images/rating-star.jpg" alt="" />
+              </p>
+            </div>
+          </div>
+          <div class="tproperties-list">
+            <div class="image">
+              <img src="../../frontend_images/ibadan.png" alt="" />
+              <p class="tproperty-name">Property name</p>
+            </div>
+            <div class="tproperties-rating">
+              <p>
+                27
+                <img src="../../frontend_images/rating-star.jpg" alt="" />
+              </p>
+            </div>
+          </div>
+          <div class="tproperties-list">
+            <div class="image">
+              <img src="../../frontend_images/ibadan.png" alt="" />
+              <p class="tproperty-name">Property name</p>
+            </div>
+            <div class="tproperties-rating">
+              <p>
+                <img src="../../frontend_images/rating-star.jpg" alt="" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div>
+        <h4 class="client_list">Client List</h4>
+        <div id="clientTableContainer">
+        </div>
+      </div>
+
+      <section>
+        <div>
+          <h4 class="client_list">Agent List</h4>
+          <div id="agentTableContainer"></div>
+        </div>
+      </section>
+
+
+
+    </section>
+  </main>
+  <footer></footer>
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./dashboard.js"></script>
+</body>
+
+</html>
