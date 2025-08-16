@@ -42,6 +42,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -347,7 +348,8 @@ main {
 
 .left-container .carousel .carousel-inner .carousel-item {
   width: 100%;
-  flex-shrink: 0; /* ✅ This is the fix */
+  flex-shrink: 0;
+  /* ✅ This is the fix */
   text-align: center;
   height: 500px;
 }
@@ -677,12 +679,15 @@ button:focus {
   0% {
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -693,15 +698,15 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 270px;
-  min-height: 372px;
-  padding: 15px 10px;
-  border: 1px solid #0861af;
-  border-radius: 7px;
+  width: 280px;
+  height: 355px;
+  /* padding: 8px 0px; */
+  border: 1px solid #0861af2d;
+  border-radius: 8px;
   cursor: pointer;
 
   .house-card {
-    width: 260px;
+    width: 100%;
     position: relative;
 
     .img {
@@ -710,8 +715,8 @@ button:focus {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 7px;
       overflow: hidden;
+      border-radius: 8px 8px 0% 0%;
 
       img {
         width: auto;
@@ -719,16 +724,19 @@ button:focus {
         max-width: 100%;
         object-fit: cover;
         width: 100%;
+
       }
     }
 
     .details {
       padding: 10px;
+      border-radius: 7px;
+      box-shadow: 0 5px 5px rgba(73, 73, 73, 0.1);
 
       .description {
         color: #0861af;
         padding: 5px 0;
-        font-size: 14px;
+        font-size: 15px;
       }
 
       .price {
@@ -743,7 +751,7 @@ button:focus {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 14px;
+        font-size: 15px;
 
         .location-name {
           color: #0861af;
@@ -758,6 +766,7 @@ button:focus {
           .view {
             text-decoration: underline;
             color: #000;
+            font-size: 15px;
           }
         }
       }
@@ -827,7 +836,8 @@ button:focus {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: #0861AF; /* Custom theme color */
+  color: #0861AF;
+  /* Custom theme color */
   margin-bottom: 15px;
 }
 
@@ -873,7 +883,8 @@ button:focus {
   margin-top: 10px;
   font-size: 14px;
   color: green;
-  display: none; /* Initially hidden */
+  display: none;
+  /* Initially hidden */
 }
 
 .box-top {
@@ -1122,6 +1133,7 @@ button:focus {
     gap: 30px;
     position: relative;
   }
+
   .box-top h3 {
     font-size: 18px;
     margin-left: 11px;
@@ -1131,7 +1143,7 @@ button:focus {
     color: #000000;
     font-size: 16px;
     margin-right: 26px;
-}
+  }
 
   .subscription {
     flex-direction: column;
@@ -1168,30 +1180,33 @@ button:focus {
 }
 
 
+
+
 @media screen and (max-width: 500px) {
 
- .left-container .carousel .carousel-inner .carousel-item {
-  width: 100%;
-  flex-shrink: 0; /* ✅ This is the fix */
-  text-align: center;
-  height: 250px;
-}
+  .left-container .carousel .carousel-inner .carousel-item {
+    width: 100%;
+    flex-shrink: 0;
+    /* ✅ This is the fix */
+    text-align: center;
+    height: 250px;
+  }
 
-.left-container .carousel .carousel-item img {
-  width: 100%;
-  height: 100%;
+  .left-container .carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
 
-  /* display: block; */
-  border-radius: 8px;
-}
-  
+    /* display: block; */
+    border-radius: 8px;
+  }
+
 }
 
 @media screen and (max-width: 400px) {
   .container {
     gap: 30px;
   }
-  
+
   .right-container .agent-details p {
     font-size: 14px;
   }
@@ -1228,7 +1243,7 @@ button:focus {
     border-radius: 8px;
   }
 
-  
+
 
   .left-container .property-text-details .address-details h4 {
     font-size: 16px;
@@ -1302,17 +1317,17 @@ button:focus {
 
 @media (min-width: 768px) {
   .for_sale {
-      gap: 3rem;
+    gap: 3rem;
   }
 
   .footer-top {
-      flex-direction: row;
-      justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
 
-      margin: 50px auto;
+    margin: 50px auto;
   }
 
   .footer-links {
-      gap: 30px;
+    gap: 30px;
   }
 }
