@@ -337,7 +337,7 @@ main {
 .left-container .carousel {
   position: relative;
   width: 100%;
-  /* height: 40%; */
+  /* : 40%; */
   overflow: hidden;
   border: 2px solid #0861af;
   border-radius: 10px;
@@ -349,6 +349,7 @@ main {
   width: 100%;
   flex-shrink: 0; /* ✅ This is the fix */
   text-align: center;
+  height: 500px;
 }
 
 .left-container .carousel .carousel-item img {
@@ -1166,11 +1167,31 @@ button:focus {
   }
 }
 
+
+@media screen and (max-width: 500px) {
+
+ .left-container .carousel .carousel-inner .carousel-item {
+  width: 100%;
+  flex-shrink: 0; /* ✅ This is the fix */
+  text-align: center;
+  height: 250px;
+}
+
+.left-container .carousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+
+  /* display: block; */
+  border-radius: 8px;
+}
+  
+}
+
 @media screen and (max-width: 400px) {
   .container {
     gap: 30px;
   }
-
+  
   .right-container .agent-details p {
     font-size: 14px;
   }
@@ -1206,6 +1227,8 @@ button:focus {
     height: 120px;
     border-radius: 8px;
   }
+
+  
 
   .left-container .property-text-details .address-details h4 {
     font-size: 16px;
